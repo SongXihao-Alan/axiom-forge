@@ -1,0 +1,56 @@
+{
+  "diktat_id": "DIKT-TH10-OPERATOR-UNINTENDED",
+  "type": "diktat",
+  "quote": "You said before that subjecting a rule to an operator can affect the properties of the rule. We may be getting a rule that's better from some viewpoint, but an unintended consequence might be that it's worse from some other viewpoint. Should we be concerned about that? It might, and you should. For any operator, you'll end up with a rule that satisfies a property that the rule you started with didn't satisfy and that the operator is meant to recover, but it may lose one property or several properties that this original rule enjoyed. You have to be careful. You'll want to know...",
+  "stance": {
+    "value_priority": "preserve what works > gain what you wanted",
+    "implicit_norm": "every operator must come with a 'preservation' analysis: which properties are kept, which are lost",
+    "trigger": "applying a transformation / extension / compromise to a rule",
+    "verdict_pattern": "any 'fix' that adds a property must be accompanied by a list of what it might break",
+    "rhetorical_device": "rhetorical Q&A — the author plays devil's advocate ('should we be concerned?') and then makes himself agree ('it might, and you should')"
+  },
+  "counter_example": "if you extend a 2-person rule to n persons by bilateral consistency, you may gain population-monotonicity but lose ex-post IC. Thomson's point: the gain is real, the loss is also real, you must report both.",
+  "origin_story": "Ch.10 §10.3 (operators) — this comes right after the introduction of structural / improvement / extension / compromising / enlargement operators. Thomson is preemptively warning against the seductive 'this operator is just adding what we want' framing. The flavor is: operations in math are like operations in surgery — there are side effects.",
+  "applicability": {
+    "use_when": "axiom_deriver is producing a new candidate rule from an old one (any kind of construction)",
+    "use_how": "always pair a new axiom with: (a) which axioms of the old system survive, (b) which axioms of the old system are now violated, (c) which properties are gained"
+  },
+  "thomson_chapter": "10.3 §6",
+  "source_volume": "thomson_vol1",
+  "source_pages": [
+    222
+  ],
+  "version": "1.0",
+  "created": "2026-06-10",
+  "updated": "2026-06-10",
+  "status": "seed",
+  "domain": "methodology",
+  "tags": [
+    "diktat",
+    "thomson_style",
+    "evaluation_perspective"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 风格"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "preserve what works > gain what you wanted"
+    },
+    {
+      "type": "empirical",
+      "subtype": "evaluation_perspective"
+    }
+  ],
+  "process_meta": {
+    "[HUNCH]": "从 Thomson 风格抽出的 tacit judgment"
+  },
+  "source": {
+    "primary": "training/graph/diktats/DIKT-TH10-OPERATOR-UNINTENDED.json"
+  },
+  "id": "DIKT-TH10-OPERATOR-UNINTENDED"
+}

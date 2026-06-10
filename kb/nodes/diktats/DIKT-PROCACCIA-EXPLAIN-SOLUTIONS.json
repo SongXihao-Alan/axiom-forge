@@ -1,0 +1,57 @@
+{
+  "diktat_id": "DIKT-PROCACCIA-EXPLAIN-SOLUTIONS",
+  "type": "diktat",
+  "quote": "The axioms in question typically attempt to formally capture notions of justice, fairness, efficiency, or just plain reasonableness. My view is that they are typically formulated with the designer in mind, that is, they are meant to convince an authority to adopt a specific mechanism. In this essay I wish to examine the idea that axioms should be formulated to help explain the mechanism's choices to participants. ... I firmly believe that these fairness explanations make the solutions more appealing to users, and therefore, make it more likely that users will accept them.",
+  "stance": {
+    "value_priority": "participant understanding > designer conviction",
+    "implicit_norm": "an axiom that cannot be explained to the user in plain language is an axiom that has not done its job",
+    "trigger": "writing a new axiom or proposing a new rule",
+    "verdict_pattern": "if you cannot write a 2-sentence explanation of why this axiom matters to a non-expert user, the axiom is too far from the user's problem",
+    "rhetorical_device": "role-inversion ('designer → participant'); the phrase 'plain reasonableness' is the deliberate opposite of formal axiomatic language"
+  },
+  "counter_example": "Monotonicity in voting is technically well-defined: 'pushing x up in votes doesn't hurt x'. But explaining this to a non-voter is hard. Contrast: envy-freeness in Spliddit's rent division is 'you wouldn't trade your room for any other room at its price' — a non-expert reads this and immediately knows whether they're being treated fairly. The latter axiom is participant-facing; the former is designer-facing.",
+  "origin_story": "Ch.27 of 'The Future of Economic Design' (Procaccia). The origin is biographical: Procaccia is also an AI/ML researcher, and was repeatedly asked at conferences 'why not just use ML to find fair solutions?'. His answer: explainability. The 'axioms should explain solutions' thesis is partly his answer to that question, and it's why the essay's argument converges on Spliddit — a deployed system where 124,000 users have actually consumed the explanations.",
+  "applicability": {
+    "use_when": "writing a new axiom's natural-language statement in a PerturbationMemo",
+    "use_how": "always include a 'user-facing explanation' field: a 1-2 sentence statement that a non-expert could read and recognize why they care. If you can't write this, the axiom is probably designer-facing only."
+  },
+  "thomson_chapter": null,
+  "source_volume": "future_of_economic_design",
+  "source_pages": [
+    193,
+    194
+  ],
+  "version": "1.0",
+  "created": "2026-06-10",
+  "updated": "2026-06-10",
+  "status": "seed",
+  "domain": "methodology",
+  "tags": [
+    "diktat",
+    "thomson_style",
+    "evaluation_perspective"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 风格"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "participant understanding > designer conviction"
+    },
+    {
+      "type": "empirical",
+      "subtype": "evaluation_perspective"
+    }
+  ],
+  "process_meta": {
+    "[HUNCH]": "从 Thomson 风格抽出的 tacit judgment"
+  },
+  "source": {
+    "primary": "training/graph/diktats/DIKT-PROCACCIA-EXPLAIN-SOLUTIONS.json"
+  },
+  "id": "DIKT-PROCACCIA-EXPLAIN-SOLUTIONS"
+}

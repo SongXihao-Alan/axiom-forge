@@ -1,0 +1,21 @@
+{
+  "id": "AS-SHAP-CHARFN",
+  "type": "assumption",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "nl": "SHAP's characteristic function: v(S) = E[f(X) | X_S]",
+  "formal": "v(S) := E_{X_{S̄} | X_S = x_S}[f(X_S, X_{S̄})]",
+  "domain": "feature_attribution",
+  "tags": ["characteristic_function", "shap", "predictor_based"],
+  "anchors": [
+    {"type": "empirical", "subtype": "experimental", "evidence": "Kernel SHAP 的 ML 实验"},
+    {"type": "community", "supporters": ["Lundberg-Lee 2017", "Sundararajan-Najmi 2019"]}
+  ],
+  "source": {
+    "primary": "LIT-L17-SHAP Section 2"
+  },
+  "process_meta": {
+    "[HUNCH]": "v(S) 绑预测器 f̂ 不绑真结构 f, 是 SC 反命题的入口"
+  }
+}

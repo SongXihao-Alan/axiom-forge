@@ -1,0 +1,23 @@
+{
+  "id": "TH-PROP-623",
+  "nl": "Prop 6.2.3: Scenario B (f̂ ≠ f, SI>0, ∂f̂=0) is the Impossibility entry point",
+  "status": "proved",
+  "type": "theorem",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "domain": "feature_attribution",
+  "tags": [
+    "proposition",
+    "sc_vs_dummy"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "logical",
+      "evidence": "Prop 6.2.3: Scenario B (f̂ ≠ f, SI>0, ∂f̂=0) is the Impossibility entry point"
+    }
+  ],
+  "source": {
+    "primary": "AXIOM_SKELETON.md §4"
+  }
+}

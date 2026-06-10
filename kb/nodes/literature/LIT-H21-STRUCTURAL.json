@@ -1,0 +1,32 @@
+{
+  "id": "LIT-H21-STRUCTURAL",
+  "type": "literature",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "title": "Structural Shapley Values (Book Chapter 21)",
+  "authors": ["Tom Heskes"],
+  "year": 2021,
+  "venue": "Book chapter in 'Explainable AI' (Springer)",
+  "domain": "feature_attribution",
+  "tags": ["structural_importance", "shapley", "axiom_precursor"],
+  "anchors": [
+    {"type": "community", "supporters": ["Springer 2021"]},
+    {"type": "philosophical", "tradition": "structural_realism"}
+  ],
+  "abstract_nl": "Structural Shapley Values: extending Shapley with Structural Importance SI_i(f), a measure of feature i's impact in the underlying data-generating process f, distinct from the predictor f̂.",
+  "key_contributions": [
+    "Structural Importance SI_i(f) 形式化: linear |β_i|, nonlinear E_X[|∂f/∂X_i|]",
+    "区分 predictor f̂ 和 ground truth f",
+    "Open problem: 把 SI 升格为 axiom(SC 填补此空)"
+  ],
+  "linage_in": ["LIT-SHAPLEY-1953", "LIT-L17-SHAP", "LIT-H20-CAUSAL-SHAP"],
+  "linage_out": ["LIT-AXIOM-FINDER-2026"],
+  "source": {
+    "primary": "PDF: d4e1caa2__0df0c9c2-5dfb-4299-83d4-9b26b8f51d76.pdf (Chapter 21)"
+  },
+  "process_meta": {
+    "[AH-HA]": "H21 是 SC 的孵化器 —— Heskes 知道 SI 重要, 但没升格 axiom, 我们做这最后一步",
+    "user_evaluation": "用户已确认(2026-06-09)"
+  }
+}

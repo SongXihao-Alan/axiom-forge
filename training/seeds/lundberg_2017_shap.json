@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "id": "lundberg_2017_shap",
+    "title": "A Unified Approach to Interpreting Model Predictions (SHAP)",
+    "authors": ["Scott M. Lundberg", "Su-In Lee"],
+    "year": 2017,
+    "venue": "NeurIPS",
+    "linage": {
+      "in": ["shapley_1953", "ribeiro_2016_lime", "lipovetsky_conklin_2001"],
+      "out": ["aas_2021_dependent", "sundararajan_najmi_2019_many", "jan_o_prieur_2017"],
+      "branch": "shapley_attribution_mainline"
+    }
+  },
+  "axioms": [
+    {
+      "id": "L17-LA",
+      "type": "local_accuracy",
+      "statement": "Local accuracy: f(x) = φ_0 + Σ_i φ_i, where φ_0 is the expected model output on background data, and φ_i is the attribution to feature i.",
+      "formal": "∀ x: f(x) = φ_0 + Σ_i φ_i(x)"
+    },
+    {
+      "id": "L17-MISS",
+      "type": "missingness",
+      "statement": "Missingness: φ_i = 0 when feature i is missing from input. Missingness requires that missing features receive no attribution.",
+      "formal": "∀ x: φ_i(x|_{X_i := x_i'}) = 0 ⟺ x_i' represents the feature being 'absent'"
+    },
+    {
+      "id": "L17-CONS",
+      "type": "consistency",
+      "statement": "Consistency: if f changes to f̂ such that f̂(x_S) - f̂(x_S \\ {i}) ≥ f(x_S) - f(x_S \\ {i}) for all subsets S, then φ_i(f̂, x) ≥ φ_i(f, x).",
+      "formal": "∀ S ⊆ N\\{i}: v̂(S∪{i}) - v̂(S) ≥ v(S∪{i}) - v(S) ⟹ φ_i(v̂) ≥ φ_i(v)"
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "L17-CHAR-FN",
+      "type": "characteristic_function",
+      "statement": "v(S) = E[f(X) | X_S] for S ⊆ N (conditional expectation on observed features)",
+      "formal": "v(S) := E_{X_{S̄} | X_S = x_S}[f(X_S, X_{S̄})]"
+    },
+    {
+      "id": "L17-FAIRNESS",
+      "type": "additive_decomposition",
+      "statement": "Attribution is an additive decomposition of model output minus baseline.",
+      "formal": "Φ is a solution concept in cooperative game theory with v as characteristic function"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "L17-THM1",
+      "statement": "Theorem 1: The class of additive feature attribution methods corresponds exactly to the class of additive games in cooperative game theory. Shapley values are the unique solution that satisfies local accuracy, missingness, and consistency.",
+      "proof_sketch": "Direct correspondence: additive game v with v(∅) = 0 + v(N) is uniquely allocated by Shapley. Under missingness (φ_i=0 when feature absent), Shapley attribution is unique.",
+      "depends_on": ["L17-LA", "L17-MISS", "L17-CONS"]
+    },
+    {
+      "id": "L17-THM2",
+      "statement": "Theorem 2: KernelSHAP (linearized LIME) converges to Shapley values as sampling weight converges to Shapley kernel weights π_Sh(S) = (d-1) / (|S| (d-|S|) choose |S|).",
+      "depends_on": ["L17-THM1"]
+    }
+  ],
+  "propositions": [
+    {
+      "id": "L17-UNIFY",
+      "proof_status": "argued",
+      "claim": "LIME, DeepLIFT, LRP, QII, Shapley sampling, Classic Shapley are all special cases of additive feature attribution (with different v(S) approximations)."
+    }
+  ],
+  "literature_position": {
+    "vs_Shapley_1953": "Lundberg-Lee 2017 adapts 4 axioms of Shapley (Efficiency, Symmetry, Dummy, Additivity) into 3 axioms of feature attribution (Local accuracy, Missingness, Consistency).",
+    "vs_IG_2017": "Sundararajan-Taly-Yan 2017 propose Sensitivity + Implementation Invariance, get Integrated Gradients. SHAP proposes a different (Shapley-based) approach.",
+    "vs_fairness_2017": "Owen-Prieur 2017 use Shapley for dependent inputs (ANOVA-based). L17 assumes conditional expectation — different v(S)."
+  }
+}

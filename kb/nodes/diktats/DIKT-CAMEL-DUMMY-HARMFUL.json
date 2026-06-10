@@ -1,0 +1,56 @@
+{
+  "diktat_id": "DIKT-CAMEL-DUMMY-HARMFUL",
+  "type": "diktat",
+  "quote": "We find it questionable to design sharing rules with the purpose of accommodating situations that will not occur. ... characterizations involving axioms that invoke unrealistic scenarios can be harmful for at least two reasons. First, appealing to axioms invoking unrealistic scenarios restricts the family of desirable rules for the situations we actually care about. Indeed, the very nature of axiomatic work is such that placing conditions on how a rule should behave in some scenarios has repercussions on the rule's behavior in other situations, if only indirectly. ... Secondly, and relating once again to the importance of context, axioms invoking unrealistic scenarios can hurt the visibility of axiomatic economic design to practitioners. ... rules that hinge on axioms invoking scenarios that are unrealistic — given the context — are little more than an academic curiosity.",
+  "stance": {
+    "value_priority": "practitioner visibility > mathematical completeness",
+    "implicit_norm": "an axiom is judged by what its presence DOES to the rest of the system, not by whether it sounds reasonable in isolation",
+    "trigger": "evaluating a candidate axiom whose justification depends on a scenario that the planner's problem excludes",
+    "verdict_pattern": "if the axiom's defense requires an agent that doesn't exist in the planner's problem, drop the axiom",
+    "rhetorical_device": "the bolded 'First' and 'Secondly' structure a 2-channel argument; the phrase 'little more than an academic curiosity' is a deliberate provocation — accusing the axiom of being self-indulgent"
+  },
+  "counter_example": "Dummy axiom in cost-sharing problems: defended by an idealized scenario where one agent has zero impact, but in real cost-sharing, every agent's demand affects the cost curve. Keeping Dummy + Additivity forces the path-generated family, which excludes the natural 'share proportional to demand' rule. The very scenario the axiom needs (a true dummy agent) is impossible in cost-sharing. Result: the field lost access to a family of useful rules for years.",
+  "origin_story": "Ch.25 in 'The Future of Economic Design' (Billette de Villemeur & Leroux). The origin is a Talmudic/Islamic story of the sheikh's camels — a 17-camel estate that can be divided 1/2, 1/3, 1/9 only by adding a 18th 'dummy' camel. The story is the hook; the authors are saying: a wise man's camel is the same kind of construct as a dummy agent in an axiom. Useful in the story, harmful in practice. The aesthetic of the story is a deliberate counterpoint to the dryness of the technical argument.",
+  "applicability": {
+    "use_when": "evaluating any new axiom's survival in v0.2",
+    "use_how": "always run this 2-channel test: (1) does keeping this axiom force out rules the planner might want? (2) does keeping this axiom make the system look academic to non-academic decision-makers? if yes to either, flag for removal"
+  },
+  "thomson_chapter": null,
+  "source_volume": "future_of_economic_design",
+  "source_pages": [
+    184
+  ],
+  "version": "1.0",
+  "created": "2026-06-10",
+  "updated": "2026-06-10",
+  "status": "seed",
+  "domain": "methodology",
+  "tags": [
+    "diktat",
+    "thomson_style",
+    "evaluation_perspective"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 风格"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "practitioner visibility > mathematical completeness"
+    },
+    {
+      "type": "empirical",
+      "subtype": "evaluation_perspective"
+    }
+  ],
+  "process_meta": {
+    "[HUNCH]": "从 Thomson 风格抽出的 tacit judgment"
+  },
+  "source": {
+    "primary": "training/graph/diktats/DIKT-CAMEL-DUMMY-HARMFUL.json"
+  },
+  "id": "DIKT-CAMEL-DUMMY-HARMFUL"
+}

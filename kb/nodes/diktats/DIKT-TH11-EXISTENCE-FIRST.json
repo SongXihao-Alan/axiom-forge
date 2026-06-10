@@ -1,0 +1,56 @@
+{
+  "diktat_id": "DIKT-TH11-EXISTENCE-FIRST",
+  "type": "diktat",
+  "quote": "Is the uniqueness part the best part of a characterization? I actually don't think so; it's the existence part that you should first celebrate: the fact that at least one rule satisfies all of your axioms. It's not even the existence part of characterizations. It's the existence, period, of rules satisfying your chosen list of axioms, and the longer the list for which existence holds, the better.",
+  "stance": {
+    "value_priority": "existence > uniqueness",
+    "implicit_norm": "a long list of axioms satisfied by some rule is more impressive than a short list that pinpoints one rule",
+    "trigger": "celebrating a characterization result",
+    "verdict_pattern": "ask: 'is the achievement that ONE rule works, or that NO rule fails?' — the latter is rarer and more valuable",
+    "rhetorical_device": "inversion of academic priorities (uniqueness is the field's darling); repetition of 'existence' for emphasis"
+  },
+  "counter_example": "Hurwicz 1972 showed that no rule satisfies efficiency + IR + SP for 2-agent exchange. This is a NEGATIVE result (an impossibility), not a characterization. But Thomson would say: this is more useful than a characterization that says 'rule X is the unique rule satisfying efficiency + SP alone'.",
+  "origin_story": "Ch.11 §11.5 (Evaluating the Significance of Axiomatizations) — Thomson is pushing back against the field's tendency to treat 'if and only if' theorems as the gold standard. The origin is partly a reaction to the literature: too many papers chase uniqueness, too few ask 'is this even achievable?'.",
+  "applicability": {
+    "use_when": "axiom_deriver produces a candidate axiom system; or when memo_writer is summarizing a perturbation result",
+    "use_how": "report results in this order: (1) can ANY rule satisfy the new system? (2) which rules? (3) is the new system characteristic of a unique rule?"
+  },
+  "thomson_chapter": "11.5",
+  "source_volume": "thomson_vol1",
+  "source_pages": [
+    255
+  ],
+  "version": "1.0",
+  "created": "2026-06-10",
+  "updated": "2026-06-10",
+  "status": "seed",
+  "domain": "methodology",
+  "tags": [
+    "diktat",
+    "thomson_style",
+    "evaluation_perspective"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 风格"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "existence > uniqueness"
+    },
+    {
+      "type": "empirical",
+      "subtype": "evaluation_perspective"
+    }
+  ],
+  "process_meta": {
+    "[HUNCH]": "从 Thomson 风格抽出的 tacit judgment"
+  },
+  "source": {
+    "primary": "training/graph/diktats/DIKT-TH11-EXISTENCE-FIRST.json"
+  },
+  "id": "DIKT-TH11-EXISTENCE-FIRST"
+}

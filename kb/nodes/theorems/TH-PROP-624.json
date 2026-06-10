@@ -1,0 +1,23 @@
+{
+  "id": "TH-PROP-624",
+  "nl": "Prop 6.2.4: SC + Dummy = structural completeness (one-to-one correspondence)",
+  "status": "argued",
+  "type": "theorem",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "domain": "feature_attribution",
+  "tags": [
+    "proposition",
+    "sc_vs_dummy"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "logical",
+      "evidence": "Prop 6.2.4: SC + Dummy = structural completeness (one-to-one correspondence)"
+    }
+  ],
+  "source": {
+    "primary": "AXIOM_SKELETON.md §4"
+  }
+}

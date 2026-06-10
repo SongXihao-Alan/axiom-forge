@@ -1,0 +1,56 @@
+{
+  "diktat_id": "DIKT-TH11-EXCITEMENT-UNIQUE",
+  "type": "diktat",
+  "quote": "And why are people the most excited about the uniqueness part of a characterization? Because there's something a little magical when only one rule manages to satisfy a list of axioms when each of them is satisfied by many rules (Fig. 11.8). How did it pull it off? How did it beat the competition? We all remember the wonder we felt when we encountered our first characterization! How proud we were when we proved our first one!",
+  "stance": {
+    "value_priority": "intellectual aesthetic > practical value",
+    "implicit_norm": "the field's aesthetic preferences are themselves an object of study, not a guide for action",
+    "trigger": "celebrating a uniqueness result",
+    "verdict_pattern": "ask: 'is my excitement about this result coming from its practical value, or from its aesthetic? If purely aesthetic, downgrade the value claim.'",
+    "rhetorical_device": "first-person plural admission of shared delight; Fig. 11.8 referenced as a visual anchor; exclamation marks used twice — extremely rare in academic prose, signals a confession"
+  },
+  "counter_example": "everyone loves a uniqueness theorem, but the field has produced many uniqueness results that are essentially aesthetic — they pin down a rule that nobody in practice was considering. Thomson is gently saying: a uniqueness result that no practitioner needed is just elegant mathematics.",
+  "origin_story": "Ch.11 §11.5 (a third diktat in the same section). Thomson is making a self-conscious observation about his own discipline. This is rare in academic writing — most authors don't comment on the aesthetic incentives driving their field. The origin is partly biographical: Thomson has been in the field long enough to remember his own first characterization, and the memory makes him reflective.",
+  "applicability": {
+    "use_when": "writing up a new axiom or rule that is 'unique' under some list",
+    "use_how": "if the result is a uniqueness result, also report: which practitioner would care? if no one, the result is aesthetic and the memo should be honest about it"
+  },
+  "thomson_chapter": "11.5",
+  "source_volume": "thomson_vol1",
+  "source_pages": [
+    256
+  ],
+  "version": "1.0",
+  "created": "2026-06-10",
+  "updated": "2026-06-10",
+  "status": "seed",
+  "domain": "methodology",
+  "tags": [
+    "diktat",
+    "thomson_style",
+    "evaluation_perspective"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 风格"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "intellectual aesthetic > practical value"
+    },
+    {
+      "type": "empirical",
+      "subtype": "evaluation_perspective"
+    }
+  ],
+  "process_meta": {
+    "[HUNCH]": "从 Thomson 风格抽出的 tacit judgment"
+  },
+  "source": {
+    "primary": "training/graph/diktats/DIKT-TH11-EXCITEMENT-UNIQUE.json"
+  },
+  "id": "DIKT-TH11-EXCITEMENT-UNIQUE"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "VA-PHIL-RAWLS",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "philosophical",
+  "value_subclass": "rawls",
+  "label_zh": "罗尔斯正义论",
+  "label_en": "Rawls' theory of justice",
+  "description": "罗尔斯正义论 (Rawls' theory of justice) - value anchor in philosophical class, subclass rawls",
+  "cross_cultural_consistency": "medium",
+  "domain": "philosophical",
+  "tags": [
+    "philosophical",
+    "rawls"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of rawls' theory of justice in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "VA-INTEREST-EQUAL",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "interest",
+  "value_subclass": "equality",
+  "label_zh": "平等分配",
+  "label_en": "Equal distribution",
+  "description": "平等分配 (Equal distribution) - value anchor in interest class, subclass equality",
+  "cross_cultural_consistency": "medium",
+  "domain": "interest",
+  "tags": [
+    "interest",
+    "equality"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of equal distribution in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

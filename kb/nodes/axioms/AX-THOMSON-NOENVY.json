@@ -1,0 +1,18 @@
+{
+  "id": "AX-THOMSON-NOENVY",
+  "type": "axiom",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "nl": "No-Envy: No agent prefers another's allocation to their own",
+  "formal": "∀ i, j: u_i(alloc_i) ≥ u_i(alloc_j)",
+  "domain": "mechanism_design",
+  "tags": ["thomson", "fairness", "no_envy"],
+  "anchors": [
+    {"type": "community", "supporters": ["Foley 1967", "Thomson 2023 Ch.8"]},
+    {"type": "philosophical", "tradition": "rawls", "concept": "fairness"}
+  ],
+  "source": {
+    "primary": "Thomson 2023 Axiomatics of Economic Design Ch.8"
+  }
+}

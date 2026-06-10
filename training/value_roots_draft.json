@@ -1,0 +1,186 @@
+{
+  "_comment": "草案:待你拍板。完全对齐 Thomson Ch.5-9 + Procaccia 的 8 个 content_root。",
+  "value_roots": [
+    {
+      "root_id": "ROOT-1-EFFICIENCY",
+      "name": "效率",
+      "thomson_alignment": "Ch.6 efficiency and related properties",
+      "instances": [
+        {
+          "instance_id": "V-PARETO",
+          "name": "Pareto 效率",
+          "formal_form": "No other allocation makes all agents weakly better off and at least one strictly better off.",
+          "is_default": true
+        },
+        {
+          "instance_id": "V-KALDOR-HICKS",
+          "name": "Kaldor-Hicks 改善",
+          "formal_form": "Winners could in principle compensate losers and still gain."
+        },
+        {
+          "instance_id": "V-WELFARE-MAX",
+          "name": "Utilitarian 社会福利最大化",
+          "formal_form": "Maximize sum_i u_i(x_i) under feasibility."
+        }
+      ]
+    },
+    {
+      "root_id": "ROOT-2-BOUNDS",
+      "name": "上下界 / Ownership",
+      "thomson_alignment": "Ch.6.1 lower bounds and upper bounds",
+      "instances": [
+        {
+          "instance_id": "V-INDIV-LOWER-BOUND",
+          "name": "Individual endowment lower bound",
+          "formal_form": "Each agent's assignment is at least as good as his endowment."
+        },
+        {
+          "instance_id": "V-INDIV-UPPER-BOUND",
+          "name": "Individual claim upper bound",
+          "formal_form": "No agent receives more than his claim (claims problems)."
+        },
+        {
+          "instance_id": "V-NO-ENVOY",
+          "name": "No-envy (envy-freeness)",
+          "formal_form": "No agent strictly prefers another's assignment to his own.",
+          "is_default": true
+        }
+      ]
+    },
+    {
+      "root_id": "ROOT-3-INTERPERSONAL",
+      "name": "人际比较 / 公平",
+      "thomson_alignment": "Ch.6.2 interpersonal comparisons of assignments",
+      "instances": [
+        {
+          "instance_id": "V-SYMMETRY",
+          "name": "Symmetry / Anonymity",
+          "formal_form": "Two agents playing symmetric roles should be treated symmetrically.",
+          "is_default": true
+        },
+        {
+          "instance_id": "V-RAWLS-MAXMIN",
+          "name": "Rawlsian max-min",
+          "formal_form": "Maximize the welfare of the worst-off agent."
+        },
+        {
+          "instance_id": "V-CAPABILITY",
+          "name": "Sen capability",
+          "formal_form": "Each agent's effective capability set should be expanded."
+        }
+      ]
+    },
+    {
+      "root_id": "ROOT-4-SOLIDARITY",
+      "name": "团结性",
+      "thomson_alignment": "Ch.7 solidarity as unifying principle",
+      "instances": [
+        {
+          "instance_id": "V-RESOURCE-MONO",
+          "name": "Resource monotonicity",
+          "formal_form": "If social resources expand, every agent ends up at least as well off."
+        },
+        {
+          "instance_id": "V-POP-MONO",
+          "name": "Population monotonicity",
+          "formal_form": "When new agents arrive (without resource expansion), incumbents' welfare changes should be coherent."
+        }
+      ]
+    },
+    {
+      "root_id": "ROOT-5-PERSPECTIVE-ROBUST",
+      "name": "视角鲁棒性",
+      "thomson_alignment": "Ch.8 robustness to choices of perspective",
+      "instances": [
+        {
+          "instance_id": "V-ADDITIVITY",
+          "name": "Additivity",
+          "formal_form": "The rule applied to a union of problems equals the union of the rule applied separately."
+        },
+        {
+          "instance_id": "V-CONSISTENCY",
+          "name": "Consistency",
+          "formal_form": "If a rule gives x_i to each agent in two sub-problems, the same x_i is chosen for the union."
+        },
+        {
+          "instance_id": "V-SEPARABILITY",
+          "name": "Separability",
+          "formal_form": "Decisions about disjoint groups of agents do not affect each other."
+        }
+      ]
+    },
+    {
+      "root_id": "ROOT-6-STRATEGIC-ROBUST",
+      "name": "策略鲁棒性",
+      "thomson_alignment": "Ch.9 immunity to manipulation",
+      "instances": [
+        {
+          "instance_id": "V-DSIC",
+          "name": "Dominant-strategy IC (Strategy-proofness)",
+          "formal_form": "Truth-telling is a dominant strategy.",
+          "is_default": true
+        },
+        {
+          "instance_id": "V-BIC",
+          "name": "Bayesian IC",
+          "formal_form": "Truth-telling is optimal in expectation given the prior."
+        },
+        {
+          "instance_id": "V-EX-POST-IC",
+          "name": "Ex-post IC",
+          "formal_form": "Truth-telling is optimal for every realized type profile."
+        },
+        {
+          "instance_id": "V-EPS-IC",
+          "name": "Approximate ε-IC",
+          "formal_form": "Misreporting gains at most ε."
+        },
+        {
+          "instance_id": "V-WITHHOLD-PROOF",
+          "name": "Withholding-proofness",
+          "formal_form": "An agent cannot gain by withholding part of his endowment."
+        }
+      ]
+    },
+    {
+      "root_id": "ROOT-7-TECHNICAL",
+      "name": "技术可行性",
+      "thomson_alignment": "Ch.5.3 technical axioms",
+      "instances": [
+        {
+          "instance_id": "V-COMPUT-FEAS",
+          "name": "Computational feasibility",
+          "formal_form": "The rule can be computed in polynomial time."
+        },
+        {
+          "instance_id": "V-CONTINUITY",
+          "name": "Continuity",
+          "formal_form": "Small changes in problem data should not produce radical changes in outcome."
+        },
+        {
+          "instance_id": "V-ANONYMITY",
+          "name": "Anonymity of agents",
+          "formal_form": "The rule's output does not depend on agents' identities."
+        }
+      ]
+    },
+    {
+      "root_id": "ROOT-8-EXPLANATORY",
+      "name": "可解释性",
+      "thomson_alignment": "Procaccia 'Axioms Should Explain Solutions'",
+      "instances": [
+        {
+          "instance_id": "V-EXPLAIN-USER",
+          "name": "User-explainable",
+          "formal_form": "A user can understand why a particular outcome satisfies the axiom.",
+          "is_default": true
+        },
+        {
+          "instance_id": "V-EXPLAIN-PERSONALIZED",
+          "name": "Personalized explanation",
+          "formal_form": "A personalized justification can be generated for each user."
+        }
+      ]
+    }
+  ]
+}

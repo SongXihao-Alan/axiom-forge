@@ -1,0 +1,57 @@
+{
+  "diktat_id": "DIKT-TH10-IMPARTIAL-CULTURE",
+  "type": "diktat",
+  "quote": "Isn't the implicit assumption underlying such a measure that all problems are equally relevant? Yes; it's sometimes called the impartial culture assumption. In spite of its name, which almost makes it sound as if the investigator themself is unbiased and open-minded — so how could one object to it — it's an assumption that some people find a little problematic. It would make more sense to place more weight on problems that are more likely. To formalize this idea, however, you'd need to write down a probability distribution from which problems would be drawn. Unfortunately, specific distributional assumptions are hard to justify. The tradition is to work with uniform distributions.",
+  "stance": {
+    "value_priority": "contextual weighting > uniform distribution",
+    "implicit_norm": "any 'objective' measure hides a choice of distribution; confessing the distribution is part of intellectual honesty",
+    "trigger": "evaluation of an axiom across a domain",
+    "verdict_pattern": "if you measure %-satisfaction, ask: 'where does the uniform come from?' The default is often unjustified.",
+    "rhetorical_device": "mock-innocent inversion of 'impartial culture' — turning a flattering name into a confession of bias"
+  },
+  "counter_example": "if you compute '% of preference profiles where VCG is ex-post IC' and report it as 78%, you have implicitly assumed a uniform distribution over profiles. But the real distribution (from real auctions) might give 92%. The two numbers mean very different things.",
+  "origin_story": "Thomson is calling out a soft spot in his own methodology: parameterization requires picking a distribution, and the field's default is 'uniform' — which is as much a model choice as the axiom itself. The remark appears in Ch.10 §10.2 right after introducing the parameterization method — it's the author hedging his own proposal before moving on.",
+  "applicability": {
+    "use_when": "value_evaluator or axiom_deriver is computing a quantitative trade-off",
+    "use_how": "always accompany a numeric verdict with: (a) the assumed distribution, (b) a sentence acknowledging that the distribution itself is a choice"
+  },
+  "thomson_chapter": "10.2 §1",
+  "source_volume": "thomson_vol1",
+  "source_pages": [
+    211,
+    212
+  ],
+  "version": "1.0",
+  "created": "2026-06-10",
+  "updated": "2026-06-10",
+  "status": "seed",
+  "domain": "methodology",
+  "tags": [
+    "diktat",
+    "thomson_style",
+    "evaluation_perspective"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 风格"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "contextual weighting > uniform distribution"
+    },
+    {
+      "type": "empirical",
+      "subtype": "evaluation_perspective"
+    }
+  ],
+  "process_meta": {
+    "[HUNCH]": "从 Thomson 风格抽出的 tacit judgment"
+  },
+  "source": {
+    "primary": "training/graph/diktats/DIKT-TH10-IMPARTIAL-CULTURE.json"
+  },
+  "id": "DIKT-TH10-IMPARTIAL-CULTURE"
+}

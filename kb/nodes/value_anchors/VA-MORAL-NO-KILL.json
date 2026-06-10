@@ -1,0 +1,28 @@
+{
+  "id": "VA-MORAL-NO-KILL",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "user_provided",
+  "value_class": "moral",
+  "value_subclass": "universal_prohibition",
+  "label_zh": "不能杀人",
+  "label_en": "Prohibition of killing",
+  "description": "不能杀人 (Prohibition of killing) - value anchor in moral class, subclass universal_prohibition",
+  "cross_cultural_consistency": "high",
+  "domain": "moral",
+  "tags": [
+    "moral",
+    "universal_prohibition"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "moral_consensus",
+      "evidence": "Examples of prohibition of killing in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "用户原话(2026-06-09)"
+  }
+}

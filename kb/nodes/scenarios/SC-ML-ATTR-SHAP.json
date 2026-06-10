@@ -1,0 +1,38 @@
+{
+  "id": "SC-ML-ATTR-SHAP",
+  "type": "scenario",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "ML model explains why prediction is X. Multiple Shapley variants exist."
+    },
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 经典案例"
+      ]
+    }
+  ],
+  "source": {
+    "primary": "training/graph/scenarios/"
+  },
+  "name_zh": "ML 特征归因(SHAP 域)",
+  "name_en": "ML feature attribution (SHAP domain)",
+  "description": "ML model explains why prediction is X. Multiple Shapley variants exist.",
+  "stakeholders": [
+    "模型",
+    "用户",
+    "监管"
+  ],
+  "key_question": "哪个 Shapley variant 该用?",
+  "domain": "real_world",
+  "tags": [
+    "ml",
+    "shap",
+    "explanation"
+  ]
+}

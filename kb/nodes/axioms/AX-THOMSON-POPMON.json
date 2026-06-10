@@ -1,0 +1,17 @@
+{
+  "id": "AX-THOMSON-POPMON",
+  "type": "axiom",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "nl": "Population Monotonicity: If population shrinks, no remaining agent is worse off",
+  "formal": "∀ i, S, S' with S' ⊂ S, i ∈ S ∩ S': u_i(alloc(S')) ≥ u_i(alloc(S))",
+  "domain": "mechanism_design",
+  "tags": ["thomson", "monotonicity"],
+  "anchors": [
+    {"type": "community", "supporters": ["Thomson 2023 Ch.4"]}
+  ],
+  "source": {
+    "primary": "Thomson 2023 Axiomatics of Economic Design Ch.4"
+  }
+}

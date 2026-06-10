@@ -1,0 +1,57 @@
+{
+  "diktat_id": "DIKT-TH10-CONSUMER-REPORTS",
+  "type": "diktat",
+  "quote": "Doing axiomatic work is like writing an article for Consumer Reports. They too produce tables of properties of the items they evaluate. ... Very apt analogy, but there're important differences. One is that Consumer Reports is actually a little better than we are at assigning grades. It does more than telling us whether a certain item has a particular feature. It shows empty circles, full circles, or half circles, black or red, to indicate the extent to which the item has that feature. ... In our axiomatic work, we tend to limit ourselves to simple — should I say simplistic? — yes-or-no answers.",
+  "stance": {
+    "value_priority": "nuanced grading > yes/no",
+    "implicit_norm": "an axiom is rarely 'satisfied' or 'violated' cleanly; parameterize it",
+    "trigger": "axiom evaluation forced into binary",
+    "verdict_pattern": "if you can give 5 levels, you can give 5 levels — refusing to do so is intellectual cowardice",
+    "rhetorical_device": "self-criticism via analogy; 'should I say simplistic?' is the kind of throat-clearing that signals the author is being honest about a limitation"
+  },
+  "counter_example": "if you say 'rule R satisfies strategy-proofness', you have lost information that could be conveyed by 'R is 0.7-DSIC, 0.9-BIC, and exactly ex-post-IC'.",
+  "origin_story": "Thomson is comparing the axiomatic literature's flat yes/no answers to Consumer Reports' half-filled circles. The analogy is from Ch.10 §3 — coming right after the discussion of who should choose among axioms. The point is: even after you've decided which axioms matter, the next step (how much they matter) deserves more care than we usually give.",
+  "applicability": {
+    "use_when": "value_evaluator is producing a verdict for a criterion",
+    "use_how": "replace 'improved/preserved/weakened/violated' with a numeric degree 0~1, and at least one intermediate threshold (e.g., '0.7')"
+  },
+  "thomson_chapter": "10.1 §3",
+  "source_volume": "thomson_vol1",
+  "source_pages": [
+    210,
+    211
+  ],
+  "version": "1.0",
+  "created": "2026-06-10",
+  "updated": "2026-06-10",
+  "status": "seed",
+  "domain": "methodology",
+  "tags": [
+    "diktat",
+    "thomson_style",
+    "evaluation_perspective"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 风格"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "nuanced grading > yes/no"
+    },
+    {
+      "type": "empirical",
+      "subtype": "evaluation_perspective"
+    }
+  ],
+  "process_meta": {
+    "[HUNCH]": "从 Thomson 风格抽出的 tacit judgment"
+  },
+  "source": {
+    "primary": "training/graph/diktats/DIKT-TH10-CONSUMER-REPORTS.json"
+  },
+  "id": "DIKT-TH10-CONSUMER-REPORTS"
+}

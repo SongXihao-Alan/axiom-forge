@@ -1,0 +1,28 @@
+{
+  "id": "VA-INTEREST-LONGTERM",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "interest",
+  "value_subclass": "longterm",
+  "label_zh": "长期利益",
+  "label_en": "Long-term interest",
+  "description": "长期利益 (Long-term interest) - value anchor in interest class, subclass longterm",
+  "cross_cultural_consistency": "medium",
+  "domain": "interest",
+  "tags": [
+    "interest",
+    "longterm"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of long-term interest in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

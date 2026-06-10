@@ -1,0 +1,37 @@
+{
+  "id": "SC-ELECTION-VOTING",
+  "type": "scenario",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Design voting mechanism. Tradeoff: simplicity vs expressiveness."
+    },
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 经典案例"
+      ]
+    }
+  ],
+  "source": {
+    "primary": "training/graph/scenarios/"
+  },
+  "name_zh": "选举投票机制",
+  "name_en": "Election voting mechanism",
+  "description": "Design voting mechanism. Tradeoff: simplicity vs expressiveness.",
+  "stakeholders": [
+    "选民",
+    "候选人",
+    "社会"
+  ],
+  "key_question": "如何让投票结果反映民意?",
+  "domain": "real_world",
+  "tags": [
+    "election",
+    "voting"
+  ]
+}

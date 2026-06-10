@@ -1,0 +1,28 @@
+{
+  "id": "VA-PHIL-PHENOM",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "philosophical",
+  "value_subclass": "phenomenology",
+  "label_zh": "现象学",
+  "label_en": "Phenomenology",
+  "description": "现象学 (Phenomenology) - value anchor in philosophical class, subclass phenomenology",
+  "cross_cultural_consistency": "medium",
+  "domain": "philosophical",
+  "tags": [
+    "philosophical",
+    "phenomenology"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of phenomenology in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

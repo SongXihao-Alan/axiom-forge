@@ -1,0 +1,18 @@
+{
+  "id": "AX-THOMSON-STRPRO",
+  "type": "axiom",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "nl": "Strategy-Proofness: Truth-telling is dominant strategy",
+  "formal": "∀ i, ∀ σ_i, σ_i': u_i(σ_i, σ_{-i}) ≥ u_i(σ_i', σ_{-i})",
+  "domain": "mechanism_design",
+  "tags": ["thomson", "strategy_proofness", "incentive"],
+  "anchors": [
+    {"type": "community", "supporters": ["Gibbard-Satterthwaite 1973", "Thomson 2023 Ch.10"]},
+    {"type": "philosophical", "tradition": "rational_choice"}
+  ],
+  "source": {
+    "primary": "Thomson 2023 Axiomatics of Economic Design Ch.10"
+  }
+}

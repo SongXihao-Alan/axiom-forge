@@ -1,0 +1,28 @@
+{
+  "id": "VA-EPISTEMIC-TRUTH",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "epistemic",
+  "value_subclass": "truth",
+  "label_zh": "对应现实",
+  "label_en": "Truth (empirical)",
+  "description": "对应现实 (Truth (empirical)) - value anchor in epistemic class, subclass truth",
+  "cross_cultural_consistency": "high",
+  "domain": "epistemic",
+  "tags": [
+    "epistemic",
+    "truth"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of truth (empirical) in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

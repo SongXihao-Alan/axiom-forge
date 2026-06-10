@@ -1,0 +1,25 @@
+{
+  "id": "TH-IMP-501",
+  "type": "theorem",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "handcrafted",
+  "nl": "Impossibility Theorem 5.1: No Shapley attribution based on v(S) = E[f̂(X)|X_S] can simultaneously satisfy Efficiency, Symmetry, Dummy, Structural Consistency for some f and f̂ ≠ f",
+  "formal": "∃ f, f̂ ≠ f: ∀ Φ 基于 v(S) = E[f̂|X_S] ⇒ ¬(Efficiency(Φ) ∧ Symmetry(Φ) ∧ Dummy(Φ) ∧ SC(Φ))",
+  "proof_sketch": "Counter-example: f(X) = βX_1 (β>0), f̂(X) = 0. SI_1(f) = β > 0. v(S) = E[f̂|X_S] = 0 for all S. φ_i = 0 for all i. SI_1 > 0 but φ_1 = 0 → violates SC.",
+  "depends_on": ["AX-SHAP-EFF", "AX-SHAP-SYM", "AX-SHAP-DUM", "AX-SC-001"],
+  "domain": "feature_attribution",
+  "tags": ["impossibility", "mainline", "shapley"],
+  "anchors": [
+    {"type": "empirical", "subtype": "logical", "evidence": "具体反例构造"},
+    {"type": "philosophical", "tradition": "phenomenology"},
+    {"type": "community", "supporters": ["Heskes 2020 (因果版本)"]}
+  ],
+  "source": {
+    "primary": "AXIOM_SKELETON.md §5",
+    "citations": []
+  },
+  "process_meta": {
+    "[AH-HA]": "Impossibility 入口 = 场景 B: f̂ ≠ f 时 Dummy 强制 φ=0, SC 强制 φ>0, 矛盾"
+  }
+}

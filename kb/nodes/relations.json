@@ -1,0 +1,80 @@
+{
+  "version": "1.0",
+  "created": "2026-06-10",
+  "description": "KB 节点间显式关系图。每条 relation 都是 1 个 JSON object。",
+  "relations": [
+    {"from": "AX-SC-001", "to": "AX-SHAP-EFF", "type": "depends_on", "strength": 1.0, "evidence": "SC 与 Efficiency 联合使用"},
+    {"from": "AX-SC-001", "to": "AX-SHAP-SYM", "type": "depends_on", "strength": 1.0},
+    {"from": "AX-SC-001", "to": "AX-SHAP-DUM", "type": "depends_on", "strength": 1.0},
+    {"from": "AX-SC-001", "to": "AS-SHAP-CHARFN", "type": "contradicts", "strength": 0.9, "evidence": "Impossibility 5.1: SC + AS-SHAP-CHARFN 矛盾"},
+    {"from": "AX-SC-001", "to": "AS-SHAP-DISTINCT", "type": "same_intuition", "strength": 1.0, "evidence": "都强调区分 f vs f̂"},
+    {"from": "AX-SC-001", "to": "LIT-H21-STRUCTURAL", "type": "parent_child", "strength": 1.0, "evidence": "SC 升格 H21 的 SI 概念"},
+    {"from": "AX-SC-001", "to": "LIT-J19-CAUSAL", "type": "same_intuition", "strength": 0.8, "evidence": "J19 强调真实结构"},
+    {"from": "AX-SC-001", "to": "LIT-K20-PROBLEMS", "type": "responds_to", "strength": 1.0, "evidence": "SC 是 K20 问题陈述的解决方案"},
+    {"from": "AX-SC-001", "to": "LIT-SY19-MANY", "type": "responds_to", "strength": 1.0, "evidence": "SC 解决 'many shapley' 的选择问题"},
+    {"from": "AX-SC-001", "to": "LIT-L17-SHAP", "type": "critiques", "strength": 0.7, "evidence": "SC 揭示 L17 的 v(S) 缺失 f 结构"},
+    {"from": "AX-SC-001", "to": "LIT-C21-EXPLAINING-BY-REMOVING", "type": "extends", "strength": 0.6, "evidence": "SC 扩展 C21 的 3-dim 框架"},
+    {"from": "AX-SC-001", "to": "LIT-THOMSON-2023", "type": "generalization", "strength": 0.5, "evidence": "SC 是 Thomson 方法论在 SHAP 域的迁移"},
+
+    {"from": "AX-SHAP-EFF", "to": "LIT-L17-SHAP", "type": "parent_child", "strength": 1.0},
+    {"from": "AX-SHAP-SYM", "to": "LIT-SHAPLEY-1953", "type": "parent_child", "strength": 1.0},
+    {"from": "AX-SHAP-DUM", "to": "LIT-SHAPLEY-1953", "type": "parent_child", "strength": 1.0},
+    {"from": "AX-SHAP-CONS", "to": "LIT-L17-SHAP", "type": "parent_child", "strength": 1.0},
+
+    {"from": "AX-THOMSON-STRPRO", "to": "LIT-THOMSON-2023", "type": "parent_child", "strength": 1.0},
+    {"from": "AX-THOMSON-NOENVY", "to": "LIT-THOMSON-2023", "type": "parent_child", "strength": 1.0},
+    {"from": "AX-THOMSON-POPMON", "to": "LIT-THOMSON-2023", "type": "parent_child", "strength": 1.0},
+
+    {"from": "AS-SHAP-CHARFN", "to": "LIT-L17-SHAP", "type": "parent_child", "strength": 1.0},
+    {"from": "AS-SHAP-DISTINCT", "to": "LIT-H21-STRUCTURAL", "type": "parent_child", "strength": 1.0},
+
+    {"from": "TH-IMP-501", "to": "AX-SC-001", "type": "depends_on", "strength": 1.0},
+    {"from": "TH-IMP-501", "to": "AS-SHAP-CHARFN", "type": "depends_on", "strength": 1.0},
+    {"from": "TH-COR-501-1", "to": "TH-IMP-501", "type": "generalization", "strength": 1.0},
+    {"from": "TH-COR-501-2", "to": "TH-IMP-501", "type": "generalization", "strength": 1.0},
+    {"from": "TH-COR-501-3", "to": "TH-IMP-501", "type": "generalization", "strength": 1.0},
+    {"from": "TH-COR-501-4", "to": "TH-IMP-501", "type": "generalization", "strength": 1.0},
+    {"from": "TH-PROP-621", "to": "AX-SC-001", "type": "elaborates", "strength": 1.0},
+    {"from": "TH-PROP-621", "to": "AX-SHAP-DUM", "type": "elaborates", "strength": 1.0},
+    {"from": "TH-PROP-622", "to": "AX-SC-001", "type": "elaborates", "strength": 1.0},
+    {"from": "TH-PROP-622", "to": "AX-SHAP-DUM", "type": "elaborates", "strength": 1.0},
+    {"from": "TH-PROP-623", "to": "AX-SC-001", "type": "elaborates", "strength": 1.0},
+    {"from": "TH-PROP-623", "to": "TH-IMP-501", "type": "elaborates", "strength": 1.0},
+    {"from": "TH-PROP-624", "to": "AX-SC-001", "type": "elaborates", "strength": 1.0},
+    {"from": "TH-PROP-624", "to": "AX-SHAP-DUM", "type": "elaborates", "strength": 1.0},
+
+    {"from": "AX-SC-001", "to": "VA-PHIL-PHENOM", "type": "anchored_by", "strength": 0.9, "evidence": "SC 的哲学锚: 现象学 '回到事物本身'"},
+    {"from": "AX-SC-001", "to": "VA-PHIL-KANT", "type": "anchored_by", "strength": 0.7, "evidence": "SC 的哲学锚: 康德伦理学 '结构真实性作为义务'"},
+    {"from": "AX-SC-001", "to": "VA-MORAL-HONESTY", "type": "anchored_by", "strength": 0.9, "evidence": "SC 的道德锚: 诚实不欺骗"},
+    {"from": "AX-SC-001", "to": "VA-EPISTEMIC-TRUTH", "type": "anchored_by", "strength": 1.0, "evidence": "SC 绑定真实世界 = 对应现实"},
+    {"from": "AX-SC-001", "to": "VA-AESTHETIC-SIMPLE", "type": "anchored_by", "strength": 0.7, "evidence": "SC 形式简洁"},
+    {"from": "AX-SC-001", "to": "VA-PRACTICAL-INTERPRETABILITY", "type": "anchored_by", "strength": 0.6, "evidence": "SC 帮助用户理解归因"},
+
+    {"from": "AX-SHAP-EFF", "to": "VA-PRACTICAL-EFFICIENCY", "type": "anchored_by", "strength": 1.0},
+    {"from": "AX-SHAP-DUM", "to": "VA-PHIL-NOZICK", "type": "anchored_by", "strength": 0.7, "evidence": "Dummy = 不干涉哲学"},
+    {"from": "AX-THOMSON-NOENVY", "to": "VA-PHIL-RAWLS", "type": "anchored_by", "strength": 1.0},
+    {"from": "AX-THOMSON-NOENVY", "to": "VA-MORAL-FAIRNESS", "type": "anchored_by", "strength": 1.0},
+    {"from": "AX-THOMSON-STRPRO", "to": "VA-PRACTICAL-TEACHABLE", "type": "anchored_by", "strength": 0.8, "evidence": "Strategy-proofness 易理解"},
+    {"from": "AX-THOMSON-POPMON", "to": "VA-EPISTEMIC-UNIVERSAL", "type": "anchored_by", "strength": 0.7},
+
+    {"from": "SC-FAA-LANDING", "to": "TR-EFFICIENCY-EQUITY", "type": "illustrates", "strength": 1.0},
+    {"from": "SC-CAMEL-DUMMY", "to": "AX-THOMSON-STRPRO", "type": "illustrates", "strength": 1.0},
+    {"from": "SC-HOSPITAL-COSTSHARE", "to": "VA-MORAL-HELP-WEAK", "type": "anchored_by", "strength": 0.9, "evidence": "医院 cost-sharing 应帮助弱势"},
+    {"from": "SC-ML-ATTR-SHAP", "to": "TR-PREDICTIVE-STRUCTURAL", "type": "illustrates", "strength": 1.0},
+    {"from": "SC-ELECTION-VOTING", "to": "VA-PHIL-RAWLS", "type": "anchored_by", "strength": 0.8},
+
+    {"from": "DIKT-PROCACCIA-EXPLAIN-SOLUTIONS", "to": "VA-PRACTICAL-INTERPRETABILITY", "type": "anchored_by", "strength": 1.0},
+    {"from": "DIKT-TH10-USER-VS-ECONOMIST", "to": "VA-PRACTICAL-TEACHABLE", "type": "anchored_by", "strength": 0.8},
+    {"from": "DIKT-TH11-IF-AND-ONLY-IF", "to": "VA-AESTHETIC-ELEGANCE", "type": "anchored_by", "strength": 0.7},
+    {"from": "DIKT-TH10-CONTEXT", "to": "VA-PRACTICAL-REPRODUCIBLE", "type": "anchored_by", "strength": 0.7},
+
+    {"from": "TR-EFFICIENCY-EQUITY", "to": "LIT-THOMSON-2023", "type": "parent_child", "strength": 0.8},
+    {"from": "TR-HURWICZ-1972", "to": "LIT-THOMSON-2023", "type": "parent_child", "strength": 0.7},
+    {"from": "TR-PREDICTIVE-STRUCTURAL", "to": "AX-SC-001", "type": "elaborates", "strength": 1.0},
+
+    {"from": "VA-MORAL-HONESTY", "to": "VA-MORAL-NO-KILL", "type": "same_intuition", "strength": 0.6, "evidence": "道德类价值锚"},
+    {"from": "VA-PRACTICAL-EFFICIENCY", "to": "VA-PRACTICAL-SCALABLE", "type": "same_intuition", "strength": 0.7, "evidence": "实践类价值锚"},
+    {"from": "VA-PHIL-KANT", "to": "VA-PHIL-RAWLS", "type": "same_intuition", "strength": 0.5, "evidence": "现代规范伦理学"},
+    {"from": "VA-PHIL-UTIL", "to": "VA-INTEREST-UTIL-SOC", "type": "same_intuition", "strength": 1.0, "evidence": "功利主义 = 社会效用"}
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "AX-SHAP-DUM",
+  "type": "axiom",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "nl": "Dummy: If f̂ is invariant under changes to X_i, then φ_i = 0",
+  "formal": "∀ i: [∀ x, ∀ x_i': f̂(x) = f̂(x|_{X_i := x_i'})] ⇒ φ_i = 0",
+  "aliases": ["Dummy", "Sensitivity(b) (STY17)", "Null-player (H20)"],
+  "domain": "feature_attribution",
+  "tags": ["shapley", "dummy", "sensitivity_b"],
+  "anchors": [
+    {"type": "community", "supporters": ["Shapley 1953", "Sundararajan-Taly-Yan 2017", "Heskes 2020"]}
+  ],
+  "source": {
+    "primary": "LIT-SHAPLEY-1953"
+  },
+  "process_meta": {
+    "[INFER]": "Dummy 作用在 f̂(对预测器无影响), SC 作用在 f(对真结构有影响) —— 两者对象不同, 独立"
+  }
+}

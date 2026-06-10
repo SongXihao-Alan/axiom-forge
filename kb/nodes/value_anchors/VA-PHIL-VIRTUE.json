@@ -1,0 +1,28 @@
+{
+  "id": "VA-PHIL-VIRTUE",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "philosophical",
+  "value_subclass": "virtue_ethics",
+  "label_zh": "德性伦理",
+  "label_en": "Virtue ethics",
+  "description": "德性伦理 (Virtue ethics) - value anchor in philosophical class, subclass virtue_ethics",
+  "cross_cultural_consistency": "medium",
+  "domain": "philosophical",
+  "tags": [
+    "philosophical",
+    "virtue_ethics"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of virtue ethics in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

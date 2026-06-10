@@ -1,0 +1,28 @@
+{
+  "id": "VA-PRACTICAL-SCALABLE",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "practical",
+  "value_subclass": "scalability",
+  "label_zh": "可扩展",
+  "label_en": "Scalability",
+  "description": "可扩展 (Scalability) - value anchor in practical class, subclass scalability",
+  "cross_cultural_consistency": "medium",
+  "domain": "practical",
+  "tags": [
+    "practical",
+    "scalability"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of scalability in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

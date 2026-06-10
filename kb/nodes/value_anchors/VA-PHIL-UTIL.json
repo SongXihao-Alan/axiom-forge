@@ -1,0 +1,28 @@
+{
+  "id": "VA-PHIL-UTIL",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "philosophical",
+  "value_subclass": "utilitarianism",
+  "label_zh": "功利主义",
+  "label_en": "Utilitarianism",
+  "description": "功利主义 (Utilitarianism) - value anchor in philosophical class, subclass utilitarianism",
+  "cross_cultural_consistency": "medium",
+  "domain": "philosophical",
+  "tags": [
+    "philosophical",
+    "utilitarianism"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of utilitarianism in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

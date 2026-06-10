@@ -1,0 +1,34 @@
+{
+  "id": "TH-COR-501-3",
+  "nl": "Information Shapley violates SC: v(S) = E[Y|X_S] - E[Y] depends on P(X,Y), not f structure",
+  "formal": "InformationShapley ⇒ ¬SC in general",
+  "evidence": "v(S) may not reflect SI_i(f) when f̂ ≠ f",
+  "type": "theorem",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "depends_on": [
+    "TH-IMP-501"
+  ],
+  "domain": "feature_attribution",
+  "tags": [
+    "corollary",
+    "mainline"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "logical",
+      "evidence": "v(S) may not reflect SI_i(f) when f̂ ≠ f"
+    },
+    {
+      "type": "community",
+      "supporters": [
+        "Heskes 2021 隐含"
+      ]
+    }
+  ],
+  "source": {
+    "primary": "AXIOM_SKELETON.md §5.3"
+  }
+}

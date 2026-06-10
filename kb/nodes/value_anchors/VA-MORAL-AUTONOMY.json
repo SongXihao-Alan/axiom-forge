@@ -1,0 +1,28 @@
+{
+  "id": "VA-MORAL-AUTONOMY",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "moral",
+  "value_subclass": "general",
+  "label_zh": "尊重自主选择",
+  "label_en": "Respect autonomy",
+  "description": "尊重自主选择 (Respect autonomy) - value anchor in moral class, subclass general",
+  "cross_cultural_consistency": "medium",
+  "domain": "moral",
+  "tags": [
+    "moral",
+    "general"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "moral_consensus",
+      "evidence": "Examples of respect autonomy in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "TH-SHAP-UNIQ",
+  "type": "theorem",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "nl": "L17 Theorem 1: The class of additive feature attribution methods corresponds exactly to additive games. Shapley values are unique satisfying Local Accuracy, Missingness, Consistency",
+  "formal": "Φ 满足 LA ∧ Missingness ∧ Consistency ⇔ Φ = Shapley(AS-SHAP-CHARFN)",
+  "domain": "feature_attribution",
+  "tags": ["uniqueness", "shapley", "l17"],
+  "anchors": [
+    {"type": "community", "supporters": ["Lundberg-Lee 2017"]}
+  ],
+  "source": {
+    "primary": "LIT-L17-SHAP"
+  },
+  "process_meta": {
+    "[AH-HA]": "L17 uniqueness 是循环论证 —— 'additive' 已预设 'SHAP-like'",
+    "[HUNCH]": "Impossibility 5.1 与 L17 Theorem 1 不矛盾 —— L17 Theorem 1 在 f̂=f 假设下, 5.1 在 f̂≠f 假设下"
+  }
+}

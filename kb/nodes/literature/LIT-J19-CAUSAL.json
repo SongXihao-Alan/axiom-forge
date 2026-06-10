@@ -1,0 +1,33 @@
+{
+  "id": "LIT-J19-CAUSAL",
+  "type": "literature",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "title": "Feature relevance quantification in explainable AI: A causal problem",
+  "authors": ["Dominik Janzing", "Lenon Minorics", "Patrick Blöbaum"],
+  "year": 2019,
+  "venue": "EJOR",
+  "domain": "feature_attribution",
+  "tags": ["causality", "do_calculus", "interventional_vs_observational"],
+  "anchors": [
+    {"type": "community", "supporters": ["EJOR 2019/2020"]},
+    {"type": "philosophical", "tradition": "pearl_causality", "concept": "do-calculus"}
+  ],
+  "abstract_nl": "We argue the confusion is based on not carefully distinguishing between observational and interventional conditional probabilities. Unconditional rather than conditional expectations provide the right notion of dropping features.",
+  "key_contributions": [
+    "区分 observational vs interventional conditional probabilities",
+    "unconditional ≠ conditional(关键论断)",
+    "Implementation Invariance 形式化:atr_i(x; f) = atr_i(x; f') if f=f'",
+    "Linearity axiom"
+  ],
+  "linage_in": ["LIT-PEARL-DO-CALCULUS", "LIT-L17-SHAP"],
+  "linage_out": ["LIT-H20-CAUSAL-SHAP", "LIT-H21-STRUCTURAL"],
+  "source": {
+    "primary": "PDF: 3d412f7c__df9436f4-aae5-417e-b8ac-1d72612bca64.pdf"
+  },
+  "process_meta": {
+    "[AH-HA]": "J19 是 SC 出生证明 —— 'v(S) 应该用 do-calculus 而不是 conditional expectation'",
+    "[TODO]": "J19 PNAS 2020 版本可能给出 Impossibility 定理, 没读到"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "id": "VA-AESTHETIC-ELEGANCE",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "aesthetic",
+  "value_subclass": "elegance",
+  "label_zh": "优雅",
+  "label_en": "Elegance",
+  "description": "优雅 (Elegance) - value anchor in aesthetic class, subclass elegance",
+  "cross_cultural_consistency": "low",
+  "domain": "aesthetic",
+  "tags": [
+    "aesthetic",
+    "elegance"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of elegance in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

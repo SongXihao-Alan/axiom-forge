@@ -1,0 +1,28 @@
+{
+  "id": "VA-INTEREST-UTIL-IND",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "interest",
+  "value_subclass": "individual",
+  "label_zh": "个人效用最大化",
+  "label_en": "Individual utility",
+  "description": "个人效用最大化 (Individual utility) - value anchor in interest class, subclass individual",
+  "cross_cultural_consistency": "medium",
+  "domain": "interest",
+  "tags": [
+    "interest",
+    "individual"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of individual utility in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

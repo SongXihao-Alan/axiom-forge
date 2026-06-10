@@ -1,0 +1,55 @@
+{
+  "diktat_id": "DIKT-TH10-CONTEXT",
+  "type": "diktat",
+  "quote": "The importance of an axiom depends on the context, on the specific class of problems under investigation. You need to ask the people who have to make actual decisions in the real world what matters to them the most. There's in fact no axiom I'd go to the barricades for. Even an axiom that appears very basic may have a cost — a cost in terms of other axioms — and it would be a mistake to blindly insist on it. Even efficiency, which is so important to economists. Even feasibility!",
+  "stance": {
+    "value_priority": "context > axiomatic purity",
+    "implicit_norm": "no axiom is sacred; every axiom must justify itself in the planner's problem",
+    "trigger": "axiom defended by appeal to abstract importance alone",
+    "verdict_pattern": "smell-test: 'even [this very basic axiom] can be questioned'",
+    "rhetorical_device": "escalation by 'even' — repeating the concession to make the point: nothing is immune"
+  },
+  "applicability": {
+    "use_when": "evaluating a candidate new axiom or a proposed rule",
+    "use_how": "ask: 'why is THIS axiom the one we should insist on, in THIS planner's problem, given the cost in terms of other axioms?'"
+  },
+  "thomson_chapter": "10.1",
+  "source_volume": "thomson_vol1",
+  "source_pages": [
+    207,
+    208
+  ],
+  "version": "1.0",
+  "created": "2026-06-10",
+  "updated": "2026-06-10",
+  "status": "seed",
+  "domain": "methodology",
+  "tags": [
+    "diktat",
+    "thomson_style",
+    "evaluation_perspective"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 风格"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "context > axiomatic purity"
+    },
+    {
+      "type": "empirical",
+      "subtype": "evaluation_perspective"
+    }
+  ],
+  "process_meta": {
+    "[HUNCH]": "从 Thomson 风格抽出的 tacit judgment"
+  },
+  "source": {
+    "primary": "training/graph/diktats/DIKT-TH10-CONTEXT.json"
+  },
+  "id": "DIKT-TH10-CONTEXT"
+}

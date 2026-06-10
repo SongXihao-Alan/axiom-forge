@@ -1,0 +1,34 @@
+{
+  "id": "TH-COR-501-2",
+  "nl": "KernelSHAP violates SC: Same as TreeSHAP",
+  "formal": "KernelSHAP(AS-SHAP-CHARFN) ⇒ ¬SC in general",
+  "evidence": "KernelSHAP uses kernel sampling, not structural",
+  "type": "theorem",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "depends_on": [
+    "TH-IMP-501"
+  ],
+  "domain": "feature_attribution",
+  "tags": [
+    "corollary",
+    "mainline"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "logical",
+      "evidence": "KernelSHAP uses kernel sampling, not structural"
+    },
+    {
+      "type": "community",
+      "supporters": [
+        "Heskes 2021 隐含"
+      ]
+    }
+  ],
+  "source": {
+    "primary": "AXIOM_SKELETON.md §5.3"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "id": "AS-SHAP-DISTINCT",
+  "type": "assumption",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "nl": "Predictor f̂ and ground-truth f are explicitly distinguished. Structural Importance is defined on f, not f̂",
+  "formal": "f : X → Y (ground truth) ≠ f̂ : X → Y (predictor) in general",
+  "domain": "feature_attribution",
+  "tags": ["predictor_vs_truth", "heskes_h21"],
+  "anchors": [
+    {"type": "philosophical", "tradition": "structural_realism"},
+    {"type": "community", "supporters": ["Heskes 2021"]}
+  ],
+  "source": {
+    "primary": "LIT-H21-STRUCTURAL"
+  },
+  "process_meta": {
+    "[HUNCH]": "这个区分是 SC 的关键 —— C21/H21 给了 '区分 f vs f̂' 的合法性"
+  }
+}

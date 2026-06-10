@@ -1,0 +1,28 @@
+{
+  "id": "VA-EPISTEMIC-UNIVERSAL",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "epistemic",
+  "value_subclass": "universality",
+  "label_zh": "普遍适用",
+  "label_en": "Universality",
+  "description": "普遍适用 (Universality) - value anchor in epistemic class, subclass universality",
+  "cross_cultural_consistency": "medium",
+  "domain": "epistemic",
+  "tags": [
+    "epistemic",
+    "universality"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of universality in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

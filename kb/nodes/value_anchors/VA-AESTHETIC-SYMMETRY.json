@@ -1,0 +1,28 @@
+{
+  "id": "VA-AESTHETIC-SYMMETRY",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "aesthetic",
+  "value_subclass": "symmetry",
+  "label_zh": "对称",
+  "label_en": "Symmetry",
+  "description": "对称 (Symmetry) - value anchor in aesthetic class, subclass symmetry",
+  "cross_cultural_consistency": "medium",
+  "domain": "aesthetic",
+  "tags": [
+    "aesthetic",
+    "symmetry"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of symmetry in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

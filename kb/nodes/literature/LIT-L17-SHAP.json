@@ -1,0 +1,39 @@
+{
+  "id": "LIT-L17-SHAP",
+  "type": "literature",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "updated": "2026-06-09",
+  "status": "seed",
+  "title": "A Unified Approach to Interpreting Model Predictions (SHAP)",
+  "authors": ["Scott M. Lundberg", "Su-In Lee"],
+  "year": 2017,
+  "venue": "NeurIPS",
+  "domain": "feature_attribution",
+  "tags": ["shap", "shapley", "additive_attribution", "kernel_shap", "tree_shap"],
+  "anchors": [
+    {"type": "community", "supporters": ["1000+ 引用", "TreeSHAP/KernelSHAP 工业界应用"]},
+    {"type": "empirical", "subtype": "experimental", "evidence": "Tree SHAP, Kernel SHAP 等在 ML 平台广泛部署"}
+  ],
+  "abstract_nl": "We propose SHAP (SHapley Additive exPlanations), a unified framework for interpreting predictions. The novel components: (1) identification of a new class of additive feature importance measures, (2) theoretical results showing unique solution in this class with desirable properties.",
+  "key_contributions": [
+    "v(S) = E[f̂(X)|X_S] 的 characteristic function 形式化",
+    "3 axiom: Local Accuracy, Missingness, Consistency → Shapley 唯一",
+    "6 方法统一: LIME, DeepLIFT, LRP, QII, Shapley sampling, Classic Shapley"
+  ],
+  "key_quotes": [
+    {"verbatim": "SHAP values as a unified measure of feature importance that various methods approximate", "page": 1, "line": "5-8"},
+    {"verbatim": "v(S) = E[f(X) | X_S]", "page": 2, "line": "1-2"}
+  ],
+  "linage_in": ["LIT-SHAPLEY-1953", "LIT-LIME-2016", "LIT-LC01"],
+  "linage_out": ["LIT-SY19-MANY", "LIT-A21-DEPENDENT", "LIT-H21-STRUCTURAL", "LIT-K20-PROBLEMS"],
+  "source": {
+    "primary": "PDF: /workspace/attachments/9a0bfe62__49cde759-7a72-4e3d-b377-79875bf595a2.pdf",
+    "pdf_path": "/workspace/attachments/9a0bfe62__49cde759-7a72-4e3d-b377-79875bf595a2.pdf"
+  },
+  "process_meta": {
+    "[AH-HA]": "L17 的 'uniqueness' 是循环论证 —— 'additive' 已经预设了 'SHAP-like', 然后说 'SHAP 唯一'",
+    "[INFER]": "v(S) 绑预测器 f̂ 不绑真结构 f, 是 SC 反命题的入口",
+    "user_evaluation": "用户已确认(2026-06-09)"
+  }
+}

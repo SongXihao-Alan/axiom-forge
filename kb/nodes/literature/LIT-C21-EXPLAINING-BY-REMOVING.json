@@ -1,0 +1,55 @@
+{
+  "id": "LIT-C21-EXPLAINING-BY-REMOVING",
+  "type": "literature",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "title": "Explaining by Removing: A Unified Framework for Model Explanation",
+  "authors": [
+    "Ian C. Covert",
+    "Scott Lundberg",
+    "Su-In Lee"
+  ],
+  "year": 2021,
+  "venue": "JMLR",
+  "domain": "feature_attribution",
+  "tags": [
+    "unified_framework",
+    "removal_based",
+    "26_methods"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "JMLR 2021"
+      ]
+    },
+    {
+      "type": "empirical",
+      "subtype": "experimental",
+      "evidence": "26 种方法统一化"
+    }
+  ],
+  "abstract_nl": "Methods that explain predictions by simulating feature removal can be unified along 3 dimensions: feature removal, model behavior, summary technique.",
+  "key_contributions": [
+    "3-dim 框架: feature removal / model behavior / summary technique",
+    "26 种 removal-based 方法统一",
+    "Section 5: 6 种 set function v(S)",
+    "Section 7: Shapley 唯一满足 Symmetry+Dummy+Additivity+Marginalism"
+  ],
+  "linage_in": [
+    "LIT-L17-SHAP",
+    "LIT-SY19-MANY",
+    "LIT-H20-CAUSAL-SHAP"
+  ],
+  "linage_out": [
+    "LIT-AXIOM-FINDER-2026"
+  ],
+  "source": {
+    "primary": "PDF: d4e1caa2__0df0c9c2-5dfb-4299-83d4-9b26b8f51d76.pdf"
+  },
+  "process_meta": {
+    "[AH-HA]": "C21 给了 '操作空间' —— Structural Shapley 这个 cell 是空的, SC 主线填这个"
+  }
+}

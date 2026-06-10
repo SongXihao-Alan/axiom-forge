@@ -1,0 +1,28 @@
+{
+  "id": "VA-MORAL-CULTURAL",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "moral",
+  "value_subclass": "cultural_specific",
+  "label_zh": "特殊文化习俗",
+  "label_en": "Cultural conventions",
+  "description": "特殊文化习俗 (Cultural conventions) - value anchor in moral class, subclass cultural_specific",
+  "cross_cultural_consistency": "low",
+  "domain": "moral",
+  "tags": [
+    "moral",
+    "cultural_specific"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "moral_consensus",
+      "evidence": "Examples of cultural conventions in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

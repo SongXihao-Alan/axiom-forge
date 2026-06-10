@@ -1,0 +1,17 @@
+# Axiom Forge 依赖
+
+## 必需(基础 CLI 跑命令,不需要 LLM)
+# 全部用 stdlib: json, pathlib, re, sys, os, argparse
+# 无需任何第三方包
+
+## 必需(如果用 ask / explore-anchor / validate 命令)
+httpx>=0.27.0          # M3 API 调用
+python-dotenv>=1.0.0   # .env 加载
+
+## 可选(高级功能,默认不装)
+# langgraph>=0.0.40    # v0.2 pipeline (但 v0.3 已重构成 CLI)
+# pydantic>=2.5.0      # v0.2 数据校验
+# arxiv>=2.1.0         # 未来: 文献自动下载
+# peft>=0.7.0          # v0.4 计划: LoRA 微调(需 GPU)
+# transformers>=4.35.0 # v0.4 计划: 本地推理(需 GPU)
+# datasets>=2.14.0     # v0.4 计划: 训练数据(需 KB 1000+ 节点)

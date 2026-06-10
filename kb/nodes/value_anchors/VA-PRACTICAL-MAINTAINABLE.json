@@ -1,0 +1,28 @@
+{
+  "id": "VA-PRACTICAL-MAINTAINABLE",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "practical",
+  "value_subclass": "maintainability",
+  "label_zh": "可维护",
+  "label_en": "Maintainability",
+  "description": "可维护 (Maintainability) - value anchor in practical class, subclass maintainability",
+  "cross_cultural_consistency": "medium",
+  "domain": "practical",
+  "tags": [
+    "practical",
+    "maintainability"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of maintainability in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

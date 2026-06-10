@@ -1,0 +1,28 @@
+{
+  "id": "VA-EPISTEMIC-FALSIFIABLE",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "epistemic",
+  "value_subclass": "falsifiability",
+  "label_zh": "可证伪",
+  "label_en": "Falsifiability",
+  "description": "可证伪 (Falsifiability) - value anchor in epistemic class, subclass falsifiability",
+  "cross_cultural_consistency": "medium",
+  "domain": "epistemic",
+  "tags": [
+    "epistemic",
+    "falsifiability"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of falsifiability in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

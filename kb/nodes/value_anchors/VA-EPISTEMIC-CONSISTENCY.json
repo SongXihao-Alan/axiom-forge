@@ -1,0 +1,28 @@
+{
+  "id": "VA-EPISTEMIC-CONSISTENCY",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "epistemic",
+  "value_subclass": "consistency",
+  "label_zh": "逻辑一致",
+  "label_en": "Logical consistency",
+  "description": "逻辑一致 (Logical consistency) - value anchor in epistemic class, subclass consistency",
+  "cross_cultural_consistency": "high",
+  "domain": "epistemic",
+  "tags": [
+    "epistemic",
+    "consistency"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of logical consistency in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

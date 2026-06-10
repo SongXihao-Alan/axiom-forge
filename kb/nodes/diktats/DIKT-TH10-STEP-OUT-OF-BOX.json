@@ -1,0 +1,54 @@
+{
+  "diktat_id": "DIKT-TH10-STEP-OUT-OF-BOX",
+  "type": "diktat",
+  "quote": "If the entity is a town, this fiscal savior could be the county to which it belongs; if it's a county, it could be a state; if it's a state, it could be a federal government; if it's a country, a customs union. More generally, when administrative units are organized in a hierarchy, help could come from the next higher level of the hierarchy. So in the end, your budget is balanced, but for that, you need to step out of the box, out of the Edgeworth box.",
+  "stance": {
+    "value_priority": "institutional context > theoretical purity",
+    "implicit_norm": "axiom violations can be 'repaired' by stepping out of the modeled boundary",
+    "trigger": "axiom deemed infeasible within the modeled world",
+    "verdict_pattern": "boundary question: 'is the violating constraint internal to the entity, or is there a higher-level rescuer?'",
+    "rhetorical_device": "exhaustive enumeration of administrative levels; ends with a vivid spatial metaphor ('out of the Edgeworth box')"
+  },
+  "applicability": {
+    "use_when": "a candidate rule violates budget balance / IR / feasibility within a single-entity model",
+    "use_how": "ask: 'is the planner in fact embedded in a hierarchy? If yes, the violation may be acceptable in the larger model.'"
+  },
+  "thomson_chapter": "10.1",
+  "source_volume": "thomson_vol1",
+  "source_pages": [
+    208
+  ],
+  "version": "1.0",
+  "created": "2026-06-10",
+  "updated": "2026-06-10",
+  "status": "seed",
+  "domain": "methodology",
+  "tags": [
+    "diktat",
+    "thomson_style",
+    "evaluation_perspective"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 风格"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "institutional context > theoretical purity"
+    },
+    {
+      "type": "empirical",
+      "subtype": "evaluation_perspective"
+    }
+  ],
+  "process_meta": {
+    "[HUNCH]": "从 Thomson 风格抽出的 tacit judgment"
+  },
+  "source": {
+    "primary": "training/graph/diktats/DIKT-TH10-STEP-OUT-OF-BOX.json"
+  },
+  "id": "DIKT-TH10-STEP-OUT-OF-BOX"
+}

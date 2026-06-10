@@ -1,0 +1,28 @@
+{
+  "id": "VA-AESTHETIC-SIMPLE",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "aesthetic",
+  "value_subclass": "simplicity",
+  "label_zh": "简洁",
+  "label_en": "Simplicity",
+  "description": "简洁 (Simplicity) - value anchor in aesthetic class, subclass simplicity",
+  "cross_cultural_consistency": "medium",
+  "domain": "aesthetic",
+  "tags": [
+    "aesthetic",
+    "simplicity"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of simplicity in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

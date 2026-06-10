@@ -1,0 +1,32 @@
+{
+  "id": "LIT-K20-PROBLEMS",
+  "type": "literature",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "title": "Problems with Shapley-value-based explanations as feature importance measures",
+  "authors": ["I. Elizabeth Kumar", "Suresh Venkatasubramanian", "Carlos Scheidegger", "Sorelle A. Friedler"],
+  "year": 2020,
+  "venue": "arXiv 2020",
+  "domain": "feature_attribution",
+  "tags": ["shapley", "critique", "importance_measure"],
+  "anchors": [
+    {"type": "community", "supporters": ["arXiv 2020 引用"]},
+    {"type": "philosophical", "tradition": "critical_thinking"}
+  ],
+  "abstract_nl": "Shapley-value-based explanations for feature importance fail to serve their desired purpose in general. Mathematically formalizable properties may not align with what we would expect from an explanation. Mitigating these problems necessarily induces further complexity, such as the need for causal reasoning.",
+  "key_contributions": [
+    "Shapley 引入形式化属性, 但与'对解释的期望'不一致",
+    "从人本视角评估, Shapley-based explanation 失败",
+    "修复需 causal reasoning(已暗示 SC 的方向)"
+  ],
+  "linage_in": ["LIT-L17-SHAP", "LIT-SY19-MANY"],
+  "linage_out": ["LIT-H21-STRUCTURAL"],
+  "source": {
+    "primary": "PDF: d7b909d0__217538b4-1d11-4b5b-9b0c-f6a98a779bc2.pdf"
+  },
+  "process_meta": {
+    "[AH-HA]": "K20 是 SC 的问题陈述 + 批评根据, 但没给 axiom 替代 —— 本主线填补",
+    "user_evaluation": "用户已确认(2026-06-09)"
+  }
+}

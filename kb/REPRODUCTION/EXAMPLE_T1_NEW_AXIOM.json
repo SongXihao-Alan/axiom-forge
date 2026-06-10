@@ -1,0 +1,27 @@
+{
+  "id": "AX-DEMO-001",
+  "type": "axiom",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "demo",
+  "nl": "Action-ability: For any feature i, if the user can take action on X_i, the attribution must explain how the action changes the prediction",
+  "formal": "∀ i, ∀ a ∈ Act(i): φ_i(f̂, x) > 0 ⇒ ∃ x' = a(x): f̂(x') - f̂(x) ≠ 0",
+  "nl_long": "If the user can act on feature i (e.g., increase blood pressure medication), the attribution should explain the causal effect of the action. This makes the explanation actionable, not just descriptive.",
+  "aliases": ["Action-ability", "AX-DEMO"],
+  "depends_on": ["AX-SHAP-EFF"],
+  "domain": "feature_attribution",
+  "tags": ["actionable", "causal", "demo", "user_oriented"],
+  "anchors": [
+    {"type": "empirical", "subtype": "interest_judgment", "evidence": "医生用归因决定行动(action), 归因应告诉医生 '调 X_i 会有什么效果'"},
+    {"type": "philosophical", "tradition": "pragmatism", "concept": "true belief 与 useful action 关联 (James, Dewey)"},
+    {"type": "community", "supporters": ["Counterfactual Explanations 论文 (Wachter et al. 2017)"]}
+  ],
+  "source": {
+    "primary": "REPRODUCTION/EXAMPLE_T1_NEW_AXIOM.json (由任务完成者产出)",
+    "user_provided": true
+  },
+  "process_meta": {
+    "[AH-HA]": "用户希望 attribution 帮助行动, 不只是 'what' 而是 'what if I do'",
+    "[HUNCH]": "跟 SC 互补 —— SC 关注 '什么是真', Action-ability 关注 '我能做什么'"
+  }
+}

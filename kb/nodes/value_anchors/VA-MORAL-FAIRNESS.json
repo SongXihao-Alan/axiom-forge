@@ -1,0 +1,28 @@
+{
+  "id": "VA-MORAL-FAIRNESS",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "moral",
+  "value_subclass": "general",
+  "label_zh": "公平不偏私",
+  "label_en": "Fairness",
+  "description": "公平不偏私 (Fairness) - value anchor in moral class, subclass general",
+  "cross_cultural_consistency": "high",
+  "domain": "moral",
+  "tags": [
+    "moral",
+    "general"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "moral_consensus",
+      "evidence": "Examples of fairness in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

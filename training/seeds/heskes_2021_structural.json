@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "id": "heskes_2021_structural",
+    "title": "Structural Shapley Values (Book Chapter 21)",
+    "authors": ["Tom Heskes"],
+    "year": 2021,
+    "venue": "Book chapter in 'Explainable AI' (Springer)",
+    "linage": {
+      "in": ["shapley_1953", "lundberg_2017_shap", "heskes_2020_causal"],
+      "out": ["axiom_finder_2026_sc"],
+      "branch": "structural_attribution"
+    }
+  },
+  "axioms": [
+    {
+      "id": "H21-SI",
+      "type": "structural_importance",
+      "statement": "Structural Importance SI_i(f) measures the impact of feature i in the underlying data-generating process f, not in the predictor f̂. Linear: SI_i(f) = |β_i|; nonlinear: SI_i(f) = E_X[|∂f(X)/∂X_i|].",
+      "formal": "SI_i(f) := |β_i| (linear) or E_X[|∂f(X)/∂X_i|] (differentiable)"
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "H21-DISTINCT",
+      "type": "predictor_vs_truth",
+      "statement": "Predictor f̂ and ground-truth f are explicitly distinguished. Structural Importance is defined on f, not f̂.",
+      "formal": "f : X → Y (ground truth) ≠ f̂ : X → Y (predictor) in general"
+    },
+    {
+      "id": "H21-VS",
+      "type": "characteristic_function",
+      "statement": "v(S) is the impact on f̂ of removing features in S (e.g., marginalize out, default value, tree distribution).",
+      "formal": "v(S) := E[f̂(X) | X_S = x_S, X_{S̄} ∼ replacement distribution]"
+    }
+  ],
+  "theorems": [
+    {
+      "id": "H21-THM1",
+      "statement": "For a known DAG with causal structure, the structural Shapley value φ_i decomposes into direct and indirect effects via do-calculus. The sum of direct + indirect effects equals total structural importance SI_i(f).",
+      "proof_sketch": "Use do-calculus rules (3) and (2) for confounding and mutual interactions respectively. Total effect = direct + indirect. SI_i is a property of f's DAG.",
+      "depends_on": ["H21-SI"]
+    }
+  ],
+  "propositions": [
+    {
+      "id": "H21-INCONSIST",
+      "proof_status": "illustrated",
+      "claim": "Marginal Shapley values (KernelSHAP) and conditional Shapley values (Aas 2021) give different attributions for the same f, because they use different P(X) approximations. This is a 'multiplicity of Shapley' problem, not a 'wrong' vs 'right' choice — it is a gap in the axiom system."
+    },
+    {
+      "id": "H21-SI-PROMOTED",
+      "proof_status": "open",
+      "claim": "Promoting Structural Importance SI_i(f) to a constraint on attribution φ_i: SI_i(f) > 0 ⇒ φ_i > 0 is **not** done in this chapter. Open question whether this should be a 4th axiom."
+    }
+  ],
+  "literature_position": {
+    "vs_L17": "H21 builds on L17 SHAP but explicitly distinguishes predictor f̂ from ground truth f. SI_i is a property of f, not f̂.",
+    "vs_H20": "H21 is the book chapter version of Heskes-Sijben-Bucur-Claassen 2020 IJAR. H20 uses causal do-calculus; H21 generalizes to 'structural' (broader than causal).",
+    "vs_J19": "Janzing 2019 argues feature relevance should be interventional (do), not observational. H21 aligns with this — structural attribution = interventional.",
+    "vs_K20": "Kumar 2020 criticizes Shapley as 'problems with Shapley-value-based explanations' — Shapley doesn't explain importance. H21's SI is a candidate for what 'importance' should mean."
+  },
+  "open_problems_for_v03": [
+    "Formalize SI_i(f) > 0 ⇒ φ_i > 0 as an axiom (call it Structural Consistency).",
+    "Prove that KernelSHAP, TreeSHAP, and Information Shapley violate Structural Consistency when f̂ ≠ f.",
+    "Show that v(S) = Σ_{k ∈ Path(S)} Effect(k) (structural, not predictive) satisfies the 4-axiom system."
+  ]
+}

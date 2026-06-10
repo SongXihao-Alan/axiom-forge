@@ -1,0 +1,28 @@
+{
+  "id": "VA-AESTHETIC-UNITY",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "aesthetic",
+  "value_subclass": "unity",
+  "label_zh": "统一",
+  "label_en": "Unity",
+  "description": "统一 (Unity) - value anchor in aesthetic class, subclass unity",
+  "cross_cultural_consistency": "medium",
+  "domain": "aesthetic",
+  "tags": [
+    "aesthetic",
+    "unity"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of unity in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

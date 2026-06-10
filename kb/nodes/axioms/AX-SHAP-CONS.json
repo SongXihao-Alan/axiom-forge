@@ -1,0 +1,20 @@
+{
+  "id": "AX-SHAP-CONS",
+  "type": "axiom",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "nl": "Consistency (L17): If f̂ changes so that all marginal contributions increase, then attributions do not decrease",
+  "formal": "∀ S ⊆ N\\{i}: v̂(S∪{i}) - v̂(S) ≥ v(S∪{i}) - v(S) ⇒ φ_i(v̂) ≥ φ_i(v)",
+  "domain": "feature_attribution",
+  "tags": ["shapley", "monotonicity", "consistency_l17"],
+  "anchors": [
+    {"type": "community", "supporters": ["Lundberg-Lee 2017"]}
+  ],
+  "source": {
+    "primary": "LIT-L17-SHAP"
+  },
+  "process_meta": {
+    "[INFER]": "Consistency 是 Shapley Additivity 的预测器变体, 跟 SC 方向不同(单调性 vs 结构性)"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "id": "LIT-H20-CAUSAL-SHAP",
+  "type": "literature",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "title": "Causal Shapley Values: Exploiting Causal Knowledge to Explain Individual Predictions",
+  "authors": ["Tom Heskes", "Evi Sijben", "Ioan Gabriel Bucur", "Tom Claassen"],
+  "year": 2020,
+  "venue": "IJAR",
+  "domain": "feature_attribution",
+  "tags": ["causal", "do_calculus", "chain_graph", "direct_indirect_effects"],
+  "anchors": [
+    {"type": "community", "supporters": ["IJAR 2020"]},
+    {"type": "philosophical", "tradition": "pearl_causality", "concept": "causal attribution"}
+  ],
+  "abstract_nl": "Shapley values are well calibrated when features are independent, but may lead to undesirable explanations when independence is violated. We propose Causal Shapley via Pearl's do-calculus, separating direct and indirect effects.",
+  "key_contributions": [
+    "v(S) = E[f̂(X)|do(X_S=x_S)] 用 Pearl do-calculus",
+    "4 axioms: Efficiency, Linearity, Null-player, Symmetry(因果化变体)",
+    "Direct + Indirect effect 分解",
+    "4 causal structures 同 observational distribution 但归因不同: Chain/Fork/Confounder/Cycle"
+  ],
+  "linage_in": ["LIT-SHAPLEY-1953", "LIT-L17-SHAP", "LIT-J19-CAUSAL"],
+  "linage_out": ["LIT-H21-STRUCTURAL"],
+  "source": {
+    "primary": "PDF: dc3b0918__6aba6a3c-56cf-4acd-9b72-0020a16e5ca7.pdf"
+  },
+  "process_meta": {
+    "[AH-HA]": "H20 的 Fig.1 (4 causal structures) 是 'Many Shapley' 的最清晰 demo",
+    "[HUNCH]": "H20 提到 'causal strength of 0 to maintain uniform distribution' 时 asymmetric Shapley 跳变 —— 这与 SC 有关"
+  }
+}

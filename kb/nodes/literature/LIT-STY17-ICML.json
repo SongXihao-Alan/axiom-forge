@@ -1,0 +1,39 @@
+{
+  "id": "LIT-STY17-ICML",
+  "type": "literature",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "updated": "2026-06-09",
+  "status": "seed",
+  "title": "Axiomatic Attribution for Deep Networks",
+  "authors": ["Mukund Sundararajan", "Ankur Taly", "Qiqi Yan"],
+  "year": 2017,
+  "venue": "ICML",
+  "domain": "feature_attribution",
+  "tags": ["integrated_gradients", "sensitivity", "implementation_invariance"],
+  "anchors": [
+    {"type": "community", "supporters": ["ICML 2017 引用", "Integrated Gradients 在 Google 应用"]},
+    {"type": "philosophical", "tradition": "axiomatic_method", "concept": "axiom-as-constraint"}
+  ],
+  "abstract_nl": "We identify two fundamental axioms—Sensitivity and Implementation Invariance—that attribution methods ought to satisfy. We show Integrated Gradients is the unique path method satisfying them.",
+  "key_contributions": [
+    "2 axiom: Sensitivity(a/b) + Implementation Invariance",
+    "Integrated Gradients (IG): path integral along straight line",
+    "Path methods 满足 Implementation Invariance (因基于梯度)",
+    "Theorem 1: IG 是唯一对称保持的 path method"
+  ],
+  "key_quotes": [
+    {"verbatim": "Sensitivity (a) and Implementation Invariance are two fundamental axioms", "page": 2, "line": "20-25"},
+    {"verbatim": "Sensitivity(b) (called Dummy in (Friedman, 2004))", "page": 4, "line": "10-12"}
+  ],
+  "linage_in": ["LIT-SHAPLEY-1953", "LIT-DEEPLIFT", "LIT-LRP"],
+  "linage_out": ["LIT-SY19-MANY"],
+  "source": {
+    "primary": "PDF: 99a1f8bf__d81e0f7b-0dbd-4bd0-89fb-7cca4adb42e8.pdf"
+  },
+  "process_meta": {
+    "[INFER]": "STY17 的 Symmetry-Preserving ≠ Shapley Symmetry —— STY17 是 input-level, Shapley 是 game-level",
+    "[HUNCH]": "STY17 不区分 f vs f̂ —— 全部看 f̂。这是 SC 创新空间的来源",
+    "user_evaluation": "用户已确认(2026-06-09)"
+  }
+}

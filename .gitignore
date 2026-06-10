@@ -1,0 +1,36 @@
+# Secrets & venv
+.env
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Outputs (keep only v0.3-alpha deliverables)
+outputs/*.json
+outputs/*.md
+!outputs/.gitkeep
+!outputs/v0.2_shap/
+!outputs/v0.2/
+
+# Documentation (keep only v0.3-alpha final)
+docs/*.md
+!docs/v0.3-alpha/
+!docs/PROCESS_NARRATIVE.md
+
+# Backup of real key — never commit
+.env.real_key_backup
+.env.*
+axiom-forge.bundle

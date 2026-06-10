@@ -1,0 +1,28 @@
+{
+  "id": "VA-PHIL-NOZICK",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "philosophical",
+  "value_subclass": "libertarian",
+  "label_zh": "自由主义",
+  "label_en": "Libertarianism",
+  "description": "自由主义 (Libertarianism) - value anchor in philosophical class, subclass libertarian",
+  "cross_cultural_consistency": "medium",
+  "domain": "philosophical",
+  "tags": [
+    "philosophical",
+    "libertarian"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of libertarianism in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "id": "TR-EFFICIENCY-EQUITY",
+  "type": "tradeoff",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment"
+    },
+    {
+      "type": "community",
+      "supporters": [
+        "经典权衡"
+      ]
+    }
+  ],
+  "source": {
+    "primary": "VALUE_TREE_DRAFT.md + Thomson Ch.4-11"
+  },
+  "name": "效率 vs 公平(Efficiency-Equity)",
+  "description": "分配机制可在效率(总福利最大化)和公平(分配公正)之间权衡",
+  "conflicting_values": [
+    "efficiency",
+    "equity"
+  ],
+  "domain": "mechanism_design"
+}

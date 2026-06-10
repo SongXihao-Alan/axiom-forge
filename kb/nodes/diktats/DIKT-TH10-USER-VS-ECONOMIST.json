@@ -1,0 +1,55 @@
+{
+  "diktat_id": "DIKT-TH10-USER-VS-ECONOMIST",
+  "type": "diktat",
+  "quote": "It's not really for us, the economists, to choose between axioms. Our job is to identify those combinations of axioms that are compatible and those that aren't; if possible, when axioms are parameterized, to describe the trade-offs between them in a quantitative way. That's part of what the axiomatic program contributes. But it's up to the users of our services — the bankruptcy judge, the relief agency, the housing office of a university, the scheduling office of a hospital, the administrator of a school district or student exchange program, the tax authority, the immigration office, and so on, and ultimately, the recipients of the goods and services — to decide which combination of axioms best captures what matters to them the most.",
+  "stance": {
+    "value_priority": "user (planner) > academic (economist)",
+    "implicit_norm": "the economist's job is to MAP the trade-off, not to CHOOSE the point",
+    "trigger": "prescriptive question 'which axiom should we use?'",
+    "verdict_pattern": "role separation: economist = mapper, user = chooser",
+    "rhetorical_device": "cumulative list of users (judge, agency, university, hospital, etc.) — the multiplicity is the argument: there are many users, no single axiom can serve all"
+  },
+  "applicability": {
+    "use_when": "deciding whether to recommend an axiom, OR when finalizing a candidate axiom in v0.2",
+    "use_how": "always anchor a new axiom to: (1) a quantitative trade-off curve, (2) a specific planner's problem"
+  },
+  "thomson_chapter": "10.1",
+  "source_volume": "thomson_vol1",
+  "source_pages": [
+    208,
+    209
+  ],
+  "version": "1.0",
+  "created": "2026-06-10",
+  "updated": "2026-06-10",
+  "status": "seed",
+  "domain": "methodology",
+  "tags": [
+    "diktat",
+    "thomson_style",
+    "evaluation_perspective"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 风格"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "user (planner) > academic (economist)"
+    },
+    {
+      "type": "empirical",
+      "subtype": "evaluation_perspective"
+    }
+  ],
+  "process_meta": {
+    "[HUNCH]": "从 Thomson 风格抽出的 tacit judgment"
+  },
+  "source": {
+    "primary": "training/graph/diktats/DIKT-TH10-USER-VS-ECONOMIST.json"
+  },
+  "id": "DIKT-TH10-USER-VS-ECONOMIST"
+}

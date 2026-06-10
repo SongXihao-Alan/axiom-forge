@@ -1,0 +1,28 @@
+{
+  "id": "VA-MORAL-HELP-WEAK",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "user_provided",
+  "value_class": "moral",
+  "value_subclass": "universal_kindness",
+  "label_zh": "帮助老弱病残",
+  "label_en": "Help the weak and disabled",
+  "description": "帮助老弱病残 (Help the weak and disabled) - value anchor in moral class, subclass universal_kindness",
+  "cross_cultural_consistency": "high",
+  "domain": "moral",
+  "tags": [
+    "moral",
+    "universal_kindness"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "moral_consensus",
+      "evidence": "Examples of help the weak and disabled in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "用户原话(2026-06-09)"
+  }
+}

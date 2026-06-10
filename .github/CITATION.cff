@@ -1,0 +1,137 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "Axiom Forge"
+subtitle: "A research tool for axiomatic feature attribution, with Structural Consistency and Impossibility Theorem 5.1"
+version: 0.3-alpha
+date-released: 2026-06-10
+url: "https://github.com/<YOUR-USERNAME>/axiom-forge"
+repository-code: "https://github.com/<YOUR-USERNAME>/axiom-forge"
+
+type: software
+license: MIT
+license-url: "https://opensource.org/licenses/MIT"
+
+authors:
+  - family-names: "Mavis"
+    given-names: "AI协作者 (AI collaborator)"
+    affiliation: "Mavis Agent Team"
+    orcid: ""
+  - family-names: "用户"
+    given-names: "(anonymous researcher)"
+    note: "Researcher who proposed mainline, decided value anchors, and revised running version"
+
+keywords:
+  - "axiomatic method"
+  - "feature attribution"
+  - "Shapley value"
+  - "SHAP"
+  - "cooperative game theory"
+  - "mechanism design"
+  - "Thomson axioms"
+  - "impossibility theorem"
+  - "structural consistency"
+  - "AI for Social Science"
+  - "knowledge base"
+  - "RAG"
+  - "value-anchored evaluation"
+
+abstract: >
+  Axiom Forge is a research skill (not a trained model) that uses Thomson's
+  axiomatic method (axiom-as-constraint, planner-centric) to derive a new
+  4-axiom system for Shapley-based feature attribution, including a new
+  Structural Consistency axiom and an Impossibility Theorem 5.1. The skill
+  consists of an 85-node knowledge base, a CLI tool with 13 commands, and
+  M3-API-backed RAG for answering questions. The mainline result proves that
+  no Shapley attribution based on v(S) = E[f̂(X)|X_S] can simultaneously
+  satisfy Efficiency, Symmetry, Dummy, and Structural Consistency.
+
+references:
+  - type: article
+    title: "A Unified Approach to Interpreting Model Predictions (SHAP)"
+    authors:
+      - family-names: "Lundberg"
+        given-names: "Scott M."
+      - family-names: "Lee"
+        given-names: "Su-In"
+    year: 2017
+    venue: "NeurIPS"
+  - type: article
+    title: "Axiomatic Attribution for Deep Networks"
+    authors:
+      - family-names: "Sundararajan"
+        given-names: "Mukund"
+      - family-names: "Taly"
+        given-names: "Ankur"
+      - family-names: "Yan"
+        given-names: "Qiqi"
+    year: 2017
+    venue: "ICML"
+  - type: article
+    title: "The Many Shapley Values for Model Explanation"
+    authors:
+      - family-names: "Sundararajan"
+        given-names: "Mukund"
+      - family-names: "Najmi"
+        given-names: "Amir"
+    year: 2019
+  - type: article
+    title: "Feature relevance quantification in explainable AI: A causal problem"
+    authors:
+      - family-names: "Janzing"
+        given-names: "Dominik"
+      - family-names: "Minorics"
+        given-names: "Lenon"
+      - family-names: "Blöbaum"
+        given-names: "Patrick"
+    year: 2019
+    venue: "EJOR"
+  - type: article
+    title: "Causal Shapley Values: Exploiting Causal Knowledge to Explain Individual Predictions of Complex Models"
+    authors:
+      - family-names: "Heskes"
+        given-names: "Tom"
+    year: 2020
+    venue: "IJAR"
+  - type: article
+    title: "Problems with Shapley-value-based explanations as feature importance measures"
+    authors:
+      - family-names: "Kumar"
+        given-names: "I. Elizabeth"
+    year: 2020
+  - type: article
+    title: "Explaining by Removing: A Unified Framework for Model Explanation"
+    authors:
+      - family-names: "Covert"
+        given-names: "Ian C."
+    year: 2021
+    venue: "JMLR"
+  - type: book
+    title: "Structural Shapley Values (Book Chapter 21)"
+    authors:
+      - family-names: "Heskes"
+        given-names: "Tom"
+    year: 2021
+  - type: book
+    title: "The Axiomatics of Economic Design, Vol. 1: An Introduction to Theory and Methods"
+    authors:
+      - family-names: "Thomson"
+        given-names: "William"
+    year: 2023
+    publisher: "Springer"
+  - type: book
+    title: "The Future of Economic Design"
+    authors:
+      - family-names: "Laslier"
+        given-names: "Jean-François"
+    year: 2019
+    publisher: "Springer"
+
+preferred-citation:
+  type: misc
+  title: "Axiom Forge v0.3-alpha: A research tool for axiomatic feature attribution"
+  authors:
+    - family-names: "Mavis"
+    - family-names: "用户"
+  year: 2026
+  url: "https://github.com/<YOUR-USERNAME>/axiom-forge"
+  note: "See training/structural_consistency/AXIOM_SKELETON.md for the main theorem"

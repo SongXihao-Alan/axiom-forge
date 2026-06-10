@@ -1,0 +1,29 @@
+{
+  "id": "TR-HURWICZ-1972",
+  "type": "tradeoff",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment"
+    },
+    {
+      "type": "community",
+      "supporters": [
+        "经典权衡"
+      ]
+    }
+  ],
+  "source": {
+    "primary": "VALUE_TREE_DRAFT.md + Thomson Ch.4-11"
+  },
+  "name": "Hurwicz 1972 informational efficiency vs incentive compatibility",
+  "description": "Mechanisms 必须在信息效率(只用必要信息)和激励相容(诚实是占优策略)之间权衡",
+  "conflicting_values": [
+    "informational_efficiency",
+    "incentive_compatibility"
+  ],
+  "domain": "mechanism_design"
+}

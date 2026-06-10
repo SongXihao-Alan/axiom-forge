@@ -1,0 +1,31 @@
+{
+  "id": "LIT-SY19-MANY",
+  "type": "literature",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "title": "The Many Shapley Values for Model Explanation",
+  "authors": ["Mukund Sundararajan", "Amir Najmi"],
+  "year": 2019,
+  "venue": "arXiv 2019 / journal 2020",
+  "domain": "feature_attribution",
+  "tags": ["shapley", "multiplicity", "axiom_choice"],
+  "anchors": [
+    {"type": "community", "supporters": ["arXiv 2019 多家引用"]}
+  ],
+  "abstract_nl": "We identify two reasons for the multiplicity of Shapley values. First, whether training data plays a role. Second, how the value function references the model.",
+  "key_contributions": [
+    "Many Shapley Values: 多种 v(S) 给出不同归因",
+    "Sparsity of training data obscures properties of model",
+    "Unused feature may still accrue importance (在某些 v(S) 下)"
+  ],
+  "linage_in": ["LIT-L17-SHAP", "LIT-STY17-ICML"],
+  "linage_out": ["LIT-H21-STRUCTURAL", "LIT-K20-PROBLEMS"],
+  "source": {
+    "primary": "PDF: 30b02323__d0407bc1-6257-483c-9187-24718d18cefd.pdf"
+  },
+  "process_meta": {
+    "[AH-HA]": "SY19 是 SC 启蒙 —— '既然有多种 Shapley, 我们要新 axiom 选'",
+    "user_evaluation": "用户已确认(2026-06-09)"
+  }
+}

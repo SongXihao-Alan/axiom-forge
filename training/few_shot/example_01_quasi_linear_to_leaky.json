@@ -1,0 +1,75 @@
+{
+  "few_shot_id": "EXAMPLE-01",
+  "title": "Quasi-linearity → Leaky quasi-linearity + strategy cost",
+  "seed_node": "myerson_1981",
+  "perturbation": {
+    "target_id": "A3-ql",
+    "target_kind": "axiom",
+    "original": "Each agent has quasi-linear utility over money: u_i(x_i, t_i) = v_i(x_i) - t_i, where t_i is payment.",
+    "modified": "Each agent has leaky quasi-linear utility with strategy cost: u_i(x_i, t_i, s_i) = v_i(x_i) - t_i - c(s_i), where s_i is the descriptive complexity of the strategy and c(·) is a non-decreasing cost function. For zero cost (truth-telling is the default), the original form is recovered.",
+    "magnitude": "meso"
+  },
+  "value_evaluation": {
+    "scores": [
+      {
+        "criterion": "V-PARETO",
+        "verdict": "weakened",
+        "reasoning": "Pareto-dominating allocations are still preferred by agents, but strategy costs may make some Pareto-improving outcomes unattainable when they require complex strategies.",
+        "confidence": 0.6
+      },
+      {
+        "criterion": "V-EX-PL-USER",
+        "verdict": "improved",
+        "reasoning": "With strategy cost, the 'simple' rule becomes a meaningful object of choice; users can understand 'this rule is simple, that one isn't'.",
+        "confidence": 0.8
+      },
+      {
+        "criterion": "V-DSIC",
+        "verdict": "violated",
+        "reasoning": "Truth-telling is no longer dominant when it requires more descriptive effort than strategic manipulation.",
+        "confidence": 0.9
+      },
+      {
+        "criterion": "V-COMPUT-FEAS",
+        "verdict": "preserved",
+        "reasoning": "Computational feasibility is orthogonal to strategy cost, but constrains c(·) to be computable."
+      }
+    ],
+    "overall": "promising"
+  },
+  "new_axiom_candidate": {
+    "statement_nl": "Axiom of Bounded Strategy Description (BSD): each agent's strategy s_i is drawn from a description-bounded set S_i ⊂ Σ*, and the cost c(s) is proportional to the Kolmogorov complexity K(s).",
+    "formalization": "Let Σ be a finite alphabet. For each agent i, fix a budget b_i ∈ ℝ+ and define the feasible strategy set S_i = {s ∈ Σ* : K(s) ≤ b_i}. An equilibrium is a strategy profile (s_1, ..., s_n) such that no agent can reduce their cost c(s_i) (or increase their utility) by deviating to any s'_i ∈ S_i.",
+    "justification": "BSD makes 'simplicity' a first-class citizen. It is a punctual, model-specific axiom that combines robustness_strategic (with cost) and robustness_perspective (with description length).",
+    "invariance_class": "description-length invariant",
+    "falsifiable_predictions": [
+      "Mechanisms whose truthful strategies have high Kolmogorov complexity will see lower truth-telling rates in experiments (cf. Thaler-Sunstein nudge literature).",
+      "Optimal auctions under BSD are not Myerson-style; they penalize complex bid formats."
+    ]
+  },
+  "consequences": [
+    {
+      "id": "C-1",
+      "type": "old_theorem_fails",
+      "statement": "Revenue Equivalence Theorem no longer holds: two mechanisms with the same efficient allocation but different strategy complexity can yield different expected revenue, because agents may select different strategies under identical allocations."
+    },
+    {
+      "id": "C-2",
+      "type": "new_phenomenon",
+      "statement": "Description-length tax: in BSD settings, simple posted-price mechanisms may dominate complex VCG mechanisms despite VCG's theoretical optimality under full rationality."
+    },
+    {
+      "id": "C-3",
+      "type": "new_technique",
+      "statement": "Mechanism design under description complexity becomes a problem of compression: the designer chooses a code (description scheme) for strategies, and agents optimize within that code."
+    }
+  ],
+  "derivation_chain": [
+    "Original: A3-ql (quasi-linear) + A1-bic (BIC) → Myerson optimal auction",
+    "Perturb: A3-ql → A3-ql-BSD (leaky + strategy cost)",
+    "Now A1-bic is violated → A1-bic' (BIC under BSD) is the new strategic axiom",
+    "Theorem T-revenue-eq: needs rederivation → parametric form R_eq(λ) where λ measures description cost weight",
+    "Theorem T-optimal-auction: rederives to a complexity-penalized allocation rule",
+    "BSD is the new axiom; A3-ql is replaced; A1-bic is replaced; A2-ir survives unchanged"
+  ]
+}

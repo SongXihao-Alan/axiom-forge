@@ -1,0 +1,32 @@
+{
+  "id": "AX-SC-001",
+  "type": "axiom",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "handcrafted",
+  "nl": "Structural Consistency: For any feature i, if SI_i(f) > 0, then ∃ x: φ_i(f̂, x) > 0",
+  "formal": "∀ i ∈ N: [SI_i(f) > 0] ⇒ [∃ x ∈ X: φ_i(f̂, x) > 0]",
+  "nl_long": "If feature i has non-zero structural importance in the ground-truth data-generating process f, then the attribution must be strictly positive for at least some input x. The axiom binds attribution to real-world structure, not just predictor behavior.",
+  "aliases": ["SC", "Structural Consistency"],
+  "depends_on": ["AX-SHAP-EFF", "AX-SHAP-SYM", "AX-SHAP-DUM"],
+  "domain": "feature_attribution",
+  "tags": ["structural", "ground_truth_anchored", "mainline"],
+  "anchors": [
+    {"type": "empirical", "subtype": "moral_consensus", "evidence": "f̂ 错位时医生看 attribution 错位, 跨文化共识: 归因不应骗人"},
+    {"type": "empirical", "subtype": "interest_judgment", "evidence": "用户对归因有'真实反映'的期待"},
+    {"type": "philosophical", "tradition": "phenomenology", "concept": "回到事物本身(回到 f 而非 f̂)"},
+    {"type": "philosophical", "tradition": "kantian_ethics", "concept": "结构真实性作为义务"},
+    {"type": "community", "supporters": ["Heskes 2021 (H21) 隐含支持", "Janzing 2019 (J19) 隐含支持", "Kumar 2020 (K20) 隐含支持"]}
+  ],
+  "source": {
+    "primary": "MEMO-AX-STRUCTURAL-CONSISTENCY-001",
+    "citations": [
+      {"cite": "Heskes 2021 Book Ch.21 Section 3.2", "page": 17, "line": "12-18", "verbatim": "Structural Importance SI_i(f) measures the impact of feature i in the underlying data-generating process f"}
+    ]
+  },
+  "process_meta": {
+    "[AH-HA]": "SC 作用在 f, 其他 axiom 作用在 f̂ —— 这不对称是创新点",
+    "[HUNCH]": "如果 SC 也作用 f̂, 就退化为 STY17 Sensitivity",
+    "user_evaluation": "用户已确认(2026-06-09, 作为 mainline theorem 的一部分)"
+  }
+}

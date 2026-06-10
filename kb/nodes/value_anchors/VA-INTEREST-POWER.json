@@ -1,0 +1,28 @@
+{
+  "id": "VA-INTEREST-POWER",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "interest",
+  "value_subclass": "power",
+  "label_zh": "权力分配",
+  "label_en": "Power distribution",
+  "description": "权力分配 (Power distribution) - value anchor in interest class, subclass power",
+  "cross_cultural_consistency": "low",
+  "domain": "interest",
+  "tags": [
+    "interest",
+    "power"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of power distribution in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

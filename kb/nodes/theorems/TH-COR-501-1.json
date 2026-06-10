@@ -1,0 +1,34 @@
+{
+  "id": "TH-COR-501-1",
+  "nl": "TreeSHAP violates SC: Given f structure but f̂ ≠ f, TreeSHAP reflects f̂, violates SC",
+  "formal": "TreeSHAP(AS-SHAP-CHARFN-tree) ⇒ ¬SC in general",
+  "evidence": "TreeSHAP uses tree-distribution to approximate v(S), not structural",
+  "type": "theorem",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "depends_on": [
+    "TH-IMP-501"
+  ],
+  "domain": "feature_attribution",
+  "tags": [
+    "corollary",
+    "mainline"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "logical",
+      "evidence": "TreeSHAP uses tree-distribution to approximate v(S), not structural"
+    },
+    {
+      "type": "community",
+      "supporters": [
+        "Heskes 2021 隐含"
+      ]
+    }
+  ],
+  "source": {
+    "primary": "AXIOM_SKELETON.md §5.3"
+  }
+}

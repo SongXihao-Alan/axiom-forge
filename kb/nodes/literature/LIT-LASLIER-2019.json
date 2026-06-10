@@ -1,0 +1,42 @@
+{
+  "id": "LIT-LASLIER-2019",
+  "type": "literature",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "title": "The Future of Economic Design",
+  "authors": [
+    "Jean-François Laslier",
+    "Hervé Moulin",
+    "M. Remzi Sanver",
+    "William S. Zwicker"
+  ],
+  "year": 2019,
+  "venue": "Springer Studies in Economic Design",
+  "domain": "mechanism_design",
+  "tags": [
+    "laslier",
+    "future_economic_design"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Springer 2019"
+      ]
+    }
+  ],
+  "abstract_nl": "The continuing development of economic design as envisioned by its researchers.",
+  "key_contributions": [
+    "axiom = 价值代表(每个 axiom 对应某个 stakeholder 的核心价值)"
+  ],
+  "linage_out": [
+    "LIT-AXIOM-FINDER-2026"
+  ],
+  "source": {
+    "primary": "PDF: c954d254__1ff10052-e397-4ccc-b305-721ec5a98fce.pdf"
+  },
+  "process_meta": {
+    "[AH-HA]": "Laslier 启发: axiom 应当对应一种价值, 不是数学游戏"
+  }
+}

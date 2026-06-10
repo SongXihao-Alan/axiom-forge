@@ -1,0 +1,28 @@
+{
+  "id": "VA-PHIL-KANT",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "philosophical",
+  "value_subclass": "kantian_ethics",
+  "label_zh": "康德伦理学",
+  "label_en": "Kantian ethics",
+  "description": "康德伦理学 (Kantian ethics) - value anchor in philosophical class, subclass kantian_ethics",
+  "cross_cultural_consistency": "medium",
+  "domain": "philosophical",
+  "tags": [
+    "philosophical",
+    "kantian_ethics"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of kantian ethics in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

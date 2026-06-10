@@ -1,0 +1,22 @@
+{
+  "id": "AX-SHAP-EFF",
+  "type": "axiom",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "nl": "Efficiency: Σ_i φ_i(f̂, x) = f̂(x)",
+  "formal": "∀ x ∈ X: Σ_i φ_i(f̂, x) = f̂(x)",
+  "aliases": ["Efficiency", "Local Accuracy (L17)"],
+  "domain": "feature_attribution",
+  "tags": ["shapley", "additive"],
+  "anchors": [
+    {"type": "community", "supporters": ["Shapley 1953", "Lundberg-Lee 2017"]},
+    {"type": "empirical", "subtype": "experimental", "evidence": "SHAP 工业实现普遍满足"}
+  ],
+  "source": {
+    "primary": "LIT-L17-SHAP",
+    "citations": [
+      {"cite": "Shapley 1953", "verbatim": "A Value for n-Person Games"}
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "diktat_id": "DIKT-BVL-PLANNER-EXPERT",
+  "type": "diktat",
+  "quote": "We don't mean that we should forgo our inclination for mathematical elegance nor that we should rein in our desire for generality; however, it does mean that we should refrain from invoking unrealistic scenarios for the purpose of entertaining these preferences. Equivalently, we should pay explicit attention to the features of an allocation rule that matter to practitioners. ... the end goal is to solve practical economic problems. The process entails some division of labor: At the forefront are the practitioners, who witness first hand the actual problems and who then become demanders of solutions. ... Economic designers can be seen as the engineers who are tasked with mustering the theoretical machinery with the aim of proposing appropriate solutions.",
+  "stance": {
+    "value_priority": "engineer > pure mathematician (within economic design)",
+    "implicit_norm": "the aesthetic of the field (elegance, generality) is fine in private, but the *output* of the field must serve practitioners",
+    "trigger": "temptation to add axioms to get a clean characterization",
+    "verdict_pattern": "if the only reason for an axiom is to make the theorem prettier, drop it",
+    "rhetorical_device": "labor metaphor: 'engineers' not 'scientists'; 'mustering theoretical machinery' — a deliberate downgrading of theoretical ambition to fit the actual job description"
+  },
+  "counter_example": "Roth's deferred acceptance for medical residency was a major result, but the early characterizations used axioms like 'SD' that practitioners couldn't easily verify. Roth's later market-design work explicitly refactored the axiom set to align with what hospitals actually cared about (stability + no-justified-envy + tie-breaking for diversity). The earlier 'pretty' characterization was technically correct but practically invisible.",
+  "origin_story": "Final section of Billette de Villemeur & Leroux's 'Camels' chapter. The authors are essentially closing their argument with a programmatic statement: 'we're not against elegance, we're against elegance that doesn't serve the user.' The 'division of labor' metaphor is borrowed from Adam Smith and applied to economic design — a deliberate elevation of the engineer role.",
+  "applicability": {
+    "use_when": "deciding whether to keep a new axiom in a v0.2 candidate system",
+    "use_how": "the litmus test is: 'if a hospital administrator / FAA staffer / bankruptcy judge read this axiom, would they recognize why we want it?' If no, the axiom probably belongs to the engineer's ego, not the planner's problem."
+  },
+  "thomson_chapter": null,
+  "source_volume": "future_of_economic_design",
+  "source_pages": [
+    185
+  ],
+  "version": "1.0",
+  "created": "2026-06-10",
+  "updated": "2026-06-10",
+  "status": "seed",
+  "domain": "methodology",
+  "tags": [
+    "diktat",
+    "thomson_style",
+    "evaluation_perspective"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 风格"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "engineer > pure mathematician (within economic design)"
+    },
+    {
+      "type": "empirical",
+      "subtype": "evaluation_perspective"
+    }
+  ],
+  "process_meta": {
+    "[HUNCH]": "从 Thomson 风格抽出的 tacit judgment"
+  },
+  "source": {
+    "primary": "training/graph/diktats/DIKT-BVL-PLANNER-EXPERT.json"
+  },
+  "id": "DIKT-BVL-PLANNER-EXPERT"
+}

@@ -1,0 +1,57 @@
+{
+  "diktat_id": "DIKT-TH11-IF-AND-ONLY-IF",
+  "type": "diktat",
+  "quote": "Frankly, our fondness for 'if and only if' theorems is a bit of a problem. That's a nice format in which to offer our results to our public, usually our academic peers. They certainly appreciate it, especially the mathematically minded, but really, this packaging gets in the way of showing the full strength of the axioms that the mapping that is characterized satisfies and showing the full strength of the uniqueness part. ... Of course, I love 'if and only if' theorems just as much as you do. However, in the context of the axiomatics of economic design, I have some reservations. The 'if and only if' format of characterizations is a kind of balancing act that's often hurtful to the understanding of both directions, the existence part and the uniqueness part.",
+  "stance": {
+    "value_priority": "understanding > mathematical elegance",
+    "implicit_norm": "format is not neutral; 'if and only if' is a packaging choice that hides some truths and reveals others",
+    "trigger": "writing a characterization result",
+    "verdict_pattern": "consider two theorems instead of one: weakest-list-for-uniqueness + strongest-list-for-satisfaction",
+    "rhetorical_device": "self-deprecating concession ('I love them too') that earns the right to criticize; the phrase 'a kind of balancing act' is unusually gentle for a math argument"
+  },
+  "counter_example": "TTC is characterized as the unique rule satisfying SD + efficiency + IR + no-bossiness. If you weaken no-bossiness to non-bossiness, the same rule satisfies the weaker list — but you don't know whether OTHER rules also satisfy it, because the original theorem framed the list as 'if and only if'. The format has already committed you to a particular axiom set, and you've lost the freedom to ask 'what if I weaken one?'.",
+  "origin_story": "Ch.11 §11.5 (immediately after the previous diktat). Thomson is calling out his own field's standard packaging. The flavor: 'I'll criticize the format that made my own career, but I also use it'. This is the kind of move that earns the right to teach — admitting you benefited from the same convention you're questioning.",
+  "applicability": {
+    "use_when": "memo_writer or axiom_deriver writes up a result",
+    "use_how": "in a PerturbationMemo, never use 'iff' framing; instead, report (a) what is satisfied, (b) what is necessary, (c) the weakest possible list, (d) the strongest possible list — and let the user see the difference"
+  },
+  "thomson_chapter": "11.5",
+  "source_volume": "thomson_vol1",
+  "source_pages": [
+    253,
+    254
+  ],
+  "version": "1.0",
+  "created": "2026-06-10",
+  "updated": "2026-06-10",
+  "status": "seed",
+  "domain": "methodology",
+  "tags": [
+    "diktat",
+    "thomson_style",
+    "evaluation_perspective"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 风格"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "understanding > mathematical elegance"
+    },
+    {
+      "type": "empirical",
+      "subtype": "evaluation_perspective"
+    }
+  ],
+  "process_meta": {
+    "[HUNCH]": "从 Thomson 风格抽出的 tacit judgment"
+  },
+  "source": {
+    "primary": "training/graph/diktats/DIKT-TH11-IF-AND-ONLY-IF.json"
+  },
+  "id": "DIKT-TH11-IF-AND-ONLY-IF"
+}

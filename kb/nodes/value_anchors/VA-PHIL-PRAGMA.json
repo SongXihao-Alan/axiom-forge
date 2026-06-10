@@ -1,0 +1,28 @@
+{
+  "id": "VA-PHIL-PRAGMA",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "philosophical",
+  "value_subclass": "pragmatism",
+  "label_zh": "实用主义",
+  "label_en": "Pragmatism",
+  "description": "实用主义 (Pragmatism) - value anchor in philosophical class, subclass pragmatism",
+  "cross_cultural_consistency": "medium",
+  "domain": "philosophical",
+  "tags": [
+    "philosophical",
+    "pragmatism"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of pragmatism in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

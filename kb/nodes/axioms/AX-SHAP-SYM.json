@@ -1,0 +1,20 @@
+{
+  "id": "AX-SHAP-SYM",
+  "type": "axiom",
+  "version": "1.0",
+  "created": "2026-06-09",
+  "status": "seed",
+  "nl": "Symmetry: If f̂ is invariant under swapping features i and j, then φ_i = φ_j",
+  "formal": "∀ i, j: [∀ x: f̂(x|_{X_i=a, X_j=a}) = f̂(x|_{X_i=b, X_j=b}) ∀ a, b] ⇒ φ_i = φ_j",
+  "domain": "feature_attribution",
+  "tags": ["shapley", "symmetry"],
+  "anchors": [
+    {"type": "community", "supporters": ["Shapley 1953", "Lundberg-Lee 2017"]}
+  ],
+  "source": {
+    "primary": "LIT-SHAPLEY-1953"
+  },
+  "process_meta": {
+    "[HUNCH]": "Shapley Symmetry 是 game-level, STY17 Symmetry 是 input-level —— 概念不同"
+  }
+}

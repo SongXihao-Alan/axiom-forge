@@ -1,0 +1,37 @@
+{
+  "id": "SC-HOSPITAL-COSTSHARE",
+  "type": "scenario",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Hospital decides cost-sharing rules for patients. Tradeoff: cost recovery vs patient burden."
+    },
+    {
+      "type": "community",
+      "supporters": [
+        "Thomson 经典案例"
+      ]
+    }
+  ],
+  "source": {
+    "primary": "training/graph/scenarios/"
+  },
+  "name_zh": "医院 cost-sharing",
+  "name_en": "Hospital cost-sharing",
+  "description": "Hospital decides cost-sharing rules for patients. Tradeoff: cost recovery vs patient burden.",
+  "stakeholders": [
+    "医院",
+    "病人",
+    "保险公司"
+  ],
+  "key_question": "如何分担成本让 patient 能负担?",
+  "domain": "real_world",
+  "tags": [
+    "hospital",
+    "fairness"
+  ]
+}

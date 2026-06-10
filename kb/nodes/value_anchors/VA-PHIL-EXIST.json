@@ -1,0 +1,28 @@
+{
+  "id": "VA-PHIL-EXIST",
+  "type": "value_anchor",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "value_class": "philosophical",
+  "value_subclass": "existentialism",
+  "label_zh": "存在主义",
+  "label_en": "Existentialism",
+  "description": "存在主义 (Existentialism) - value anchor in philosophical class, subclass existentialism",
+  "cross_cultural_consistency": "medium",
+  "domain": "philosophical",
+  "tags": [
+    "philosophical",
+    "existentialism"
+  ],
+  "anchors_self": [
+    {
+      "type": "empirical",
+      "subtype": "interest_judgment",
+      "evidence": "Examples of existentialism in various contexts"
+    }
+  ],
+  "source": {
+    "primary": "compiled from VALUE_TREE_DRAFT.md"
+  }
+}

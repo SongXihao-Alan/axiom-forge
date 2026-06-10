@@ -1,0 +1,51 @@
+{
+  "id": "LIT-THOMSON-2023",
+  "type": "literature",
+  "version": "1.0",
+  "created": "2026-06-10",
+  "status": "seed",
+  "title": "The Axiomatics of Economic Design, Vol. 1: An Introduction to Theory and Methods",
+  "authors": [
+    "William Thomson"
+  ],
+  "year": 2023,
+  "venue": "Springer",
+  "domain": "mechanism_design",
+  "tags": [
+    "thomson",
+    "axiomatic_methodology",
+    "training_data"
+  ],
+  "anchors": [
+    {
+      "type": "community",
+      "supporters": [
+        "Springer 2023",
+        "Cooperative game theory 经典教材"
+      ]
+    },
+    {
+      "type": "philosophical",
+      "tradition": "axiomatic_method",
+      "concept": "axiom-as-constraint"
+    }
+  ],
+  "abstract_nl": "Comprehensive treatment of axiomatic methods in economic design, covering consistency, no-envy, strategy-proofness, and existence/uniqueness results.",
+  "key_contributions": [
+    "axiom-as-constraint + planner-centric 方法论",
+    "Ch.4 Population Monotonicity",
+    "Ch.7 Consistency",
+    "Ch.8 No-Envy",
+    "Ch.10 Strategy-Proofness",
+    "Ch.11 Existence/Uniqueness"
+  ],
+  "linage_out": [
+    "LIT-AXIOM-FINDER-2026"
+  ],
+  "source": {
+    "primary": "PDF: 9fec3554__47c04025-bf30-4d39-99b2-ef962102f72b.pdf"
+  },
+  "process_meta": {
+    "[AH-HA]": "Thomson 的方法论 = Axiom Forge 的'训练数据' —— 不是模仿 AI4S, 是按 Thomson 思路做"
+  }
+}
