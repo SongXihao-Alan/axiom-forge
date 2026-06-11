@@ -1,3 +1,4 @@
 #!/bin/bash
-cd /workspace/axiom-finder
+# Auto-detect project root (directory where this script lives)
+cd "$(dirname "$0")"
 python3 kb/kb_query.py "$@"

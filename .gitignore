@@ -10,13 +10,19 @@ __pycache__/
 *.pyd
 
 # OS
-.DS_Store
+**/.DS_Store
 Thumbs.db
 
 # Editor
 .vscode/
 .idea/
 *.swp
+*~
+
+# Python packaging
+*.egg-info/
+dist/
+build/
 
 # Outputs (keep only v0.3-alpha deliverables)
 outputs/*.json
@@ -33,4 +39,5 @@ docs/*.md
 # Backup of real key — never commit
 .env.real_key_backup
 .env.*
-axiom-forge.bundle
+!/.env.example
+*.bundle
