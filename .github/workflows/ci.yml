@@ -1,0 +1,50 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  cli-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install httpx python-dotenv
+
+      - name: Basic CLI smoke tests
+        run: |
+          python kb/kb_query.py stats
+          python kb/kb_query.py list
+          python kb/kb_query.py search "Shapley"
+          python kb/kb_query.py show AX-SC-001
+          python kb/kb_query.py graph AX-SC-001 --depth 1
+          python kb/kb_query.py value-tree
+          python kb/kb_query.py help
+
+  security-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Ensure .env not tracked
+        run: |
+          if [ -f .env ]; then
+            echo "ERROR: .env file found in repository!"
+            exit 1
+          fi
+          echo "Security check passed: .env not committed"
+
+      - name: Validate KB JSON
+        run: |
+          find kb/nodes -name "*.json" | while read f; do
+            python -m json.tool "$f" > /dev/null || (echo "Invalid JSON: $f" && exit 1)
+          done
+          echo "All KB JSON files are valid"
