@@ -11,6 +11,7 @@ __pycache__/
 
 # OS
 **/.DS_Store
+/.DS_Store
 Thumbs.db
 
 # Editor
@@ -41,3 +42,7 @@ docs/*.md
 .env.*
 !/.env.example
 *.bundle
+
+# Tencent Cloud SSH key for web deployment (deployment-only; never share)
+/deploy/*.pem
+!/deploy/.gitkeep

@@ -77,7 +77,7 @@ Axiom Finder v0.3-alpha
 │   ├── seeds/            # 2 seed nodes (lundberg_2017_shap, heskes_2021_structural)
 │   └── structural_consistency/
 │       └── AXIOM_SKELETON.md   # The mainline theorem
-├── axiom_v02/            # 5-agent pipeline (literature → perturbation → value → axiom → consequence → memo)
+├── legacy_v0.2_pipeline/     # 5-agent pipeline (literature → perturbation → value → axiom → consequence → memo); retired June 2026, see README inside
 │   ├── literature_node_loader.py
 │   ├── perturbation_sampler.py
 │   ├── value_evaluator.py
@@ -97,7 +97,7 @@ Axiom Finder v0.3-alpha
 
 ## 🔬 Methodology
 
-### 5-Agent Pipeline (axiom_v02/)
+### 5-Agent Pipeline (legacy_v0.2_pipeline/, retired)
 1. **Literature Node Loader**: Loads structured seed (axiom, assumption, theorem, proposition)
 2. **Perturbation Sampler**: M3 proposes 8 types of perturbations (`PERT-STRUCTURAL`, `PERT-EFFICIENCY`, etc.) on seed axioms
 3. **Value Evaluator**: M3 scores 8 value criteria (user-explainable, computational-feasibility, additivity, consistency, symmetry, capability, continuity, personalized-explanation)
@@ -154,7 +154,7 @@ python3 -c "
 import sys
 sys.path.insert(0, '.')
 from dotenv import load_dotenv; load_dotenv('.env')
-from axiom_v02.pipeline import run_v02_pipeline
+from legacy_v0.2_pipeline.pipeline import run_v02_pipeline  # retired; see legacy_v0.2_pipeline/README.md
 memos = run_v02_pipeline(
     seed_id='lundberg_2017_shap',
     perturbation={

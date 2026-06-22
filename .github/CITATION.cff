@@ -4,21 +4,23 @@ title: "Axiom Forge"
 subtitle: "A research tool for axiomatic feature attribution, with Structural Consistency and Impossibility Theorem 5.1"
 version: 0.3-alpha
 date-released: 2026-06-10
-url: "https://github.com/<YOUR-USERNAME>/axiom-forge"
-repository-code: "https://github.com/<YOUR-USERNAME>/axiom-forge"
+url: "https://github.com/SongXihao-Alan/axiom-forge"
+repository-code: "https://github.com/SongXihao-Alan/axiom-forge"
 
 type: software
 license: MIT
 license-url: "https://opensource.org/licenses/MIT"
 
 authors:
+  - family-names: "Song"
+    given-names: "Xihao (Alan)"
+    affiliation: "University of Glasgow"
+    email: "2424781s@student.gla.ac.uk"
   - family-names: "Mavis"
     given-names: "AI协作者 (AI collaborator)"
     affiliation: "Mavis Agent Team"
     orcid: ""
-  - family-names: "用户"
-    given-names: "(anonymous researcher)"
-    note: "Researcher who proposed mainline, decided value anchors, and revised running version"
+    note: "AI co-author on v0.2 5-agent pipeline + v0.3-alpha KB design"
 
 keywords:
   - "axiomatic method"
@@ -130,8 +132,9 @@ preferred-citation:
   type: misc
   title: "Axiom Forge v0.3-alpha: A research tool for axiomatic feature attribution"
   authors:
+    - family-names: "Song"
+      given-names: "Xihao (Alan)"
     - family-names: "Mavis"
-    - family-names: "用户"
   year: 2026
-  url: "https://github.com/<YOUR-USERNAME>/axiom-forge"
+  url: "https://github.com/SongXihao-Alan/axiom-forge"
   note: "See training/structural_consistency/AXIOM_SKELETON.md for the main theorem"

@@ -210,22 +210,34 @@ def explore_anchor_m3(anchor_type: str, max_tokens: int = 2000) -> Optional[str]
                 matches.append((n, {"type": anchor_type, "subtype": n.get("value_subclass", "")}))
     if not matches:
         return None
-    # 拼 context
-    context_lines = []
+    # 拼 context — 发节点关键内容,不要只发 ID
+    context_parts = []
     for n, a in matches[:20]:  # limit 20
-        context_lines.append(f"- {n['id']} ({n['type']}): {n.get('label_zh', n.get('nl', n.get('title', ''))[:60])}")
-    context = "\n".join(context_lines)
+        parts = [f"### {n['id']} ({n['type']})"]
+        if n.get("title"):
+            parts.append(f"Title: {n['title']}")
+        if n.get("label_zh"):
+            parts.append(f"Label: {n['label_zh']}")
+        if n.get("nl"):
+            parts.append(f"NL: {n['nl'][:200]}")
+        if n.get("formal"):
+            parts.append(f"Formal: {n['formal'][:150]}")
+        if a.get("subtype"):
+            parts.append(f"[anchor subtype]: {a['subtype']}")
+        context_parts.append("\n".join(parts))
+    context = "\n\n".join(context_parts)
     system = (
         f"你是 Axiom Forge 的研究助手。用户在探索 KB 中所有带 **{anchor_type}** 锚的节点。"
         f"请从 3 维解读(哲学 / 经验 / 社群), 给出这些节点的 **{anchor_type}** 解读和洞察。"
         "注意:3 锚**完全平等**, 不要给'哲学 > 经验'的暗示。"
+        "重要:回答直接输出内容,不要用 <think>...</think> 包裹,不要写思考过程。"
     )
     user = (
         f"## 节点 (top-20 带 {anchor_type} 锚):\n\n{context}\n\n"
         f"## 任务:\n1. 这 {anchor_type} 锚在 KB 中覆盖了哪些 axiom / 文献 / scenario?\n"
         "2. 哪些节点最 surprising(应当带这锚但没带, 或带了但锚弱)?\n"
         "3. 整体看, {anchor_type} 锚揭示了什么 pattern?\n\n"
-        "## 解读(中文):"
+        "## 解读(中文,直接输出):"
     )
     try:
         raw = client.chat(
@@ -233,7 +245,10 @@ def explore_anchor_m3(anchor_type: str, max_tokens: int = 2000) -> Optional[str]
             json_mode=False,
             max_tokens=max_tokens,
         )
-        return re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
+        cleaned = re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
+        if not cleaned:
+            return raw.strip()  # fallback: M3 把 token 全花在 think 里了
+        return cleaned
     except Exception as e:
         return f"ERROR: {e}"
 

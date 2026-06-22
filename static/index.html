@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Axiom Forge</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --border: #2a2d3a;
+      --accent: #6c63ff;
+      --accent2: #ff6584;
+      --text: #e0e3f0;
+      --muted: #8b8fa8;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font);
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+    h1 {
+      font-size: 2rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.25rem;
+    }
+    .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .tab {
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+    .tab.active, .tab:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+      background: rgba(108,99,255,0.1);
+    }
+    .panel { display: none; }
+    .panel.active { display: block; }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    label { display: block; font-size: 0.8rem; color: var(--muted); margin-bottom: 0.4rem; }
+    input, textarea, select {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      color: var(--text);
+      padding: 0.6rem 0.8rem;
+      font-size: 0.9rem;
+      font-family: var(--font);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+    textarea { resize: vertical; min-height: 80px; }
+    button {
+      margin-top: 0.75rem;
+      padding: 0.6rem 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-family: var(--font);
+      transition: opacity 0.2s;
+    }
+    button:hover { opacity: 0.85; }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .output {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1rem;
+      margin-top: 1rem;
+      min-height: 100px;
+      max-height: 500px;
+      overflow-y: auto;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .error { color: var(--accent2); }
+    .node-list { display: grid; gap: 0.5rem; }
+    .node-item {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.6rem 0.8rem;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+    }
+    .node-item:hover { border-color: var(--accent); }
+    .node-item .nid { color: var(--accent); font-weight: 600; margin-right: 0.5rem; }
+    .node-item .ntype { color: var(--muted); font-size: 0.75rem; }
+    .stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+    .stat-item { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; padding: 0.75rem; }
+    .stat-label { font-size: 0.75rem; color: var(--muted); }
+    .stat-value { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+    .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin 0.7s linear infinite; margin-right: 0.5rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading { display: flex; align-items: center; color: var(--muted); font-size: 0.85rem; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Axiom Forge</h1>
+  <p class="subtitle">Structural Consistency Knowledge Base — 85+ nodes</p>
+
+  <div class="tabs">
+    <div class="tab active" data-tab="ask">💬 Ask</div>
+    <div class="tab" data-tab="explore">⚓ Explore Anchor</div>
+    <div class="tab" data-tab="validate">✅ Validate</div>
+    <div class="tab" data-tab="list">📋 List Nodes</div>
+    <div class="tab" data-tab="stats">📊 Stats</div>
+    <div class="tab" data-tab="graph">🌐 Graph</div>
+    <div class="tab" data-tab="value-tree">🌳 Value Tree</div>
+  </div>
+
+  <!-- ASK -->
+  <div class="panel active" id="panel-ask">
+    <div class="card">
+      <label>Ask the knowledge base (M3 powered)</label>
+      <textarea id="ask-query" placeholder="e.g. 什么是 Structural Consistency?"></textarea>
+      <button onclick="doAsk()" id="btn-ask">Ask M3</button>
+      <div id="ask-output" class="output" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- EXPLORE ANCHOR -->
+  <div class="panel" id="panel-explore">
+    <div class="card">
+      <label>Anchor type</label>
+      <select id="explore-type">
+        <option value="empirical">empirical</option>
+        <option value="philosophical">philosophical</option>
+        <option value="community">community</option>
+      </select>
+      <button onclick="doExploreAnchor()" id="btn-explore">Explore</button>
+      <div id="explore-output" class="output" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- VALIDATE -->
+  <div class="panel" id="panel-validate">
+    <div class="card">
+      <label>Node ID (e.g. AX-SC-001)</label>
+      <input id="validate-id" placeholder="AX-SC-001" />
+      <button onclick="doValidate()" id="btn-validate">Validate</button>
+      <div id="validate-output" class="output" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- LIST -->
+  <div class="panel" id="panel-list">
+    <div class="card">
+      <div id="list-output" class="node-list"></div>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="panel" id="panel-stats">
+    <div class="card">
+      <div id="stats-output" class="stats-grid"></div>
+    </div>
+  </div>
+
+  <!-- GRAPH -->
+  <div class="panel" id="panel-graph">
+    <div class="card">
+      <label>Node ID</label>
+      <input id="graph-id" placeholder="AX-SC-001" />
+      <label style="margin-top:0.5rem">Depth (hops)</label>
+      <input id="graph-depth" type="number" value="2" min="1" max="5" />
+      <button onclick="doGraph()" id="btn-graph">Get Graph</button>
+      <div id="graph-output" class="output" style="display:none"></div>
+    </div>
+  </div>
+
+  <!-- VALUE TREE -->
+  <div class="panel" id="panel-value-tree">
+    <div class="card">
+      <div id="value-tree-output"></div>
+    </div>
+  </div>
+
+  <script>
+    const BASE = window.location.origin;
+
+    document.querySelectorAll('.tab').forEach(t => {
+      t.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(x => x.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(x => x.classList.remove('active'));
+        t.classList.add('active');
+        document.getElementById('panel-' + t.dataset.tab).classList.add('active');
+        if (t.dataset.tab === 'list') loadList();
+        if (t.dataset.tab === 'stats') loadStats();
+        if (t.dataset.tab === 'value-tree') loadValueTree();
+      });
+    });
+
+    function spinnerHTML() { return '<div class="loading"><span class="spinner"></span>Loading...</div>'; }
+
+    async function doAsk() {
+      const btn = document.getElementById('btn-ask');
+      const out = document.getElementById('ask-output');
+      const query = document.getElementById('ask-query').value.trim();
+      if (!query) return;
+      btn.disabled = true;
+      out.style.display = 'block';
+      out.innerHTML = spinnerHTML();
+      try {
+        const r = await fetch(BASE + '/ask', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({query, top_k: 5})
+        });
+        const d = await r.json();
+        out.textContent = r.ok ? (d.answer || 'No answer') : ('Error: ' + JSON.stringify(d));
+      } catch(e) { out.textContent = 'Error: ' + e.message; }
+      btn.disabled = false;
+    }
+
+    async function doExploreAnchor() {
+      const btn = document.getElementById('btn-explore');
+      const out = document.getElementById('explore-output');
+      const type = document.getElementById('explore-type').value;
+      btn.disabled = true;
+      out.style.display = 'block';
+      out.innerHTML = spinnerHTML();
+      try {
+        const r = await fetch(BASE + '/explore-anchor', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({type})
+        });
+        const d = await r.json();
+        out.textContent = r.ok ? (d.analysis || 'No result') : ('Error: ' + JSON.stringify(d));
+      } catch(e) { out.textContent = 'Error: ' + e.message; }
+      btn.disabled = false;
+    }
+
+    async function doValidate() {
+      const btn = document.getElementById('btn-validate');
+      const out = document.getElementById('validate-output');
+      const node_id = document.getElementById('validate-id').value.trim();
+      if (!node_id) return;
+      btn.disabled = true;
+      out.style.display = 'block';
+      out.innerHTML = spinnerHTML();
+      try {
+        const r = await fetch(BASE + '/validate', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify({node_id})
+        });
+        const d = await r.json();
+        out.textContent = r.ok ? (d.evaluation || 'No result') : ('Error: ' + JSON.stringify(d));
+      } catch(e) { out.textContent = 'Error: ' + e.message; }
+      btn.disabled = false;
+    }
+
+    async function loadList() {
+      const out = document.getElementById('list-output');
+      if (out.children.length > 0) return;
+      out.innerHTML = spinnerHTML();
+      try {
+        const r = await fetch(BASE + '/list');
+        const d = await r.json();
+        out.innerHTML = '';
+        for (const [type, nodes] of Object.entries(d.by_type || {})) {
+          const section = document.createElement('div');
+          section.style.cssText = 'font-size:0.75rem;color:var(--muted);margin-top:0.75rem;margin-bottom:0.25rem';
+          section.textContent = type + ' (' + nodes.length + ')';
+          out.appendChild(section);
+          for (const n of nodes) {
+            const div = document.createElement('div');
+            div.className = 'node-item';
+            div.innerHTML = `<span class="nid">${n.id}</span><span class="ntype">${n.type}</span> — ${n.label_zh || n.title || ''}`;
+            div.onclick = () => showNode(n.id);
+            out.appendChild(div);
+          }
+        }
+      } catch(e) { out.textContent = 'Error: ' + e.message; }
+    }
+
+    async function loadStats() {
+      const out = document.getElementById('stats-output');
+      if (out.children.length > 0) return;
+      out.innerHTML = spinnerHTML();
+      try {
+        const r = await fetch(BASE + '/stats');
+        const d = await r.json();
+        out.innerHTML = `
+          <div class="stat-item"><div class="stat-label">Total Nodes</div><div class="stat-value">${d.total_nodes}</div></div>
+          <div class="stat-item"><div class="stat-label">Relations</div><div class="stat-value">${d.total_relations}</div></div>
+          <div class="stat-item"><div class="stat-label">Node Types</div><div class="stat-value">${Object.keys(d.by_type||{}).length}</div></div>
+          <div class="stat-item"><div class="stat-label">Anchor Types</div><div class="stat-value">${Object.keys(d.anchor_types||{}).length}</div></div>
+        `;
+      } catch(e) { out.innerHTML = 'Error: ' + e.message; }
+    }
+
+    async function doGraph() {
+      const btn = document.getElementById('btn-graph');
+      const out = document.getElementById('graph-output');
+      const node_id = document.getElementById('graph-id').value.trim();
+      const depth = parseInt(document.getElementById('graph-depth').value) || 2;
+      if (!node_id) return;
+      btn.disabled = true;
+      out.style.display = 'block';
+      out.innerHTML = spinnerHTML();
+      try {
+        const r = await fetch(BASE + '/graph/' + encodeURIComponent(node_id) + '?depth=' + depth);
+        const d = await r.json();
+        out.textContent = r.ok ? JSON.stringify(d, null, 2) : ('Error: ' + JSON.stringify(d));
+      } catch(e) { out.textContent = 'Error: ' + e.message; }
+      btn.disabled = false;
+    }
+
+    async function loadValueTree() {
+      const out = document.getElementById('value-tree-output');
+      if (out.children.length > 0) return;
+      out.innerHTML = spinnerHTML();
+      try {
+        const r = await fetch(BASE + '/value-tree');
+        const d = await r.json();
+        out.innerHTML = '';
+        for (const [vclass, info] of Object.entries(d)) {
+          const section = document.createElement('div');
+          section.style.cssText = 'margin-bottom:1rem';
+          section.innerHTML = `<div style="font-size:1rem;font-weight:700;margin-bottom:0.5rem;color:var(--accent)">${vclass} (${info.label})</div>`;
+          for (const [sub, nodes] of Object.entries(info.subclasses)) {
+            const subDiv = document.createElement('div');
+            subDiv.style.cssText = 'font-size:0.82rem;margin-left:1rem;margin-bottom:0.25rem;color:var(--muted)';
+            const names = nodes.map(n => n.label_zh || n.id).join(' / ') || '(无节点)';
+            subDiv.textContent = sub + ': ' + names;
+            section.appendChild(subDiv);
+          }
+          out.appendChild(section);
+        }
+      } catch(e) { out.textContent = 'Error: ' + e.message; }
+    }
+
+    async function showNode(id) {
+      const out = document.createElement('div');
+      out.className = 'output';
+      out.innerHTML = spinnerHTML();
+      document.querySelector('#panel-list .card').appendChild(out);
+      try {
+        const r = await fetch(BASE + '/show/' + encodeURIComponent(id));
+        const d = await r.json();
+        out.textContent = JSON.stringify(d, null, 2);
+      } catch(e) { out.textContent = 'Error: ' + e.message; }
+    }
+  </script>
+</body>
+</html>

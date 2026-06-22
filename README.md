@@ -52,18 +52,24 @@ axiom-finder/
 │       ├── EVALUATION_RUBRIC.md     # 评估标准
 │       ├── EXAMPLE_T1_NEW_AXIOM.json
 │       └── EXAMPLE_T2_FIVE_COUNTEREXAMPLES.md
-├── axiom-forge                       # CLI shim
-├── requirements.txt                  # httpx + dotenv
-├── .env.example                      # MINIMAX_API_KEY
-├── README.md                         # (本文)
-├── training/structural_consistency/  # 主定理
+├── axiom-forge                       # CLI shim (portable)
+├── web_api.py                        # FastAPI wrapper (8 endpoints + 1 health)
+├── static/index.html                 # dark-theme Web UI
+├── requirements.txt                  # httpx + dotenv (+ fastapi/uvicorn/pydantic for web)
+├── .env.example                      # MINIMAX_API_KEY (template)
+├── README.md                         # (this file)
+├── training/structural_consistency/  # main theorem
 │   ├── AXIOM_SKELETON.md
 │   └── KNOWLEDGE_BASE.md
-├── outputs/                          # 5-agent pipeline 跑通
-└── docs/                             # 过程叙事
-    ├── PROCESS_NARRATIVE.md
-    └── program_design/
-```
+├── outputs/v0.2_shap/                # v0.2 pipeline run artifacts
+│   └── AX-STRUCTURAL-CONSISTENCY-001.md
+├── docs/                             # process narrative
+│   ├── PROCESS_NARRATIVE.md
+│   ├── QUICKSTART_API.md             # 5-min Web API deploy guide
+│   ├── SKILL.md                      # use as OpenAI/Claude/Hermes skill
+│   └── dev_notes/                    # legacy scripts kept for reference
+├── legacy_v0.2_pipeline/             # v0.2 5-agent pipeline (retired, see README inside)
+└── deploy/                           # Tencent Cloud SSH key (excluded from git)
 
 ---
 

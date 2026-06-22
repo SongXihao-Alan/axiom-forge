@@ -323,7 +323,7 @@ Mavis(AI 协作者):
 
 ### 6.4 5-Agent Pipeline(可运行)
 
-`axiom_v02/` 13 个 .py——文献加载 → 扰动采样 → 价值评估 → 协作起草 → 后果预测 → 备忘录 + 完整性审计/重写。
+`legacy_v0.2_pipeline/` 13 个 .py (formerly `axiom_v02/`, renamed June 2026 for clarity)——文献加载 → 扰动采样 → 价值评估 → 协作起草 → 后果预测 → 备忘录 + 完整性审计/重写。
 
 ### 6.5 4 个 Seed JSON
 

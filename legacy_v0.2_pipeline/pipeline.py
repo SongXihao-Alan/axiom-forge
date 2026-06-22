@@ -166,7 +166,11 @@ def run_one(
             label="axiom_deriver",
         )
     if not new_axiom:
-        from axiom_v02.axiom_deriver import CandidateAxiom
+        # Module path uses digits (legacy_v0.2_pipeline) so static `from ... import` would
+        # trip the parser ("invalid decimal literal"). Use importlib to load by path.
+        import importlib
+        _aderiver = importlib.import_module("legacy_v0.2_pipeline.axiom_deriver")
+        CandidateAxiom = _aderiver.CandidateAxiom
         new_axiom = CandidateAxiom(
             id="AX-FAIL", statement_nl="(axiom deriver failed)",
             formalization="", justification="", user_facing_explanation=""
