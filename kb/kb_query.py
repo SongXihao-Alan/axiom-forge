@@ -564,6 +564,20 @@ def cmd_check_all(args):
     return proc.returncode
 
 
+def cmd_lane_b(args):
+    """Lane B LLM evaluator: 5-dim rubric (clarity/novelty/consistency/grounding/actionability)."""
+    import subprocess
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent
+    cmd = ["python3", str(root / "kb" / "ingest" / "lane_b_evaluator.py")]
+    cmd.extend(args)
+    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=7200)
+    print(proc.stdout)
+    if proc.stderr:
+        print(proc.stderr, file=sys.stderr)
+    return proc.returncode
+
+
 def cmd_proof_status(args):
     """Show Lean proof-checker status for all KB nodes with `formal` field."""
     import subprocess
@@ -600,6 +614,7 @@ def cmd_help(args):
     print("  check <NODE_ID>                   Lean 4 证明验证 (Phase C)")
     print("  check-all                         验证所有 axiom/theorem 节点")
     print("  proof-status                      Lean 4 证明状态报告")
+    print("  lane-b <sub>                      Lane B LLM 评估 (5 维 + Cohen's kappa)")
     print("")
     print("  ── 需要 M3 API key ──")
     print("  ask <question>                    用 M3 读 KB 回答 (RAG)")
@@ -631,6 +646,7 @@ def main():
         "value-tree": cmd_value_tree, "explore": cmd_explore,
         "ask": cmd_ask, "explore-anchor": cmd_explore_anchor, "validate": cmd_validate,
         "check": cmd_check, "check-all": cmd_check_all, "proof-status": cmd_proof_status,
+        "lane-b": cmd_lane_b,
         "help": cmd_help, "-h": cmd_help, "--help": cmd_help,
     }
     fn = cmds.get(cmd)

@@ -1,0 +1,318 @@
+{
+  "version": "1.0",
+  "created": "2026-06-23",
+  "construction_principles": "Each distractor is designed to be plausible-looking (matches the surface form of a real axiom: 'If X then Y', or 'For all agents, ...') but fails on 1-3 specific rubric dimensions. Distractors are grouped by the dimension they primarily fail on. Average score across dims should be ~2.0, vs ~3.5+ for real axioms. They should look like they could pass a regex extractor but fail a careful read.",
+  "failure_modes": {
+    "circular": "Defines the predicate in terms of itself (e.g., 'A good axiom is one that is good').",
+    "restatement": "Faithful paraphrase of a known canonical axiom with no novelty or no attribution.",
+    "vague_gesture": "Uses non-operational words like 'meaningful', 'reasonable', 'fair' without definition.",
+    "premise_mismatch": "Conclusion does not follow from premise, or premise and conclusion target different objects.",
+    "no_source": "Claim with no citation, no anchor, no traceable evidence chain.",
+    "contradictory": "Asserts both p and not-p within the statement itself.",
+    "vacuous": "Quantifier over empty set, or tautology with no empirical content.",
+    "type_mismatch": "Object-level confusion (e.g., acting on f when statement quantifies over agents)."
+  },
+  "tier_distribution_target": "30% easy / 50% medium / 20% hard",
+  "distractors": [
+    {
+      "id": "DIS-001",
+      "nl": "An axiom is good if and only if it satisfies the criteria for being a good axiom.",
+      "formal": "Good(A) ↔ Good(A)",
+      "failure_mode": "circular",
+      "scores": {"clarity": 3, "novelty": 1, "internal_consistency": 1, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.4,
+      "tier": "easy",
+      "justification": "Defines 'good' in terms of itself; no information; trivially true and useless."
+    },
+    {
+      "id": "DIS-002",
+      "nl": "Allocations should be fair in a meaningful and appropriate way.",
+      "formal": "∀ allocations a: Fair(a) [no definition of Fair]",
+      "failure_mode": "vague_gesture",
+      "scores": {"clarity": 1, "novelty": 1, "internal_consistency": 2, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.2,
+      "tier": "easy",
+      "justification": "Empty gesture; 'meaningful' and 'appropriate' are undefined; nothing to test."
+    },
+    {
+      "id": "DIS-003",
+      "nl": "For any mechanism, efficiency is more important than fairness, and fairness is more important than efficiency.",
+      "formal": "[Eff(a) > Fair(a)] ∧ [Fair(a) > Eff(a)]",
+      "failure_mode": "contradictory",
+      "scores": {"clarity": 3, "novelty": 2, "internal_consistency": 1, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.6,
+      "tier": "easy",
+      "justification": "Direct self-contradiction: A > B and B > A cannot both hold."
+    },
+    {
+      "id": "DIS-004",
+      "nl": "Strategy-proofness: Truth-telling is a dominant strategy in all games.",
+      "formal": "∀ games G, ∀ agents i, ∀ strategies s_i: u_i(truth, s_-i) ≥ u_i(s_i, s_-i)",
+      "failure_mode": "type_mismatch",
+      "scores": {"clarity": 3, "novelty": 2, "internal_consistency": 2, "empirical_grounding": 1, "actionability": 2},
+      "overall": 2.0,
+      "tier": "medium",
+      "justification": "Restates SP but quantifies over 'all games'; SP only makes sense in mechanism-design contexts; otherwise vacuously false or trivially true."
+    },
+    {
+      "id": "DIS-005",
+      "nl": "Fairness is important and should be respected.",
+      "formal": "(none)",
+      "failure_mode": "vague_gesture",
+      "scores": {"clarity": 1, "novelty": 1, "internal_consistency": 3, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.4,
+      "tier": "easy",
+      "justification": "Pure slogan; no formal statement; no way to test; nothing novel."
+    },
+    {
+      "id": "DIS-006",
+      "nl": "Every agent should be treated the same as every other agent unless they are different in which case they should be treated differently.",
+      "formal": "[∀ i, j: i ~ j → T(i) = T(j)] ∧ [∀ i, j: i ≁ j → T(i) ≠ T(j)]",
+      "failure_mode": "vague_gesture",
+      "scores": {"clarity": 2, "novelty": 2, "internal_consistency": 3, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.8,
+      "tier": "medium",
+      "justification": "Built on undefined predicates ~ and ≁; reads as a slogan but is operationally empty."
+    },
+    {
+      "id": "DIS-007",
+      "nl": "An attribution is honest if it tells the truth about what features matter.",
+      "formal": "Honest(φ) ↔ [φ tells the truth]",
+      "failure_mode": "circular",
+      "scores": {"clarity": 2, "novelty": 2, "internal_consistency": 1, "empirical_grounding": 1, "actionability": 2},
+      "overall": 1.6,
+      "tier": "medium",
+      "justification": "Honesty defined in terms of 'telling the truth', which is itself undefined; restates a value_anchor as an axiom."
+    },
+    {
+      "id": "DIS-008",
+      "nl": "Axiom (SHAP, rediscovery): Σ_i φ_i = f̂(x).",
+      "formal": "Σ_i φ_i(f̂, x) = f̂(x)",
+      "failure_mode": "restatement",
+      "scores": {"clarity": 5, "novelty": 1, "internal_consistency": 5, "empirical_grounding": 2, "actionability": 5},
+      "overall": 3.6,
+      "tier": "hard",
+      "justification": "This is literally Lundberg-Lee 2017's Local Accuracy / AX-SHAP-EFF, restated without attribution. Clear and testable but not novel."
+    },
+    {
+      "id": "DIS-009",
+      "nl": "If a feature is important then the attribution must reflect that importance.",
+      "formal": "[Importance(i) > 0] → [φ_i ≠ 0]",
+      "failure_mode": "premise_mismatch",
+      "scores": {"clarity": 2, "novelty": 3, "internal_consistency": 2, "empirical_grounding": 1, "actionability": 2},
+      "overall": 2.0,
+      "tier": "hard",
+      "justification": "Vaguely resembles AX-SC-001 (Structural Consistency) but lacks the crucial f vs f̂ distinction; 'importance' is undefined."
+    },
+    {
+      "id": "DIS-010",
+      "nl": "No agent should ever receive less than they deserve.",
+      "formal": "∀ i: alloc_i ≥ Deserve(i)",
+      "failure_mode": "vague_gesture",
+      "scores": {"clarity": 1, "novelty": 1, "internal_consistency": 3, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.4,
+      "tier": "easy",
+      "justification": "Deserve is undefined; reads as ethics slogan, not testable axiom."
+    },
+    {
+      "id": "DIS-011",
+      "nl": "The attribution φ_i must always be greater than zero for every feature and every input.",
+      "formal": "∀ i, ∀ x: φ_i(f̂, x) > 0",
+      "failure_mode": "contradictory",
+      "scores": {"clarity": 4, "novelty": 1, "internal_consistency": 2, "empirical_grounding": 1, "actionability": 3},
+      "overall": 2.2,
+      "tier": "medium",
+      "justification": "Internally inconsistent with AX-SHAP-DUM (Dummy); if f̂ doesn't depend on X_i then φ_i should be 0, not >0."
+    },
+    {
+      "id": "DIS-012",
+      "nl": "For all X and all y, X = y.",
+      "formal": "∀ X, ∀ y: X = y",
+      "failure_mode": "vacuous",
+      "scores": {"clarity": 4, "novelty": 1, "internal_consistency": 1, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.6,
+      "tier": "easy",
+      "justification": "Plainly false; quantifier mismatch (X and y have different types); makes no claim worth testing."
+    },
+    {
+      "id": "DIS-013",
+      "nl": "An axiom is true.",
+      "formal": "True(a)",
+      "failure_mode": "vacuous",
+      "scores": {"clarity": 2, "novelty": 1, "internal_consistency": 3, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.6,
+      "tier": "easy",
+      "justification": "Asserts nothing of substance; no formal structure; no test."
+    },
+    {
+      "id": "DIS-014",
+      "nl": "Allocations should be Pareto efficient, ex-post IC, and individually rational in expectation.",
+      "formal": "PE(a) ∧ ExPostIC(a) ∧ IR_E[a]",
+      "failure_mode": "premise_mismatch",
+      "scores": {"clarity": 4, "novelty": 1, "internal_consistency": 3, "empirical_grounding": 1, "actionability": 3},
+      "overall": 2.4,
+      "tier": "medium",
+      "justification": "Conjunction of standard properties with no source; ok in isolation, but as a single 'axiom' it conflates a list with a claim; not novel."
+    },
+    {
+      "id": "DIS-015",
+      "nl": "We hold these truths to be self-evident.",
+      "formal": "(none)",
+      "failure_mode": "no_source",
+      "scores": {"clarity": 2, "novelty": 1, "internal_consistency": 3, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.6,
+      "tier": "easy",
+      "justification": "Declaration of independence excerpt; not an axiom; no formal content; not testable."
+    },
+    {
+      "id": "DIS-016",
+      "nl": "An axiom should be useful because it is an axiom.",
+      "formal": "Useful(a) ↔ IsAxiom(a)",
+      "failure_mode": "circular",
+      "scores": {"clarity": 3, "novelty": 1, "internal_consistency": 1, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.4,
+      "tier": "easy",
+      "justification": "Defines 'useful' in terms of being an axiom; circular."
+    },
+    {
+      "id": "DIS-017",
+      "nl": "All axioms are equivalent.",
+      "formal": "∀ a, a': a ≡ a'",
+      "failure_mode": "vacuous",
+      "scores": {"clarity": 3, "novelty": 1, "internal_consistency": 1, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.4,
+      "tier": "easy",
+      "justification": "Universally false (Shapley axioms are not equivalent); no source; no test."
+    },
+    {
+      "id": "DIS-018",
+      "nl": "Feature attributions should match the underlying data structure.",
+      "formal": "φ(f̂, x) = f(x)",
+      "failure_mode": "premise_mismatch",
+      "scores": {"clarity": 2, "novelty": 2, "internal_consistency": 2, "empirical_grounding": 1, "actionability": 2},
+      "overall": 1.8,
+      "tier": "medium",
+      "justification": "Vaguely gestures at SC but writes φ = f (which is dimensionally wrong; attribution is per-feature, not the function)."
+    },
+    {
+      "id": "DIS-019",
+      "nl": "An axiom is justified if a reasonable person would agree with it.",
+      "formal": "Justified(a) ↔ ∃ reasonable person p: Agree(p, a)",
+      "failure_mode": "vague_gesture",
+      "scores": {"clarity": 2, "novelty": 1, "internal_consistency": 2, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.4,
+      "tier": "easy",
+      "justification": "Defers to undefined 'reasonable person' standard; no source; not testable."
+    },
+    {
+      "id": "DIS-020",
+      "nl": "If a Shapley value satisfies efficiency, then it is the unique Shapley value.",
+      "formal": "Eff(φ) → [φ is the unique Shapley value]",
+      "failure_mode": "restatement",
+      "scores": {"clarity": 3, "novelty": 1, "internal_consistency": 2, "empirical_grounding": 2, "actionability": 2},
+      "overall": 2.0,
+      "tier": "medium",
+      "justification": "Garbled version of TH-SHAP-UNIQ; efficiency alone does not characterize Shapley (you need symmetry + dummy too)."
+    },
+    {
+      "id": "DIS-021",
+      "nl": "The fair allocation is the one that all parties accept.",
+      "formal": "Fair(a*) ↔ ∀ i: Accept(i, a*)",
+      "failure_mode": "vague_gesture",
+      "scores": {"clarity": 2, "novelty": 2, "internal_consistency": 3, "empirical_grounding": 1, "actionability": 2},
+      "overall": 2.0,
+      "tier": "medium",
+      "justification": "Defines 'fair' as 'accepted'; circular in mechanism design where you need to convince parties."
+    },
+    {
+      "id": "DIS-022",
+      "nl": "Mechanisms should be incentive compatible.",
+      "formal": "∀ mechanisms M: IC(M)",
+      "failure_mode": "restatement",
+      "scores": {"clarity": 4, "novelty": 1, "internal_consistency": 3, "empirical_grounding": 1, "actionability": 3},
+      "overall": 2.4,
+      "tier": "medium",
+      "justification": "Slogan version of AX-THOMSON-STRPRO without citation; not novel; somewhat testable but lacks definition."
+    },
+    {
+      "id": "DIS-023",
+      "nl": "The best axiom is the one with the most citations.",
+      "formal": "Best(a) = argmax_a Citations(a)",
+      "failure_mode": "no_source",
+      "scores": {"clarity": 3, "novelty": 2, "internal_consistency": 3, "empirical_grounding": 1, "actionability": 2},
+      "overall": 2.2,
+      "tier": "medium",
+      "justification": "Meta-claim about axioms rather than an axiom; confuses popularity with quality; no source."
+    },
+    {
+      "id": "DIS-024",
+      "nl": "If an axiom is in the Lundberg-Lee paper then it is valid.",
+      "formal": "InL17(a) → Valid(a)",
+      "failure_mode": "no_source",
+      "scores": {"clarity": 4, "novelty": 1, "internal_consistency": 2, "empirical_grounding": 2, "actionability": 2},
+      "overall": 2.2,
+      "tier": "medium",
+      "justification": "Appeals to authority rather than argument; no source beyond the paper itself; confuses citation with validity."
+    },
+    {
+      "id": "DIS-025",
+      "nl": "An axiom must be either true or false but never both.",
+      "formal": "[True(a) ∨ False(a)] ∧ ¬[True(a) ∧ False(a)]",
+      "failure_mode": "vacuous",
+      "scores": {"clarity": 4, "novelty": 1, "internal_consistency": 5, "empirical_grounding": 1, "actionability": 2},
+      "overall": 2.6,
+      "tier": "hard",
+      "justification": "Law of excluded middle; true but vacuous; not an axiom of any domain; restatement of classical logic without application."
+    },
+    {
+      "id": "DIS-026",
+      "nl": "Shapley axioms are complete.",
+      "formal": "{Eff, Sym, Dum} is complete",
+      "failure_mode": "no_source",
+      "scores": {"clarity": 2, "novelty": 2, "internal_consistency": 2, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.6,
+      "tier": "medium",
+      "justification": "Unqualified 'complete' — complete in what sense? No reference; contradicts TH-IMP-501 which shows SC creates incompatibility."
+    },
+    {
+      "id": "DIS-027",
+      "nl": "We should add new axioms whenever we feel like it.",
+      "formal": "Add(a) ↔ FeelLikeIt",
+      "failure_mode": "vague_gesture",
+      "scores": {"clarity": 3, "novelty": 1, "internal_consistency": 2, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.6,
+      "tier": "easy",
+      "justification": "Axiom based on mood; anti-rational; not testable."
+    },
+    {
+      "id": "DIS-028",
+      "nl": "Efficiency means nothing if not coupled with justice, and justice means nothing if not coupled with efficiency.",
+      "formal": "[Eff(a) ↔ Just(a)]",
+      "failure_mode": "contradictory",
+      "scores": {"clarity": 2, "novelty": 2, "internal_consistency": 1, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.4,
+      "tier": "easy",
+      "justification": "Asserts biconditional between two unrelated concepts; not even well-formed for evaluation."
+    },
+    {
+      "id": "DIS-029",
+      "nl": "Axioms are statements that axiom-makers make.",
+      "formal": "Axiom(a) ↔ MadeByAxiomMaker(a)",
+      "failure_mode": "circular",
+      "scores": {"clarity": 3, "novelty": 1, "internal_consistency": 1, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.4,
+      "tier": "easy",
+      "justification": "Defines axiom as what axiom-makers make; circular definition; no information."
+    },
+    {
+      "id": "DIS-030",
+      "nl": "An axiom is good if it has the property of goodness.",
+      "formal": "Good(a) ↔ HasProperty(Good, a)",
+      "failure_mode": "circular",
+      "scores": {"clarity": 3, "novelty": 1, "internal_consistency": 1, "empirical_grounding": 1, "actionability": 1},
+      "overall": 1.4,
+      "tier": "easy",
+      "justification": "Defines 'good' in terms of itself via reification; vacuous."
+    }
+  ]
+}

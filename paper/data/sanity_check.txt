@@ -1,0 +1,55 @@
+======================================================================
+GOLD JSON SANITY CHECK (saved)
+======================================================================
+Rubric version : 1.0
+Created        : 2026-06-23
+Total items    : 104
+  Real         : 74  (actual: 74)
+  Distractors  : 30  (actual: 30)
+
+Score distribution per dimension (across ALL items):
+  clarity                    mean=3.72  std=1.04  min=1  max=5
+  novelty                    mean=2.64  std=1.31  min=1  max=5
+  internal_consistency       mean=4.12  std=1.38  min=1  max=5
+  empirical_grounding        mean=2.81  std=1.38  min=1  max=5
+  actionability              mean=3.23  std=1.44  min=1  max=5
+
+Score distribution per dimension (REAL items only):
+  clarity                    mean=4.12  std=0.74  min=2  max=5
+  novelty                    mean=3.16  std=1.16  min=1  max=5
+  internal_consistency       mean=4.89  std=0.31  min=4  max=5
+  empirical_grounding        mean=3.50  std=0.98  min=2  max=5
+  actionability              mean=3.88  std=1.06  min=1  max=5
+
+Score distribution per dimension (DISTRACTOR items only):
+  clarity                    mean=2.73  std=1.01  min=1  max=5
+  novelty                    mean=1.37  std=0.56  min=1  max=3
+  internal_consistency       mean=2.20  std=1.10  min=1  max=5
+  empirical_grounding        mean=1.10  std=0.31  min=1  max=2
+  actionability              mean=1.63  std=0.93  min=1  max=5
+
+Flagged items (all-5 / all-1):
+  (none)
+
+Tier distribution:
+  easy        n= 46  (44.2%)
+  medium      n= 37  (35.6%)
+  hard        n= 21  (20.2%)
+
+Type breakdown:
+  distractor       n=30
+  value_anchor     n=21
+  diktat           n=12
+  literature       n=11
+  theorem          n=10
+  axiom            n=8
+  scenario         n=6
+  tradeoff         n=4
+  assumption       n=2
+
+Overall score distribution (mean across dims):
+  mean=3.30  std=1.11  min=1.20  max=4.80
+  median=3.60
+  Real mean overall   = 3.91
+  Distractor mean     = 1.81
+  Difference          = 2.10

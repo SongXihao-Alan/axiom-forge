@@ -254,40 +254,34 @@ def explore_anchor_m3(anchor_type: str, max_tokens: int = 2000) -> Optional[str]
 
 
 def validate_node_m3(node_id: str, max_tokens: int = 2000) -> Optional[str]:
-    """用 M3 验证 KB 节点质量"""
-    nodes = load_all_nodes()
-    n = nodes.get(node_id)
-    if not n:
-        return None
+    """[DEPRECATED as of 2026-06-23] Use kb/ingest/lane_b_evaluator.py instead.
+
+    This 4-dim / 5-tier Chinese-language scoring is superseded by Lane B's
+    5-dim rubric (clarity / novelty / internal_consistency /
+    empirical_grounding / actionability) with English-language justifications
+    and Cohen's-kappa calibration against paper/data/gold.json.
+
+    Kept for backward compatibility (web_api POST /validate, axiom-forge
+    validate CLI). Internally now delegates to Lane B evaluator.
+
+    Run the new evaluator:
+        python kb/ingest/lane_b_evaluator.py evaluate <node_id>
+        python kb/ingest/lane_b_evaluator.py scale 2000
+        python kb/ingest/lane_b_evaluator.py report
+    """
+    # Delegate to Lane B evaluator
     try:
-        client = M3Client(model="MiniMax-M3", temperature=0.2)
-    except KeyError:
-        return None
-    # 节点完整 JSON
-    node_text = json.dumps(n, ensure_ascii=False, indent=2)
-    system = (
-        "你是 Axiom Forge 的 KB 质量评估助手。"
-        "请评估 1 个 KB 节点的 **质量**, 从 4 维:"
-        "1. **形式正确性**: formal/nl 是否清晰, 是否自洽"
-        "2. **锚合理性**: 3 锚 (empirical/philosophical/community) 是否合理, 是否过多/过少"
-        "3. **引用准确性**: source.citations 是否段级精确, 有无错配"
-        "4. **KB 一致性**: 跟其他节点的 depends_on / parent_child 关系是否合理"
-        "给出 **5 档评分**: 优秀 (>=90) / 良好 (>=75) / 中等 (>=60) / 待改进 (>=40) / 失败 (<40)"
-        "并具体指出改进建议。"
-    )
-    user = (
-        f"## 节点 (id={node_id}):\n\n```json\n{node_text}\n```\n\n"
-        f"## 评估:"
-    )
-    try:
-        raw = client.chat(
-            messages=[{"role": "system", "content": system}, {"role": "user", "content": user}],
-            json_mode=False,
-            max_tokens=max_tokens,
+        import subprocess
+        from pathlib import Path
+        root = Path(__file__).resolve().parent.parent.parent
+        proc = subprocess.run(
+            ["python3", str(root / "kb" / "ingest" / "lane_b_evaluator.py"),
+             "evaluate", node_id],
+            capture_output=True, text=True, timeout=120,
         )
-        return re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
+        return proc.stdout.strip() or f"ERROR: {proc.stderr[:200]}"
     except Exception as e:
-        return f"ERROR: {e}"
+        return f"ERROR: lane_b_evaluator delegation failed: {e}"
 
 
 def check_api_key() -> bool:
