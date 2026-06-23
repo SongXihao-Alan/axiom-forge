@@ -530,6 +530,55 @@ def cmd_validate(args):
     return 0
 
 
+def cmd_check(args):
+    """Lean 4 proof-checker: verify a KB node's `formal` field compiles."""
+    if not args:
+        print("用法: axiom-forge check <NODE_ID>")
+        print("  或: axiom-forge check-all")
+        return 1
+    import subprocess
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent
+    proc = subprocess.run(
+        ["python3", str(root / "kb" / "ingest" / "proof_checker.py"), "check", args[0]],
+        capture_output=True, text=True, timeout=300,
+    )
+    print(proc.stdout)
+    if proc.stderr:
+        print(proc.stderr, file=sys.stderr)
+    return proc.returncode
+
+
+def cmd_check_all(args):
+    """Lean 4 proof-checker: verify ALL axiom/theorem/assumption nodes."""
+    import subprocess
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent
+    proc = subprocess.run(
+        ["python3", str(root / "kb" / "ingest" / "proof_checker.py"), "check-all"],
+        capture_output=True, text=True, timeout=1800,
+    )
+    print(proc.stdout)
+    if proc.stderr:
+        print(proc.stderr, file=sys.stderr)
+    return proc.returncode
+
+
+def cmd_proof_status(args):
+    """Show Lean proof-checker status for all KB nodes with `formal` field."""
+    import subprocess
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent
+    proc = subprocess.run(
+        ["python3", str(root / "kb" / "ingest" / "proof_checker.py"), "status"],
+        capture_output=True, text=True, timeout=30,
+    )
+    print(proc.stdout)
+    if proc.stderr:
+        print(proc.stderr, file=sys.stderr)
+    return proc.returncode
+
+
 def cmd_help(args):
     print("Axiom Forge CLI v2.0 (Phase 1.4 + 1.5 + 2.2 + 2.3)")
     print("=" * 60)
@@ -548,6 +597,9 @@ def cmd_help(args):
     print("  compressed <NODE_ID> [粒度]       多粒度 (full/medium/tiny)")
     print("  value-tree                        价值观谱系图")
     print("  explore --anchor <type>           按锚探索 (无 M3)")
+    print("  check <NODE_ID>                   Lean 4 证明验证 (Phase C)")
+    print("  check-all                         验证所有 axiom/theorem 节点")
+    print("  proof-status                      Lean 4 证明状态报告")
     print("")
     print("  ── 需要 M3 API key ──")
     print("  ask <question>                    用 M3 读 KB 回答 (RAG)")
@@ -578,6 +630,7 @@ def main():
         "anchors-by-type": cmd_anchors_by_type, "compressed": cmd_compressed,
         "value-tree": cmd_value_tree, "explore": cmd_explore,
         "ask": cmd_ask, "explore-anchor": cmd_explore_anchor, "validate": cmd_validate,
+        "check": cmd_check, "check-all": cmd_check_all, "proof-status": cmd_proof_status,
         "help": cmd_help, "-h": cmd_help, "--help": cmd_help,
     }
     fn = cmds.get(cmd)

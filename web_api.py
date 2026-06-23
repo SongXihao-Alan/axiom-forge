@@ -263,6 +263,75 @@ def health():
     return {"status": "ok"}
 
 
+# ── POST /verify — Lean 4 proof-checker (Phase C) ───────────────
+class VerifyRequest(BaseModel):
+    node_id: Optional[str] = None  # check a KB node
+    lean_code: Optional[str] = None  # or check a free-form Lean snippet
+
+
+@app.post("/verify")
+def verify(req: VerifyRequest):
+    """Run proof-checker on a KB node or free-form Lean code.
+    Delegates to kb/ingest/proof_checker.py. Requires Lean 4 + lake installed."""
+    if not req.node_id and not req.lean_code:
+        raise HTTPException(status_code=400, detail="Provide `node_id` or `lean_code`")
+    if req.node_id:
+        try:
+            import subprocess
+            proc = subprocess.run(
+                ["python3", str(ROOT / "kb" / "ingest" / "proof_checker.py"), "check", req.node_id],
+                capture_output=True, text=True, timeout=300,
+            )
+            return {
+                "node_id": req.node_id,
+                "exit_code": proc.returncode,
+                "stdout": proc.stdout[-2000:],
+                "stderr": proc.stderr[-2000:],
+            }
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"proof_checker failed: {e}")
+    else:
+        # Free-form Lean code: write to temp file, run lake env lean --check
+        try:
+            import tempfile
+            with tempfile.NamedTemporaryFile(mode="w", suffix=".lean", delete=False) as f:
+                f.write(req.lean_code)
+                tmp_path = f.name
+            import subprocess
+            proc = subprocess.run(
+                ["lake", "env", "lean", "--root", str(FORMAL_DIR), tmp_path],
+                capture_output=True, text=True, timeout=120,
+            )
+            return {
+                "lean_code_preview": req.lean_code[:200],
+                "exit_code": proc.returncode,
+                "stdout": proc.stdout[-1000:],
+                "stderr": proc.stderr[-1000:],
+            }
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Lean check failed: {e}")
+
+
+# ── GET /proof-status — proof-checker status report ─────────────
+@app.get("/proof-status")
+def proof_status():
+    """Show Lean proof status for all KB nodes with a `formal` field."""
+    try:
+        import subprocess
+        proc = subprocess.run(
+            ["python3", str(ROOT / "kb" / "ingest" / "proof_checker.py"), "status"],
+            capture_output=True, text=True, timeout=30,
+        )
+        return {"report": proc.stdout, "stderr": proc.stderr[-500:]}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"status failed: {e}")
+
+
+# ── Global ROOT for /verify ─────────────────────────────────────
+ROOT = Path(__file__).resolve().parent
+FORMAL_DIR = ROOT / "formal"
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)

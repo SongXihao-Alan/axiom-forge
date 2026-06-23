@@ -5,8 +5,8 @@
 import AxiomForge.Basic
 import AxiomForge.Shapley
 import AxiomForge.Impossibility
--- Phase D additions (uncomment as we formalize more):
--- import AxiomForge.Thomson
+import AxiomForge.Thomson
+-- Phase E additions (uncomment as we formalize more):
 -- import AxiomForge.ValueAnchors.PoliticalPhilosophy
 -- import AxiomForge.ValueAnchors.VotingTheory
 -- import AxiomForge.ValueAnchors.HistoricalInstitutionalism
