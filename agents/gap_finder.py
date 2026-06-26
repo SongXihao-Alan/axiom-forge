@@ -3,12 +3,27 @@
 职责:在"文献主张"和"现实观察"之间找不一致、未解释、待公理化的候选问题。
 """
 from __future__ import annotations
+import argparse
+import json
+import sys
+from pathlib import Path
 from typing import List
 from pydantic import BaseModel, Field
 
 from .llm import M3Client
 from .literature_agent import PropositionCard
 from .reality_agent import RealityCard
+
+
+PROMPTS_DIR = Path(__file__).parent / "gap_finder_prompts"
+
+
+def load_prompt(version: str = "v1") -> str:
+    """Load system prompt from prompts directory."""
+    prompt_file = PROMPTS_DIR / f"{version}.md"
+    if not prompt_file.exists():
+        raise FileNotFoundError(f"Prompt file not found: {prompt_file}")
+    return prompt_file.read_text(encoding="utf-8")
 
 
 class Gap(BaseModel):
@@ -25,23 +40,7 @@ class Gap(BaseModel):
     )
     confidence: float = Field(0.5, ge=0.0, le=1.0, description="对该 gap 真实存在的置信度")
     testable: bool = Field(False, description="是否可被经验/数据证伪")
-
-
-SYSTEM = """你是一位站在"现有经济学公理体系边界"上的批判性研究者。
-任务:在给定的文献命题与现实观察之间,**找出可被研究的问题(gap)**。
-什么样的 gap 是有价值的:
-1. 文献命题的某个**隐含假设**在现实中不成立;
-2. 现实观察**与定理结论不一致**,且现有文献没有给出合理解释;
-3. 多个文献命题之间存在**前提冲突**,需要一个新的、更弱的公理去统一;
-4. 现有定理的**适用范围**与现实差距太大,需要新增公理来缩小这一差距。
-
-约束:
-- 每个 gap 必须给出 evidence_chain(把命题 id 和观察 id 串起来),不允许凭空捏造。
-- missing_axiom 必须是"可被形式化"的——不是哲学口号,是一个能用数学/逻辑语言表达的新假设。
-- candidate_formalization 可以粗糙,但要写出来;写不出就空,但 confidence 标低。
-- confidence 0~1,testable 必须明确真假。
-- 表述精炼:question 不超过 25 词,missing_axiom 不超过 30 词。
-- 严格输出 JSON,不要额外文字。"""
+    prompt_version: str = Field("v1", description="使用的prompt版本")
 
 
 def gap_finder(
@@ -50,6 +49,7 @@ def gap_finder(
     cards: List[PropositionCard],
     obs: List[RealityCard],
     n_gaps: int = 5,
+    prompt_version: str = "v1",
 ) -> List[Gap]:
     """分轮拉取 gap,每轮 2 个。"""
     lit_dump = "\n".join(
@@ -98,14 +98,17 @@ def gap_finder(
   ]
 }}
 """
-        data = client.chat_json(SYSTEM, user, max_tokens=4000)
+        system_prompt = load_prompt(prompt_version)
+        data = client.chat_json(system_prompt, user, max_tokens=4000)
         gaps_raw = data.get("gaps", []) if isinstance(data, dict) else []
         if not gaps_raw and isinstance(data, dict) and "_raw" in data:
             print(f"      [warn] Gap round {round_idx} 失败,raw 长度={len(data['_raw'])}")
             continue
         for g in gaps_raw:
             try:
-                all_gaps.append(Gap(**g))
+                gap = Gap(**g)
+                gap.prompt_version = prompt_version
+                all_gaps.append(gap)
             except Exception:
                 all_gaps.append(
                     Gap(
@@ -116,8 +119,44 @@ def gap_finder(
                         candidate_formalization=g.get("candidate_formalization", ""),
                         confidence=float(g.get("confidence", 0.5) or 0.5),
                         testable=bool(g.get("testable", False)),
+                        prompt_version=prompt_version,
                     )
                 )
             if len(all_gaps) >= n_gaps:
                 break
     return all_gaps[:n_gaps]
+
+
+# ── CLI ─────────────────────────────────────────────────────────────────
+def main() -> int:
+    p = argparse.ArgumentParser(description="Gap Finder Agent")
+    p.add_argument("--domain", required=True, help="Research domain")
+    p.add_argument("--cards", required=True, help="JSON file with PropositionCards")
+    p.add_argument("--obs", required=True, help="JSON file with RealityCards")
+    p.add_argument("--out", default="gaps.json", help="Output file for gaps")
+    p.add_argument("--n-gaps", type=int, default=5, help="Number of gaps to find")
+    p.add_argument(
+        "--prompt-version",
+        default="v1",
+        choices=["v1", "v2"],
+        help="Prompt version to use (default: v1)",
+    )
+    args = p.parse_args()
+
+    cards_data = json.loads(Path(args.cards).read_text(encoding="utf-8"))
+    obs_data = json.loads(Path(args.obs).read_text(encoding="utf-8"))
+
+    cards = [PropositionCard(**c) for c in cards_data]
+    obs = [RealityCard(**o) for o in obs_data]
+
+    client = M3Client()
+    gaps = gap_finder(client, args.domain, cards, obs, args.n_gaps, args.prompt_version)
+
+    gaps_out = [g.model_dump(mode="json") for g in gaps]
+    Path(args.out).write_text(json.dumps(gaps_out, ensure_ascii=False, indent=2), encoding="utf-8")
+    print(f"Wrote {len(gaps_out)} gaps to {args.out}", file=sys.stderr)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
