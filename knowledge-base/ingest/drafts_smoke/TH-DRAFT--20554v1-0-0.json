@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--20554v1-0-0",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "the superiority of G2Rec over existing methods",
+  "linage_in": [
+    "LIT-ARXIV-2606-20554v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-20554v1",
+    "extracted_from": "LIT-ARXIV-2606-20554v1 abstract"
+  }
+}

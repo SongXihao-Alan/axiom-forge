@@ -1,0 +1,2424 @@
+{
+  "version": "1.0",
+  "domains": [
+    "cooperative_game_theory",
+    "mechanism_design",
+    "social_choice",
+    "fair_division",
+    "feature_attribution",
+    "information_economics",
+    "matching_markets"
+  ],
+  "seeds": [
+    {
+      "id": "Shapley_\u2014_A_Value_for_n-Person_1953",
+      "name": "Shapley \u2014 A Value for n-Person Games",
+      "year": 1953,
+      "venue": "Annals of Math",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Shapley_\u2014_Stochastic_Games_1988",
+      "name": "Shapley \u2014 Stochastic Games",
+      "year": 1988,
+      "venue": "Annals of Math",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Shapley_\u2014_cores_of_simple_game_1971",
+      "name": "Shapley \u2014 cores of simple games",
+      "year": 1971,
+      "venue": "Annals of Math",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Shapley_\u2014_Market_Games_1964",
+      "name": "Shapley \u2014 Market Games",
+      "year": 1964,
+      "venue": "Annals of Math",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Shapley_\u2014_equilibrium_in_mixed_1969",
+      "name": "Shapley \u2014 equilibrium in mixed strategies",
+      "year": 1969,
+      "venue": "Annals of Math",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Shapley_\u2014_Shapley_Value_and_th_1973",
+      "name": "Shapley \u2014 Shapley Value and the Core",
+      "year": 1973,
+      "venue": "Annals of Math",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aumann_\u2014_NTU_Games_1961",
+      "name": "Aumann \u2014 NTU Games",
+      "year": 1961,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aumann_\u2014_Markets_with_Communic_1964",
+      "name": "Aumann \u2014 Markets with Communication",
+      "year": 1964,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aumann_\u2014_Values_of_Non-Atomic__1975",
+      "name": "Aumann \u2014 Values of Non-Atomic Games",
+      "year": 1975,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aumann_\u2014_Verification_of_Stoch_1985",
+      "name": "Aumann \u2014 Verification of Stochastic Game Theory",
+      "year": 1985,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aumann_\u2014_Cooperative_Game_Theo_2000",
+      "name": "Aumann \u2014 Cooperative Game Theory",
+      "year": 2000,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Myerson_\u2014_Graphs_and_Cooperati_1977",
+      "name": "Myerson \u2014 Graphs and Cooperation in Games",
+      "year": 1977,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Myerson_\u2014_Game_Theory_Analysis_1986",
+      "name": "Myerson \u2014 Game Theory Analysis of Cooperation",
+      "year": 1986,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Myerson_\u2014_Potential_Weighted__1991",
+      "name": "Myerson \u2014 Potential, Weighted Values",
+      "year": 1991,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Myerson_\u2014_Game_Theory_and_Econ_1997",
+      "name": "Myerson \u2014 Game Theory and Economic Modelling",
+      "year": 1997,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Schmeidler_\u2014_Nucleolus_of_a_Ga_1969",
+      "name": "Schmeidler \u2014 Nucleolus of a Game",
+      "year": 1969,
+      "venue": "SIAM J. Appl. Math",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Schmeidler_\u2014_Nucleolus_and_Ker_1974",
+      "name": "Schmeidler \u2014 Nucleolus and Kernel",
+      "year": 1974,
+      "venue": "Math. Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Schmeidler_\u2014_Kernel_of_Special_1980",
+      "name": "Schmeidler \u2014 Kernel of Special Games",
+      "year": 1980,
+      "venue": "Int. J. Game Theory",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Schmeidler_\u2014_Shapley_Kernel_1990",
+      "name": "Schmeidler \u2014 Shapley Kernel",
+      "year": 1990,
+      "venue": "Games and Econ. Behavior",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Schmeidler_\u2014_Nucleolus_and_Fam_2012",
+      "name": "Schmeidler \u2014 Nucleolus and Family",
+      "year": 2012,
+      "venue": "Math. Social Sciences",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Young_\u2014_Monotonic_Cost_Allocat_1985",
+      "name": "Young \u2014 Monotonic Cost Allocation",
+      "year": 1985,
+      "venue": "Math. Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Young_\u2014_Cost_Sharing_1994",
+      "name": "Young \u2014 Cost Sharing",
+      "year": 1994,
+      "venue": "Math. Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Young_\u2014_Axiomatization_of_the__1988",
+      "name": "Young \u2014 Axiomatization of the Nucleolus",
+      "year": 1988,
+      "venue": "Math. Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Young_\u2014_On_the_Number_of_Membe_2005",
+      "name": "Young \u2014 On the Number of Members of the Nucleolus",
+      "year": 2005,
+      "venue": "Math. Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Maschler_\u2014_Raiffa_Solution_1979",
+      "name": "Maschler \u2014 Raiffa Solution",
+      "year": 1979,
+      "venue": "Int. J. Game Theory",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Maschler_\u2014_The_Bargaining_Set__1992",
+      "name": "Maschler \u2014 The Bargaining Set and the Kernel",
+      "year": 1992,
+      "venue": "Int. J. Game Theory",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Maschler_\u2014_Equal_Splitting_2004",
+      "name": "Maschler \u2014 Equal Splitting",
+      "year": 2004,
+      "venue": "Int. J. Game Theory",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Peleg_\u2014_Bargaining_and_the_NTU_1963",
+      "name": "Peleg \u2014 Bargaining and the NTU Shapley Value",
+      "year": 1963,
+      "venue": "Int. Game Theory Rev.",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Peleg_\u2014_Introduction_to_the_Th_1986",
+      "name": "Peleg \u2014 Introduction to the Theory of Cooperative Games",
+      "year": 1986,
+      "venue": "Int. Game Theory Rev.",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Peleg_\u2014_Game_Theoretic_Analysi_2007",
+      "name": "Peleg \u2014 Game Theoretic Analysis of a Bankruptcy Problem",
+      "year": 2007,
+      "venue": "Int. Game Theory Rev.",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Owen_\u2014_Multilinear_Extensions__1972",
+      "name": "Owen \u2014 Multilinear Extensions and Values",
+      "year": 1972,
+      "venue": "J. Optimization Theory & Appl.",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Owen_\u2014_Values_of_Games_with_Gr_1975",
+      "name": "Owen \u2014 Values of Games with Graph Structures",
+      "year": 1975,
+      "venue": "J. Optimization Theory & Appl.",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Owen_\u2014_Game_Theory_1982",
+      "name": "Owen \u2014 Game Theory",
+      "year": 1982,
+      "venue": "J. Optimization Theory & Appl.",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Harsanyi_\u2014_Bargaining_in_NTU_G_1977",
+      "name": "Harsanyi \u2014 Bargaining in NTU Games",
+      "year": 1977,
+      "venue": "SIAM J. Appl. Math",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Harsanyi_\u2014_Bargaining_in_Coope_1963",
+      "name": "Harsanyi \u2014 Bargaining in Cooperative Games",
+      "year": 1963,
+      "venue": "SIAM J. Appl. Math",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Hart_\u2014_Potential_Prenucleolus_1989",
+      "name": "Hart \u2014 Potential, Prenucleolus, and Anticore",
+      "year": 1989,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Hart_\u2014_Bargaining_and_Value_1990",
+      "name": "Hart \u2014 Bargaining and Value",
+      "year": 1990,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Hart_\u2014_A_Model_of_Pure_Arbitra_1992",
+      "name": "Hart \u2014 A Model of Pure Arbitration",
+      "year": 1992,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Hart_\u2014_Continuous_Renegotiatio_2010",
+      "name": "Hart \u2014 Continuous Renegotiation",
+      "year": 2010,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Gillies_\u2014_Core_Existence_1953",
+      "name": "Gillies \u2014 Core Existence",
+      "year": 1953,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bondareva_\u2014_NTU_Core_1963",
+      "name": "Bondareva \u2014 NTU Core",
+      "year": 1963,
+      "venue": "Vestnik LGU",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Weber_\u2014_Reasonable_Outcomes_1978",
+      "name": "Weber \u2014 Reasonable Outcomes",
+      "year": 1978,
+      "venue": "Annals of Math",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Weber_\u2014_Integral_in_Generalize_1988",
+      "name": "Weber \u2014 Integral in Generalized Aumann",
+      "year": 1988,
+      "venue": "Annals of Math",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Weber_\u2014_Value_Theory_1994",
+      "name": "Weber \u2014 Value Theory",
+      "year": 1994,
+      "venue": "Annals of Math",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Chun_\u2014_No-Core_Nucleolus_1989",
+      "name": "Chun \u2014 No-Core Nucleolus",
+      "year": 1989,
+      "venue": "Int. J. Game Theory",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Chun_\u2014_Compromise_Stable_Match_2001",
+      "name": "Chun \u2014 Compromise Stable Matching",
+      "year": 2001,
+      "venue": "Games and Econ. Behavior",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kaniovski_\u2014_Exact_Bounds_2015",
+      "name": "Kaniovski \u2014 Exact Bounds",
+      "year": 2015,
+      "venue": "Math. Social Sciences",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Monderer_\u2014_Shapley_Mechanism_2002",
+      "name": "Monderer \u2014 Shapley Mechanism",
+      "year": 2002,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Alparslan_\u2014_IT-semi_values_2006",
+      "name": "Alparslan \u2014 IT-semi values",
+      "year": 2006,
+      "venue": "TOP",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Alparslan_\u2014_Fixed_Interval_Gam_2009",
+      "name": "Alparslan \u2014 Fixed Interval Games",
+      "year": 2009,
+      "venue": "TOP",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Alparslan_\u2014_Social_Decision_Sc_2012",
+      "name": "Alparslan \u2014 Social Decision Schemes",
+      "year": 2012,
+      "venue": "TOP",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Driessen_\u2014_Relationships_betwe_1998",
+      "name": "Driessen \u2014 Relationships between Values",
+      "year": 1998,
+      "venue": "Annals of Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Driessen_\u2014_Join-Compact_Games_2011",
+      "name": "Driessen \u2014 Join-Compact Games",
+      "year": 2011,
+      "venue": "Annals of Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Hohib_\u2014_Cooperative_Games_on_N_2015",
+      "name": "Hohib \u2014 Cooperative Games on Networks",
+      "year": 2015,
+      "venue": "Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Skoglund_\u2014_Stochastic_Cooperat_2012",
+      "name": "Skoglund \u2014 Stochastic Cooperative Games",
+      "year": 2012,
+      "venue": "European J. Operational Research",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Marinacci_\u2014_Chaotic_Value_2000",
+      "name": "Marinacci \u2014 Chaotic Value",
+      "year": 2000,
+      "venue": "Math. Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Van_der_Genugten_\u2014_Compensatio_2001",
+      "name": "Van der Genugten \u2014 Compensation Vector",
+      "year": 2001,
+      "venue": "Annals of Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Van_der_Genugten_\u2014_Reliability_1990",
+      "name": "Van der Genugten \u2014 Reliability Games",
+      "year": 1990,
+      "venue": "Annals of Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Myerson_\u2014_Incentive_Compatibil_1979",
+      "name": "Myerson \u2014 Incentive Compatibility",
+      "year": 1979,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Myerson_\u2014_Optimal_Auction_Desi_1981",
+      "name": "Myerson \u2014 Optimal Auction Design",
+      "year": 1981,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Myerson_\u2014_Bounding_Optimal_Rev_1988",
+      "name": "Myerson \u2014 Bounding Optimal Revenue",
+      "year": 1988,
+      "venue": "J. Math. Economics",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Myerson_\u2014_Communication_Protoc_1994",
+      "name": "Myerson \u2014 Communication Protocols",
+      "year": 1994,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Myerson_\u2014_Functional_Analysis_1995",
+      "name": "Myerson \u2014 Functional Analysis",
+      "year": 1995,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Hurwicz_\u2014_Design_of_Economic_M_1960",
+      "name": "Hurwicz \u2014 Design of Economic Mechanisms",
+      "year": 1960,
+      "venue": "Rev. Econ. Studies",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Hurwicz_\u2014_Designing_Economic_M_2008",
+      "name": "Hurwicz \u2014 Designing Economic Mechanisms",
+      "year": 2008,
+      "venue": "Rev. Econ. Studies",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Milgrom_\u2014_Information_and_Cont_1979",
+      "name": "Milgrom \u2014 Information and Control",
+      "year": 1979,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Milgrom_\u2014_Auction_Theory_1982",
+      "name": "Milgrom \u2014 Auction Theory",
+      "year": 1982,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Milgrom_\u2014_Rational_Expectation_1990",
+      "name": "Milgrom \u2014 Rational Expectations and Economic Analysis",
+      "year": 1990,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Milgrom_\u2014_OR_Forum:_What_is_Au_1997",
+      "name": "Milgrom \u2014 OR Forum: What is Auction Theory?",
+      "year": 1997,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Milgrom_\u2014_Putting_Auction_Theo_2012",
+      "name": "Milgrom \u2014 Putting Auction Theory to Work",
+      "year": 2012,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Ausubel_\u2014_Generic_Efficiency_i_2006",
+      "name": "Ausubel \u2014 Generic Efficiency in Auction Markets",
+      "year": 2006,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Ausubel_\u2014_Nonlinear_Pricing_2012",
+      "name": "Ausubel \u2014 Nonlinear Pricing",
+      "year": 2012,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Ausubel_\u2014_Efficiency_in_Auctio_2004",
+      "name": "Ausubel \u2014 Efficiency in Auction Markets",
+      "year": 2004,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Cremer-McLean_\u2014_Full_Extractio_1988",
+      "name": "Cremer-McLean \u2014 Full Extraction of Surplus",
+      "year": 1988,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Cremer-McLean_\u2014_Any_Mechanism__1991",
+      "name": "Cremer-McLean \u2014 Any Mechanism is Almost Dominant",
+      "year": 1991,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Cremer-McLean_\u2014_Arbitration_Me_1995",
+      "name": "Cremer-McLean \u2014 Arbitration Mechanisms",
+      "year": 1995,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bergemann-Morris_\u2014_Robust_Mech_2005",
+      "name": "Bergemann-Morris \u2014 Robust Mechanism Design",
+      "year": 2005,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bergemann-Morris_\u2014_Ex_Post_Imp_2006",
+      "name": "Bergemann-Morris \u2014 Ex Post Implementation",
+      "year": 2006,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bergemann-Morris_\u2014_Mechanism_D_2008",
+      "name": "Bergemann-Morris \u2014 Mechanism Design with Incomplete Knowledge",
+      "year": 2008,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bergemann-Morris_\u2014_Robust_Impl_2010",
+      "name": "Bergemann-Morris \u2014 Robust Implementation",
+      "year": 2010,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bergemann-Morris_\u2014_Information_2011",
+      "name": "Bergemann-Morris \u2014 Informational Intermediation",
+      "year": 2011,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bergemann-Morris_\u2014_Rev._Mechan_2015",
+      "name": "Bergemann-Morris \u2014 Rev. Mechanism Design and Belief",
+      "year": 2015,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Roth_\u2014_NRMP_Mechanism_1982",
+      "name": "Roth \u2014 NRMP Mechanism",
+      "year": 1982,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Roth_\u2014_The_College_Admissions__1984",
+      "name": "Roth \u2014 The College Admissions Problem",
+      "year": 1984,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Roth_\u2014_The_Economist_as_Engine_1985",
+      "name": "Roth \u2014 The Economist as Engineer",
+      "year": 1985,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Roth_\u2014_Deferred_Acceptance_Alg_2008",
+      "name": "Roth \u2014 Deferred Acceptance Algorithm",
+      "year": 2008,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Mathews_\u2014_Mechanism_Design_wit_2010",
+      "name": "Mathews \u2014 Mechanism Design without Money",
+      "year": 2010,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Mathews_\u2014_Simple_Mechanisms_2019",
+      "name": "Mathews \u2014 Simple Mechanisms",
+      "year": 2019,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Mathews_\u2014_Mechanism_Design_wit_2021",
+      "name": "Mathews \u2014 Mechanism Design with Present-Biased",
+      "year": 2021,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Mathews_\u2014_Mechanism_Design_for_2023",
+      "name": "Mathews \u2014 Mechanism Design for Societal Decisions",
+      "year": 2023,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Che_\u2014_Multidimensional_Screeni_1997",
+      "name": "Che \u2014 Multidimensional Screening",
+      "year": 1997,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Armstrong_\u2014_Multidimensional_M_1996",
+      "name": "Armstrong \u2014 Multidimensional Mechanism Design",
+      "year": 1996,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bikhchandani_\u2014_Single-Peakedne_1986",
+      "name": "Bikhchandani \u2014 Single-Peakedness",
+      "year": 1986,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bikhchandani_\u2014_Mechanism_Desig_2006",
+      "name": "Bikhchandani \u2014 Mechanism Design",
+      "year": 2006,
+      "venue": "J. Econ. Literature",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Miltersen_\u2014_Prize_Budgeting_2003",
+      "name": "Miltersen \u2014 Prize Budgeting",
+      "year": 2003,
+      "venue": "Games and Econ. Behavior",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Miltersen_\u2014_Procurement_with_C_2005",
+      "name": "Miltersen \u2014 Procurement with Competition",
+      "year": 2005,
+      "venue": "Games and Econ. Behavior",
+      "domain": "mechanism_design",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Miltersen_\u2014_Uncanny_Valley_2011",
+      "name": "Miltersen \u2014 Uncanny Valley",
+      "year": 2011,
+      "venue": "Games and Econ. Behavior",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Dekel_\u2014_Mechanism_Design_with__2006",
+      "name": "Dekel \u2014 Mechanism Design with 2 Agents",
+      "year": 2006,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Dekel_\u2014_Mechanism_Design_with__2009",
+      "name": "Dekel \u2014 Mechanism Design with Language",
+      "year": 2009,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Goeree_\u2014_Efficient_Mechanisms_2010",
+      "name": "Goeree \u2014 Efficient Mechanisms",
+      "year": 2010,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Goeree_\u2014_No-Envy_Allocation_Ru_2011",
+      "name": "Goeree \u2014 No-Envy Allocation Rules",
+      "year": 2011,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Goeree_\u2014_Sequential_Mechanisms_2012",
+      "name": "Goeree \u2014 Sequential Mechanisms",
+      "year": 2012,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Mookherjee_\u2014_Mechanism_Design__2021",
+      "name": "Mookherjee \u2014 Mechanism Design with Single Agent",
+      "year": 2021,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Nisan_\u2014_Introduction_to_Mechan_2007",
+      "name": "Nisan \u2014 Introduction to Mechanism Design",
+      "year": 2007,
+      "venue": "Cambridge Univ Press",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Hartline_\u2014_Near-Optimal_Auctio_2015",
+      "name": "Hartline \u2014 Near-Optimal Auctions",
+      "year": 2015,
+      "venue": "ACM SIGECOM",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Alaei_\u2014_Bayesian_Auctions_2013",
+      "name": "Alaei \u2014 Bayesian Auctions",
+      "year": 2013,
+      "venue": "SIAM J. Computing",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Gonczarowski_\u2014_Bounded_Rationa_2018",
+      "name": "Gonczarowski \u2014 Bounded Rationality in Mechanism Design",
+      "year": 2018,
+      "venue": "EC",
+      "domain": "mechanism_design",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Sandomirska_\u2014_Mechanism_Design_2014",
+      "name": "Sandomirska \u2014 Mechanism Design with Money",
+      "year": 2014,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Arrow_\u2014_A_Difficulty_in_the_Co_1950",
+      "name": "Arrow \u2014 A Difficulty in the Concept of Social Welfare",
+      "year": 1950,
+      "venue": "J. Political Economy",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Arrow_\u2014_Social_Welfare_Functio_1963",
+      "name": "Arrow \u2014 Social Welfare Function",
+      "year": 1963,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Arrow_\u2014_General_Possibility_Th_1972",
+      "name": "Arrow \u2014 General Possibility Theorem",
+      "year": 1972,
+      "venue": "North-Holland",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Gibbard-Satterthwaite_\u2014_Strate_1973",
+      "name": "Gibbard-Satterthwaite \u2014 Strategyproof Social Choice",
+      "year": 1973,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Gibbard-Satterthwaite_\u2014_Strate_1975",
+      "name": "Gibbard-Satterthwaite \u2014 Strategyproofness in Restricted Domains",
+      "year": 1975,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Gibbard-Satterthwaite_\u2014_Manipu_1977",
+      "name": "Gibbard-Satterthwaite \u2014 Manipulation of Voting Schemes",
+      "year": 1977,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Gibbard-Satterthwaite_\u2014_Strate_1983",
+      "name": "Gibbard-Satterthwaite \u2014 Strategyproofness and Voters' Surprises",
+      "year": 1983,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Maskin_\u2014_Nash_Implementation_1977",
+      "name": "Maskin \u2014 Nash Implementation",
+      "year": 1977,
+      "venue": "Rev. Econ. Studies",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Maskin_\u2014_Implementability_1999",
+      "name": "Maskin \u2014 Implementability",
+      "year": 1999,
+      "venue": "American Econ. Rev.",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_Strategyproof_Mechani_1980",
+      "name": "Moulin \u2014 Strategyproof Mechanisms",
+      "year": 1980,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_Approximate_VS_Exact__1981",
+      "name": "Moulin \u2014 Approximate VS Exact Equality",
+      "year": 1981,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_The_Strategy_Security_1983",
+      "name": "Moulin \u2014 The Strategy Security of Voting",
+      "year": 1983,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_Bribery_in_Voter_Equi_1988",
+      "name": "Moulin \u2014 Bribery in Voter Equilibrium",
+      "year": 1988,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_Priority_Rules_and_Ot_1990",
+      "name": "Moulin \u2014 Priority Rules and Other Procedures",
+      "year": 1990,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_Social_Choice_with_De_1994",
+      "name": "Moulin \u2014 Social Choice with Dense Ordering",
+      "year": 1994,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_Wardop_Environments_1996",
+      "name": "Moulin \u2014 Wardop Environments",
+      "year": 1996,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_One-Dimensional_Mecha_2003",
+      "name": "Moulin \u2014 One-Dimensional Mechanisms",
+      "year": 2003,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_Public_Decisions_2008",
+      "name": "Moulin \u2014 Public Decisions",
+      "year": 2008,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_Fair_Division_and_Pub_2011",
+      "name": "Moulin \u2014 Fair Division and Public Decisions",
+      "year": 2011,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Nash_\u2014_Bargaining_Problem_1950",
+      "name": "Nash \u2014 Bargaining Problem",
+      "year": 1950,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Nash_\u2014_Two-Person_Bargaining_1953",
+      "name": "Nash \u2014 Two-Person Bargaining",
+      "year": 1953,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kalai_\u2014_Proportional_Solutions_1977",
+      "name": "Kalai \u2014 Proportional Solutions",
+      "year": 1977,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kalai_\u2014_Other_Solutions_to_NTU_1979",
+      "name": "Kalai \u2014 Other Solutions to NTU Bargaining",
+      "year": 1979,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kalai_\u2014_Solutions_to_the_Barga_1985",
+      "name": "Kalai \u2014 Solutions to the Bargaining Problem",
+      "year": 1985,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kalai-Smorodinsky_\u2014_Bargaining_1975",
+      "name": "Kalai-Smorodinsky \u2014 Bargaining Individual Rationality",
+      "year": 1975,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Nash_Solution_and_it_1981",
+      "name": "Thomson \u2014 Nash Solution and its Properties",
+      "year": 1981,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Axiomatic_Bargaining_1981",
+      "name": "Thomson \u2014 Axiomatic Bargaining",
+      "year": 1981,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_No-Envy_and_Equity_1990",
+      "name": "Thomson \u2014 No-Envy and Equity",
+      "year": 1990,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Consistent_Solutions_1995",
+      "name": "Thomson \u2014 Consistent Solutions",
+      "year": 1995,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Honeywell-Meerpun_2001",
+      "name": "Thomson \u2014 Honeywell-Meerpun",
+      "year": 2001,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Axiomatic_Theory_of__2003",
+      "name": "Thomson \u2014 Axiomatic Theory of Fair Division",
+      "year": 2003,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Bargaining_and_Group_2010",
+      "name": "Thomson \u2014 Bargaining and Group Decision",
+      "year": 2010,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Fair_Division_2011",
+      "name": "Thomson \u2014 Fair Division",
+      "year": 2011,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Axiomatic_Theory_of__2015",
+      "name": "Thomson \u2014 Axiomatic Theory of Bargaining",
+      "year": 2015,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Theory_of_Fair_Divis_2023",
+      "name": "Thomson \u2014 Theory of Fair Division (book)",
+      "year": 2023,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Zhou_\u2014_No-No_Show_Paradox_1990",
+      "name": "Zhou \u2014 No-No Show Paradox",
+      "year": 1990,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Zhou_\u2014_Impossibility_of_Strate_1991",
+      "name": "Zhou \u2014 Impossibility of Strategyproofness",
+      "year": 1991,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Saari_\u2014_Susceptible_Choice_1990",
+      "name": "Saari \u2014 Susceptible Choice",
+      "year": 1990,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Saari_\u2014_Geometry_of_Voting_1994",
+      "name": "Saari \u2014 Geometry of Voting",
+      "year": 1994,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Saari_\u2014_Participatory_Budgetin_1995",
+      "name": "Saari \u2014 Participatory Budgeting",
+      "year": 1995,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Saari_\u2014_Exponential_Mechanism_2001",
+      "name": "Saari \u2014 Exponential Mechanism",
+      "year": 2001,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Saari_\u2014_Disposing_Dictators_2008",
+      "name": "Saari \u2014 Disposing Dictators",
+      "year": 2008,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Fishburn_\u2014_Paradoxes_of_Voting_1972",
+      "name": "Fishburn \u2014 Paradoxes of Voting",
+      "year": 1972,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Fishburn_\u2014_Acyclic_Preferences_1982",
+      "name": "Fishburn \u2014 Acyclic Preferences",
+      "year": 1982,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Fishburn_\u2014_Intersections_of_So_1987",
+      "name": "Fishburn \u2014 Intersections of Social Choice",
+      "year": 1987,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Fishburn_\u2014_Decision_with_Multi_1996",
+      "name": "Fishburn \u2014 Decision with Multiple Attributes",
+      "year": 1996,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Barbera_\u2014_Attaining_Paretian_E_1976",
+      "name": "Barbera \u2014 Attaining Paretian Efficiency",
+      "year": 1976,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Barbera_\u2014_Single-Peaked_Prefer_1980",
+      "name": "Barbera \u2014 Single-Peaked Preferences",
+      "year": 1980,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Barbera_\u2014_Arrovian_Efficiency_2001",
+      "name": "Barbera \u2014 Arrovian Efficiency",
+      "year": 2001,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Barbera_\u2014_Mechanism_Design_wit_2006",
+      "name": "Barbera \u2014 Mechanism Design with Bounded Rationality",
+      "year": 2006,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Barbera_\u2014_Mechanism_Design_wit_2021",
+      "name": "Barbera \u2014 Mechanism Design with Voluntary Participation",
+      "year": 2021,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Benoit_\u2014_Partially_Honest_Nash_2000",
+      "name": "Benoit \u2014 Partially Honest Nash Implementation",
+      "year": 2000,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Benoit_\u2014_Gibbard-Satterthwaite_2002",
+      "name": "Benoit \u2014 Gibbard-Satterthwaite with Any Number of Agents",
+      "year": 2002,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Pivato_\u2014_Variable_Population_E_2013",
+      "name": "Pivato \u2014 Variable Population Ethics",
+      "year": 2013,
+      "venue": "Rev. Econ. Design",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "McGarvey_\u2014_Condorcet_Effects_1953",
+      "name": "McGarvey \u2014 Condorcet Effects",
+      "year": 1953,
+      "venue": "J.\u7edf\u7b79 Econ.",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Young_\u2014_Extending_Fishburns_T_1974",
+      "name": "Young \u2014 Extending Fishburn's Theorem",
+      "year": 1974,
+      "venue": "J.\u7edf\u7b79 Econ.",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Young_\u2014_Priority_Methods_for_C_1988",
+      "name": "Young \u2014 Priority Methods for Collective Decisions",
+      "year": 1988,
+      "venue": "J. Political Economy",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Nitzan_\u2014_Collective_Decision_M_2010",
+      "name": "Nitzan \u2014 Collective Decision Making",
+      "year": 2010,
+      "venue": "Cambridge Univ Press",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Elkind_\u2014_Justified_Representat_2017",
+      "name": "Elkind \u2014 Justified Representation",
+      "year": 2017,
+      "venue": "EC",
+      "domain": "social_choice",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Elkind_\u2014_Proportionality_in_Co_2017",
+      "name": "Elkind \u2014 Proportionality in Committee Elections",
+      "year": 2017,
+      "venue": "EC",
+      "domain": "social_choice",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Elkind_\u2014_Fraudulent_Democracy_2020",
+      "name": "Elkind \u2014 Fraudulent Democracy",
+      "year": 2020,
+      "venue": "EC",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Steinhaus_\u2014_Cake_Cutting_1948",
+      "name": "Steinhaus \u2014 Cake Cutting",
+      "year": 1948,
+      "venue": "Ann. Society",
+      "domain": "fair_division",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Steinhaus_\u2014_Banach_Tarski_1949",
+      "name": "Steinhaus \u2014 Banach Tarski",
+      "year": 1949,
+      "venue": "R Soc. Can.",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Stromquist_\u2014_Three-Party_Envy-_1980",
+      "name": "Stromquist \u2014 Three-Party Envy-Free Cutting",
+      "year": 1980,
+      "venue": "American Math. Monthly",
+      "domain": "fair_division",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Stromquist_\u2014_How_to_Cut_a_Cake_1985",
+      "name": "Stromquist \u2014 How to Cut a Cake Fairly",
+      "year": 1985,
+      "venue": "American Math. Monthly",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Stromquist_\u2014_Maximum_Number_of_2010",
+      "name": "Stromquist \u2014 Maximum Number of Cuts",
+      "year": 2010,
+      "venue": "American Math. Monthly",
+      "domain": "fair_division",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Robertson-Webb_\u2014_Query_Complex_1998",
+      "name": "Robertson-Webb \u2014 Query Complexity",
+      "year": 1998,
+      "venue": "SIAM J. Discrete Math",
+      "domain": "fair_division",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aziz-Mackenzie_\u2014_Discrete_Cake_2017",
+      "name": "Aziz-Mackenzie \u2014 Discrete Cake Cutting",
+      "year": 2017,
+      "venue": "ACM SIGecom",
+      "domain": "fair_division",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aziz-Mackenzie_\u2014_No-Fault_Equi_2019",
+      "name": "Aziz-Mackenzie \u2014 No-Fault Equitable Tearing",
+      "year": 2019,
+      "venue": "ACM SIGecom",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Branzei_\u2014_Affordable_Cake_Cutt_2015",
+      "name": "Branzei \u2014 Affordable Cake Cutting",
+      "year": 2015,
+      "venue": "SIAM J. Control & Optimization",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Branzei_\u2014_Ex_Envy-Free_Allocat_2016",
+      "name": "Branzei \u2014 Ex Envy-Free Allocation",
+      "year": 2016,
+      "venue": "SIAM J. Control & Optimization",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Branzei_\u2014_EFX_Exists_2017",
+      "name": "Branzei \u2014 EFX Exists",
+      "year": 2017,
+      "venue": "SIAM J. Control & Optimization",
+      "domain": "fair_division",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Branzei_\u2014_Competitive_Equilibr_2021",
+      "name": "Branzei \u2014 Competitive Equilibria",
+      "year": 2021,
+      "venue": "SIAM J. Control & Optimization",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Branzei_\u2014_Truthful_Fair_Divisi_2022",
+      "name": "Branzei \u2014 Truthful Fair Division",
+      "year": 2022,
+      "venue": "SIAM J. Control & Optimization",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Segal-Halpern_\u2014_Demand_Adjusta_2022",
+      "name": "Segal-Halpern \u2014 Demand Adjustable Equitable",
+      "year": 2022,
+      "venue": "J. Econ. Theory",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Feldman-Kim_\u2014_Simpler_EFX_2023",
+      "name": "Feldman-Kim \u2014 Simpler EFX",
+      "year": 2023,
+      "venue": "EC",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Chakraborty_\u2014_Any_Envy-Free_Al_2019",
+      "name": "Chakraborty \u2014 Any Envy-Free Allocation",
+      "year": 2019,
+      "venue": "EC",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Schmidt-Kim_\u2014_EFX_for_4_Agents_2021",
+      "name": "Schmidt-Kim \u2014 EFX for 4 Agents",
+      "year": 2021,
+      "venue": "WINE",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Su_\u2014_Fractional_Matching_1999",
+      "name": "Su \u2014 Fractional Matching",
+      "year": 1999,
+      "venue": "Random Structures and Algorithms",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kojima_\u2014_Recent_Results_Mechan_2015",
+      "name": "Kojima \u2014 Recent Results Mechanism Design",
+      "year": 2015,
+      "venue": "Springer",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bouveret_\u2014_Fair_Division_with__2008",
+      "name": "Bouveret \u2014 Fair Division with Indivisible Goods",
+      "year": 2008,
+      "venue": "Handbook of Social Choice",
+      "domain": "fair_division",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bouveret_\u2014_EFX_Upper_Bound_2017",
+      "name": "Bouveret \u2014 EFX Upper Bound",
+      "year": 2017,
+      "venue": "Math. Operations Research",
+      "domain": "fair_division",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Lesca_\u2014_Minimal_Envy-Free_Allo_2010",
+      "name": "Lesca \u2014 Minimal Envy-Free Allocation",
+      "year": 2010,
+      "venue": "Artificial Intelligence",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Berliant_\u2014_Utility_Function_on_1992",
+      "name": "Berliant \u2014 Utility Function on Money",
+      "year": 1992,
+      "venue": "J. Econ. Theory",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Klimentova_\u2014_Fair_Allocation_w_2020",
+      "name": "Klimentova \u2014 Fair Allocation with Applications",
+      "year": 2020,
+      "venue": "European J. Operational Research",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Shapley-Scarsini_\u2014_Housing_Mar_1973",
+      "name": "Shapley-Scarsini \u2014 Housing Market",
+      "year": 1973,
+      "venue": "Econometrica",
+      "domain": "fair_division",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Ma_\u2014_Strategyproofness_1994",
+      "name": "Ma \u2014 Strategyproofness",
+      "year": 1994,
+      "venue": "Rev. Econ. Design",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Abdulkadiroglu_\u2014_Random_Serial_2003",
+      "name": "Abdulkadiroglu \u2014 Random Serial Dictatorship",
+      "year": 2003,
+      "venue": "American Econ. Rev.",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Klaus_\u2014_Resource_Allocation_2010",
+      "name": "Klaus \u2014 Resource Allocation",
+      "year": 2010,
+      "venue": "Springer",
+      "domain": "fair_division",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Shapley_\u2014_Notes_on_n-Person_Ga_1971",
+      "name": "Shapley \u2014 Notes on n-Person Games II",
+      "year": 1971,
+      "venue": "Ann. Math",
+      "domain": "feature_attribution",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Shapley_\u2014_Stochastic_Games_1953",
+      "name": "Shapley \u2014 Stochastic Games",
+      "year": 1953,
+      "venue": "PNAS",
+      "domain": "feature_attribution",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Lundberg-Lee_\u2014_SHAP_Unified_Ap_2017",
+      "name": "Lundberg-Lee \u2014 SHAP Unified Approach",
+      "year": 2017,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 1,
+      "arxiv": "1705.07874",
+      "notes": ""
+    },
+    {
+      "id": "Sundararajan_\u2014_Anchored_SHAP_2019",
+      "name": "Sundararajan \u2014 Anchored SHAP",
+      "year": 2019,
+      "venue": "arXiv",
+      "domain": "feature_attribution",
+      "priority": 1,
+      "arxiv": "arXiv:1911.06837",
+      "notes": ""
+    },
+    {
+      "id": "Sundararajan_\u2014_Consistent_Feat_2020",
+      "name": "Sundararajan \u2014 Consistent Feature Attribution",
+      "year": 2020,
+      "venue": "arXiv",
+      "domain": "feature_attribution",
+      "priority": 1,
+      "arxiv": "arXiv:1911.06837",
+      "notes": ""
+    },
+    {
+      "id": "Sundararajan_\u2014_SHAP_Values_fro_2020",
+      "name": "Sundararajan \u2014 SHAP Values from Multiple Perspectives",
+      "year": 2020,
+      "venue": "J. ML",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Heskes_\u2014_Causal_Shapley_Value_2020",
+      "name": "Heskes \u2014 Causal Shapley Value",
+      "year": 2020,
+      "venue": "arXiv",
+      "domain": "feature_attribution",
+      "priority": 1,
+      "arxiv": "arXiv:2004.13234",
+      "notes": ""
+    },
+    {
+      "id": "Heskes_\u2014_What_does_SHAP_Value?_2021",
+      "name": "Heskes \u2014 What does SHAP Value?",
+      "year": 2021,
+      "venue": "arXiv",
+      "domain": "feature_attribution",
+      "priority": 1,
+      "arxiv": "arXiv:2106.10860",
+      "notes": ""
+    },
+    {
+      "id": "Heskes_\u2014_Causal_Shapley_Values_2024",
+      "name": "Heskes \u2014 Causal Shapley Values",
+      "year": 2024,
+      "venue": "arXiv",
+      "domain": "feature_attribution",
+      "priority": 1,
+      "arxiv": "arXiv:2402.00730",
+      "notes": ""
+    },
+    {
+      "id": "Chen_\u2014_1912.10059_2018",
+      "name": "Chen \u2014 1912.10059",
+      "year": 2018,
+      "venue": "arXiv:1912.10059",
+      "domain": "feature_attribution",
+      "priority": 1,
+      "arxiv": "1912.10059",
+      "notes": ""
+    },
+    {
+      "id": "Jethani_\u2014_SHAP_and_KernelSHAP_2022",
+      "name": "Jethani \u2014 SHAP and KernelSHAP",
+      "year": 2022,
+      "venue": "J. Machine Learning Research",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": "2110.14655",
+      "notes": ""
+    },
+    {
+      "id": "Dtubert_\u2014_KernelSHAP_2021",
+      "name": "Dtubert \u2014 KernelSHAP",
+      "year": 2021,
+      "venue": "J. ML Research",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aas_\u2014_SHAP_Interaction_Values_2021",
+      "name": "Aas \u2014 SHAP Interaction Values",
+      "year": 2021,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": "2105.13239",
+      "notes": ""
+    },
+    {
+      "id": "Grabisch_\u2014_Interaction_Index_1999",
+      "name": "Grabisch \u2014 Interaction Index",
+      "year": 1999,
+      "venue": "European J. Operational Research",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Grabisch_\u2014_Random_Key_Framewor_2008",
+      "name": "Grabisch \u2014 Random Key Framework",
+      "year": 2008,
+      "venue": "Int. J. Approximate Reasoning",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Fatras_\u2014_SHAP_Interaction_Valu_2020",
+      "name": "Fatras \u2014 SHAP Interaction Values",
+      "year": 2020,
+      "venue": "AISTATS",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": "2003.10067",
+      "notes": ""
+    },
+    {
+      "id": "Ancona_\u2014_Gradient_vs_Attributi_2019",
+      "name": "Ancona \u2014 Gradient vs Attribution",
+      "year": 2019,
+      "venue": "ICML",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": "1905.00731",
+      "notes": ""
+    },
+    {
+      "id": "Covert_\u2014_Understanding_SHAP_2020",
+      "name": "Covert \u2014 Understanding SHAP",
+      "year": 2020,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": "2011.01677",
+      "notes": ""
+    },
+    {
+      "id": "Zhao_\u2014_ExpectedSHAP_2020",
+      "name": "Zhao \u2014 ExpectedSHAP",
+      "year": 2020,
+      "venue": "ICML",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": "2006.06559",
+      "notes": ""
+    },
+    {
+      "id": "Jia_\u2014_SHAP-T_2020",
+      "name": "Jia \u2014 SHAP-T",
+      "year": 2020,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": "2010.08418",
+      "notes": ""
+    },
+    {
+      "id": "Loh_\u2014_Consistent_Feature_Attri_2022",
+      "name": "Loh \u2014 Consistent Feature Attribution",
+      "year": 2022,
+      "venue": "J. Amer. Stat. Assoc.",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kwon_\u2014_Group_SHAP_2020",
+      "name": "Kwon \u2014 Group SHAP",
+      "year": 2020,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 2,
+      "arxiv": "2011.09791",
+      "notes": ""
+    },
+    {
+      "id": "Jaimungal_\u2014_SHAP_in_Finance_2021",
+      "name": "Jaimungal \u2014 SHAP in Finance",
+      "year": 2021,
+      "venue": "Quantitative Finance",
+      "domain": "feature_attribution",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Market_for_Lemons_1970",
+      "name": "Market for Lemons",
+      "year": 1970,
+      "venue": "Q. J. Economics",
+      "domain": "information_economics",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Signaling_1973",
+      "name": "Signaling",
+      "year": 1973,
+      "venue": "Bell J. Economics",
+      "domain": "information_economics",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Information_Economics_1975",
+      "name": "Information Economics",
+      "year": 1975,
+      "venue": "American Econ. Rev.",
+      "domain": "information_economics",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bilateral_Trading_1983",
+      "name": "Bilateral Trading",
+      "year": 1983,
+      "venue": "J. Econ. Theory",
+      "domain": "information_economics",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Full_Surplus_Extraction_1988",
+      "name": "Full Surplus Extraction",
+      "year": 1988,
+      "venue": "Econometrica",
+      "domain": "information_economics",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Any_Mechanism_1991",
+      "name": "Any Mechanism",
+      "year": 1991,
+      "venue": "Econometrica",
+      "domain": "information_economics",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Communication_1994",
+      "name": "Communication",
+      "year": 1994,
+      "venue": "American Econ. Rev.",
+      "domain": "information_economics",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Acquisition_and_Disclosure_1996",
+      "name": "Acquisition and Disclosure",
+      "year": 1996,
+      "venue": "J. Econ. Theory",
+      "domain": "information_economics",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Informational_Intermediation_2000",
+      "name": "Informational Intermediation",
+      "year": 2000,
+      "venue": "Rev. Econ. Studies",
+      "domain": "information_economics",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Mechanism_Design_with_Informat_2015",
+      "name": "Mechanism Design with Information",
+      "year": 2015,
+      "venue": "Handbook of Econ. Instruments",
+      "domain": "information_economics",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "College_Admissions_Stability_1962",
+      "name": "College Admissions Stability",
+      "year": 1962,
+      "venue": "American Math. Monthly",
+      "domain": "matching_markets",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "House_Allocation_1974",
+      "name": "House Allocation",
+      "year": 1974,
+      "venue": "J. Combinatorial Theory",
+      "domain": "matching_markets",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "NRMP_Mechanism_1982",
+      "name": "NRMP Mechanism",
+      "year": 1982,
+      "venue": "American Econ. Rev.",
+      "domain": "matching_markets",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Deferred_Acceptance_1984",
+      "name": "Deferred Acceptance",
+      "year": 1984,
+      "venue": "American Econ. Rev.",
+      "domain": "matching_markets",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Stable_Marriage_Problem_1991",
+      "name": "Stable Marriage Problem",
+      "year": 1991,
+      "venue": "SIAM Rev.",
+      "domain": "matching_markets",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Gale-Shapley_Algorithm_2002",
+      "name": "Gale-Shapley Algorithm",
+      "year": 2002,
+      "venue": "American Math. Monthly",
+      "domain": "matching_markets",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kidney_Exchange_2005",
+      "name": "Kidney Exchange",
+      "year": 2005,
+      "venue": "American Econ. Rev.",
+      "domain": "matching_markets",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Matching_Networks_2012",
+      "name": "Matching Networks",
+      "year": 2012,
+      "venue": "American Econ. Rev.",
+      "domain": "matching_markets",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Mechanism_Design_with_Matching_2019",
+      "name": "Mechanism Design with Matching",
+      "year": 2019,
+      "venue": "Handbook of Game Theory",
+      "domain": "matching_markets",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Matching_in_Large_Markets_2020",
+      "name": "Matching in Large Markets",
+      "year": 2020,
+      "venue": "American Econ. Rev.",
+      "domain": "matching_markets",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Market_Design_and_AI_2023",
+      "name": "Market Design and AI",
+      "year": 2023,
+      "venue": "Science",
+      "domain": "matching_markets",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    }
+  ]
+}

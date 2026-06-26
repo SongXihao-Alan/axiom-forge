@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--20544v1-0-1",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "it improves the accuracy-calibration tradeoff both on average and on difficult subsets of the data, across model classes, prediction tasks, and distribution shifts",
+  "linage_in": [
+    "LIT-ARXIV-2606-20544v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-20544v1",
+    "extracted_from": "LIT-ARXIV-2606-20544v1 abstract"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--18089v1-0-0",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "RL can extract atomic modules from compound traces supplied by SFT and recombine them to solve new configurations",
+  "linage_in": [
+    "LIT-ARXIV-2606-18089v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-18089v1",
+    "extracted_from": "LIT-ARXIV-2606-18089v1 abstract"
+  }
+}

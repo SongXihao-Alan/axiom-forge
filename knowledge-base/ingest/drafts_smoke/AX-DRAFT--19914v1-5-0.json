@@ -1,0 +1,20 @@
+{
+  "id": "AX-DRAFT--19914v1-5-0",
+  "type": "axiom",
+  "status": "draft",
+  "label": "Co-policy",
+  "kind_hint": "framework",
+  "linage_in": [
+    "LIT-ARXIV-2606-19914v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-19914v1",
+    "extracted_from": "LIT-ARXIV-2606-19914v1 abstract"
+  }
+}

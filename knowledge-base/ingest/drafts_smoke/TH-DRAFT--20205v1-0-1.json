@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--20205v1-0-1",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "the apparent psychological profiles of LLMs are artifacts of the instrument used to measure them, not properties of the models themselves",
+  "linage_in": [
+    "LIT-ARXIV-2606-20205v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-20205v1",
+    "extracted_from": "LIT-ARXIV-2606-20205v1 abstract"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--20438v1-0-0",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "this accurate and transparent framework is a practical tool for automated sperm analysis in fertility clinics",
+  "linage_in": [
+    "LIT-ARXIV-2606-20438v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-20438v1",
+    "extracted_from": "LIT-ARXIV-2606-20438v1 abstract"
+  }
+}

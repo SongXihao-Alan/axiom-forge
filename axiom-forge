@@ -1,4 +1,35 @@
 #!/bin/bash
 # Auto-detect project root (directory where this script lives)
 cd "$(dirname "$0")"
-python3 kb/kb_query.py "$@"
+
+case "$1" in
+lane-b)
+  shift
+  python3 -m kb.ingest.lane_b_evaluator "$@"
+  ;;
+lane-c)
+  shift
+  python3 knowledge-base/kb_query.py lane-c "$@"
+  ;;
+feedback)
+  python3 knowledge-base/kb_query.py feedback "$@"
+  ;;
+compare-versions)
+  python3 knowledge-base/kb_query.py compare-versions "$@"
+  ;;
+help|--help|-h)
+  echo "Usage: axiom-forge <command> [args]"
+  echo ""
+  echo "Commands:"
+  echo "  lane-b            Run Lane B evaluator"
+  echo "  lane-c            Run Lane C query"
+  echo "  feedback          Run feedback query"
+  echo "  compare-versions  Compare versions"
+  echo ""
+  echo "Legacy (default):"
+  echo "  <args>            Pass through to kb_query.py"
+  ;;
+*)
+  python3 knowledge-base/kb_query.py "$@"
+  ;;
+esac

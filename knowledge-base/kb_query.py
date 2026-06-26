@@ -15,6 +15,9 @@ Axiom Forge CLI v2.0 (Phase 1.4 + 1.5 + 2.2 + 2.3 完整版)
   compressed <NODE_ID> [粒度]       多粒度压缩 (full/medium/tiny)
   value-tree                        价值观谱系图
   explore [--anchor TYPE]           按锚探索节点
+  lane-c / lc                       Lane C 校准统计
+  feedback                          显示 lane_c_feedback.json
+  compare-versions                  对比 v1/v2/v3 结果
   help                              帮助
 """
 import sys
@@ -578,6 +581,117 @@ def cmd_lane_b(args):
     return proc.returncode
 
 
+def cmd_lane_c(args):
+    """Lane C calibration stats: Cohen's kappa, MAE, tier accuracy, distractor rejection, Bland-Altman."""
+    import subprocess
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent
+    cmd = ["python3", str(root / "paper" / "data" / "lane_c_stats.py")]
+    cmd.extend(args)
+    proc = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+    print(proc.stdout)
+    if proc.stderr:
+        print(proc.stderr, file=sys.stderr)
+    return proc.returncode
+
+
+def cmd_feedback(args):
+    """Display the latest lane_c_feedback.json in human-readable format."""
+    import json
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent
+    feedback_path = root / "paper" / "results" / "lane_c_feedback.json"
+    if not feedback_path.exists():
+        print(f"ERROR: {feedback_path} not found. Run 'axiom-forge lane-c' first.")
+        return 1
+    data = json.loads(feedback_path.read_text(encoding="utf-8"))
+    if not data:
+        print("No feedback items (all predictions agree with gold within tolerance).")
+        return 0
+    print(f"Lane C Feedback ({len(data)} items with diverging predictions)")
+    print("=" * 60)
+    real_items = [d for d in data if not d.get("is_distractor")]
+    distractor_items = [d for d in data if d.get("is_distractor")]
+    if real_items:
+        print(f"\nReal items ({len(real_items)}):")
+        for item in real_items:
+            print(f"\n  [{item['id']}] tier={item.get('tier')}")
+            for issue in item.get("issues", []):
+                if issue["type"] == "dim_mismatch":
+                    print(f"    - {issue['dim']}: LLM={issue['llm_score']}, Gold={issue['gold_score']} (diff={issue['diff']})")
+                elif issue["type"] == "tier_mismatch":
+                    print(f"    - tier: LLM={issue['llm_tier']}, Gold={issue['gold_tier']}")
+    if distractor_items:
+        print(f"\nDistractors ({len(distractor_items)}):")
+        for item in distractor_items:
+            print(f"\n  [{item['id']}]")
+            for issue in item.get("issues", []):
+                if issue["type"] == "dim_mismatch":
+                    print(f"    - {issue['dim']}: LLM={issue['llm_score']}, Gold={issue['gold_score']} (diff={issue['diff']})")
+                elif issue["type"] == "tier_mismatch":
+                    print(f"    - tier: LLM={issue['llm_tier']}, Gold={issue['gold_tier']}")
+    return 0
+
+
+def cmd_compare_versions(args):
+    """Run lane_c_stats.py for v1, v2, v3 and print a comparison table."""
+    import subprocess
+    from pathlib import Path
+    root = Path(__file__).resolve().parent.parent
+    results_dir = root / "paper" / "results"
+    versions = ["v1", "v2", "v3"]
+    all_results = {}
+    for v in versions:
+        out_json = results_dir / f"lane_c_stats_{v}.json"
+        out_md = results_dir / f"lane_c_report_{v}.md"
+        out_feedback = results_dir / f"lane_c_feedback_{v}.json"
+        pred_path = results_dir / f"lane_b_predictions_{v}.json"
+        gold_path = root / "paper" / "data" / "gold.json"
+        cmd = [
+            "python3", str(root / "paper" / "data" / "lane_c_stats.py"),
+            "--predictions", str(pred_path),
+            "--gold", str(gold_path),
+            "--prompt-version", v,
+            "--out-json", str(out_json),
+            "--out-md", str(out_md),
+            "--out-feedback", str(out_feedback),
+        ]
+        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+        if proc.returncode != 0:
+            print(f"Error running v{v}:")
+            print(proc.stdout)
+            print(proc.stderr)
+            continue
+        import json
+        if out_json.exists():
+            all_results[v] = json.loads(out_json.read_text(encoding="utf-8"))
+    # Print comparison table
+    print("\nLane C Version Comparison")
+    print("=" * 80)
+    header = f"{'Version':<8} {'Macro QWK':<12} {'Tier Acc':<10} {'MAE (avg)':<12}"
+    dims = ["clarity", "novelty", "internal_consistency", "empirical_grounding", "actionability"]
+    for d in dims:
+        header += f" {d[:10]:<12}"
+    print(header)
+    print("-" * 80)
+    for v in versions:
+        if v not in all_results:
+            print(f"{v:<8} {'N/A':<12} {'N/A':<10} {'N/A':<12}")
+            continue
+        r = all_results[v]
+        macro_qwk = r.get("per_dim_stats", {}).get("__macro_qwk", "N/A")
+        tier_acc = r.get("tier_accuracy", {}).get("accuracy", "N/A")
+        mae_vals = [r.get("per_dim_stats", {}).get(d, {}).get("mae") for d in dims]
+        mae_avg = sum(v for v in mae_vals if v is not None) / len([v for v in mae_vals if v is not None]) if mae_vals else "N/A"
+        row = f"{v:<8} {str(macro_qwk):<12} {str(tier_acc):<10} {str(round(mae_avg, 4) if isinstance(mae_avg, float) else mae_avg):<12}"
+        for d in dims:
+            qwk = r.get("per_dim_stats", {}).get(d, {}).get("qwk", "N/A")
+            row += f" {str(qwk):<12}"
+        print(row)
+    print("=" * 80)
+    return 0
+
+
 def cmd_proof_status(args):
     """Show Lean proof-checker status for all KB nodes with `formal` field."""
     import subprocess
@@ -615,6 +729,9 @@ def cmd_help(args):
     print("  check-all                         验证所有 axiom/theorem 节点")
     print("  proof-status                      Lean 4 证明状态报告")
     print("  lane-b <sub>                      Lane B LLM 评估 (5 维 + Cohen's kappa)")
+    print("  lane-c [opts] / lc [opts]         Lane C 校准统计 (Cohen's kappa + MAE)")
+    print("  feedback                          显示 lane_c_feedback.json (人可读)")
+    print("  compare-versions                  对比 v1/v2/v3 的 Lane C 结果")
     print("")
     print("  ── 需要 M3 API key ──")
     print("  ask <question>                    用 M3 读 KB 回答 (RAG)")
@@ -630,6 +747,9 @@ def cmd_help(args):
     print('  axiom-forge anchors AX-SC-001')
     print('  axiom-forge compressed AX-SC-001 tiny')
     print('  axiom-forge value-tree')
+    print('  axiom-forge lane-c --prompt-version v2')
+    print('  axiom-forge feedback')
+    print('  axiom-forge compare-versions')
     return 0
 
 
@@ -646,7 +766,8 @@ def main():
         "value-tree": cmd_value_tree, "explore": cmd_explore,
         "ask": cmd_ask, "explore-anchor": cmd_explore_anchor, "validate": cmd_validate,
         "check": cmd_check, "check-all": cmd_check_all, "proof-status": cmd_proof_status,
-        "lane-b": cmd_lane_b,
+        "lane-b": cmd_lane_b, "lc": cmd_lane_c, "lane-c": cmd_lane_c,
+        "feedback": cmd_feedback, "compare-versions": cmd_compare_versions,
         "help": cmd_help, "-h": cmd_help, "--help": cmd_help,
     }
     fn = cmds.get(cmd)

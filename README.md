@@ -32,7 +32,7 @@
 
 ```
 axiom-finder/
-├── kb/                              # 知识库 (核心)
+├── knowledge-base/                   # 知识库 (核心)
 │   ├── SCHEMA.md                    # 8 类节点 + 6 类关系 + 3 粒度
 │   ├── kb_query.py                  # CLI 主体 (8 命令)
 │   ├── kb_llm.py                    # M3 桥 (RAG)
@@ -156,7 +156,7 @@ philosophical (哲学)       kantian_ethics / utilitarianism / rawls / libertari
 
 ## 🔄 复现 / 贡献
 
-`kb/REPRODUCTION/` 有 3 个任务(提新 axiom / 找反例 / 加 value_anchor)+ 评估标准。
+`knowledge-base/REPRODUCTION/` 有 3 个任务(提新 axiom / 找反例 / 加 value_anchor)+ 评估标准。
 
 任何人跑 `axiom-forge` + 写新节点 JSON,都可贡献到 KB。
 

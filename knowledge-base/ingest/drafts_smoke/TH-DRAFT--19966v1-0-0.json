@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--19966v1-0-0",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "VQA-derived semantic features exhibit significantly lower cross-center divergence than pixel-derived features, highlighting their robustness for cross-center clinical applications",
+  "linage_in": [
+    "LIT-ARXIV-2606-19966v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-19966v1",
+    "extracted_from": "LIT-ARXIV-2606-19966v1 abstract"
+  }
+}

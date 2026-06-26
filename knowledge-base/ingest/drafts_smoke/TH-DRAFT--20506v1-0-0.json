@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--20506v1-0-0",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "our model achieves a strong balance among style alignment, content preservation, and leakage suppression",
+  "linage_in": [
+    "LIT-ARXIV-2606-20506v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-20506v1",
+    "extracted_from": "LIT-ARXIV-2606-20506v1 abstract"
+  }
+}

@@ -10,7 +10,7 @@
 | 角色 | 怎么贡献 |
 |---|---|
 | **任何用 CLI 的人** | `axiom-forge list` → 发现缺什么 → 加节点 (见 §3) |
-| **博弈论 / XAI / 哲学研究生** | 完成 `kb/REPRODUCTION/` 里的 T1/T2/T3 任务 |
+| **博弈论 / XAI / 哲学研究生** | 完成 `knowledge-base/REPRODUCTION/` 里的 T1/T2/T3 任务 |
 | **开发者** | 提 issue / PR (CLI 新功能,新命令) |
 | **研究者** | 给 KB 加新文献节点,加新 theorem 节点 |
 
@@ -31,13 +31,13 @@
 ### 2.2 中:加 KB 节点(纯数据)
 
 - 加 1 个 axiom / theorem / literature / value_anchor 节点
-- 格式:参考 `kb/SCHEMA.md` + 已有节点
-- 提 PR,把 JSON 放 `kb/nodes/<type>/<ID>.json`
+- 格式:参考 `knowledge-base/SCHEMA.md` + 已有节点
+- 提 PR,把 JSON 放 `knowledge-base/nodes/<type>/<ID>.json`
 - **需要 review** (因为 3 锚要"完全平等",不能暗示优先级)
 
 ### 2.3 重:加 CLI 命令 / 加 M3 prompt
 
-- 提 PR 到 `kb/kb_query.py` 或 `kb/kb_llm.py`
+- 提 PR 到 `knowledge-base/kb_query.py` 或 `knowledge-base/kb_llm.py`
 - 跑通后必须 `axiom-forge help` 看新命令
 - 写 1 个 demo 在 PR description
 
@@ -60,7 +60,7 @@
 
 ### 3.2 JSON 模板
 
-参考 `kb/SCHEMA.md` + 已有节点。**最简模板**(以 value_anchor 为例):
+参考 `knowledge-base/SCHEMA.md` + 已有节点。**最简模板**(以 value_anchor 为例):
 
 ```json
 {
@@ -112,16 +112,16 @@
 
 ## 4. 复现任务贡献
 
-`kb/REPRODUCTION/` 里有 **3 个任务** (T1/T2/T3) + 评估标准。
+`knowledge-base/REPRODUCTION/` 里有 **3 个任务** (T1/T2/T3) + 评估标准。
 
 任何想跑复现的人:
 1. 选 1 个任务
 2. 按 README.md 步骤做
 3. 提交:任务输出(JSON 或 MD)+ 反思 (200-500 字) + 工具中立性反馈表(5 问题)
-4. 提 PR 到 `kb/REPRODUCTION/contributions/<your-name>/`
+4. 提 PR 到 `knowledge-base/REPRODUCTION/contributions/<your-name>/`
 5. 我们**评估** (不评判对错,只评过程质量)
 
-**详见**:`kb/REPRODUCTION/EVALUATION_RUBRIC.md`
+**详见**:`knowledge-base/REPRODUCTION/EVALUATION_RUBRIC.md`
 
 ---
 
@@ -140,7 +140,7 @@ chmod +x axiom-forge
 
 ### 5.2 加新 CLI 命令
 
-1. 在 `kb/kb_query.py` 加 1 个 `cmd_xxx()` 函数
+1. 在 `knowledge-base/kb_query.py` 加 1 个 `cmd_xxx()` 函数
 2. 在 `cmds` dict 注册
 3. 在 `cmd_help()` 加 help 文本
 4. 跑 `./axiom-forge <新命令>` 验证
@@ -148,8 +148,8 @@ chmod +x axiom-forge
 
 ### 5.3 加新 M3 桥接
 
-1. 在 `kb/kb_llm.py` 加 1 个 `xxx_m3()` 函数
-2. 在 `kb/kb_query.py` 加对应 `cmd_xxx()` 调用它
+1. 在 `knowledge-base/kb_llm.py` 加 1 个 `xxx_m3()` 函数
+2. 在 `knowledge-base/kb_query.py` 加对应 `cmd_xxx()` 调用它
 3. 跑 `./axiom-forge <新命令> "test query"` 验证
 4. 提 PR
 

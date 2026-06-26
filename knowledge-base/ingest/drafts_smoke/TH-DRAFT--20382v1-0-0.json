@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--20382v1-0-0",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "FedMGS consistently outperforms competitive baselines with gains up to 17",
+  "linage_in": [
+    "LIT-ARXIV-2606-20382v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-20382v1",
+    "extracted_from": "LIT-ARXIV-2606-20382v1 abstract"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "AX-DRAFT--20291v1-4-0",
+  "type": "axiom",
+  "status": "draft",
+  "label": "VibrantForests",
+  "kind_hint": "framework",
+  "linage_in": [
+    "LIT-ARXIV-2606-20291v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-20291v1",
+    "extracted_from": "LIT-ARXIV-2606-20291v1 abstract"
+  }
+}

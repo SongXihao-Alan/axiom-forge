@@ -1,0 +1,20 @@
+{
+  "id": "AX-DRAFT--20538v1-1-0",
+  "type": "axiom",
+  "status": "draft",
+  "label": "multi-task in-context learning",
+  "kind_hint": "framework",
+  "linage_in": [
+    "LIT-ARXIV-2606-20538v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-20538v1",
+    "extracted_from": "LIT-ARXIV-2606-20538v1 abstract"
+  }
+}

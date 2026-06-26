@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--20538v1-0-0",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "its practical relevance on a real-world spatiotemporal temperature prediction benchmark",
+  "linage_in": [
+    "LIT-ARXIV-2606-20538v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-20538v1",
+    "extracted_from": "LIT-ARXIV-2606-20538v1 abstract"
+  }
+}

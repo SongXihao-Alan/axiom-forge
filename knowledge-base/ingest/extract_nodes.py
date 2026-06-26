@@ -24,7 +24,19 @@ import urllib.request
 from pathlib import Path
 from typing import Any
 
-ROOT = Path(__file__).resolve().parent.parent
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+from agents.llm import M3Client  # noqa: E402
+
+PROMPTS_DIR = Path(__file__).parent / "extract_prompts"
+
+
+def load_prompt(version: str = "v1") -> str:
+    """Load system prompt for extraction from prompts directory."""
+    prompt_file = PROMPTS_DIR / f"{version}.md"
+    if not prompt_file.exists():
+        raise FileNotFoundError(f"Prompt file not found: {prompt_file}")
+    return prompt_file.read_text(encoding="utf-8")
 
 # ── Rule-based axiom / theorem extraction ──────────────────────────────
 # These heuristics extract candidate axiom/theorem statements from paper
@@ -112,19 +124,30 @@ def _id_for_literature(paper: dict) -> str:
 
 
 def _guess_domain(paper: dict) -> str:
+    """Map paper → primary KB domain. Order matters: more specific first."""
     text = (paper.get("title", "") + " " + paper.get("abstract", "")).lower()
-    if "shap" in text or "shapley" in text or "attribution" in text:
-        return "feature_attribution"
-    if "mechanism design" in text or "strategy-proof" in text:
-        return "mechanism_design"
-    if "voting" in text or "arrow" in text:
-        return "social_choice"
-    if "fair division" in text or "envy-free" in text:
-        return "fair_division"
-    if "moral" in text or "ethical" in text:
-        return "moral"
-    if "philosophical" in text or "kantian" in text or "rawls" in text:
-        return "philosophical"
+    # Most specific first; if nothing matches, fall back to methodology
+    rules = [
+        ("feature_attribution", ["shap", "shapley", "feature attribution",
+                                  "feature importance", "attribution method"]),
+        ("mechanism_design",    ["mechanism design", "strategy-proof",
+                                  "incentive compatibility", "vcg", "gsp"]),
+        ("social_choice",       ["voting", "arrow", "social choice",
+                                  "voting theory", "voting rule"]),
+        ("fair_division",       ["fair division", "envy-free", "envy freeness",
+                                  "cake cutting", "resource allocation"]),
+        ("moral",               ["moral", "ethical", "fairness in ml",
+                                  "algorithmic fairness"]),
+        ("philosophical",       ["kantian", "rawls", "harsanyi", "utilitarian",
+                                  "deontolog", "consequentialist"]),
+        ("history",             ["historical", "institutional history",
+                                  "comparative politics"]),
+        ("math",                ["measure theory", "combinatorics",
+                                  "graph theory", "functional analysis"]),
+    ]
+    for domain, keywords in rules:
+        if any(kw in text for kw in keywords):
+            return domain
     return "methodology"
 
 
@@ -186,20 +209,14 @@ def extract_theorem_drafts(paper: dict) -> list[dict]:
 
 
 # ── M3-powered deep extraction (optional) ──────────────────────────────
-def m3_extract(paper: dict) -> dict:
+def m3_extract(paper: dict, prompt_version: str = "v1") -> dict:
     """Use MINIMAX to extract richer KB nodes from paper abstract."""
     api_key = os.environ.get("MINIMAX_API_KEY")
     if not api_key:
         return {}
     base_url = os.environ.get("MINIMAX_BASE_URL", "https://api.minimaxi.com/v1")
     model = os.environ.get("MINIMAX_MODEL", "MiniMax-M3")
-    system = (
-        "You are a knowledge-base extraction assistant for Axiom Forge. "
-        "Given a paper's title + abstract, extract structured nodes: "
-        "literature, axiom, assumption, theorem, value_anchor. "
-        "Output ONLY a JSON object with keys: literature, axioms, theorems, "
-        "assumptions, value_anchors. Each list/empty if not present."
-    )
+    system = load_prompt(prompt_version)
     user = json.dumps({
         "title": paper.get("title"),
         "abstract": paper.get("abstract"),
@@ -245,6 +262,12 @@ def main() -> int:
                    help="Max papers to process (default: 50)")
     p.add_argument("--use-m3", action="store_true",
                    help="Also call MINIMAX_API_KEY for richer extraction (optional)")
+    p.add_argument(
+        "--prompt-version",
+        default="v1",
+        choices=["v1", "v2"],
+        help="Prompt version to use for M3 extraction (default: v1)",
+    )
     args = p.parse_args()
 
     candidates = json.loads(Path(args.input).read_text(encoding="utf-8"))
@@ -277,13 +300,14 @@ def main() -> int:
 
         # Optional: M3 deep extraction
         if args.use_m3:
-            deep = m3_extract(paper)
+            deep = m3_extract(paper, args.prompt_version)
             if deep:
                 for j, ax in enumerate(deep.get("axioms", [])):
                     ax["id"] = ax.get("id") or f"AX-M3-{lit_id[-8:]}-{j}"
                     ax["type"] = "axiom"
                     ax["status"] = "draft"
                     ax["linage_in"] = [lit_id]
+                    ax["extraction_prompt_version"] = args.prompt_version
                     (out_dir / f"{ax['id']}.json").write_text(
                         json.dumps(ax, ensure_ascii=False, indent=2), encoding="utf-8"
                     )

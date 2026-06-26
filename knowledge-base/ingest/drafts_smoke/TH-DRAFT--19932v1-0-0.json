@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--19932v1-0-0",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "STORM achieves state-of-the-art pruning accuracy across diverse vision Mamba backbones under training-free settings",
+  "linage_in": [
+    "LIT-ARXIV-2606-19932v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-19932v1",
+    "extracted_from": "LIT-ARXIV-2606-19932v1 abstract"
+  }
+}

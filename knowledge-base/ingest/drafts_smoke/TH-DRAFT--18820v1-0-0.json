@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--18820v1-0-0",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "explicitly modeling this asymmetry improves learning efficiency and becomes increasingly valuable as decision problems scale",
+  "linage_in": [
+    "LIT-ARXIV-2606-18820v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-18820v1",
+    "extracted_from": "LIT-ARXIV-2606-18820v1 abstract"
+  }
+}

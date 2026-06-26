@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--20077v1-0-0",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "attention allocation alone is insufficient, and that performance is driven by the quality of visual representations at each layer",
+  "linage_in": [
+    "LIT-ARXIV-2606-20077v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-20077v1",
+    "extracted_from": "LIT-ARXIV-2606-20077v1 abstract"
+  }
+}

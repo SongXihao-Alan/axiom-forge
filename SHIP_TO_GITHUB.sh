@@ -147,7 +147,7 @@ echo ""
 
 # 验证 push 成功
 echo "验证 GitHub 上能看到这些文件:"
-for f in "README.md" "LICENSE" "CONTRIBUTING.md" "kb/SCHEMA.md" "kb/kb_query.py" "axiom-forge" ".env.example"; do
+for f in "README.md" "LICENSE" "CONTRIBUTING.md" "knowledge-base/SCHEMA.md" "knowledge-base/kb_query.py" "axiom-forge" ".env.example"; do
   if git ls-files | grep -q "^$f$"; then
     echo -e "  ${GREEN}✓${NC} $f"
   fi
@@ -165,7 +165,7 @@ echo "  - README.md 渲染 (skill 介绍)"
 echo "  - LICENSE (MIT)"
 echo "  - CITATION.cff (Citation 按钮)"
 echo "  - CONTRIBUTING.md"
-echo "  - kb/ 目录 (85 JSON 节点)"
+echo "  - knowledge-base/ 目录 (85 JSON 节点)"
 echo "  - axiom-forge 脚本"
 echo ""
 echo "  不会看到:"

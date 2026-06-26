@@ -54,7 +54,7 @@ lake env lean AxiomForge.lean
 
 ## Workflow for KB node → Lean theorem (proof-checker agent)
 
-The agent `kb/ingest/proof_checker.py` (Phase C) will:
+The agent `knowledge-base/ingest/proof_checker.py` (Phase C) will:
 1. Read KB node's `formal` field
 2. Generate Lean 4 template (with `sorry` placeholders)
 3. Write to `formal/AxiomForge/Generated/<id>.lean`

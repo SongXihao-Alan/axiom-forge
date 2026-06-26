@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--18921v1-0-1",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "EPMMS allocations exist in two settings where MMS allocations need not exist: instances with three additive agents or two types of additive agents",
+  "linage_in": [
+    "LIT-ARXIV-2606-18921v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-18921v1",
+    "extracted_from": "LIT-ARXIV-2606-18921v1 abstract"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "AX-DRAFT--19831v1-4-0",
+  "type": "axiom",
+  "status": "draft",
+  "label": "budget normalized control window",
+  "kind_hint": "framework",
+  "linage_in": [
+    "LIT-ARXIV-2606-19831v1"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-19831v1",
+    "extracted_from": "LIT-ARXIV-2606-19831v1 abstract"
+  }
+}

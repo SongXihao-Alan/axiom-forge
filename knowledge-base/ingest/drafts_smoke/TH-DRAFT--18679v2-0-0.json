@@ -1,0 +1,19 @@
+{
+  "id": "TH-DRAFT--18679v2-0-0",
+  "type": "theorem",
+  "status": "draft",
+  "nl": "this algorithm achieves sublinear regret relative to the optimal offline fluid benchmark",
+  "linage_in": [
+    "LIT-ARXIV-2606-18679v2"
+  ],
+  "anchors": [
+    {
+      "type": "empirical",
+      "subtype": "literature_extracted"
+    }
+  ],
+  "source": {
+    "primary": "LIT-ARXIV-2606-18679v2",
+    "extracted_from": "LIT-ARXIV-2606-18679v2 abstract"
+  }
+}

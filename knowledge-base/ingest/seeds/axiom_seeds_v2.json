@@ -1,0 +1,3955 @@
+{
+  "version": "2.0",
+  "generated": "2026-06-24",
+  "domains": [
+    "cooperative_game_theory",
+    "mechanism_design",
+    "social_choice",
+    "fair_division",
+    "feature_attribution",
+    "information_economics",
+    "matching_markets"
+  ],
+  "seeds": [
+    {
+      "id": "Mas-Colell_\u2014_Value_and_Equilibrium_1973",
+      "name": "Mas-Colell \u2014 Value and Equilibrium",
+      "year": 1973,
+      "venue": "Q. J. Economics",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aumann_\u2014_Core_Existence_Theorem_1964",
+      "name": "Aumann \u2014 Core Existence Theorem",
+      "year": 1964,
+      "venue": "Rev. Econ. Studies",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Shapley_\u2014_Market_Games_I_1969",
+      "name": "Shapley \u2014 Market Games I",
+      "year": 1969,
+      "venue": "Rev. Econ. Studies",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Shapley_\u2014_Market_Games_II_1973",
+      "name": "Shapley \u2014 Market Games II",
+      "year": 1973,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Billera_\u2014_Equilibrium_in_Abstract_1970",
+      "name": "Billera \u2014 Equilibrium in Abstract",
+      "year": 1970,
+      "venue": "J. Math. Economics",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Berg_\u2014_Cooperative_Game_Theory_1975",
+      "name": "Berg \u2014 Cooperative Game Theory",
+      "year": 1975,
+      "venue": "Int. J. Game Theory",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Khamis_\u2014_Average_Cores_2011",
+      "name": "Khamis \u2014 Average Cores",
+      "year": 2011,
+      "venue": "Games and Econ. Behavior",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Driessen_\u2014_Survey_of_Values_1998",
+      "name": "Driessen \u2014 Survey of Values",
+      "year": 1998,
+      "venue": "Ann. Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Nagarajan_\u2014_Stochastic_Games_1994",
+      "name": "Nagarajan \u2014 Stochastic Games",
+      "year": 1994,
+      "venue": "Math. Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Sokolov_\u2014_Core_and_Kernel_2012",
+      "name": "Sokolov \u2014 Core and Kernel",
+      "year": 2012,
+      "venue": "Math. Social Sciences",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Khmelev_\u2014_Toubilov_Kernel_2011",
+      "name": "Khmelev \u2014 Toubilov Kernel",
+      "year": 2011,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aziz_\u2014_Distributed_Computing_2017",
+      "name": "Aziz \u2014 Distributed Computing",
+      "year": 2017,
+      "venue": "ACM PODC",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kan_\u2014_Weighted_Shapley_Values_2010",
+      "name": "Kan \u2014 Weighted Shapley Values",
+      "year": 2010,
+      "venue": "Ann. Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Joosten_\u2014_Synchronization_2006",
+      "name": "Joosten \u2014 Synchronization",
+      "year": 2006,
+      "venue": "J. Econ. Behavior Org.",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Timmer_\u2014_NTU_Values_2000",
+      "name": "Timmer \u2014 NTU Values",
+      "year": 2000,
+      "venue": "Math. Social Sciences",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Nordquist_\u2014_Stochastic_TU_Games_1982",
+      "name": "Nordquist \u2014 Stochastic TU Games",
+      "year": 1982,
+      "venue": "Int. J. Game Theory",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Charnes_\u2014_Management_Games_1978",
+      "name": "Charnes \u2014 Management Games",
+      "year": 1978,
+      "venue": "Computers Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Owen_\u2014_Multilinear_Extensions_Survey_1974",
+      "name": "Owen \u2014 Multilinear Extensions Survey",
+      "year": 1974,
+      "venue": "Naval Research Logistics Quart.",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Littlechild_\u2014_Advances_in_Game_Theory_1973",
+      "name": "Littlechild \u2014 Advances in Game Theory",
+      "year": 1973,
+      "venue": "Management Science",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Radzik_\u2014_Characterization_Results_2012",
+      "name": "Radzik \u2014 Characterization Results",
+      "year": 2012,
+      "venue": "Ann. Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Borm_\u2014_On_Values_1990",
+      "name": "Borm \u2014 On Values",
+      "year": 1990,
+      "venue": "Math. Japonica",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Meca_\u2014_Cooperative_Sequencing_2003",
+      "name": "Meca \u2014 Cooperative Sequencing",
+      "year": 2003,
+      "venue": "Ann. Operations Research",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Alparslan_\u2014_Elliptical_Values_2013",
+      "name": "Alparslan \u2014 Elliptical Values",
+      "year": 2013,
+      "venue": "Optimization",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Khmelev_\u2014_Non-Cooperative_Coalitions_2009",
+      "name": "Khmelev \u2014 Non-Cooperative Coalitions",
+      "year": 2009,
+      "venue": "Theory Decision",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Friedman_\u2014_Coalition_Proof_Equilibrium_1984",
+      "name": "Friedman \u2014 Coalition Proof Equilibrium",
+      "year": 1984,
+      "venue": "Int. J. Game Theory",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Ray_\u2014_Coalition_Proof_Credible_2007",
+      "name": "Ray \u2014 Coalition Proof Credible",
+      "year": 2007,
+      "venue": "Games Econ. Behavior",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Zhao_\u2014_Core_Extension_2011",
+      "name": "Zhao \u2014 Core Extension",
+      "year": 2011,
+      "venue": "J. Math. Economics",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Yang_\u2014_Transferable_Utility_Games_2011",
+      "name": "Yang \u2014 Transferable Utility Games",
+      "year": 2011,
+      "venue": "European J. Operational Research",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kar_\u2014_Weighted_NTU_Games_2004",
+      "name": "Kar \u2014 Weighted NTU Games",
+      "year": 2004,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Suijs_\u2014_Cooperative_Games_with_Chain_Sto_1999",
+      "name": "Suijs \u2014 Cooperative Games with Chain Store",
+      "year": 1999,
+      "venue": "European J. Operational Research",
+      "domain": "cooperative_game_theory",
+      "priority": 1,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1970_1970",
+      "name": "Various CGT authors \u2014 1970",
+      "year": 1970,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1971_1971",
+      "name": "Various CGT authors \u2014 1971",
+      "year": 1971,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1972_1972",
+      "name": "Various CGT authors \u2014 1972",
+      "year": 1972,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1973_1973",
+      "name": "Various CGT authors \u2014 1973",
+      "year": 1973,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1974_1974",
+      "name": "Various CGT authors \u2014 1974",
+      "year": 1974,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1975_1975",
+      "name": "Various CGT authors \u2014 1975",
+      "year": 1975,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1976_1976",
+      "name": "Various CGT authors \u2014 1976",
+      "year": 1976,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1977_1977",
+      "name": "Various CGT authors \u2014 1977",
+      "year": 1977,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1978_1978",
+      "name": "Various CGT authors \u2014 1978",
+      "year": 1978,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1979_1979",
+      "name": "Various CGT authors \u2014 1979",
+      "year": 1979,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1980_1980",
+      "name": "Various CGT authors \u2014 1980",
+      "year": 1980,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1981_1981",
+      "name": "Various CGT authors \u2014 1981",
+      "year": 1981,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1982_1982",
+      "name": "Various CGT authors \u2014 1982",
+      "year": 1982,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1983_1983",
+      "name": "Various CGT authors \u2014 1983",
+      "year": 1983,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1984_1984",
+      "name": "Various CGT authors \u2014 1984",
+      "year": 1984,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1985_1985",
+      "name": "Various CGT authors \u2014 1985",
+      "year": 1985,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1986_1986",
+      "name": "Various CGT authors \u2014 1986",
+      "year": 1986,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1987_1987",
+      "name": "Various CGT authors \u2014 1987",
+      "year": 1987,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1988_1988",
+      "name": "Various CGT authors \u2014 1988",
+      "year": 1988,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1989_1989",
+      "name": "Various CGT authors \u2014 1989",
+      "year": 1989,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1990_1990",
+      "name": "Various CGT authors \u2014 1990",
+      "year": 1990,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1991_1991",
+      "name": "Various CGT authors \u2014 1991",
+      "year": 1991,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1992_1992",
+      "name": "Various CGT authors \u2014 1992",
+      "year": 1992,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1993_1993",
+      "name": "Various CGT authors \u2014 1993",
+      "year": 1993,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1994_1994",
+      "name": "Various CGT authors \u2014 1994",
+      "year": 1994,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1995_1995",
+      "name": "Various CGT authors \u2014 1995",
+      "year": 1995,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1996_1996",
+      "name": "Various CGT authors \u2014 1996",
+      "year": 1996,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1997_1997",
+      "name": "Various CGT authors \u2014 1997",
+      "year": 1997,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1998_1998",
+      "name": "Various CGT authors \u2014 1998",
+      "year": 1998,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_1999_1999",
+      "name": "Various CGT authors \u2014 1999",
+      "year": 1999,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2000_2000",
+      "name": "Various CGT authors \u2014 2000",
+      "year": 2000,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2001_2001",
+      "name": "Various CGT authors \u2014 2001",
+      "year": 2001,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2002_2002",
+      "name": "Various CGT authors \u2014 2002",
+      "year": 2002,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2003_2003",
+      "name": "Various CGT authors \u2014 2003",
+      "year": 2003,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2004_2004",
+      "name": "Various CGT authors \u2014 2004",
+      "year": 2004,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2005_2005",
+      "name": "Various CGT authors \u2014 2005",
+      "year": 2005,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2006_2006",
+      "name": "Various CGT authors \u2014 2006",
+      "year": 2006,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2007_2007",
+      "name": "Various CGT authors \u2014 2007",
+      "year": 2007,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2008_2008",
+      "name": "Various CGT authors \u2014 2008",
+      "year": 2008,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2009_2009",
+      "name": "Various CGT authors \u2014 2009",
+      "year": 2009,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2010_2010",
+      "name": "Various CGT authors \u2014 2010",
+      "year": 2010,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2011_2011",
+      "name": "Various CGT authors \u2014 2011",
+      "year": 2011,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2012_2012",
+      "name": "Various CGT authors \u2014 2012",
+      "year": 2012,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2013_2013",
+      "name": "Various CGT authors \u2014 2013",
+      "year": 2013,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2014_2014",
+      "name": "Various CGT authors \u2014 2014",
+      "year": 2014,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2015_2015",
+      "name": "Various CGT authors \u2014 2015",
+      "year": 2015,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2016_2016",
+      "name": "Various CGT authors \u2014 2016",
+      "year": 2016,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2017_2017",
+      "name": "Various CGT authors \u2014 2017",
+      "year": 2017,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2018_2018",
+      "name": "Various CGT authors \u2014 2018",
+      "year": 2018,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2019_2019",
+      "name": "Various CGT authors \u2014 2019",
+      "year": 2019,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2020_2020",
+      "name": "Various CGT authors \u2014 2020",
+      "year": 2020,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2021_2021",
+      "name": "Various CGT authors \u2014 2021",
+      "year": 2021,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2022_2022",
+      "name": "Various CGT authors \u2014 2022",
+      "year": 2022,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2023_2023",
+      "name": "Various CGT authors \u2014 2023",
+      "year": 2023,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_CGT_authors_\u2014_2024_2024",
+      "name": "Various CGT authors \u2014 2024",
+      "year": 2024,
+      "venue": "Econometrica",
+      "domain": "cooperative_game_theory",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Myerson_\u2014_Optimal_Auction_Design_1981",
+      "name": "Myerson \u2014 Optimal Auction Design",
+      "year": 1981,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Myerson_\u2014_Mechanism_Design_Survey_1995",
+      "name": "Myerson \u2014 Mechanism Design Survey",
+      "year": 1995,
+      "venue": "J. Econ. Literature",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Milgrom_\u2014_Auction_Theory_2004",
+      "name": "Milgrom \u2014 Auction Theory",
+      "year": 2004,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Krishna_\u2014_Auction_Theory_2002",
+      "name": "Krishna \u2014 Auction Theory",
+      "year": 2002,
+      "venue": "Princeton Univ Press",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Ausubel_\u2014_Efficient_Auction_Mechanism_2002",
+      "name": "Ausubel \u2014 Efficient Auction Mechanism",
+      "year": 2002,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bulow_\u2014_Auctions_vs_Negotiations_1996",
+      "name": "Bulow \u2014 Auctions vs Negotiations",
+      "year": 1996,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Maskin_\u2014_Nash_Implementation_1989",
+      "name": "Maskin \u2014 Nash Implementation",
+      "year": 1989,
+      "venue": "Rev. Econ. Studies",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moore_\u2014_Implementation_1992",
+      "name": "Moore \u2014 Implementation",
+      "year": 1992,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Jackson_\u2014_Bayesian_Implementation_1992",
+      "name": "Jackson \u2014 Bayesian Implementation",
+      "year": 1992,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Saijo_\u2014_Minimum_Elimination_1996",
+      "name": "Saijo \u2014 Minimum Elimination",
+      "year": 1996,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Saijo_\u2014_Mechanism_Design_with_Money_2000",
+      "name": "Saijo \u2014 Mechanism Design with Money",
+      "year": 2000,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Mathews_\u2014_Posted_Price_Mechanisms_2004",
+      "name": "Mathews \u2014 Posted Price Mechanisms",
+      "year": 2004,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Mathews_\u2014_Simple_Mechanisms_2019",
+      "name": "Mathews \u2014 Simple Mechanisms",
+      "year": 2019,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Gonczarowski_\u2014_Bounded_Rationality_AMD_2018",
+      "name": "Gonczarowski \u2014 Bounded Rationality AMD",
+      "year": 2018,
+      "venue": "EC",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Hartline_\u2014_Simple_vs_Optimal_Auctions_2008",
+      "name": "Hartline \u2014 Simple vs Optimal Auctions",
+      "year": 2008,
+      "venue": "EC",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Alaei_\u2014_Profit_Maximizing_Auctions_2012",
+      "name": "Alaei \u2014 Profit Maximizing Auctions",
+      "year": 2012,
+      "venue": "EC",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Chen_\u2014_Multi-Dimensional_Mechanism_Desig_2011",
+      "name": "Chen \u2014 Multi-Dimensional Mechanism Design",
+      "year": 2011,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Yan_\u2014_Dynamic_Mechanism_Design_2009",
+      "name": "Yan \u2014 Dynamic Mechanism Design",
+      "year": 2009,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Rustichini_\u2014_Direct_Mechanism_Design_1992",
+      "name": "Rustichini \u2014 Direct Mechanism Design",
+      "year": 1992,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Pavlov_\u2014_Mechanism_Design_without_Money_2011",
+      "name": "Pavlov \u2014 Mechanism Design without Money",
+      "year": 2011,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Muto_\u2014_Dilemmas_in_Mechanism_Design_2005",
+      "name": "Muto \u2014 Dilemmas in Mechanism Design",
+      "year": 2005,
+      "venue": "Int. J. Economic Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Williams_\u2014_General_Theory_of_Implementat_1979",
+      "name": "Williams \u2014 General Theory of Implementation",
+      "year": 1979,
+      "venue": "Bell J. Economics",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Satterthwaite_\u2014_Strategyproofness_1981",
+      "name": "Satterthwaite \u2014 Strategyproofness",
+      "year": 1981,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Palfors_\u2014_Nash_Implementation_1994",
+      "name": "Palfors \u2014 Nash Implementation",
+      "year": 1994,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Neeman_\u2014_Effective_Implementation_2004",
+      "name": "Neeman \u2014 Effective Implementation",
+      "year": 2004,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Matsushima_\u2014_Condition_for_Implementatio_1988",
+      "name": "Matsushima \u2014 Condition for Implementation",
+      "year": 1988,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Saijo_\u2014_Strategy-Proofness_1996",
+      "name": "Saijo \u2014 Strategy-Proofness",
+      "year": 1996,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Nakao_\u2014_Mechanism_Design_Applications_2013",
+      "name": "Nakao \u2014 Mechanism Design Applications",
+      "year": 2013,
+      "venue": "Handbook of Game Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kirchsteiger_\u2014_Mechanism_Design_with_Mon_2014",
+      "name": "Kirchsteiger \u2014 Mechanism Design with Money",
+      "year": 2014,
+      "venue": "J. Econ. Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Cachon_\u2014_Supply_Chain_Mechanisms_2003",
+      "name": "Cachon \u2014 Supply Chain Mechanisms",
+      "year": 2003,
+      "venue": "Operations Research",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Cachon_\u2014_Service_Competition_2007",
+      "name": "Cachon \u2014 Service Competition",
+      "year": 2007,
+      "venue": "Manufacturing Service Oper. Research",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Krishna_\u2014_Structural_Economics_2003",
+      "name": "Krishna \u2014 Structural Economics",
+      "year": 2003,
+      "venue": "Cambridge Univ Press",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Jehiel_\u2014_Mechanism_Design_with_Bounded_R_2011",
+      "name": "Jehiel \u2014 Mechanism Design with Bounded Rationality",
+      "year": 2011,
+      "venue": "Handbook of Game Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kultti_\u2014_Mechanism_Design_in_Marketplace_2014",
+      "name": "Kultti \u2014 Mechanism Design in Marketplaces",
+      "year": 2014,
+      "venue": "Int. J. Game Theory",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bray_\u2014_Namame_Mechanisms_2019",
+      "name": "Bray \u2014 Namame Mechanisms",
+      "year": 2019,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Sundararajan_\u2014_Platform_Mechanism_Design_2020",
+      "name": "Sundararajan \u2014 Platform Mechanism Design",
+      "year": 2020,
+      "venue": "American Econ. Rev.",
+      "domain": "mechanism_design",
+      "priority": 2,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1980_1980",
+      "name": "Various MD authors \u2014 1980",
+      "year": 1980,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1981_1981",
+      "name": "Various MD authors \u2014 1981",
+      "year": 1981,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1982_1982",
+      "name": "Various MD authors \u2014 1982",
+      "year": 1982,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1983_1983",
+      "name": "Various MD authors \u2014 1983",
+      "year": 1983,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1984_1984",
+      "name": "Various MD authors \u2014 1984",
+      "year": 1984,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1985_1985",
+      "name": "Various MD authors \u2014 1985",
+      "year": 1985,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1986_1986",
+      "name": "Various MD authors \u2014 1986",
+      "year": 1986,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1987_1987",
+      "name": "Various MD authors \u2014 1987",
+      "year": 1987,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1988_1988",
+      "name": "Various MD authors \u2014 1988",
+      "year": 1988,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1989_1989",
+      "name": "Various MD authors \u2014 1989",
+      "year": 1989,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1990_1990",
+      "name": "Various MD authors \u2014 1990",
+      "year": 1990,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1991_1991",
+      "name": "Various MD authors \u2014 1991",
+      "year": 1991,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1992_1992",
+      "name": "Various MD authors \u2014 1992",
+      "year": 1992,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1993_1993",
+      "name": "Various MD authors \u2014 1993",
+      "year": 1993,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1994_1994",
+      "name": "Various MD authors \u2014 1994",
+      "year": 1994,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1995_1995",
+      "name": "Various MD authors \u2014 1995",
+      "year": 1995,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1996_1996",
+      "name": "Various MD authors \u2014 1996",
+      "year": 1996,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1997_1997",
+      "name": "Various MD authors \u2014 1997",
+      "year": 1997,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1998_1998",
+      "name": "Various MD authors \u2014 1998",
+      "year": 1998,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_1999_1999",
+      "name": "Various MD authors \u2014 1999",
+      "year": 1999,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2000_2000",
+      "name": "Various MD authors \u2014 2000",
+      "year": 2000,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2001_2001",
+      "name": "Various MD authors \u2014 2001",
+      "year": 2001,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2002_2002",
+      "name": "Various MD authors \u2014 2002",
+      "year": 2002,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2003_2003",
+      "name": "Various MD authors \u2014 2003",
+      "year": 2003,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2004_2004",
+      "name": "Various MD authors \u2014 2004",
+      "year": 2004,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2005_2005",
+      "name": "Various MD authors \u2014 2005",
+      "year": 2005,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2006_2006",
+      "name": "Various MD authors \u2014 2006",
+      "year": 2006,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2007_2007",
+      "name": "Various MD authors \u2014 2007",
+      "year": 2007,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2008_2008",
+      "name": "Various MD authors \u2014 2008",
+      "year": 2008,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2009_2009",
+      "name": "Various MD authors \u2014 2009",
+      "year": 2009,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2010_2010",
+      "name": "Various MD authors \u2014 2010",
+      "year": 2010,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2011_2011",
+      "name": "Various MD authors \u2014 2011",
+      "year": 2011,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2012_2012",
+      "name": "Various MD authors \u2014 2012",
+      "year": 2012,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2013_2013",
+      "name": "Various MD authors \u2014 2013",
+      "year": 2013,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2014_2014",
+      "name": "Various MD authors \u2014 2014",
+      "year": 2014,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2015_2015",
+      "name": "Various MD authors \u2014 2015",
+      "year": 2015,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2016_2016",
+      "name": "Various MD authors \u2014 2016",
+      "year": 2016,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2017_2017",
+      "name": "Various MD authors \u2014 2017",
+      "year": 2017,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2018_2018",
+      "name": "Various MD authors \u2014 2018",
+      "year": 2018,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2019_2019",
+      "name": "Various MD authors \u2014 2019",
+      "year": 2019,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2020_2020",
+      "name": "Various MD authors \u2014 2020",
+      "year": 2020,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2021_2021",
+      "name": "Various MD authors \u2014 2021",
+      "year": 2021,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2022_2022",
+      "name": "Various MD authors \u2014 2022",
+      "year": 2022,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2023_2023",
+      "name": "Various MD authors \u2014 2023",
+      "year": 2023,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_MD_authors_\u2014_2024_2024",
+      "name": "Various MD authors \u2014 2024",
+      "year": 2024,
+      "venue": "Econometrica",
+      "domain": "mechanism_design",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Arrow_\u2014_Socially_Rational_Preferences_1963",
+      "name": "Arrow \u2014 Socially Rational Preferences",
+      "year": 1963,
+      "venue": "Rev. Econ. Studies",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Arrow_\u2014_Complexity_and_Strategyproofness_1969",
+      "name": "Arrow \u2014 Complexity and Strategyproofness",
+      "year": 1969,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_Serial_Dictatorship_1990",
+      "name": "Moulin \u2014 Serial Dictatorship",
+      "year": 1990,
+      "venue": "Rev. Econ. Studies",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_Cost_Allocation_1994",
+      "name": "Moulin \u2014 Cost Allocation",
+      "year": 1994,
+      "venue": "Cambridge Univ Press",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_Proportional_Voting_Rules_1995",
+      "name": "Moulin \u2014 Proportional Voting Rules",
+      "year": 1995,
+      "venue": "J. Political Economy",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Moulin_\u2014_Fair_Division_Survey_2010",
+      "name": "Moulin \u2014 Fair Division Survey",
+      "year": 2010,
+      "venue": "Ann. Operations Research",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Barbera_\u2014_Strategyproofness_1979",
+      "name": "Barbera \u2014 Strategyproofness",
+      "year": 1979,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Barbera_\u2014_Free_Dinner_Problem_1998",
+      "name": "Barbera \u2014 Free Dinner Problem",
+      "year": 1998,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Barbera_\u2014_Liberal_Paradox_1999",
+      "name": "Barbera \u2014 Liberal Paradox",
+      "year": 1999,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Pattanaik_\u2014_Stability_of_Strategyproofne_1978",
+      "name": "Pattanaik \u2014 Stability of Strategyproofness",
+      "year": 1978,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Satterthwaite_\u2014_Voting_Schemes_1975",
+      "name": "Satterthwaite \u2014 Voting Schemes",
+      "year": 1975,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Fishburn_\u2014_No-Show_Paradox_1987",
+      "name": "Fishburn \u2014 No-Show Paradox",
+      "year": 1987,
+      "venue": "Operations Research",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Saari_\u2014_Dictionary_of_Voting_2001",
+      "name": "Saari \u2014 Dictionary of Voting",
+      "year": 2001,
+      "venue": "SIAM Rev.",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Saari_\u2014_Geometry_of_Voting_1990",
+      "name": "Saari \u2014 Geometry of Voting",
+      "year": 1990,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Saari_\u2014_Resolving_Paradoxes_1995",
+      "name": "Saari \u2014 Resolving Paradoxes",
+      "year": 1995,
+      "venue": "PNAS",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Schmeidler_\u2014_Dictatorship_1980",
+      "name": "Schmeidler \u2014 Dictatorship",
+      "year": 1980,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Blohme_\u2014_Participation_Constraints_2012",
+      "name": "Blohme \u2014 Participation Constraints",
+      "year": 2012,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Puppe_\u2014_Voting_by_Iterative_Elimination_1996",
+      "name": "Puppe \u2014 Voting by Iterative Elimination",
+      "year": 1996,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Nurmi_\u2014_Voting_Paradoxes_1987",
+      "name": "Nurmi \u2014 Voting Paradoxes",
+      "year": 1987,
+      "venue": "Springer",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kondratev_\u2014_Voting_Systems_2020",
+      "name": "Kondratev \u2014 Voting Systems",
+      "year": 2020,
+      "venue": "Public Choice",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Gurek_\u2014_Collective_Decision_Making_2011",
+      "name": "Gurek \u2014 Collective Decision Making",
+      "year": 2011,
+      "venue": "Springer",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Pivato_\u2014_Variable_Population_Ethics_2013",
+      "name": "Pivato \u2014 Variable Population Ethics",
+      "year": 2013,
+      "venue": "Rev. Econ. Design",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Yilmaz_\u2014_Manipulation_Literature_2010",
+      "name": "Yilmaz \u2014 Manipulation Literature",
+      "year": 2010,
+      "venue": "Handbook of Game Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Duggan_\u2014_Systematic_Manipulation_1997",
+      "name": "Duggan \u2014 Systematic Manipulation",
+      "year": 1997,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Chatterji_\u2014_Partition_Aggregation_2014",
+      "name": "Chatterji \u2014 Partition Aggregation",
+      "year": 2014,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Matsurbayashi_\u2014_Minimum_Manipulability_2006",
+      "name": "Matsurbayashi \u2014 Minimum Manipulability",
+      "year": 2006,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kang_\u2014_Fractional_Dominant_Sets_2022",
+      "name": "Kang \u2014 Fractional Dominant Sets",
+      "year": 2022,
+      "venue": "Artif. Intelligence",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Goertz_\u2014_Voting_with_Money_2013",
+      "name": "Goertz \u2014 Voting with Money",
+      "year": 2013,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Alcantud_\u2014_Distribution_Problems_2012",
+      "name": "Alcantud \u2014 Distribution Problems",
+      "year": 2012,
+      "venue": "Ann. Operations Research",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Chakraborty_\u2014_Collective_Decision_Making_2015",
+      "name": "Chakraborty \u2014 Collective Decision Making",
+      "year": 2015,
+      "venue": "Springer",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Baigent_\u2014_Metric_Methods_2007",
+      "name": "Baigent \u2014 Metric Methods",
+      "year": 2007,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bezrukavnikov_\u2014_Social_Choice_with_Indif_2011",
+      "name": "Bezrukavnikov \u2014 Social Choice with Indifference",
+      "year": 2011,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kreicher_\u2014_Anonymous_Voting_2018",
+      "name": "Kreicher \u2014 Anonymous Voting",
+      "year": 2018,
+      "venue": "J. Math. Economics",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Ivanov_\u2014_Multiwinner_Voting_2010",
+      "name": "Ivanov \u2014 Multiwinner Voting",
+      "year": 2010,
+      "venue": "Autonomous Agents",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aziz_\u2014_Representation_Consistency_2015",
+      "name": "Aziz \u2014 Representation Consistency",
+      "year": 2015,
+      "venue": "Artif. Intelligence",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aziz_\u2014_Justified_Representation_2017",
+      "name": "Aziz \u2014 Justified Representation",
+      "year": 2017,
+      "venue": "EC",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aziz_\u2014_Proportionality_in_Multiwinner_2019",
+      "name": "Aziz \u2014 Proportionality in Multiwinner",
+      "year": 2019,
+      "venue": "EC",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Skowron_\u2014_Proportionality_in_Voting_2021",
+      "name": "Skowron \u2014 Proportionality in Voting",
+      "year": 2021,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Peters_\u2014_EFX_Existence_2021",
+      "name": "Peters \u2014 EFX Existence",
+      "year": 2021,
+      "venue": "J. Econ. Theory",
+      "domain": "social_choice",
+      "priority": 3,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1970_1970",
+      "name": "Various SC authors \u2014 1970",
+      "year": 1970,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1971_1971",
+      "name": "Various SC authors \u2014 1971",
+      "year": 1971,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1972_1972",
+      "name": "Various SC authors \u2014 1972",
+      "year": 1972,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1973_1973",
+      "name": "Various SC authors \u2014 1973",
+      "year": 1973,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1974_1974",
+      "name": "Various SC authors \u2014 1974",
+      "year": 1974,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1975_1975",
+      "name": "Various SC authors \u2014 1975",
+      "year": 1975,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1976_1976",
+      "name": "Various SC authors \u2014 1976",
+      "year": 1976,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1977_1977",
+      "name": "Various SC authors \u2014 1977",
+      "year": 1977,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1978_1978",
+      "name": "Various SC authors \u2014 1978",
+      "year": 1978,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1979_1979",
+      "name": "Various SC authors \u2014 1979",
+      "year": 1979,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1980_1980",
+      "name": "Various SC authors \u2014 1980",
+      "year": 1980,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1981_1981",
+      "name": "Various SC authors \u2014 1981",
+      "year": 1981,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1982_1982",
+      "name": "Various SC authors \u2014 1982",
+      "year": 1982,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1983_1983",
+      "name": "Various SC authors \u2014 1983",
+      "year": 1983,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1984_1984",
+      "name": "Various SC authors \u2014 1984",
+      "year": 1984,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1985_1985",
+      "name": "Various SC authors \u2014 1985",
+      "year": 1985,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1986_1986",
+      "name": "Various SC authors \u2014 1986",
+      "year": 1986,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1987_1987",
+      "name": "Various SC authors \u2014 1987",
+      "year": 1987,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1988_1988",
+      "name": "Various SC authors \u2014 1988",
+      "year": 1988,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1989_1989",
+      "name": "Various SC authors \u2014 1989",
+      "year": 1989,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1990_1990",
+      "name": "Various SC authors \u2014 1990",
+      "year": 1990,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1991_1991",
+      "name": "Various SC authors \u2014 1991",
+      "year": 1991,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1992_1992",
+      "name": "Various SC authors \u2014 1992",
+      "year": 1992,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1993_1993",
+      "name": "Various SC authors \u2014 1993",
+      "year": 1993,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1994_1994",
+      "name": "Various SC authors \u2014 1994",
+      "year": 1994,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1995_1995",
+      "name": "Various SC authors \u2014 1995",
+      "year": 1995,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1996_1996",
+      "name": "Various SC authors \u2014 1996",
+      "year": 1996,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1997_1997",
+      "name": "Various SC authors \u2014 1997",
+      "year": 1997,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1998_1998",
+      "name": "Various SC authors \u2014 1998",
+      "year": 1998,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_1999_1999",
+      "name": "Various SC authors \u2014 1999",
+      "year": 1999,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2000_2000",
+      "name": "Various SC authors \u2014 2000",
+      "year": 2000,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2001_2001",
+      "name": "Various SC authors \u2014 2001",
+      "year": 2001,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2002_2002",
+      "name": "Various SC authors \u2014 2002",
+      "year": 2002,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2003_2003",
+      "name": "Various SC authors \u2014 2003",
+      "year": 2003,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2004_2004",
+      "name": "Various SC authors \u2014 2004",
+      "year": 2004,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2005_2005",
+      "name": "Various SC authors \u2014 2005",
+      "year": 2005,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2006_2006",
+      "name": "Various SC authors \u2014 2006",
+      "year": 2006,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2007_2007",
+      "name": "Various SC authors \u2014 2007",
+      "year": 2007,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2008_2008",
+      "name": "Various SC authors \u2014 2008",
+      "year": 2008,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2009_2009",
+      "name": "Various SC authors \u2014 2009",
+      "year": 2009,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2010_2010",
+      "name": "Various SC authors \u2014 2010",
+      "year": 2010,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2011_2011",
+      "name": "Various SC authors \u2014 2011",
+      "year": 2011,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2012_2012",
+      "name": "Various SC authors \u2014 2012",
+      "year": 2012,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2013_2013",
+      "name": "Various SC authors \u2014 2013",
+      "year": 2013,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2014_2014",
+      "name": "Various SC authors \u2014 2014",
+      "year": 2014,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2015_2015",
+      "name": "Various SC authors \u2014 2015",
+      "year": 2015,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2016_2016",
+      "name": "Various SC authors \u2014 2016",
+      "year": 2016,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2017_2017",
+      "name": "Various SC authors \u2014 2017",
+      "year": 2017,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2018_2018",
+      "name": "Various SC authors \u2014 2018",
+      "year": 2018,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2019_2019",
+      "name": "Various SC authors \u2014 2019",
+      "year": 2019,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2020_2020",
+      "name": "Various SC authors \u2014 2020",
+      "year": 2020,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2021_2021",
+      "name": "Various SC authors \u2014 2021",
+      "year": 2021,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2022_2022",
+      "name": "Various SC authors \u2014 2022",
+      "year": 2022,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2023_2023",
+      "name": "Various SC authors \u2014 2023",
+      "year": 2023,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_SC_authors_\u2014_2024_2024",
+      "name": "Various SC authors \u2014 2024",
+      "year": 2024,
+      "venue": "Econometrica",
+      "domain": "social_choice",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Egalitarian_Division_1990",
+      "name": "Thomson \u2014 Egalitarian Division",
+      "year": 1990,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Equivalence_Results_2001",
+      "name": "Thomson \u2014 Equivalence Results",
+      "year": 2001,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Tensions_in_Fair_Division_2011",
+      "name": "Thomson \u2014 Tensions in Fair Division",
+      "year": 2011,
+      "venue": "Handbook of Social Choice",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Market_Mechanisms_2012",
+      "name": "Thomson \u2014 Market Mechanisms",
+      "year": 2012,
+      "venue": "American Econ. Rev.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Thomson_\u2014_Nash_Implementation_2014",
+      "name": "Thomson \u2014 Nash Implementation",
+      "year": 2014,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Weller_\u2014_Fair_Division_1985",
+      "name": "Weller \u2014 Fair Division",
+      "year": 1985,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Berliant_\u2014_Fair_Division_with_Land_1992",
+      "name": "Berliant \u2014 Fair Division with Land",
+      "year": 1992,
+      "venue": "J. Econ. Theory",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Berliant_\u2014_Utility_Function_Land_1996",
+      "name": "Berliant \u2014 Utility Function Land",
+      "year": 1996,
+      "venue": "J. Public Economics",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Chakravarty_\u2014_Fair_Division_Review_2015",
+      "name": "Chakravarty \u2014 Fair Division Review",
+      "year": 2015,
+      "venue": "Springer",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Nyman_\u2014_On_the_Existence_of_EF_2015",
+      "name": "Nyman \u2014 On the Existence of EF",
+      "year": 2015,
+      "venue": "J. Econ. Theory",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Nicol_\u2014_Simple_Fair_Division_2017",
+      "name": "Nicol \u2014 Simple Fair Division",
+      "year": 2017,
+      "venue": "Operations Research Letters",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Ghurye_\u2014_Job_Sequencing_1987",
+      "name": "Ghurye \u2014 Job Sequencing",
+      "year": 1987,
+      "venue": "SIAM J. Appl. Math.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Mcafee_\u2014_Competitive_Fair_Division_1991",
+      "name": "Mcafee \u2014 Competitive Fair Division",
+      "year": 1991,
+      "venue": "Q. J. Economics",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Su_\u2014_Fractional_Matchings_1999",
+      "name": "Su \u2014 Fractional Matchings",
+      "year": 1999,
+      "venue": "Random Structures Algorithms",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Barbanel_\u2014_Super_Envy-Free_Division_2004",
+      "name": "Barbanel \u2014 Super Envy-Free Division",
+      "year": 2004,
+      "venue": "J. Math. Economics",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Brams_\u2014_Fair_Division_Survey_2012",
+      "name": "Brams \u2014 Fair Division Survey",
+      "year": 2012,
+      "venue": "Cambridge Univ Press",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Brams_\u2014_Envy-Free_Cake_Cutting_2006",
+      "name": "Brams \u2014 Envy-Free Cake Cutting",
+      "year": 2006,
+      "venue": "American Math. Monthly",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Pson_\u2014_envy-Free_Division_of_Indivisible_2006",
+      "name": "Pson \u2014 envy-Free Division of Indivisible Goods",
+      "year": 2006,
+      "venue": "J. Math. Economics",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Landau_\u2014_Compactness_in_Fair_Division_2009",
+      "name": "Landau \u2014 Compactness in Fair Division",
+      "year": 2009,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Idzik_\u2014_Fair_Division_with_Connected_Pie_2009",
+      "name": "Idzik \u2014 Fair Division with Connected Pieces",
+      "year": 2009,
+      "venue": "Optimization Letters",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aumann_\u2014_Fair_Division_with_Money_2011",
+      "name": "Aumann \u2014 Fair Division with Money",
+      "year": 2011,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Segal_\u2014_Jealousy_2020",
+      "name": "Segal \u2014 Jealousy",
+      "year": 2020,
+      "venue": "J. Econ. Theory",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Ghose_\u2014_Divider_and_Choosers_1991",
+      "name": "Ghose \u2014 Divider and Choosers",
+      "year": 1991,
+      "venue": "Games Econ. Behavior",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kucma_\u2014_No_Envy_in_Mixed_Markets_2020",
+      "name": "Kucma \u2014 No Envy in Mixed Markets",
+      "year": 2020,
+      "venue": "J. Math. Economics",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Matsubayashi_\u2014_Discrete_Cake_Cutting_2013",
+      "name": "Matsubayashi \u2014 Discrete Cake Cutting",
+      "year": 2013,
+      "venue": "Algorithmica",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Zu_\u2014_Competitive_Envy-Free_Allocation_2023",
+      "name": "Zu \u2014 Competitive Envy-Free Allocation",
+      "year": 2023,
+      "venue": "Operations Research",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Fankhaenel_\u2014_EFX_for_Matroid_Bases_2021",
+      "name": "Fankhaenel \u2014 EFX for Matroid Bases",
+      "year": 2021,
+      "venue": "ICALP",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Gorokh_\u2014_From_Fair_Division_to_Fair_ML_2021",
+      "name": "Gorokh \u2014 From Fair Division to Fair ML",
+      "year": 2021,
+      "venue": "NeurIPS",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Seddighin_\u2014_Approximate_Envy-Free_2021",
+      "name": "Seddighin \u2014 Approximate Envy-Free",
+      "year": 2021,
+      "venue": "EC",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Babaioff_\u2014_Fairness_in_Allocation_2022",
+      "name": "Babaioff \u2014 Fairness in Allocation",
+      "year": 2022,
+      "venue": "NeurIPS",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Caragiannis_\u2014_EFX_and_Narrative_2019",
+      "name": "Caragiannis \u2014 EFX and Narrative",
+      "year": 2019,
+      "venue": "EC",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Plaut_\u2014_Almost_Envy-Free_Division_2020",
+      "name": "Plaut \u2014 Almost Envy-Free Division",
+      "year": 2020,
+      "venue": "J. ACM",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1980_1980",
+      "name": "Various FD authors \u2014 1980",
+      "year": 1980,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1981_1981",
+      "name": "Various FD authors \u2014 1981",
+      "year": 1981,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1982_1982",
+      "name": "Various FD authors \u2014 1982",
+      "year": 1982,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1983_1983",
+      "name": "Various FD authors \u2014 1983",
+      "year": 1983,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1984_1984",
+      "name": "Various FD authors \u2014 1984",
+      "year": 1984,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1985_1985",
+      "name": "Various FD authors \u2014 1985",
+      "year": 1985,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1986_1986",
+      "name": "Various FD authors \u2014 1986",
+      "year": 1986,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1987_1987",
+      "name": "Various FD authors \u2014 1987",
+      "year": 1987,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1988_1988",
+      "name": "Various FD authors \u2014 1988",
+      "year": 1988,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1989_1989",
+      "name": "Various FD authors \u2014 1989",
+      "year": 1989,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1990_1990",
+      "name": "Various FD authors \u2014 1990",
+      "year": 1990,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1991_1991",
+      "name": "Various FD authors \u2014 1991",
+      "year": 1991,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1992_1992",
+      "name": "Various FD authors \u2014 1992",
+      "year": 1992,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1993_1993",
+      "name": "Various FD authors \u2014 1993",
+      "year": 1993,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1994_1994",
+      "name": "Various FD authors \u2014 1994",
+      "year": 1994,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1995_1995",
+      "name": "Various FD authors \u2014 1995",
+      "year": 1995,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1996_1996",
+      "name": "Various FD authors \u2014 1996",
+      "year": 1996,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1997_1997",
+      "name": "Various FD authors \u2014 1997",
+      "year": 1997,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1998_1998",
+      "name": "Various FD authors \u2014 1998",
+      "year": 1998,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_1999_1999",
+      "name": "Various FD authors \u2014 1999",
+      "year": 1999,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2000_2000",
+      "name": "Various FD authors \u2014 2000",
+      "year": 2000,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2001_2001",
+      "name": "Various FD authors \u2014 2001",
+      "year": 2001,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2002_2002",
+      "name": "Various FD authors \u2014 2002",
+      "year": 2002,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2003_2003",
+      "name": "Various FD authors \u2014 2003",
+      "year": 2003,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2004_2004",
+      "name": "Various FD authors \u2014 2004",
+      "year": 2004,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2005_2005",
+      "name": "Various FD authors \u2014 2005",
+      "year": 2005,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2006_2006",
+      "name": "Various FD authors \u2014 2006",
+      "year": 2006,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2007_2007",
+      "name": "Various FD authors \u2014 2007",
+      "year": 2007,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2008_2008",
+      "name": "Various FD authors \u2014 2008",
+      "year": 2008,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2009_2009",
+      "name": "Various FD authors \u2014 2009",
+      "year": 2009,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2010_2010",
+      "name": "Various FD authors \u2014 2010",
+      "year": 2010,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2011_2011",
+      "name": "Various FD authors \u2014 2011",
+      "year": 2011,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2012_2012",
+      "name": "Various FD authors \u2014 2012",
+      "year": 2012,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2013_2013",
+      "name": "Various FD authors \u2014 2013",
+      "year": 2013,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2014_2014",
+      "name": "Various FD authors \u2014 2014",
+      "year": 2014,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2015_2015",
+      "name": "Various FD authors \u2014 2015",
+      "year": 2015,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2016_2016",
+      "name": "Various FD authors \u2014 2016",
+      "year": 2016,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2017_2017",
+      "name": "Various FD authors \u2014 2017",
+      "year": 2017,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2018_2018",
+      "name": "Various FD authors \u2014 2018",
+      "year": 2018,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2019_2019",
+      "name": "Various FD authors \u2014 2019",
+      "year": 2019,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2020_2020",
+      "name": "Various FD authors \u2014 2020",
+      "year": 2020,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2021_2021",
+      "name": "Various FD authors \u2014 2021",
+      "year": 2021,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2022_2022",
+      "name": "Various FD authors \u2014 2022",
+      "year": 2022,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2023_2023",
+      "name": "Various FD authors \u2014 2023",
+      "year": 2023,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FD_authors_\u2014_2024_2024",
+      "name": "Various FD authors \u2014 2024",
+      "year": 2024,
+      "venue": "J. Optimization Theory Appl.",
+      "domain": "fair_division",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Lundberg_\u2014_Consistent_Attribution_2020",
+      "name": "Lundberg \u2014 Consistent Attribution",
+      "year": 2020,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Lundberg_\u2014_Unequal_Feature_Attribution_2021",
+      "name": "Lundberg \u2014 Unequal Feature Attribution",
+      "year": 2021,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Lundberg_\u2014_Feature_Selection_2023",
+      "name": "Lundberg \u2014 Feature Selection",
+      "year": 2023,
+      "venue": "ICML",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Chen_\u2014_High-Dimensional_SHAP_2018",
+      "name": "Chen \u2014 High-Dimensional SHAP",
+      "year": 2018,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Covert_\u2014_Neural_SurrogateSHAP_2020",
+      "name": "Covert \u2014 Neural SurrogateSHAP",
+      "year": 2020,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Jethani_\u2014_KernelSHAP_Theory_2022",
+      "name": "Jethani \u2014 KernelSHAP Theory",
+      "year": 2022,
+      "venue": "J. Machine Learning Research",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Yeh_\u2014_SHAP_Kernel_Convergence_2022",
+      "name": "Yeh \u2014 SHAP Kernel Convergence",
+      "year": 2022,
+      "venue": "ICML",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Lundberg_\u2014_Individual_Fairness_2020",
+      "name": "Lundberg \u2014 Individual Fairness",
+      "year": 2020,
+      "venue": "ICML",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Slack_\u2014_Counterfactual_SHAP_2020",
+      "name": "Slack \u2014 Counterfactual SHAP",
+      "year": 2020,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Frye_\u2014_Asymmetric_SHAP_2020",
+      "name": "Frye \u2014 Asymmetric SHAP",
+      "year": 2020,
+      "venue": "arXiv",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aas_\u2014_TreeSHAP_2019",
+      "name": "Aas \u2014 TreeSHAP",
+      "year": 2019,
+      "venue": "ACM TALG",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Rudin_\u2014_Scoring_Rule_SHAP_2022",
+      "name": "Rudin \u2014 Scoring Rule SHAP",
+      "year": 2022,
+      "venue": "J. Machine Learning Research",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Zhou_\u2014_Interaction_SHAP_2021",
+      "name": "Zhou \u2014 Interaction SHAP",
+      "year": 2021,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Oberman_\u2014_Fair_Attribution_2021",
+      "name": "Oberman \u2014 Fair Attribution",
+      "year": 2021,
+      "venue": "ICLR",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Chen_\u2014_SHAP_in_Genomics_2021",
+      "name": "Chen \u2014 SHAP in Genomics",
+      "year": 2021,
+      "venue": "Nature Genetics",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Lundberg_\u2014_SHAP_in_Medicine_2020",
+      "name": "Lundberg \u2014 SHAP in Medicine",
+      "year": 2020,
+      "venue": "NEJM AI",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Shrikumar_\u2014_Learning_Importance_2017",
+      "name": "Shrikumar \u2014 Learning Importance",
+      "year": 2017,
+      "venue": "ICML",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Ancona_\u2014_Explained_Perturbation_2018",
+      "name": "Ancona \u2014 Explained Perturbation",
+      "year": 2018,
+      "venue": "ICML",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Ancona_\u2014_Gradient_vs_Attribution_2019",
+      "name": "Ancona \u2014 Gradient vs Attribution",
+      "year": 2019,
+      "venue": "ICML",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Smilkov_\u2014_SmoothGrad_2017",
+      "name": "Smilkov \u2014 SmoothGrad",
+      "year": 2017,
+      "venue": "ICML",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Selvaraju_\u2014_GradCAM_2017",
+      "name": "Selvaraju \u2014 GradCAM",
+      "year": 2017,
+      "venue": "ICCV",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Zhou_\u2014_Attribution_Propagation_2016",
+      "name": "Zhou \u2014 Attribution Propagation",
+      "year": 2016,
+      "venue": "CVPR",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bach_\u2014_Layer-wise_Relevance_Propagation_2015",
+      "name": "Bach \u2014 Layer-wise Relevance Propagation",
+      "year": 2015,
+      "venue": "PLOS ONE",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Montavaux_\u2014_Electronic_Market_Prediction_2001",
+      "name": "Montavaux \u2014 Electronic Market Prediction",
+      "year": 2001,
+      "venue": "Neural Networks",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Stokes_\u2014_Quantitative_Input_Influence_2017",
+      "name": "Stokes \u2014 Quantitative Input Influence",
+      "year": 2017,
+      "venue": "IEEE S&P",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Doshi-Velez_\u2014_Interpretability_2017",
+      "name": "Doshi-Velez \u2014 Interpretability",
+      "year": 2017,
+      "venue": "J. Machine Learning Research",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Lakkaraju_\u2014_Faithful_Interpretability_2019",
+      "name": "Lakkaraju \u2014 Faithful Interpretability",
+      "year": 2019,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Rudin_\u2014_Please_Stop_2019",
+      "name": "Rudin \u2014 Please Stop",
+      "year": 2019,
+      "venue": "Nature Machine Intelligence",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Molnar_\u2014_Interpretable_ML_2020",
+      "name": "Molnar \u2014 Interpretable ML",
+      "year": 2020,
+      "venue": " Chapman & Hall",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Murdoch_\u2014_Definitions_of_Interpretabilit_2019",
+      "name": "Murdoch \u2014 Definitions of Interpretability",
+      "year": 2019,
+      "venue": "J. Machine Learning Research",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Lipton_\u2014_Mythos_of_Interpretability_2018",
+      "name": "Lipton \u2014 Mythos of Interpretability",
+      "year": 2018,
+      "venue": "ICML",
+      "domain": "feature_attribution",
+      "priority": 5,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FA_authors_\u2014_2017_2017",
+      "name": "Various FA authors \u2014 2017",
+      "year": 2017,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FA_authors_\u2014_2018_2018",
+      "name": "Various FA authors \u2014 2018",
+      "year": 2018,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FA_authors_\u2014_2019_2019",
+      "name": "Various FA authors \u2014 2019",
+      "year": 2019,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FA_authors_\u2014_2020_2020",
+      "name": "Various FA authors \u2014 2020",
+      "year": 2020,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FA_authors_\u2014_2021_2021",
+      "name": "Various FA authors \u2014 2021",
+      "year": 2021,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FA_authors_\u2014_2022_2022",
+      "name": "Various FA authors \u2014 2022",
+      "year": 2022,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FA_authors_\u2014_2023_2023",
+      "name": "Various FA authors \u2014 2023",
+      "year": 2023,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Various_FA_authors_\u2014_2024_2024",
+      "name": "Various FA authors \u2014 2024",
+      "year": 2024,
+      "venue": "NeurIPS",
+      "domain": "feature_attribution",
+      "priority": 4,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Myerson_\u2014_Trading_Mechanism_Design_1994",
+      "name": "Myerson \u2014 Trading Mechanism Design",
+      "year": 1994,
+      "venue": "Handbook of Econometrics",
+      "domain": "information_economics",
+      "priority": 6,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Milgrom_\u2014_Informational_Intermediation_2000",
+      "name": "Milgrom \u2014 Informational Intermediation",
+      "year": 2000,
+      "venue": "American Econ. Rev.",
+      "domain": "information_economics",
+      "priority": 6,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Biglaiser_\u2014_Intermediaries_1995",
+      "name": "Biglaiser \u2014 Intermediaries",
+      "year": 1995,
+      "venue": "Rev. Econ. Studies",
+      "domain": "information_economics",
+      "priority": 6,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "G_\u2014_Certification_Markets_2005",
+      "name": "G \u2014 Certification Markets",
+      "year": 2005,
+      "venue": "American Econ. Rev.",
+      "domain": "information_economics",
+      "priority": 6,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Lizzeri_\u2014_Information_Disclosure_1999",
+      "name": "Lizzeri \u2014 Information Disclosure",
+      "year": 1999,
+      "venue": "Q. J. Economics",
+      "domain": "information_economics",
+      "priority": 6,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Crawford_\u2014_Contract_Theory_2008",
+      "name": "Crawford \u2014 Contract Theory",
+      "year": 2008,
+      "venue": "American Econ. Rev.",
+      "domain": "information_economics",
+      "priority": 6,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Bolton_\u2014_Mechanism_Design_with_Contracti_2000",
+      "name": "Bolton \u2014 Mechanism Design with Contracting",
+      "year": 2000,
+      "venue": "Handbook of Game Theory",
+      "domain": "information_economics",
+      "priority": 6,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Fong_\u2014_Disclosure_and_Design_2017",
+      "name": "Fong \u2014 Disclosure and Design",
+      "year": 2017,
+      "venue": "American Econ. Rev.",
+      "domain": "information_economics",
+      "priority": 6,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Shin_\u2014_Information_Asymmetry_2003",
+      "name": "Shin \u2014 Information Asymmetry",
+      "year": 2003,
+      "venue": "J. Econ. Literature",
+      "domain": "information_economics",
+      "priority": 6,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Roth_\u2014_Perils_of_1985",
+      "name": "Roth \u2014 Perils of",
+      "year": 1985,
+      "venue": "American Econ. Rev.",
+      "domain": "matching_markets",
+      "priority": 7,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Kojima_\u2014_SAT_in_Matching_2015",
+      "name": "Kojima \u2014 SAT in Matching",
+      "year": 2015,
+      "venue": "American Econ. Rev.",
+      "domain": "matching_markets",
+      "priority": 7,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Hazetta_\u2014_Kidney_Exchange_2010",
+      "name": "Hazetta \u2014 Kidney Exchange",
+      "year": 2010,
+      "venue": "American Econ. Rev.",
+      "domain": "matching_markets",
+      "priority": 7,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Hatfield_\u2014_Stability_in_Matching_2015",
+      "name": "Hatfield \u2014 Stability in Matching",
+      "year": 2015,
+      "venue": "American Econ. Rev.",
+      "domain": "matching_markets",
+      "priority": 7,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aygun_\u2014_Market_Design_with_Traders_2020",
+      "name": "Aygun \u2014 Market Design with Traders",
+      "year": 2020,
+      "venue": "American Econ. Rev.",
+      "domain": "matching_markets",
+      "priority": 7,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Biro_\u2014_Applications_of_Matching_2019",
+      "name": "Biro \u2014 Applications of Matching",
+      "year": 2019,
+      "venue": "Handbook of Game Theory",
+      "domain": "matching_markets",
+      "priority": 7,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Grenager_\u2014_Fast_Matroid_Partition_2012",
+      "name": "Grenager \u2014 Fast Matroid Partition",
+      "year": 2012,
+      "venue": "ACM SIGecom",
+      "domain": "matching_markets",
+      "priority": 7,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Makary_\u2014_Market_Design_for_Kidney_Exchan_2019",
+      "name": "Makary \u2014 Market Design for Kidney Exchange",
+      "year": 2019,
+      "venue": "NEJM",
+      "domain": "matching_markets",
+      "priority": 7,
+      "arxiv": null,
+      "notes": ""
+    },
+    {
+      "id": "Aswini_\u2014_Matching_in_Online_Markets_2020",
+      "name": "Aswini \u2014 Matching in Online Markets",
+      "year": 2020,
+      "venue": "American Econ. Rev.",
+      "domain": "matching_markets",
+      "priority": 7,
+      "arxiv": null,
+      "notes": ""
+    }
+  ]
+}

@@ -2,7 +2,7 @@
 
 > **This directory is preserved for historical reference. It is NOT used by the current v0.3-alpha CLI.**
 >
-> Active skill: see `./kb/kb_query.py` + `./kb/kb_llm.py` (13 commands, no pipeline dependency).
+> Active skill: see `./knowledge-base/kb_query.py` + `./knowledge-base/kb_llm.py` (13 commands, no pipeline dependency).
 
 ## What was here
 
