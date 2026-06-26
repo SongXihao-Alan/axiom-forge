@@ -1,388 +1,691 @@
-#!/usr/bin/env python3
 """
-Z3 counterexample checker for axiom formal statements.
-Supports 3-tier parsing:
+kb/ingest/z3_verify.py
+axiom-forge v0.3 — Step 3: Z3 Verification
 
-  Tier A: Pattern detection (instant, regex-based)
-  Tier B: Direct Z3 parsing (ms-level)
-  Tier C: LLM-guided translation to SMT-LIB (used when Tier A/B fail)
+Three-tier verification:
+  Tier A: regex pattern check (vacuous / tautology / contradiction) — no Z3
+  Tier B: direct Z3 parse and check — milliseconds
+  Tier C: LLM re-formalization to SMT-LIB2, then Z3
 
-3 modes:
-  refute  — negate the axiom, check if satisfiable (sat = axiom is wrong)
-  consistency — check if axiom is satisfiable (unsat = self-contradicting)
-  full    — run all tiers
-
-Also detects: vacuous, contradiction, tautology.
+Integrates with formalize.py output via AxiomCandidateFormal.
 """
 
-import argparse, json, re, sys, time
-from pathlib import Path
+from __future__ import annotations
 
-try:
-    from z3 import *
-    Z3_AVAILABLE = True
-except ImportError:
-    Z3_AVAILABLE = False
+import os
+import re
+import json
+import time
+import logging
+from dataclasses import dataclass, field, asdict
+from typing import Optional
+from enum import Enum
 
-# ── Tier A: Pattern detection (instant, no Z3 needed) ───────────────
-PATTERNS = [
-    # Vacuous: quantified over empty set
-    (r"∈∅", "vacuous"),
-    (r"in_empty_set", "vacuous"),
-    (r"∀.*?∈\s*∅", "vacuous"),
-    (r"forall.*?in.*?emptyset", "vacuous"),
-    (r"∀.*?empty", "vacuous"),
-    (r"⊥", "falsum"),
-    # Contradiction: p ∧ ¬p
-    (r"∧.*?¬", "contradiction"),
-    (r"And.*?Not", "contradiction"),
-    # Tautology: A ↔ A
-    (r"↔.*?↔", "tautology"),
-    (r"==.*?==", "tautology"),
-    # Trivial: True ↔ True
-    (r"True.*True|True", "tautology"),
+import z3
+
+logger = logging.getLogger(__name__)
+
+
+# ---------------------------------------------------------------------------
+# Data classes
+# ---------------------------------------------------------------------------
+
+class Z3Status(str, Enum):
+    SAT                          = "sat"
+    UNSAT                        = "unsat"
+    UNKNOWN                      = "unknown"
+    VACUOUS                      = "vacuous"            # Tier A
+    TAUTOLOGY                    = "tautology"          # Tier A
+    CONTRADICTION                = "contradiction"      # Tier A
+    CANNOT_FORMALIZE             = "cannot_formalize"
+    SKIPPED_BACKTRANSLATION_FAIL = "skipped_backtranslation_fail"
+    PARSE_ERROR                  = "parse_error"
+    TIMEOUT                      = "timeout"
+
+
+@dataclass
+class Z3RawResult:
+    status: Z3Status
+    model: dict = field(default_factory=dict)
+    unsat_core: list[str] = field(default_factory=list)
+    notes: str = ""
+    elapsed_ms: float = 0.0
+
+
+@dataclass
+class Z3VerifyInput:
+    candidate_id: str
+    formalization_id: str
+    smt_fragment: str
+    claim_nl: str
+    domain: str
+    backtranslation_passed: bool
+    # optional: the full formal dict for Tier C context
+    formal_context: dict = field(default_factory=dict)
+
+
+@dataclass
+class AxiomVerificationResult:
+    candidate_id: str
+    formalization_id: str
+    tier_used: str                          # "A" | "B" | "C" | "SKIPPED" | "CANNOT"
+    z3_status: str                          # Z3Status value
+    z3_model: dict = field(default_factory=dict)
+    counterexample: dict = field(default_factory=dict)
+    unsat_core: list[str] = field(default_factory=list)
+    verification_confidence: float = 0.0
+    notes: str = ""
+    elapsed_ms: float = 0.0
+    smt_used: str = ""                      # actual SMT string sent to Z3
+
+    def to_dict(self) -> dict:
+        return asdict(self)
+
+
+class CannotFormalizeError(Exception):
+    pass
+
+
+# ---------------------------------------------------------------------------
+# Tier A: pattern-based checks (no Z3, instant)
+# ---------------------------------------------------------------------------
+
+# Patterns that indicate trivially vacuous / tautological / contradictory axioms
+_VACUOUS_PATTERNS = [
+    r"\(assert\s+true\b",
+    r"\(assert\s+\(\s*=\s+(\w+)\s+\1\s*\)\s*\)",   # (assert (= x x))
+]
+
+_CONTRADICTION_PATTERNS = [
+    r"\(assert\s+false\b",
+    r"\(assert\s+\(\s*and\s+(\w+)\s+\(\s*not\s+\1\s*\)\s*\)\s*\)",
+    r"\(assert\s+\(\s*not\s+true\b",
+]
+
+_TAUTOLOGY_PATTERNS = [
+    r"\(assert\s+\(\s*or\s+(\w+)\s+\(\s*not\s+\1\s*\)\s*\)\s*\)",  # (assert (or p (not p)))
+    r"\(assert\s+\(\s*=>\s+\S+\s+true\b",
 ]
 
 
-def detect_patterns(formal: str) -> list[str]:
-    """Quick regex scan for known vacuous/contradiction/tautology patterns."""
-    found = []
-    for pattern, label in PATTERNS:
-        if re.search(pattern, formal, re.IGNORECASE):
-            found.append(label)
-    return list(set(found))
+def _matches_any(text: str, patterns: list[str]) -> bool:
+    for p in patterns:
+        if re.search(p, text.strip(), re.IGNORECASE):
+            return True
+    return False
 
 
-# ── Tier B: Direct Z3 parsing ───────────────────────────────────────
-def build_z3_expr(formal: str):
+def tier_a_check(smt_fragment: str) -> Optional[Z3RawResult]:
     """
-    Parse formal statement into a Z3 expression.
-    Supports SHAP/mechanism-design notation + SMT-LIB.
+    Returns a Z3RawResult if a trivial pattern is detected, else None.
+    None means: proceed to Tier B.
     """
-    s = formal
-    # Normalize unicode
-    s = s.replace("∈", " in ").replace("∧", " and ").replace("∨", " or ")
-    s = s.replace("¬", "Not ").replace("≠", " != ").replace("↔", " == ")
-    s = s.replace("→", " Implies ").replace("∀", "ForAll").replace("∃", "Exists")
-    s = s.replace("Σ", "Sum").replace("φ", "phi").replace("Φ", "Phi")
-    s = s.replace("∂", "delta").replace("Δ", "Delta")
-    s = s.replace("β", "beta").replace("λ", "lambda")
-    s = s.replace("₀", "_0").replace("₁", "_1").replace("₂", "_2")
-    s = s.replace("≤", " <=").replace("≥", " >=").replace("·", " * ")
-    s = re.sub(r"\s+", " ", s).strip()
+    s = smt_fragment.strip()
+    if not s:
+        return None
 
-    safe = {
-        "Real": Real, "Int": Int, "Bool": Bool, "String": String,
-        "And": And, "Or": Or, "Not": Not,
-        "Implies": Implies, "If": If, "ITE": If,
-        "ForAll": ForAll, "Exists": Exists,
-        "Sum": lambda *a: sum(a),
-        "Abs": Abs,
-        "True": True, "False": False,
-        "SI_i": Real("SI_i"), "SI_j": Real("SI_j"),
-        "phi_i": Real("phi_i"), "phi_ix": Real("phi_ix"),
-        "f": Real("f"), "fhat": Real("fhat"),
-        "beta": Real("beta"),
-        "x": Real("x"), "X": Real("X"),
-        "v_N": Real("v_N"), "w": Real("w"),
-        "i": Int("i"), "j": Int("j"), "n": Int("n"),
-        "S": Int("S"), "T": Int("T"), "N": Int("N"),
-    }
-
-    for var in re.findall(r'\b([a-zA-Z_][a-zA-Z0-9_]*)\b', s):
-        if var not in safe and var[0].isupper() or var in ("i","j","n","x","S","T","N"):
-            try:
-                safe[var] = Real(var)
-            except Exception:
-                pass
-
-    try:
-        return eval(s, {"__builtins__": {}}, safe)
-    except Exception:
-        pass
-    try:
-        return parse_smtlib_string(s)
-    except Exception:
-        raise ValueError(f"Cannot parse: {s[:80]}")
-
-
-def verify_z3(expr, mode: str):
-    """Run Z3 on a parsed expression. Returns (status, model, time_ms)."""
-    solver = Solver()
-    solver.set(timeout=15000)
-    try:
-        if mode == "refute":
-            solver.add(Not(expr))
-            check = solver.check()
-        elif mode == "consistency":
-            solver.add(expr)
-            check = solver.check()
-        else:
-            raise ValueError(f"Unknown mode: {mode}")
-
-        if check == sat:
-            m = solver.model()
-            return "sat", {str(d): str(m[d]) for d in m.decls() if m[d] is not None}
-        elif check == unsat:
-            return "unsat", None
-        return "unknown", None
-    except Exception as e:
-        return "error", str(e)[:100]
-
-
-# ── Tier C: LLM-guided translation to SMT-LIB ───────────────────────
-Z3_TRANSLATOR_PROMPT = """You are a formal verification expert. Your task is to translate a mathematical statement into a valid SMT-LIB 2 expression for Z3 solver.
-
-RULES:
-- Use only Z3-supported operators: and, or, not, =>, =, !=, <, <=, >, >=, +, -, *, /, forAll, exists
-- Declare all variables with their sort: (declare-const x Real) or (declare-fun x () Real)
-- Foralls: (forall ((x Real)) (and ...))
-- Exists: (exists ((x Real)) (and ...))
-- Comparisons must be Booleans
-- DO NOT use: sum, Σ, φ, ∂, ∈ symbols — expand them
-- Translate "SI_i > 0" → (> SI_i 0)
-- Translate "φ_i(fhat, x) > 0" → (> (phi_ix fhat x) 0)
-- Translate "v(S) = E[f|X_S]" → (v S) = ...
-
-STATEMENT:
-{formal}
-
-OUTPUT: ONLY the SMT-LIB expression, nothing else. Start with (assert ...) or the bare formula.
-
-EXAMPLES:
-Input:  "SI_i > 0  ==>  exists x: phi_i(fhat, x) > 0"
-Output: (=> (> SI_i 0) (exists ((x Real)) (> (phi_ix fhat x) 0)))
-
-Input:  "forall x: if x in S then f(x) >= 0"
-Output: (forall ((x Real)) (=> (in S x) (>= (f x) 0)))
-"""
-
-
-def _call_m3(prompt: str, user: str, max_tokens: int = 800) -> str:
-    import urllib.request, urllib.error, json
-    api_key = ""
-    for p in [Path(__file__).resolve().parent.parent.parent / ".env",
-              Path.home() / ".axiom-forge.env"]:
-        try:
-            for line in p.read_text().splitlines():
-                if "MINIMAX_API_KEY" in line:
-                    api_key = line.split("=", 1)[1].strip()
-        except Exception:
-            pass
-    try:
-        api_key = api_key or __import__("os").getenv("MINIMAX_API_KEY", "")
-    except Exception:
-        pass
-
-    if not api_key:
-        return "ERROR: no MINIMAX_API_KEY"
-
-    payload = {
-        "model": "MiniMax-Text-01",
-        "messages": [
-            {"role": "system", "content": prompt},
-            {"role": "user", "content": user}
-        ],
-        "temperature": 0.1,
-        "max_tokens": max_tokens,
-    }
-    try:
-        req = urllib.request.Request(
-            "https://api.minimaxi.com/v1/text/chatcompletion_v2",
-            data=json.dumps(payload).encode("utf-8"),
-            headers={"Content-Type": "application/json",
-                     "Authorization": f"Bearer {api_key}"},
-            method="POST",
+    if _matches_any(s, _CONTRADICTION_PATTERNS):
+        return Z3RawResult(
+            status=Z3Status.CONTRADICTION,
+            notes="Tier A: pattern detected contradiction (assert false or p∧¬p)"
         )
-        with urllib.request.urlopen(req, timeout=60) as resp:
-            raw = json.loads(resp.read())["choices"][0]["message"]["content"]
-            return re.sub(r"<think>.*?</think>", "", raw, flags=re.DOTALL).strip()
-    except Exception as e:
-        return f"ERROR: {e}"
+    if _matches_any(s, _TAUTOLOGY_PATTERNS):
+        return Z3RawResult(
+            status=Z3Status.TAUTOLOGY,
+            notes="Tier A: pattern detected tautology (assert true or p∨¬p)"
+        )
+    if _matches_any(s, _VACUOUS_PATTERNS):
+        return Z3RawResult(
+            status=Z3Status.VACUOUS,
+            notes="Tier A: pattern detected vacuous axiom (assert x=x or assert true)"
+        )
+
+    # SHAP-specific symbol validation
+    shap_symbols = {"SI_i", "phi_i", "phi_j", "f", "f_hat", "beta", "v_N"}
+    declared = set(re.findall(r"\(declare-const\s+(\S+)", s))
+    used = set(re.findall(r"\b(SI_i|phi_i|phi_j|f|f_hat|beta|v_N)\b", s))
+    undeclared = used - declared
+    if undeclared:
+        logger.debug("Tier A note: SHAP symbols used but not declared: %s", undeclared)
+        # Not a fatal error — Tier B will catch parse failures
+
+    return None  # proceed to Tier B
 
 
-def llm_translate_to_smtlib(formal: str) -> tuple[str, str]:
-    """
-    Use LLM to translate informal formal to SMT-LIB.
-    Returns (smtlib_expr, error_or_success).
-    """
-    user = f"## Statement to translate\n\n{formal}\n\n## Output:"
-    raw = _call_m3(Z3_TRANSLATOR_PROMPT.format(formal=formal), user)
-    if raw.startswith("ERROR"):
-        return "", raw
-    # Strip markdown fences
-    m = re.search(r"```(?:smtlib)?\s*(.*?)```", raw, re.DOTALL)
-    if m:
-        raw = m.group(1).strip()
-    return raw.strip(), "ok"
+# ---------------------------------------------------------------------------
+# Tier B: direct Z3 parse + solve
+# ---------------------------------------------------------------------------
 
-
-def verify_z3_smtlib(smtlib_expr: str, mode: str):
-    """Parse SMT-LIB string and run Z3."""
-    try:
-        expr = parse_smtlib_string(smtlib_expr)
-    except Exception as e:
-        return "unknown", f"smtlib parse error: {e}"
-
-    solver = Solver()
-    solver.set(timeout=15000)
-    try:
-        if mode == "refute":
-            solver.add(Not(expr))
-            check = solver.check()
-        elif mode == "consistency":
-            solver.add(expr)
-            check = solver.check()
-        else:
-            return "unknown", "unknown mode"
-
-        if check == sat:
-            m = solver.model()
-            return "sat", {str(d): str(m[d]) for d in m.decls() if m[d] is not None}
-        elif check == unsat:
-            return "unsat", None
-        return "unknown", None
-    except Exception as e:
-        return "error", str(e)[:100]
-
-
-# ── Main verification function ────────────────────────────────────────
-def verify_axiom(axiom_id: str, formal_stmt: str, mode: str = "refute") -> dict:
-    """
-    3-tier verification:
-      Tier A: pattern regex (instant)
-      Tier B: direct Z3 (ms-level)
-      Tier C: LLM translation → Z3 (used when A+B fail AND formal is non-empty)
-
-    Returns:
-      status: "sat" | "unsat" | "vacuous" | "contradiction" | "tautology" | "unknown" | "error"
-      tier: "A" | "B" | "C" (which tier gave the verdict)
-      flags: list of detected issues
-      model: counterexample if sat
-      time_ms: elapsed time
-      smtlib_translation: (Tier C only) the LLM-generated SMT-LIB
-      error: error message if error
-    """
-    result = {
-        "axiom": axiom_id,
-        "mode": mode,
-        "status": "unknown",
-        "tier": None,
-        "flags": [],
-        "model": None,
-        "smtlib_translation": None,
-        "time_ms": 0.0,
-        "error": None,
-    }
-    if not formal_stmt or not formal_stmt.strip():
-        result["status"] = "no_formal"
-        return result
-
-    start = time.time()
-
-    # ── Tier A: Pattern detection ─────────────────────────────────
-    flags = detect_patterns(formal_stmt)
-    result["flags"] = flags
-
-    if "vacuous" in flags:
-        result["status"] = "vacuous"
-        result["tier"] = "A"
-        result["time_ms"] = round((time.time() - start) * 1000, 1)
-        return result
-    if "contradiction" in flags:
-        result["status"] = "contradiction"
-        result["tier"] = "A"
-        result["time_ms"] = round((time.time() - start) * 1000, 1)
-        return result
-    if "tautology" in flags:
-        result["status"] = "tautology"
-        result["tier"] = "A"
-        result["time_ms"] = round((time.time() - start) * 1000, 1)
-        return result
-
-    # ── Tier B: Direct Z3 ──────────────────────────────────────────
-    if not Z3_AVAILABLE:
-        result["status"] = "error"
-        result["error"] = "z3-solver not installed"
-        result["tier"] = "B_error"
-        result["time_ms"] = round((time.time() - start) * 1000, 1)
-        return result
-
-    try:
-        expr = build_z3_expr(formal_stmt)
-        status, model = verify_z3(expr, mode)
-        result["status"] = status
-        result["model"] = model
-        result["tier"] = "B"
-    except Exception as e:
-        status_str = str(e)
-        result["tier"] = "B_fail"
-        # Tier B failed → try Tier C
-        if "Cannot parse" in status_str or "parse" in status_str.lower():
-            result["tier"] = "C_try"
-
-    # ── Tier C: LLM-guided SMT-LIB translation ───────────────────────
-    if result["tier"] in ("B_fail", "B_unknown", "C_try"):
-        smtlib, llm_err = llm_translate_to_smtlib(formal_stmt)
-        if llm_err == "ok" and smtlib:
-            result["smtlib_translation"] = smtlib
-            status, model = verify_z3_smtlib(smtlib, mode)
-            if status in ("sat", "unsat"):
-                result["status"] = status
-                result["model"] = model
-                result["tier"] = "C"
-            elif status == "unknown":
-                result["tier"] = "C_fail"
-            elif status == "error":
-                result["error"] = f"Tier C: {model}"
-                result["tier"] = "C_error"
-        else:
-            result["tier"] = "C_error"
-            result["error"] = llm_err
-
-    result["time_ms"] = round((time.time() - start) * 1000, 1)
+def _model_to_dict(model: z3.ModelRef) -> dict:
+    """Convert a Z3 model to a plain Python dict."""
+    result = {}
+    for decl in model.decls():
+        val = model[decl]
+        try:
+            result[str(decl)] = str(val)
+        except Exception:
+            result[str(decl)] = repr(val)
     return result
 
 
-# ── Human-readable output ──────────────────────────────────────────────
-STATUS_ICON = {
-    "sat": "❌ REFUTED (counterexample found)",
-    "unsat": "✅ CONSISTENT (no counterexample)",
-    "vacuous": "⚠ VACUOUS (quantified over empty set)",
-    "contradiction": "❌ CONTRADICTION (p ∧ ¬p)",
-    "tautology": "⚠ TAUTOLOGY (always true)",
-    "unknown": "⚠ UNKNOWN",
-    "no_formal": "— NO FORMAL",
-    "error": "⚠ ERROR",
+def _core_to_list(core) -> list[str]:
+    return [str(c) for c in core]
+
+
+def tier_b_check(
+    smt_fragment: str,
+    timeout_ms: int = 5000,
+) -> Optional[Z3RawResult]:
+    """
+    Attempt direct Z3 verification.
+    Returns Z3RawResult if successful, None if the fragment cannot be parsed
+    (signalling Tier C should be attempted).
+    """
+    t0 = time.perf_counter()
+    try:
+        solver = z3.Solver()
+        solver.set("timeout", timeout_ms)
+        solver.from_string(smt_fragment)
+
+        result = solver.check()
+        elapsed = (time.perf_counter() - t0) * 1000
+
+        if result == z3.sat:
+            return Z3RawResult(
+                status=Z3Status.SAT,
+                model=_model_to_dict(solver.model()),
+                elapsed_ms=elapsed,
+                notes="Tier B: Z3 found satisfying assignment"
+            )
+        elif result == z3.unsat:
+            try:
+                core = _core_to_list(solver.unsat_core())
+            except Exception:
+                core = []
+            return Z3RawResult(
+                status=Z3Status.UNSAT,
+                unsat_core=core,
+                elapsed_ms=elapsed,
+                notes="Tier B: Z3 proved unsatisfiable (possible impossibility theorem)"
+            )
+        else:
+            return Z3RawResult(
+                status=Z3Status.UNKNOWN,
+                elapsed_ms=elapsed,
+                notes="Tier B: Z3 returned unknown (timeout or undecidable)"
+            )
+
+    except z3.Z3Exception as e:
+        logger.debug("Tier B Z3 parse/solve error: %s", e)
+        return None  # signal to try Tier C
+
+    except Exception as e:
+        logger.warning("Tier B unexpected error: %s", e)
+        return None
+
+
+# ---------------------------------------------------------------------------
+# Tier C: LLM re-formalization → SMT-LIB2 → Z3
+# ---------------------------------------------------------------------------
+
+# SHAP domain standard SMT-LIB2 templates
+_SHAP_TEMPLATES = {
+    "efficiency": """
+(declare-const phi_sum Real)
+(declare-const f_x Real)
+(assert (= phi_sum f_x))
+""",
+    "symmetry": """
+(declare-const marginal_i Real)
+(declare-const marginal_j Real)
+(declare-const phi_i Real)
+(declare-const phi_j Real)
+(assert (=> (= marginal_i marginal_j) (= phi_i phi_j)))
+""",
+    "dummy": """
+(declare-const phi_i Real)
+(declare-const marginal_i Real)
+(assert (=> (= marginal_i 0.0) (= phi_i 0.0)))
+""",
+    "linearity": """
+(declare-const phi_f Real)
+(declare-const phi_g Real)
+(declare-const phi_combined Real)
+(assert (= phi_combined (+ phi_f phi_g)))
+""",
+    "monotonicity": """
+(declare-const phi_i Real)
+(declare-const phi_j Real)
+(declare-const marginal_i Real)
+(declare-const marginal_j Real)
+(assert (=> (>= marginal_i marginal_j) (>= phi_i phi_j)))
+""",
 }
 
 
-def print_result(result: dict):
-    icon = STATUS_ICON.get(result["status"], result["status"])
-    print(f"{result['axiom']} [{result['tier']}]: {icon} ({result['time_ms']}ms)")
-    if result.get("flags"):
-        print(f"  Flags: {result['flags']}")
-    if result.get("model"):
-        print(f"  Counterexample: {result['model']}")
-    if result.get("smtlib_translation"):
-        print(f"  SMT-LIB: {result['smtlib_translation'][:100]}")
-    if result.get("error"):
-        print(f"  Error: {result['error']}")
+def _try_shap_template(claim_nl: str, domain: str) -> Optional[str]:
+    """
+    Quick heuristic: if the claim looks like a known SHAP axiom,
+    return a pre-built SMT-LIB2 template without an LLM call.
+    """
+    if domain != "ml_fairness":
+        return None
+    nl_lower = claim_nl.lower()
+    for axiom_name, template in _SHAP_TEMPLATES.items():
+        if axiom_name in nl_lower:
+            logger.debug("Tier C: matched SHAP template '%s'", axiom_name)
+            return template.strip()
+    return None
 
 
-# ── CLI ──────────────────────────────────────────────────────────────
+def tier_c_reformalize(
+    claim_nl: str,
+    domain: str,
+    original_fragment: str,
+    formal_context: dict,
+    timeout_ms: int = 5000,
+    llm_client=None,
+    model: str = "claude-sonnet-4-6",
+) -> Z3RawResult:
+    """
+    Use LLM to produce a valid SMT-LIB2 string, then run Z3.
+
+    llm_client: an anthropic.Anthropic() instance. If None, will create one
+                using ANTHROPIC_API_KEY from env.
+    """
+    # 1. Try SHAP template shortcut
+    shap_smt = _try_shap_template(claim_nl, domain)
+    if shap_smt:
+        result = tier_b_check(shap_smt, timeout_ms)
+        if result is not None:
+            result.notes = "Tier C (SHAP template shortcut): " + result.notes
+            return result
+
+    # 2. LLM re-formalization
+    if llm_client is None:
+        try:
+            import anthropic
+            llm_client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+        except Exception as e:
+            return Z3RawResult(
+                status=Z3Status.CANNOT_FORMALIZE,
+                notes=f"Tier C: could not initialise LLM client: {e}"
+            )
+
+    context_str = ""
+    if formal_context:
+        context_str = f"""
+Additional context from previous formalization attempt:
+  quantifier: {formal_context.get('quantifier', '')}
+  condition: {formal_context.get('condition', '')}
+  conclusion: {formal_context.get('conclusion', '')}
+  interpretation: {formal_context.get('interpretation_chosen', '')}
+"""
+
+    prompt = f"""You are an SMT-LIB2 expert. Translate the following normative claim
+into a valid SMT-LIB2 string that Z3 can parse and verify.
+
+Rules:
+- Use only first-order logic. No lambda. No second-order quantifiers.
+- Declare all free variables with (declare-const name Type).
+- Use a single (assert ...) statement.
+- Types must be: Real, Int, or Bool.
+- Do NOT use (check-sat) or (get-model) — just declare-const and assert.
+- If the claim is fundamentally not expressible in first-order SMT-LIB2
+  (e.g. requires reasoning about all possible functions or sets of sets),
+  output exactly the string: CANNOT_FORMALIZE
+
+Domain: {domain}
+Claim: {claim_nl}
+Previous fragment (may be syntactically invalid): {original_fragment}
+{context_str}
+Output the SMT-LIB2 string only. No explanation. No markdown fences."""
+
+    t0 = time.perf_counter()
+    try:
+        response = llm_client.messages.create(
+            model=model,
+            max_tokens=512,
+            messages=[{"role": "user", "content": prompt}]
+        )
+        smt_string = response.content[0].text.strip()
+        elapsed_llm = (time.perf_counter() - t0) * 1000
+
+        # Strip markdown fences if LLM added them despite instructions
+        smt_string = re.sub(r"^```[\w]*\n?", "", smt_string)
+        smt_string = re.sub(r"\n?```$", "", smt_string)
+        smt_string = smt_string.strip()
+
+        if smt_string == "CANNOT_FORMALIZE":
+            return Z3RawResult(
+                status=Z3Status.CANNOT_FORMALIZE,
+                elapsed_ms=elapsed_llm,
+                notes="Tier C: LLM determined claim cannot be expressed in first-order SMT-LIB2"
+            )
+
+        # Run Z3 on the LLM-produced SMT string
+        result = tier_b_check(smt_string, timeout_ms)
+        if result is None:
+            return Z3RawResult(
+                status=Z3Status.PARSE_ERROR,
+                elapsed_ms=elapsed_llm,
+                notes="Tier C: LLM produced SMT-LIB2 but Z3 still could not parse it",
+                model={"smt_attempted": smt_string[:200]}
+            )
+
+        result.notes = f"Tier C (LLM→Z3, {elapsed_llm:.0f}ms LLM): " + result.notes
+        return result
+
+    except Exception as e:
+        elapsed = (time.perf_counter() - t0) * 1000
+        logger.error("Tier C LLM call failed: %s", e)
+        return Z3RawResult(
+            status=Z3Status.CANNOT_FORMALIZE,
+            elapsed_ms=elapsed,
+            notes=f"Tier C: LLM call exception: {e}"
+        )
+
+
+# ---------------------------------------------------------------------------
+# Main entry point
+# ---------------------------------------------------------------------------
+
+def z3_verify(
+    verify_input: Z3VerifyInput,
+    timeout_ms: int = 5000,
+    llm_client=None,
+    model: str = "claude-sonnet-4-6",
+) -> AxiomVerificationResult:
+    """
+    Run three-tier Z3 verification on a formalized axiom candidate.
+
+    Tier routing:
+      CANNOT_FORMALIZE flag → return immediately, no Z3
+      backtranslation_passed=False → SKIPPED, no Z3
+      Tier A pattern match → return immediately
+      Tier B direct parse → return if successful
+      Tier C LLM re-formalize → fallback
+
+    Returns AxiomVerificationResult with full provenance.
+    """
+    cid = verify_input.candidate_id
+    fid = verify_input.formalization_id
+    smt = verify_input.smt_fragment
+
+    # Gate 0: backtranslation failed — skip Z3
+    if not verify_input.backtranslation_passed:
+        return AxiomVerificationResult(
+            candidate_id=cid,
+            formalization_id=fid,
+            tier_used="SKIPPED",
+            z3_status=Z3Status.SKIPPED_BACKTRANSLATION_FAIL,
+            verification_confidence=0.0,
+            notes="Skipped: backtranslation similarity below threshold. "
+                  "Formalization may not accurately represent the original claim.",
+        )
+
+    # Gate 1: cannot formalize flag from LLM
+    if smt == "CANNOT_FORMALIZE" or not smt:
+        return AxiomVerificationResult(
+            candidate_id=cid,
+            formalization_id=fid,
+            tier_used="CANNOT",
+            z3_status=Z3Status.CANNOT_FORMALIZE,
+            verification_confidence=0.0,
+            notes="SMT fragment marked CANNOT_FORMALIZE by formalization step.",
+            smt_used=smt,
+        )
+
+    # Tier A
+    tier_a_result = tier_a_check(smt)
+    if tier_a_result is not None:
+        return AxiomVerificationResult(
+            candidate_id=cid,
+            formalization_id=fid,
+            tier_used="A",
+            z3_status=tier_a_result.status,
+            notes=tier_a_result.notes,
+            elapsed_ms=tier_a_result.elapsed_ms,
+            verification_confidence=0.95,
+            smt_used=smt,
+        )
+
+    # Tier B
+    tier_b_result = tier_b_check(smt, timeout_ms)
+    if tier_b_result is not None:
+        conf = _confidence_from_status(tier_b_result.status)
+        return AxiomVerificationResult(
+            candidate_id=cid,
+            formalization_id=fid,
+            tier_used="B",
+            z3_status=tier_b_result.status,
+            z3_model=tier_b_result.model,
+            unsat_core=tier_b_result.unsat_core,
+            notes=tier_b_result.notes,
+            elapsed_ms=tier_b_result.elapsed_ms,
+            verification_confidence=conf,
+            smt_used=smt,
+        )
+
+    # Tier C
+    logger.info("Candidate %s: Tier B failed, escalating to Tier C", cid)
+    tier_c_result = tier_c_reformalize(
+        claim_nl=verify_input.claim_nl,
+        domain=verify_input.domain,
+        original_fragment=smt,
+        formal_context=verify_input.formal_context,
+        timeout_ms=timeout_ms,
+        llm_client=llm_client,
+        model=model,
+    )
+    conf = _confidence_from_status(tier_c_result.status) * 0.85  # slight penalty for Tier C
+    return AxiomVerificationResult(
+        candidate_id=cid,
+        formalization_id=fid,
+        tier_used="C",
+        z3_status=tier_c_result.status,
+        z3_model=tier_c_result.model,
+        unsat_core=tier_c_result.unsat_core,
+        notes=tier_c_result.notes,
+        elapsed_ms=tier_c_result.elapsed_ms,
+        verification_confidence=conf,
+        smt_used=smt,
+    )
+
+
+def _confidence_from_status(status: Z3Status) -> float:
+    return {
+        Z3Status.SAT:            0.90,
+        Z3Status.UNSAT:          0.95,   # strongest: proved impossibility
+        Z3Status.TAUTOLOGY:      0.95,
+        Z3Status.CONTRADICTION:  0.95,
+        Z3Status.VACUOUS:        0.80,
+        Z3Status.UNKNOWN:        0.30,
+        Z3Status.CANNOT_FORMALIZE: 0.0,
+        Z3Status.PARSE_ERROR:    0.10,
+        Z3Status.TIMEOUT:        0.20,
+    }.get(status, 0.0)
+
+
+# ---------------------------------------------------------------------------
+# Batch runner
+# ---------------------------------------------------------------------------
+
+def batch_verify(
+    inputs: list[Z3VerifyInput],
+    timeout_ms: int = 5000,
+    llm_client=None,
+    model: str = "claude-sonnet-4-6",
+) -> list[AxiomVerificationResult]:
+    """
+    Run z3_verify on a list of inputs. Sequential (Z3 is fast enough).
+    Returns results in the same order as inputs.
+    """
+    results = []
+    for i, inp in enumerate(inputs):
+        logger.info("Verifying %d/%d: %s", i + 1, len(inputs), inp.candidate_id)
+        result = z3_verify(inp, timeout_ms, llm_client, model)
+        results.append(result)
+    return results
+
+
+# ---------------------------------------------------------------------------
+# Reporting helpers
+# ---------------------------------------------------------------------------
+
+def summarize_results(results: list[AxiomVerificationResult]) -> dict:
+    """
+    Produce a summary dict for lane_c_feedback.json.
+    """
+    from collections import Counter
+
+    status_counts = Counter(r.z3_status for r in results)
+    tier_counts   = Counter(r.tier_used for r in results)
+
+    verified = [r for r in results if r.z3_status == Z3Status.SAT]
+    impossible = [r for r in results if r.z3_status == Z3Status.UNSAT]
+
+    mean_conf = (
+        sum(r.verification_confidence for r in results) / len(results)
+        if results else 0.0
+    )
+
+    return {
+        "total":                     len(results),
+        "by_status":                 dict(status_counts),
+        "by_tier":                   dict(tier_counts),
+        "verified_count":            len(verified),
+        "impossibility_count":       len(impossible),
+        "mean_verification_confidence": round(mean_conf, 4),
+        "cannot_formalize_rate":     round(
+            status_counts.get(Z3Status.CANNOT_FORMALIZE, 0) / max(len(results), 1), 4
+        ),
+        "skipped_rate":              round(
+            status_counts.get(Z3Status.SKIPPED_BACKTRANSLATION_FAIL, 0) / max(len(results), 1), 4
+        ),
+    }
+
+
+# ---------------------------------------------------------------------------
+# CLI entry point (for testing)
+# ---------------------------------------------------------------------------
+
 if __name__ == "__main__":
-    p = argparse.ArgumentParser(description="Z3 axiom verifier (3-tier: pattern → Z3 → LLM)")
-    p.add_argument("--axiom", required=True)
-    p.add_argument("--formal", required=True)
-    p.add_argument("--mode", choices=["refute", "consistency"], default="refute")
-    p.add_argument("--output", required=True)
-    p.add_argument("--no-llm", dest="use_llm", action="store_false", default=True,
-                    help="Skip Tier C LLM translation")
-    args = p.parse_args()
+    import argparse
 
-    r = verify_axiom(args.axiom, args.formal, args.mode)
-    print_result(r)
+    parser = argparse.ArgumentParser(description="axiom-forge z3_verify — test runner")
+    parser.add_argument("--smt",    type=str, help="SMT-LIB2 string to verify directly")
+    parser.add_argument("--claim",  type=str, help="Natural language claim (for Tier C)")
+    parser.add_argument("--domain", type=str, default="game_theory")
+    parser.add_argument("--bt-passed", action="store_true", default=True,
+                        help="Treat backtranslation as passed (default True)")
+    args = parser.parse_args()
 
-    with open(args.output, "w") as f:
-        json.dump(r, f, indent=2)
+    if args.smt:
+        inp = Z3VerifyInput(
+            candidate_id="cli-test",
+            formalization_id="cli-test-f",
+            smt_fragment=args.smt,
+            claim_nl=args.claim or "",
+            domain=args.domain,
+            backtranslation_passed=args.bt_passed,
+        )
+        result = z3_verify(inp)
+        print(json.dumps(result.to_dict(), indent=2))
+    else:
+        # Self-test with known examples
+        print("Running built-in self-tests...\n")
+
+        tests = [
+            # Tier A: tautology
+            {
+                "label": "Tier A tautology",
+                "smt": "(assert (or p (not p)))",
+                "claim": "Either p holds or p does not hold",
+                "bt_passed": True,
+                "expected_tier": "A",
+                "expected_status": Z3Status.TAUTOLOGY,
+            },
+            # Tier A: contradiction
+            {
+                "label": "Tier A contradiction",
+                "smt": "(assert false)",
+                "claim": "False",
+                "bt_passed": True,
+                "expected_tier": "A",
+                "expected_status": Z3Status.CONTRADICTION,
+            },
+            # Tier B: SAT — Shapley symmetry (satisfiable — there exist values satisfying it)
+            {
+                "label": "Tier B SAT — Shapley symmetry",
+                "smt": """
+(declare-const marginal_i Real)
+(declare-const marginal_j Real)
+(declare-const phi_i Real)
+(declare-const phi_j Real)
+(assert (=> (= marginal_i marginal_j) (= phi_i phi_j)))
+""",
+                "claim": "If two agents have equal marginal contributions, they receive equal payoffs",
+                "bt_passed": True,
+                "expected_tier": "B",
+                "expected_status": Z3Status.SAT,
+            },
+            # Tier B: UNSAT — an impossibility
+            {
+                "label": "Tier B UNSAT — simple impossibility",
+                "smt": """
+(declare-const x Real)
+(assert (and (> x 0) (< x 0)))
+""",
+                "claim": "x is both positive and negative",
+                "bt_passed": True,
+                "expected_tier": "B",
+                "expected_status": Z3Status.UNSAT,
+            },
+            # Backtranslation failed — should skip
+            {
+                "label": "Skipped — backtranslation failed",
+                "smt": "(assert (= phi_i phi_j))",
+                "claim": "Agents receive equal payoffs",
+                "bt_passed": False,
+                "expected_tier": "SKIPPED",
+                "expected_status": Z3Status.SKIPPED_BACKTRANSLATION_FAIL,
+            },
+            # Tier B: efficiency (satisfiable)
+            {
+                "label": "Tier B SAT — efficiency axiom",
+                "smt": """
+(declare-const phi_sum Real)
+(declare-const f_x Real)
+(assert (= phi_sum f_x))
+""",
+                "claim": "The sum of all Shapley values equals the model output",
+                "bt_passed": True,
+                "expected_tier": "B",
+                "expected_status": Z3Status.SAT,
+            },
+        ]
+
+        passed = 0
+        for t in tests:
+            inp = Z3VerifyInput(
+                candidate_id=f"test-{t['label'][:20]}",
+                formalization_id="test-f",
+                smt_fragment=t["smt"],
+                claim_nl=t["claim"],
+                domain="game_theory",
+                backtranslation_passed=t["bt_passed"],
+            )
+            result = z3_verify(inp, timeout_ms=3000)
+            ok_tier   = result.tier_used   == t["expected_tier"]
+            ok_status = result.z3_status   == t["expected_status"]
+            status_str = "PASS" if (ok_tier and ok_status) else "FAIL"
+            if ok_tier and ok_status:
+                passed += 1
+            print(f"  [{status_str}] {t['label']}")
+            print(f"         tier={result.tier_used}  status={result.z3_status}  conf={result.verification_confidence:.2f}")
+            if not (ok_tier and ok_status):
+                print(f"         expected tier={t['expected_tier']}  status={t['expected_status']}")
+            print()
+
+        print(f"Results: {passed}/{len(tests)} passed")
