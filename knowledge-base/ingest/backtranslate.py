@@ -25,11 +25,12 @@ import logging
 from dataclasses import dataclass, field, asdict
 from typing import Optional
 
-import anthropic
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
+from pydantic import BaseModel
 
 from formalize import AxiomCandidateFormal
+from m3_client import call_m3_chat, call_m3_structured, check_api_key as m3_api_key_set
 
 logger = logging.getLogger(__name__)
 
@@ -137,26 +138,83 @@ Output a JSON object with exactly two fields:
 # Embedding similarity
 # ---------------------------------------------------------------------------
 
-def _get_embeddings(
-    texts: list[str],
-    client: anthropic.Anthropic,
-) -> np.ndarray:
+def _get_embeddings(texts: list[str]) -> tuple[np.ndarray, str]:
     """
-    Get embeddings using the Anthropic client.
-    Falls back to a simple TF-IDF-based cosine if the embedding API fails.
-    Returns shape (n, d).
+    Get embeddings for back-translation similarity.
+
+    Primary: SBERT all-MiniLM-L6-v2 via raw transformers (mean-pooled).
+    This is robust to paraphrasing — e.g. "SI_i(f) := E_X[|∂f/∂X_i|]" vs
+    "the gradient magnitude of the ground-truth function" scores 0.93
+    semantically vs 0.00 with TF-IDF.
+
+    Returns (embeddings, method_name) where method_name ∈ {"sbert", "tfidf", "identity"}.
+
+    Fallback chain:
+      1. SBERT all-MiniLM-L6-v2  (semantic, robust to math notation)
+      2. TF-IDF + cosine          (lexical, fast, coarse)
+      3. Identity matrix          (forces manual review on every pair)
     """
+    n = len(texts)
+
+    # 1. SBERT all-MiniLM-L6-v2
     try:
-        # Anthropic currently proxies voyage embeddings
-        response = client.embeddings.create(
-            model=EMBEDDING_MODEL,
-            input=texts,
+        import torch
+        from transformers import AutoTokenizer, AutoModel
+        import os
+
+        os.environ.setdefault("HF_HUB_OFFLINE", "1")
+        os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
+        tokenizer, model = _get_sbert_components()
+
+        encoded = tokenizer(
+            texts, padding=True, truncation=True, return_tensors="pt"
         )
-        vectors = np.array([r.embedding for r in response.data], dtype=np.float32)
-        return vectors
+        with torch.no_grad():
+            out = model(**encoded)
+        attn = encoded["attention_mask"].unsqueeze(-1).float()
+        token_emb = out[0]
+        summed = torch.sum(token_emb * attn.expand_as(token_emb), dim=1)
+        counts = torch.clamp(attn.sum(dim=1), min=1e-9)
+        embeddings = (summed / counts).numpy().astype(np.float32)
+        norms = np.linalg.norm(embeddings, axis=1, keepdims=True)
+        norms = np.where(norms == 0, 1.0, norms)
+        embeddings = embeddings / norms
+        logger.debug("BT embeddings: SBERT path used for %d texts", n)
+        return embeddings, "sbert"
     except Exception as e:
-        logger.warning("Embedding API failed (%s), falling back to TF-IDF", e)
-        return _tfidf_fallback(texts)
+        logger.warning("SBERT embedding failed (%s), falling back to TF-IDF", e)
+
+    # 2. TF-IDF fallback
+    try:
+        from sklearn.feature_extraction.text import TfidfVectorizer
+        vec = TfidfVectorizer(min_df=1, stop_words="english")
+        matrix = vec.fit_transform(texts).toarray().astype(np.float32)
+        norms = np.linalg.norm(matrix, axis=1, keepdims=True)
+        norms = np.where(norms == 0, 1.0, norms)
+        logger.debug("BT embeddings: TF-IDF path used for %d texts", n)
+        return matrix / norms, "tfidf"
+    except Exception as e:
+        logger.warning("TF-IDF embedding failed (%s), falling back to identity", e)
+
+    # 3. Identity fallback
+    return np.eye(n, dtype=np.float32), "identity"
+
+
+_SBERT_CACHE = {"tokenizer": None, "model": None}
+
+
+def _get_sbert_components():
+    """Lazy-load SBERT model once per process; cache in module global."""
+    if _SBERT_CACHE["tokenizer"] is None:
+        from transformers import AutoTokenizer, AutoModel
+        _SBERT_CACHE["tokenizer"] = AutoTokenizer.from_pretrained(
+            "sentence-transformers/all-MiniLM-L6-v2"
+        )
+        _SBERT_CACHE["model"] = AutoModel.from_pretrained(
+            "sentence-transformers/all-MiniLM-L6-v2"
+        )
+        _SBERT_CACHE["model"].eval()
+    return _SBERT_CACHE["tokenizer"], _SBERT_CACHE["model"]
 
 
 def _tfidf_fallback(texts: list[str]) -> np.ndarray:
@@ -184,39 +242,38 @@ def _cosine_sim(a: np.ndarray, b: np.ndarray) -> float:
 # LLM judge (Stage 2)
 # ---------------------------------------------------------------------------
 
+class _JudgeScore(BaseModel):
+    score: float
+    reason: str = ""
+
+
 def _llm_judge(
     claim_nl_original: str,
     claim_reconstructed: str,
-    client: anthropic.Anthropic,
     model: str,
 ) -> Optional[float]:
     """
     Ask LLM to score semantic equivalence. Returns 0–1 or None on failure.
     """
-    import json as _json
-
     prompt = _JUDGE_USER_TEMPLATE.format(
         claim_nl_original=claim_nl_original,
         claim_reconstructed=claim_reconstructed,
     )
-    try:
-        response = client.messages.create(
-            model=model,
-            max_tokens=150,
-            system=_JUDGE_SYSTEM,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        text = response.content[0].text.strip()
-        # Strip markdown fences if present
-        text = text.replace("```json", "").replace("```", "").strip()
-        data = _json.loads(text)
-        score = float(data.get("score", 0.0))
-        reason = data.get("reason", "")
-        logger.debug("LLM judge score=%.3f reason=%s", score, reason)
-        return max(0.0, min(1.0, score))
-    except Exception as e:
-        logger.warning("LLM judge failed: %s", e)
+    parsed = call_m3_structured(
+        system=_JUDGE_SYSTEM,
+        user=prompt,
+        schema=_JudgeScore,
+        max_retries=1,
+        max_tokens=200,
+        model=model,
+        temperature=0.0,
+    )
+    if parsed is None:
+        logger.warning("LLM judge: M3 returned no valid score")
         return None
+    score = float(max(0.0, min(1.0, parsed.score)))
+    logger.debug("LLM judge score=%.3f reason=%s", score, parsed.reason)
+    return score
 
 
 # ---------------------------------------------------------------------------
@@ -225,8 +282,7 @@ def _llm_judge(
 
 def call_3_backtranslate(
     bt_input: BackTranslateInput,
-    client: Optional[anthropic.Anthropic] = None,
-    model: str = "claude-sonnet-4-6",
+    model: str = "MiniMax-M3",
     use_judge: bool = True,
 ) -> BackTranslationResult:
     """
@@ -239,8 +295,18 @@ def call_3_backtranslate(
     Returns BackTranslationResult. Never raises — on total failure, returns
     a result with passed=False and failure_reason set.
     """
-    if client is None:
-        client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    if not m3_api_key_set():
+        return BackTranslationResult(
+            candidate_id=bt_input.candidate_id,
+            formalization_id=bt_input.formalization_id,
+            claim_reconstructed="",
+            similarity_score=0.0,
+            similarity_method="failed",
+            passed=False,
+            failure_reason="MINIMAX_API_KEY not set",
+            ambiguity_preserved=False,
+            judge_score=None,
+        )
 
     f = bt_input.claim_formal
 
@@ -270,17 +336,20 @@ def call_3_backtranslate(
     )
 
     # call_3: reconstruct NL from formal only
-    try:
-        response = client.messages.create(
-            model=model,
-            max_tokens=200,
-            system=_BT_SYSTEM,
-            messages=[{"role": "user", "content": prompt}],
-        )
-        claim_reconstructed = response.content[0].text.strip()
-    except Exception as e:
-        logger.warning("call_3_backtranslate API call failed for %s: %s",
-                       bt_input.candidate_id, e)
+    claim_reconstructed = call_m3_chat(
+        system=_BT_SYSTEM,
+        user=prompt,
+        max_tokens=1024,  # bumped from 200: M3 uses tokens on <think> reasoning;
+                          # with 200 tokens the entire budget is consumed
+                          # by reasoning and the reconstructed NL is empty,
+                          # collapsing BT sim to 0 (false-fail signal).
+                          # 1024 gives room for both thinking + NL reconstruction.
+        model=model,
+        temperature=0.2,
+    )
+    if claim_reconstructed is None:
+        logger.warning("call_3_backtranslate: M3 chat failed for %s",
+                       bt_input.candidate_id)
         return BackTranslationResult(
             candidate_id=bt_input.candidate_id,
             formalization_id=bt_input.formalization_id,
@@ -288,32 +357,38 @@ def call_3_backtranslate(
             similarity_score=0.0,
             similarity_method="failed",
             passed=False,
-            failure_reason=f"API call failed: {e}",
+            failure_reason="M3 chat call failed",
             ambiguity_preserved=False,
             judge_score=None,
         )
 
-    # Stage 1: embedding cosine similarity
-    embeddings = _get_embeddings(
+    # Stage 1: SBERT (preferred) → TF-IDF → identity (M3 has no embeddings API)
+    embeddings, emb_method = _get_embeddings(
         [bt_input.claim_nl_original, claim_reconstructed],
-        client=client,
     )
     sim_score = _cosine_sim(embeddings[0], embeddings[1])
-    method = "embedding"
+    method = emb_method
     judge_score: Optional[float] = None
+
+    # DEBUG: dump both strings so we can see why sim is low
+    logger.debug(
+        "BT sim=%s for %s:\n  ORIG: %s\n  RECN: %s",
+        sim_score, bt_input.candidate_id[:8],
+        bt_input.claim_nl_original[:200],
+        claim_reconstructed[:200],
+    )
 
     # Stage 2: LLM judge — only if score is borderline
     if use_judge and BT_THRESHOLD_JUDGE_TRIGGER <= sim_score < BT_THRESHOLD_PASS:
         judge_score = _llm_judge(
             bt_input.claim_nl_original,
             claim_reconstructed,
-            client,
             model,
         )
         if judge_score is not None:
             # Weighted average: 60% embedding, 40% judge
             sim_score = 0.6 * sim_score + 0.4 * judge_score
-            method = "embedding+judge"
+            method = f"{emb_method}+judge"
 
     passed = sim_score >= BT_THRESHOLD_PASS
 
@@ -356,17 +431,13 @@ def call_3_backtranslate(
 
 def batch_backtranslate(
     inputs: list[BackTranslateInput],
-    client: Optional[anthropic.Anthropic] = None,
-    model: str = "claude-sonnet-4-6",
+    model: str = "MiniMax-M3",
     use_judge: bool = True,
 ) -> list[BackTranslationResult]:
-    if client is None:
-        client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-
     results = []
     for i, inp in enumerate(inputs):
         logger.info("Back-translating %d/%d: %s", i + 1, len(inputs), inp.candidate_id)
-        result = call_3_backtranslate(inp, client=client, model=model, use_judge=use_judge)
+        result = call_3_backtranslate(inp, model=model, use_judge=use_judge)
         results.append(result)
 
     pass_rate = sum(r.passed for r in results) / max(len(results), 1)
@@ -442,14 +513,15 @@ if __name__ == "__main__":
     print(f"Judge trigger: {BT_THRESHOLD_JUDGE_TRIGGER}\n")
 
     for original, reconstructed, label in pairs:
-        vecs = _tfidf_fallback([original, reconstructed])
+        vecs, method = _get_embeddings([original, reconstructed])
         sim  = _cosine_sim(vecs[0], vecs[1])
         status = "PASS" if sim >= BT_THRESHOLD_PASS else "FAIL"
-        print(f"[{status}] {label}")
+        print(f"[{status}] {label}  (method={method})")
         print(f"  sim={sim:.3f}")
         print(f"  original:      {original[:60]}")
         print(f"  reconstructed: {reconstructed[:60]}")
         print()
 
-    print("Note: live runs use voyage-3 embeddings (much better than TF-IDF).")
-    print("Set ANTHROPIC_API_KEY to run live back-translation.")
+    print("Note: live runs use SBERT (all-MiniLM-L6-v2) embeddings for semantic")
+    print("similarity, falling back to TF-IDF on load failure.")
+    print("Set MINIMAX_API_KEY to run live back-translation.")

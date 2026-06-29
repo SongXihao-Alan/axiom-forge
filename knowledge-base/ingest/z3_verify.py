@@ -23,6 +23,8 @@ from enum import Enum
 
 import z3
 
+from m3_client import call_m3_chat, check_api_key as m3_api_key_set
+
 logger = logging.getLogger(__name__)
 
 
@@ -284,14 +286,16 @@ def tier_c_reformalize(
     original_fragment: str,
     formal_context: dict,
     timeout_ms: int = 5000,
-    llm_client=None,
-    model: str = "claude-sonnet-4-6",
+    llm_client=None,  # kept for back-compat with old call sites; ignored
+    model: str = "MiniMax-M3",
 ) -> Z3RawResult:
     """
     Use LLM to produce a valid SMT-LIB2 string, then run Z3.
 
-    llm_client: an anthropic.Anthropic() instance. If None, will create one
-                using ANTHROPIC_API_KEY from env.
+    Backed by MiniMax-M3 via m3_client.call_m3_chat (was previously anthropic
+    Claude). The `llm_client` parameter is kept for backwards-compat with
+    old call sites but is ignored — Tier C routes through the project's
+    standard M3 client now.
     """
     # 1. Try SHAP template shortcut
     shap_smt = _try_shap_template(claim_nl, domain)
@@ -301,16 +305,12 @@ def tier_c_reformalize(
             result.notes = "Tier C (SHAP template shortcut): " + result.notes
             return result
 
-    # 2. LLM re-formalization
-    if llm_client is None:
-        try:
-            import anthropic
-            llm_client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-        except Exception as e:
-            return Z3RawResult(
-                status=Z3Status.CANNOT_FORMALIZE,
-                notes=f"Tier C: could not initialise LLM client: {e}"
-            )
+    # 2. LLM re-formalization via M3
+    if not m3_api_key_set():
+        return Z3RawResult(
+            status=Z3Status.CANNOT_FORMALIZE,
+            notes="Tier C: MINIMAX_API_KEY not set",
+        )
 
     context_str = ""
     if formal_context:
@@ -342,48 +342,46 @@ Previous fragment (may be syntactically invalid): {original_fragment}
 Output the SMT-LIB2 string only. No explanation. No markdown fences."""
 
     t0 = time.perf_counter()
-    try:
-        response = llm_client.messages.create(
-            model=model,
-            max_tokens=512,
-            messages=[{"role": "user", "content": prompt}]
-        )
-        smt_string = response.content[0].text.strip()
-        elapsed_llm = (time.perf_counter() - t0) * 1000
+    smt_string = call_m3_chat(
+        system="You are an SMT-LIB2 expert. Output only the SMT-LIB2 string or CANNOT_FORMALIZE.",
+        user=prompt,
+        max_tokens=512,
+        model=model,
+        temperature=0.0,
+    )
+    elapsed_llm = (time.perf_counter() - t0) * 1000
 
-        # Strip markdown fences if LLM added them despite instructions
-        smt_string = re.sub(r"^```[\w]*\n?", "", smt_string)
-        smt_string = re.sub(r"\n?```$", "", smt_string)
-        smt_string = smt_string.strip()
-
-        if smt_string == "CANNOT_FORMALIZE":
-            return Z3RawResult(
-                status=Z3Status.CANNOT_FORMALIZE,
-                elapsed_ms=elapsed_llm,
-                notes="Tier C: LLM determined claim cannot be expressed in first-order SMT-LIB2"
-            )
-
-        # Run Z3 on the LLM-produced SMT string
-        result = tier_b_check(smt_string, timeout_ms)
-        if result is None:
-            return Z3RawResult(
-                status=Z3Status.PARSE_ERROR,
-                elapsed_ms=elapsed_llm,
-                notes="Tier C: LLM produced SMT-LIB2 but Z3 still could not parse it",
-                model={"smt_attempted": smt_string[:200]}
-            )
-
-        result.notes = f"Tier C (LLM→Z3, {elapsed_llm:.0f}ms LLM): " + result.notes
-        return result
-
-    except Exception as e:
-        elapsed = (time.perf_counter() - t0) * 1000
-        logger.error("Tier C LLM call failed: %s", e)
+    if smt_string is None:
         return Z3RawResult(
             status=Z3Status.CANNOT_FORMALIZE,
-            elapsed_ms=elapsed,
-            notes=f"Tier C: LLM call exception: {e}"
+            elapsed_ms=elapsed_llm,
+            notes="Tier C: M3 chat call failed",
         )
+
+    # Strip markdown fences if LLM added them despite instructions
+    smt_string = re.sub(r"^```[\w]*\n?", "", smt_string)
+    smt_string = re.sub(r"\n?```$", "", smt_string)
+    smt_string = smt_string.strip()
+
+    if smt_string == "CANNOT_FORMALIZE":
+        return Z3RawResult(
+            status=Z3Status.CANNOT_FORMALIZE,
+            elapsed_ms=elapsed_llm,
+            notes="Tier C: LLM determined claim cannot be expressed in first-order SMT-LIB2"
+        )
+
+    # Run Z3 on the LLM-produced SMT string
+    result = tier_b_check(smt_string, timeout_ms)
+    if result is None:
+        return Z3RawResult(
+            status=Z3Status.PARSE_ERROR,
+            elapsed_ms=elapsed_llm,
+            notes="Tier C: LLM produced SMT-LIB2 but Z3 still could not parse it",
+            model={"smt_attempted": smt_string[:200]}
+        )
+
+    result.notes = f"Tier C (LLM→Z3, {elapsed_llm:.0f}ms LLM): " + result.notes
+    return result
 
 
 # ---------------------------------------------------------------------------

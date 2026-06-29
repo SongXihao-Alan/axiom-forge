@@ -21,9 +21,9 @@ from dataclasses import dataclass, field, asdict
 from typing import Optional
 from datetime import datetime, timezone
 
-import anthropic
-import instructor
 from pydantic import BaseModel, Field, field_validator
+
+from m3_client import call_m3_structured, check_api_key as m3_api_key_set
 
 logger = logging.getLogger(__name__)
 
@@ -210,14 +210,16 @@ MIN_TEXT_LENGTH    = int(os.environ.get("DISCOVER_MIN_TEXT_LENGTH", "100"))
 
 def call_1_discover(
     discover_input: DiscoverInput,
-    client: Optional[anthropic.Anthropic] = None,
-    model: str = "claude-sonnet-4-6",
+    model: str = "MiniMax-M3",
 ) -> list[AxiomCandidateNL]:
     """
     Extract normative axiom candidates from a single text chunk.
 
     Returns a list of AxiomCandidateNL (may be empty).
     Never raises on LLM errors — returns [] with a logged warning instead.
+
+    Backed by MiniMax-M3 via m3_client.call_m3_structured (was previously
+    anthropic + instructor; the .env / env var MINIMAX_API_KEY drives auth).
     """
     # Guard: skip very short chunks
     if len(discover_input.text.strip()) < MIN_TEXT_LENGTH:
@@ -225,10 +227,9 @@ def call_1_discover(
                      discover_input.chunk_id, len(discover_input.text))
         return []
 
-    # Build client with instructor patch
-    if client is None:
-        client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-    ic = instructor.from_anthropic(client)
+    if not m3_api_key_set():
+        logger.warning("MINIMAX_API_KEY not set; call_1_discover returning []")
+        return []
 
     user_prompt = _USER_TEMPLATE.format(
         domain=discover_input.domain,
@@ -236,17 +237,18 @@ def call_1_discover(
         text=discover_input.text[:4000],   # hard cap to avoid token overrun
     )
 
-    try:
-        response: RawCandidateList = ic.messages.create(
-            model=model,
-            max_tokens=1024,
-            system=_SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": user_prompt}],
-            response_model=RawCandidateList,
-        )
-    except Exception as e:
-        logger.warning("call_1_discover failed for chunk %s: %s",
-                       discover_input.chunk_id, e)
+    response: Optional[RawCandidateList] = call_m3_structured(
+        system=_SYSTEM_PROMPT,
+        user=user_prompt,
+        schema=RawCandidateList,
+        max_retries=2,
+        max_tokens=1024,
+        model=model,
+        temperature=0.2,
+    )
+    if response is None:
+        logger.warning("call_1_discover: M3 returned no valid schema for chunk %s",
+                       discover_input.chunk_id)
         return []
 
     now = datetime.now(timezone.utc).isoformat()
@@ -277,20 +279,16 @@ def call_1_discover(
 
 def batch_discover(
     inputs: list[DiscoverInput],
-    client: Optional[anthropic.Anthropic] = None,
-    model: str = "claude-sonnet-4-6",
+    model: str = "MiniMax-M3",
 ) -> list[AxiomCandidateNL]:
     """
     Run call_1_discover over a list of chunks.
     Returns all candidates from all chunks in a flat list.
     """
-    if client is None:
-        client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-
     all_candidates = []
     for i, inp in enumerate(inputs):
         logger.info("Discovering %d/%d: %s", i + 1, len(inputs), inp.chunk_id)
-        candidates = call_1_discover(inp, client=client, model=model)
+        candidates = call_1_discover(inp, model=model)
         all_candidates.extend(candidates)
 
     logger.info("batch_discover complete: %d chunks → %d total candidates",

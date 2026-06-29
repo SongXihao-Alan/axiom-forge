@@ -19,11 +19,10 @@ import logging
 from dataclasses import dataclass, field, asdict
 from typing import Optional
 
-import anthropic
-import instructor
 from pydantic import BaseModel, Field, field_validator
 
 from discover import AxiomCandidateNL
+from m3_client import call_m3_structured, check_api_key as m3_api_key_set
 
 logger = logging.getLogger(__name__)
 
@@ -297,8 +296,7 @@ def _validate_smt_structure(smt: str) -> bool:
 
 def call_2_formalize(
     candidate: AxiomCandidateNL,
-    client: Optional[anthropic.Anthropic] = None,
-    model: str = "claude-sonnet-4-6",
+    model: str = "MiniMax-M3",
 ) -> Optional[AxiomCandidateFormal]:
     """
     Formalize a single AxiomCandidateNL into a structured formal representation.
@@ -306,9 +304,9 @@ def call_2_formalize(
     Returns AxiomCandidateFormal, or None if the API call fails entirely.
     A CANNOT_FORMALIZE smt_fragment is a valid (non-None) return.
     """
-    if client is None:
-        client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-    ic = instructor.from_anthropic(client)
+    if not m3_api_key_set():
+        logger.warning("MINIMAX_API_KEY not set; call_2_formalize returning None")
+        return None
 
     domain_hint = _DOMAIN_HINTS.get(candidate.domain, _DEFAULT_HINT)
 
@@ -320,17 +318,20 @@ def call_2_formalize(
         domain_hint=domain_hint,
     )
 
-    try:
-        response: FormalRepresentation = ic.messages.create(
-            model=model,
-            max_tokens=1024,
-            system=_SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": user_prompt}],
-            response_model=FormalRepresentation,
-        )
-    except Exception as e:
-        logger.warning("call_2_formalize failed for candidate %s: %s",
-                       candidate.candidate_id, e)
+    response: Optional[FormalRepresentation] = call_m3_structured(
+        system=_SYSTEM_PROMPT,
+        user=user_prompt,
+        schema=FormalRepresentation,
+        max_retries=2,
+        max_tokens=4096,  # bumped from 1024: M3 uses tokens on <think> reasoning,
+                           # leaving ~0 for actual JSON output at 1024.
+                           # 4096 gives room for both reasoning + full FormalRepresentation JSON (~600 tokens).
+        model=model,
+        temperature=0.2,
+    )
+    if response is None:
+        logger.warning("call_2_formalize: M3 returned no valid schema for candidate %s",
+                       candidate.candidate_id)
         return None
 
     smt_clean = _clean_smt(response.smt_fragment)
@@ -375,20 +376,16 @@ def call_2_formalize(
 
 def batch_formalize(
     candidates: list[AxiomCandidateNL],
-    client: Optional[anthropic.Anthropic] = None,
-    model: str = "claude-sonnet-4-6",
+    model: str = "MiniMax-M3",
 ) -> list[AxiomCandidateFormal]:
     """
     Formalize a list of NL candidates.
     Skips candidates where call_2 returns None (API failure).
     """
-    if client is None:
-        client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
-
     results = []
     for i, c in enumerate(candidates):
         logger.info("Formalizing %d/%d: %s", i + 1, len(candidates), c.candidate_id)
-        formal = call_2_formalize(c, client=client, model=model)
+        formal = call_2_formalize(c, model=model)
         if formal is not None:
             results.append(formal)
         else:

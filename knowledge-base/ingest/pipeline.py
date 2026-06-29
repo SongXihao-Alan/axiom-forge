@@ -28,12 +28,11 @@ from typing import Optional
 from datetime import datetime, timezone
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-import anthropic
-
 from discover       import DiscoverInput, AxiomCandidateNL, call_1_discover, batch_discover
 from formalize      import AxiomCandidateFormal, call_2_formalize
 from backtranslate  import BackTranslateInput, BackTranslationResult, call_3_backtranslate, backtranslation_stats
 from z3_verify      import Z3VerifyInput, AxiomVerificationResult, z3_verify, summarize_results
+from m3_client      import check_api_key as m3_api_key_set
 
 logging.basicConfig(
     level=logging.INFO,
@@ -321,7 +320,6 @@ def _build_report(
 
 def run_single_candidate(
     nl: AxiomCandidateNL,
-    client: anthropic.Anthropic,
     model: str,
     z3_timeout_ms: int,
     skip_z3: bool,
@@ -332,7 +330,7 @@ def run_single_candidate(
     """
     # call_2: formalize
     try:
-        formal = call_2_formalize(nl, client=client, model=model)
+        formal = call_2_formalize(nl, model=model)
     except Exception as e:
         logger.warning("call_2 exception for %s: %s", nl.candidate_id, e)
         formal = None
@@ -350,7 +348,7 @@ def run_single_candidate(
         claim_nl_original=nl.claim_nl,
     )
     try:
-        bt = call_3_backtranslate(bt_input, client=client, model=model)
+        bt = call_3_backtranslate(bt_input, model=model)
     except Exception as e:
         logger.warning("call_3 exception for %s: %s", nl.candidate_id, e)
         bt = _empty_bt(nl.candidate_id, formal.formalization_id)
@@ -369,7 +367,9 @@ def run_single_candidate(
             formal_context=formal.to_dict(),
         )
         try:
-            z3r = z3_verify(z3_input, timeout_ms=z3_timeout_ms, llm_client=client, model=model)
+            # NOTE: z3_verify's llm_client arg is now ignored (Tier C uses
+            # m3_client internally). Keep call site stable for future.
+            z3r = z3_verify(z3_input, timeout_ms=z3_timeout_ms, model=model)
         except Exception as e:
             logger.warning("z3_verify exception for %s: %s", nl.candidate_id, e)
             z3r = _empty_z3(nl.candidate_id, formal.formalization_id)
@@ -384,12 +384,11 @@ def run_single_candidate(
 def run_pipeline(
     chunks: list[DiscoverInput],
     output_path: str,
-    model: str = "claude-sonnet-4-6",
+    model: str = "MiniMax-M3",
     backtranslation_threshold: float = 0.75,
     z3_timeout_ms: int = 5000,
     skip_z3: bool = False,
-    parallel_workers: int = 1,          # keep at 1 to avoid Anthropic rate limits
-    anthropic_api_key: Optional[str] = None,
+    parallel_workers: int = 1,
 ) -> PipelineReport:
     """
     Full pipeline: chunks → AxiomRecords written to output_path (JSONL).
@@ -399,20 +398,22 @@ def run_pipeline(
     """
     t0 = time.perf_counter()
 
+    if not m3_api_key_set():
+        raise EnvironmentError("MINIMAX_API_KEY not set (or .env missing)")
+
     # Set threshold env var so backtranslate.py picks it up
     os.environ["BACKTRANSLATION_THRESHOLD"] = str(backtranslation_threshold)
-
-    api_key = anthropic_api_key or os.environ.get("ANTHROPIC_API_KEY")
-    if not api_key:
-        raise EnvironmentError("ANTHROPIC_API_KEY not set")
-    client = anthropic.Anthropic(api_key=api_key)
 
     # Phase 1: discover (call_1) over all chunks
     logger.info("Phase 1: discovering candidates from %d chunks...", len(chunks))
     all_nl: list[AxiomCandidateNL] = []
     for i, chunk in enumerate(chunks):
         logger.info("  Chunk %d/%d: %s", i + 1, len(chunks), chunk.chunk_id)
-        candidates = call_1_discover(chunk, client=client, model=model)
+        try:
+            candidates = call_1_discover(chunk, model=model)
+        except Exception as e:
+            logger.warning("call_1 exception for %s: %s", chunk.chunk_id, e)
+            candidates = []
         all_nl.extend(candidates)
 
     logger.info("Phase 1 complete: %d candidate(s) from %d chunk(s)",
@@ -432,7 +433,7 @@ def run_pipeline(
         with ThreadPoolExecutor(max_workers=parallel_workers) as ex:
             futures = {
                 ex.submit(
-                    run_single_candidate, nl, client, model, z3_timeout_ms, skip_z3
+                    run_single_candidate, nl, model, z3_timeout_ms, skip_z3
                 ): nl
                 for nl in all_nl
             }
@@ -448,7 +449,7 @@ def run_pipeline(
         # Sequential — default, safer for rate limits
         for i, nl in enumerate(all_nl):
             logger.info("  Candidate %d/%d: %s", i + 1, len(all_nl), nl.candidate_id)
-            record = run_single_candidate(nl, client, model, z3_timeout_ms, skip_z3)
+            record = run_single_candidate(nl, model, z3_timeout_ms, skip_z3)
             records.append(record)
             logger.info("    → status=%-25s  bt_sim=%.3f  z3=%s",
                         record.status,
@@ -571,7 +572,7 @@ def run_demo() -> None:
         print(f"   text:   {c.text[:80]}...")
         print()
 
-    print("Pipeline stages that would run with ANTHROPIC_API_KEY set:")
+    print("Pipeline stages that would run with MINIMAX_API_KEY set:")
     print()
     print("  Phase 1: call_1_discover()")
     print("    → LLM extracts normative claims from each chunk")
@@ -655,7 +656,7 @@ def run_demo() -> None:
     print(serialized[:800])
     print("...")
     print()
-    print("Set ANTHROPIC_API_KEY and run:")
+    print("Set MINIMAX_API_KEY and run:")
     print("  python pipeline.py --input your_chunks.jsonl --output records.jsonl")
 
 
@@ -676,8 +677,8 @@ def main():
         help="Path for output JSONL (default: output/axiom_records.jsonl)"
     )
     parser.add_argument(
-        "--model", type=str, default="claude-sonnet-4-6",
-        help="Anthropic model to use (default: claude-sonnet-4-6)"
+        "--model", type=str, default="MiniMax-M3",
+        help="M3 model name (default: MiniMax-M3)"
     )
     parser.add_argument(
         "--bt-threshold", type=float, default=0.75,
