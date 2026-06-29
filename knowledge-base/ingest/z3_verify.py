@@ -64,6 +64,8 @@ class Z3VerifyInput:
     backtranslation_passed: bool
     # optional: the full formal dict for Tier C context
     formal_context: dict = field(default_factory=dict)
+    # Tier-aware gate: only skip Z3 if BT sim is below this floor
+    similarity_score: float = 0.0  # used by Gate 0 alongside backtranslation_passed
 
 
 @dataclass
@@ -413,14 +415,19 @@ def z3_verify(
     smt = verify_input.smt_fragment
 
     # Gate 0: backtranslation failed — skip Z3
-    if not verify_input.backtranslation_passed:
+    # Use 0.5 threshold (medium tier from pipeline.py tiered status) so Z3
+    # runs on more candidates. Old 0.75 threshold made Z3 SKIPPED for ~40%
+    # of records. With tiered status, "bt_pass_medium" candidates now get
+    # Z3 verification too.
+    if not verify_input.backtranslation_passed and \
+       verify_input.similarity_score < 0.5:
         return AxiomVerificationResult(
             candidate_id=cid,
             formalization_id=fid,
             tier_used="SKIPPED",
             z3_status=Z3Status.SKIPPED_BACKTRANSLATION_FAIL,
             verification_confidence=0.0,
-            notes="Skipped: backtranslation similarity below threshold. "
+            notes="Skipped: backtranslation similarity below 0.5. "
                   "Formalization may not accurately represent the original claim.",
         )
 

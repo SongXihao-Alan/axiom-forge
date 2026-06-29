@@ -399,6 +399,7 @@ def run_single_candidate(
             claim_nl=nl.claim_nl,
             domain=nl.domain,
             backtranslation_passed=bt.passed,
+            similarity_score=bt.similarity_score,  # for tier-aware Z3 gate
             formal_context=formal.to_dict(),
         )
         try:
