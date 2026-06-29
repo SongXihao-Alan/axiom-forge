@@ -26,7 +26,8 @@ Prompt versioning (v1/v2/v3)    knowledge-base/ingest/lane_b_prompts/    DONE
 [v0.4] SBERT back-translation similarity    knowledge-base/ingest/backtranslate.py    DONE
 [v0.4] KB-to-chunks adapter (51 chunks)    scripts/kb_to_chunks.py    DONE
 [v0.4] Phase 2 records (consistency)    /tmp/ax-test/kb_records_v3.jsonl    20 records, 6 Z3-SAT
-[v0.4] Phase 2 records (refute)         /tmp/ax-test/kb_records_refute.jsonl    in progress (run 2026-06-26)
+[v0.4] Phase 2 records (refute)         /tmp/ax-test/kb_records_refute.jsonl 21 records, 12 SAT, 0 UNSAT
+                                                                                   (R22: no impossibility found yet, falsifiable_* status added)
 
 
 # 2. Immediate (No Blocker)

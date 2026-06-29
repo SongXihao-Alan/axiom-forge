@@ -268,4 +268,6 @@ Run results (most recent):
   /tmp/ax-test/kb_records.jsonl         (20 records, max_tokens=1024,  BT 0.23)
   /tmp/ax-test/kb_records_v2.jsonl      (18 records, max_tokens=8192,  BT 0.64)
   /tmp/ax-test/kb_records_v3.jsonl      (20 records, run Z3 by default, 6 SAT)
-  /tmp/ax-test/kb_records_refute.jsonl  (refute mode, in progress)
+  /tmp/ax-test/kb_records_refute.jsonl  (21 records, refute mode, 12 SAT, 0 UNSAT)
+                                         ↑ Headline: no impossibility found yet
+                                         (R22: needs TH-IMP-501 proper formalization)
