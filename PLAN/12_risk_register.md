@@ -4,6 +4,10 @@
 What could go wrong, mitigation, escalation + 3-layer verification risks
 Song Xihao (Alan), University of Glasgow  •  2026-06-24
 
+**v0.4 update (2026-06-26)**: Added risks R19-R22 from Phase 2 pipeline
+empirical findings. See `PLAN/13_phase2_pipeline.md` for context.
+Old risks (R1-R18) left in place for reference.
+
 
 # 1. Active Risks (BLOCKING)
 
@@ -51,3 +55,25 @@ Risk    Impact    Mitigation
 R16    Linter flags .lean files as errors    Confirm with lake build; linter is wrong
 R17    GitHub Actions timeout (6h)    Keep tests < 5 min; Lean build separate workflow
 R18    Literature fetcher produces stale nodes    Set monthly cron; set needs_review flag on LIT-* nodes > 12 months
+
+# 4b. Phase 2 Pipeline Risks (NEW — v0.4)
+
+Risk    Impact    Mitigation    Status
+R19    M3 thinks but produces empty/garbled JSON for some candidates
+                 ~5-10% per call. Retry logic handles 2-3 attempts.
+                 After exhaustion: status=formalization_failed.
+                 Run: 7/20 v3 candidates failed.    CLOSED via retry (mitigated)
+R20    Back-translation sim 0.0 because M3 runs out of tokens
+                 Old 1024 max_tokens → 0.0 sim → false-fail.
+                 Fixed: bumped to 8192 (Phase 1+2).
+                 v3 run: only 1/20 had sim=0.    CLOSED
+R21    DNS hiccup terminates long runs at candidate 17-20
+                 2026-06-26 v3 run lost 3 candidates to ConnectError.
+                 Mitigation: wrap run in retry with backoff, OR run
+                 individual candidates on failure.    OPEN (1 hr)
+R22    Refute mode finds 0 UNSAT (no impossibility theorems)
+                 M3-generated SMT from KB axioms tends to be
+                 satisfiable. The interesting case is when KB's own
+                 theorems (TH-IMP-501) are properly formalized.
+                 Mitigation: use formalize.py to ensure TH-IMP-501
+                 actually negates the conjunction.    OPEN (under validation)

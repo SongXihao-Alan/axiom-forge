@@ -4,6 +4,13 @@
 From KB to LLM-Evaluator Calibration: A 4-Lane Research Program
 Song Xihao (Alan), University of Glasgow  •  2026-06-24
 
+**v0.4 update (2026-06-26)**: Phase 2 D⇄F pipeline (D-F-BT-Z3) is now end-to-end
+working with M3 (minimaxi) + SBERT. See `knowledge-base/SPEC_cn.md` for the
+Chinese tech spec, and `scripts/kb_to_chunks.py` for the 51-chunk adapter.
+The pipeline produces 20 axiom records from 51 KB nodes; 6/20 are
+Z3-verified in consistency mode. Run in `--z3-mode refute` to look for
+impossibility theorems (see `_derive_status` for the 7-tier status taxonomy).
+
 
 # 1. Executive Summary
 

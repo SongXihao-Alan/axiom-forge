@@ -4,25 +4,38 @@
 Concrete tasks with file paths and status + 3-layer verification tasks
 Song Xihao (Alan), University of Glasgow  •  2026-06-24
 
+**v0.4 update (2026-06-26)**: Phase 2 D⇄F pipeline is now end-to-end
+working (M3 + SBERT + Z3). See `PLAN/13_phase2_pipeline.md` for full
+details. Status legend below uses [v0.4] marker for tasks touched in
+the 06-26 update. Old tasks left in place for context.
+
 
 # 1. Setup (DONE)
 
 Task    Files    Status
 Repository initialized    github.com/SongXihao-Alan/axiom-forge    DONE
-KB 85 nodes / 63 relations / 8 types    kb/nodes/    DONE
-CLI 13 commands    kb/kb_query.py    DONE
+KB 85 nodes / 63 relations / 8 types    knowledge-base/nodes/    DONE [v0.4: kb/ → knowledge-base/]
+CLI 13 commands    knowledge-base/kb_query.py    DONE [v0.4: kb/ → knowledge-base/]
 Web API 9 endpoints    web_api.py    DONE
 Lean 4.20.0 toolchain    /Users/alan/.elan/toolchains/    DONE
-Lane B 5-layer evaluator (Layer 1a discover + 1b score + 1c backtranslate + Z3 + self-critique)    kb/ingest/lane_b_evaluator.py    DONE
-Z3 formal verifier    kb/ingest/z3_verify.py    DONE
+Lane B 5-layer evaluator (Layer 1a discover + 1b score + 1c backtranslate + Z3 + self-critique)    knowledge-base/ingest/lane_b_evaluator.py    DONE
+Z3 formal verifier    knowledge-base/ingest/z3_verify.py    DONE [v0.4: +refute mode, impossibility status]
 Lane C statistics + feedback    paper/data/lane_c_stats.py    DONE
-Prompt versioning (v1/v2/v3)    kb/ingest/lane_b_prompts/    DONE
+Prompt versioning (v1/v2/v3)    knowledge-base/ingest/lane_b_prompts/    DONE
+[v0.4] Phase 2 D⇄F pipeline (D-F-BT-Z3)    knowledge-base/ingest/{discover,formalize,backtranslate,z3_verify,pipeline,m3_client}.py    DONE
+[v0.4] SBERT back-translation similarity    knowledge-base/ingest/backtranslate.py    DONE
+[v0.4] KB-to-chunks adapter (51 chunks)    scripts/kb_to_chunks.py    DONE
+[v0.4] Phase 2 records (consistency)    /tmp/ax-test/kb_records_v3.jsonl    20 records, 6 Z3-SAT
+[v0.4] Phase 2 records (refute)         /tmp/ax-test/kb_records_refute.jsonl    in progress (run 2026-06-26)
 
 
 # 2. Immediate (No Blocker)
 
 Task    Files    Effort    Status
 Recruit second annotator (30-item subset)    gold.json    2-4 hrs    TODO
+Convert Phase 2 records to Lane C input format (5-dim rubric scores)    converter script    4-8 hrs    TODO
+Tune M3 prompts for higher BT sim mean (current 0.635)    knowledge-base/ingest/{discover,formalize,backtranslate}.py    2-4 hrs    TODO
+[v0.4] DNS hiccup retry wrapper for long runs    knowledge-base/ingest/pipeline.py    1 hr    TODO
 Compute inter-rater QWK    gold_dual_annotator.json    1 hr    TODO
 Document limitation if second annotator unavailable    paper/main.tex    30 min    TODO
 
