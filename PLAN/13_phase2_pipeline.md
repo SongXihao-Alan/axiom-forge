@@ -104,11 +104,13 @@ Empirical BT distribution on 20 v2 records (after max_tokens fix):
 
 # 4. Tiered status taxonomy
 
-Replaces the binary "verified / needs_human_review" with 7 levels.
+Replaces the binary "verified / needs_human_review" with 9 levels.
 See `pipeline.py:_derive_status` for the full decision tree.
 
   impossibility_high   (BT ≥ 0.85, Z3 refute UNSAT)  ← headline result
   impossibility_medium (BT 0.5-0.85, Z3 refute UNSAT) ← headline result
+  falsifiable_high     (BT ≥ 0.85, Z3 refute SAT)     ← new in v0.4 (2026-06-26)
+  falsifiable_medium   (BT 0.5-0.85, Z3 refute SAT)   ← new in v0.4
   verified_high        (BT ≥ 0.85, Z3 consistency sat/tautology/vacuous)
   verified_medium      (BT 0.5-0.85, Z3 consistency sat/tautology/vacuous)
   bt_pass_high         (BT ≥ 0.85, no Z3 or skipped)
@@ -118,7 +120,14 @@ See `pipeline.py:_derive_status` for the full decision tree.
   formalization_failed (no FormalRepresentation returned)
 
 Review queue: sort by status, work top-down. impossibility_* and
-verified_* can be cited; the rest need a second look.
+verified_* can be cited; falsifiable_* are candidates for negation
+or further analysis; the rest need a second look.
+
+The key distinction: in **consistency** mode, sat means "model exists
+(axiom is satisfiable, possibly a real theorem)". In **refute** mode,
+sat means "model exists for the negation (axiom can be falsified)".
+These are opposite semantically — keeping them in separate status
+buckets makes downstream filtering tractable.
 
 
 # 5. Z3 verification modes
@@ -236,7 +245,9 @@ SBERT model loaded once per process, ~80 MB download, ~1s load time
   recs = [json.loads(l) for l in open('/tmp/ax-test/kb_records_refute.jsonl')]
   for r in recs:
       if 'impossibility' in r['status']:
-          print(r['candidate_id'], r['chunk_id'], r['claim_nl'])
+          print('IMPOSSIBILITY:', r['candidate_id'], r['chunk_id'], r['claim_nl'])
+      elif 'falsifiable' in r['status']:
+          print('FALSIFIABLE:  ', r['candidate_id'], r['chunk_id'], r['claim_nl'])
   "
 
 

@@ -75,5 +75,7 @@ R22    Refute mode finds 0 UNSAT (no impossibility theorems)
                  M3-generated SMT from KB axioms tends to be
                  satisfiable. The interesting case is when KB's own
                  theorems (TH-IMP-501) are properly formalized.
-                 Mitigation: use formalize.py to ensure TH-IMP-501
-                 actually negates the conjunction.    OPEN (under validation)
+                 Workaround: the new falsifiable_* status captures
+                 "negation has a model" (axiom is falsifiable), which
+                 is the OPPOSITE of impossibility. Both are useful
+                 signals. As of 2026-06-26, no UNSAT found yet.    OPEN (under validation)
