@@ -89,8 +89,13 @@ class AxiomRecord:
     verification_confidence: float
 
     # Overall pipeline status
-    status: str         # "verified" | "needs_human_review" | "cannot_formalize" |
-                        # "z3_unsat" | "z3_unknown" | "formalization_failed"
+    status: str         # "verified_high"      (BT ≥ 0.85, Z3 verified)
+                        # | "verified_medium"  (BT 0.5-0.85, Z3 verified)
+                        # | "bt_pass_high"     (BT ≥ 0.85, no Z3 or Z3 skipped)
+                        # | "bt_pass_medium"    (BT 0.5-0.85, no Z3 or Z3 skipped)
+                        # | "needs_human_review" (BT < 0.5 or Z3 unknown)
+                        # | "cannot_formalize"  (formal.cannot_formalize)
+                        # | "formalization_failed" (formal is None)
 
     # Timestamps and scores
     discover_confidence: float
@@ -110,17 +115,47 @@ def _derive_status(
     z3: AxiomVerificationResult,
     formal: Optional[AxiomCandidateFormal],
 ) -> str:
+    """Compute tiered status from back-translation + Z3 results.
+
+    BT tiers (from SBERT all-MiniLM-L6-v2 empirical distribution on
+    Phase 2 records, 2026-06-29):
+      ≥ 0.85  high confidence paraphrase match → ready to publish
+      0.5-0.85 medium confidence → quick review
+      < 0.5   low / empty M3 output → needs human review
+
+    Z3 statuses (when actually run, not SKIPPED):
+      unsat     → discovered an impossibility theorem
+      sat/tautology/vacuous → axiom is provably true / vacuous
+      unknown   → Z3 couldn't decide in budget
+      timeout   → Z3 didn't finish
+      parse_error → M3 SMT output was malformed
+    """
     if formal is None:
         return "formalization_failed"
     if formal.cannot_formalize:
         return "cannot_formalize"
-    if not bt.passed:
+
+    # BT tier
+    sim = bt.similarity_score
+    z3_status = z3.z3_status
+
+    # Z3 successfully verified the axiom (not skipped)
+    z3_verified = z3_status in ("sat", "tautology", "vacuous", "unsat")
+
+    if z3_verified:
+        if sim >= 0.85:
+            return "verified_high"
+        if sim >= 0.5:
+            return "verified_medium"
+        # Z3 verified but BT failed: still a discovery, mark for review
         return "needs_human_review"
-    if z3.z3_status == "unsat":
-        return "z3_unsat"          # discovered an impossibility!
-    if z3.z3_status in ("sat", "tautology", "vacuous"):
-        return "verified"
-    return "needs_human_review"    # unknown / timeout → human review
+
+    # Z3 not run / skipped / unknown
+    if sim >= 0.85:
+        return "bt_pass_high"
+    if sim >= 0.5:
+        return "bt_pass_medium"
+    return "needs_human_review"
 
 
 def _build_record(
