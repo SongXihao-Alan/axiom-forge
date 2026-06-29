@@ -179,44 +179,82 @@ def _core_to_list(core) -> list[str]:
 def tier_b_check(
     smt_fragment: str,
     timeout_ms: int = 5000,
+    mode: str = "consistency",
 ) -> Optional[Z3RawResult]:
     """
     Attempt direct Z3 verification.
     Returns Z3RawResult if successful, None if the fragment cannot be parsed
     (signalling Tier C should be attempted).
+
+    mode:
+      consistency: assert smt, expect sat (disprove via counterexample)
+      refute:      assert (not smt), expect unsat (prove impossibility)
     """
     t0 = time.perf_counter()
     try:
         solver = z3.Solver()
         solver.set("timeout", timeout_ms)
-        solver.from_string(smt_fragment)
+
+        if mode == "refute":
+            # Parse original SMT, then assert (not each-formula).
+            # The trick: we want unsat to mean "original is a theorem".
+            # If ANY formula in the SMT is unsatisfiable on its own, the
+            # original SMT is also unsat, so we'd see UNSAT for both
+            # consistency AND refute modes (a degenerate malformed SMT).
+            # So in refute mode we need to negate the conjunction of all
+            # top-level assertions.
+            try:
+                formulas = z3.parse_smt2_string(smt_fragment)
+                if not formulas:
+                    # Empty SMT — vacuous
+                    return Z3RawResult(
+                        status=Z3Status.VACUOUS,
+                        elapsed_ms=(time.perf_counter() - t0) * 1000,
+                        notes=f"Tier B (refute): empty formula set, vacuously unsat"
+                    )
+                # Negate each formula and assert
+                solver.add(*[z3.Not(f) for f in formulas])
+            except z3.Z3Exception as e:
+                logger.debug("Tier B refute parse error: %s", e)
+                # Fall back to string-level negation as last resort
+                negated = f"(assert (not {smt_fragment}))\n"
+                solver.from_string(negated)
+        else:
+            solver.from_string(smt_fragment)
 
         result = solver.check()
         elapsed = (time.perf_counter() - t0) * 1000
 
+        mode_note = "refute" if mode == "refute" else "consistency"
         if result == z3.sat:
             return Z3RawResult(
                 status=Z3Status.SAT,
                 model=_model_to_dict(solver.model()),
                 elapsed_ms=elapsed,
-                notes="Tier B: Z3 found satisfying assignment"
+                notes=f"Tier B ({mode_note}): Z3 found satisfying assignment"
             )
         elif result == z3.unsat:
             try:
                 core = _core_to_list(solver.unsat_core())
             except Exception:
                 core = []
+            if mode == "refute":
+                notes = ("Tier B (refute): UNSAT proves axiom is logically "
+                         "necessary — IMPOSSIBILITY THEOREM candidate")
+            else:
+                notes = ("Tier B (consistency): Z3 proved unsatisfiable — "
+                         "axiom is contradictory (malformed formalization)")
             return Z3RawResult(
                 status=Z3Status.UNSAT,
                 unsat_core=core,
                 elapsed_ms=elapsed,
-                notes="Tier B: Z3 proved unsatisfiable (possible impossibility theorem)"
+                notes=notes
             )
         else:
             return Z3RawResult(
                 status=Z3Status.UNKNOWN,
                 elapsed_ms=elapsed,
-                notes="Tier B: Z3 returned unknown (timeout or undecidable)"
+                notes=f"Tier B ({mode_note}): Z3 returned unknown (timeout or undecidable)"
             )
 
     except z3.Z3Exception as e:
@@ -290,6 +328,7 @@ def tier_c_reformalize(
     timeout_ms: int = 5000,
     llm_client=None,  # kept for back-compat with old call sites; ignored
     model: str = "MiniMax-M3",
+    mode: str = "consistency",
 ) -> Z3RawResult:
     """
     Use LLM to produce a valid SMT-LIB2 string, then run Z3.
@@ -375,7 +414,7 @@ Output the SMT-LIB2 string only. No explanation. No markdown fences."""
         )
 
     # Run Z3 on the LLM-produced SMT string
-    result = tier_b_check(smt_string, timeout_ms)
+    result = tier_b_check(smt_string, timeout_ms, mode=mode)
     if result is None:
         return Z3RawResult(
             status=Z3Status.PARSE_ERROR,
@@ -397,18 +436,35 @@ def z3_verify(
     timeout_ms: int = 5000,
     llm_client=None,
     model: str = "claude-sonnet-4-6",
+    mode: str = "consistency",
 ) -> AxiomVerificationResult:
     """
     Run three-tier Z3 verification on a formalized axiom candidate.
 
+    Mode semantics:
+      consistency (default): assert smt, expect sat. A counterexample model
+                             disproves the axiom.
+      refute:               assert (not smt), expect unsat. If unsat the
+                             original axiom is logically necessary (no
+                             counterexample exists) — this is the
+                             "impossibility" signature.
+      both:                 run both consistency + refute. Combined status
+                             gives the strongest signal:
+                               - sat (consistency) + unsat (refute) = axiom is
+                                 a theorem (always true)
+                               - sat + sat = axiom may be false in some
+                                 worlds (counterexample exists)
+                               - unsat + sat = axiom is false (no model for
+                                 original)
+                               - unsat + unsat = degenerate (malformed SMT)
+
     Tier routing:
       CANNOT_FORMALIZE flag → return immediately, no Z3
-      backtranslation_passed=False → SKIPPED, no Z3
+      backtranslation_passed=False AND sim < 0.5 → SKIPPED, no Z3
       Tier A pattern match → return immediately
       Tier B direct parse → return if successful
       Tier C LLM re-formalize → fallback
 
-    Returns AxiomVerificationResult with full provenance.
     """
     cid = verify_input.candidate_id
     fid = verify_input.formalization_id
@@ -458,7 +514,7 @@ def z3_verify(
         )
 
     # Tier B
-    tier_b_result = tier_b_check(smt, timeout_ms)
+    tier_b_result = tier_b_check(smt, timeout_ms, mode=mode)
     if tier_b_result is not None:
         conf = _confidence_from_status(tier_b_result.status)
         return AxiomVerificationResult(
@@ -484,6 +540,7 @@ def z3_verify(
         timeout_ms=timeout_ms,
         llm_client=llm_client,
         model=model,
+        mode=mode,
     )
     conf = _confidence_from_status(tier_c_result.status) * 0.85  # slight penalty for Tier C
     return AxiomVerificationResult(

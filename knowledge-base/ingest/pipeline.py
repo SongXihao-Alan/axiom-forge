@@ -114,6 +114,7 @@ def _derive_status(
     bt: BackTranslationResult,
     z3: AxiomVerificationResult,
     formal: Optional[AxiomCandidateFormal],
+    z3_mode: str = "consistency",
 ) -> str:
     """Compute tiered status from back-translation + Z3 results.
 
@@ -124,11 +125,22 @@ def _derive_status(
       < 0.5   low / empty M3 output → needs human review
 
     Z3 statuses (when actually run, not SKIPPED):
-      unsat     → discovered an impossibility theorem
-      sat/tautology/vacuous → axiom is provably true / vacuous
+      unsat in refute mode → IMPOSSIBILITY THEOREM (the headline result)
+      sat/tautology/vacuous in consistency mode → axiom is provable
       unknown   → Z3 couldn't decide in budget
       timeout   → Z3 didn't finish
       parse_error → M3 SMT output was malformed
+
+    Status taxonomy:
+      impossibility_high   (BT ≥ 0.85, Z3 refute UNSAT)
+      impossibility_medium (BT 0.5-0.85, Z3 refute UNSAT)
+      verified_high        (BT ≥ 0.85, Z3 consistency sat/tautology/vacuous)
+      verified_medium      (BT 0.5-0.85, Z3 consistency sat/tautology/vacuous)
+      bt_pass_high         (BT ≥ 0.85, no Z3 or skipped)
+      bt_pass_medium       (BT 0.5-0.85, no Z3 or skipped)
+      needs_human_review   (BT < 0.5, or Z3 unknown/timeout/parse_error)
+      cannot_formalize     (SMT was 'CANNOT_FORMALIZE')
+      formalization_failed (no FormalRepresentation returned)
     """
     if formal is None:
         return "formalization_failed"
@@ -143,10 +155,13 @@ def _derive_status(
     z3_verified = z3_status in ("sat", "tautology", "vacuous", "unsat")
 
     if z3_verified:
+        # Refute mode + UNSAT = impossibility theorem discovered
+        is_impossibility = (z3_mode == "refute" and z3_status == "unsat")
+
         if sim >= 0.85:
-            return "verified_high"
+            return "impossibility_high" if is_impossibility else "verified_high"
         if sim >= 0.5:
-            return "verified_medium"
+            return "impossibility_medium" if is_impossibility else "verified_medium"
         # Z3 verified but BT failed: still a discovery, mark for review
         return "needs_human_review"
 
@@ -163,6 +178,7 @@ def _build_record(
     formal: Optional[AxiomCandidateFormal],
     bt: BackTranslationResult,
     z3: AxiomVerificationResult,
+    z3_mode: str = "consistency",
 ) -> AxiomRecord:
 
     # Provide safe defaults when formalization failed entirely
@@ -204,7 +220,7 @@ def _build_record(
         z3_unsat_core=z3.unsat_core,
         verification_confidence=z3.verification_confidence,
 
-        status=_derive_status(bt, z3, formal),
+        status=_derive_status(bt, z3, formal, z3_mode=z3_mode),
         discover_confidence=nl.confidence,
         low_confidence=nl.low_confidence,
         lane_b_score=None,
@@ -358,10 +374,14 @@ def run_single_candidate(
     model: str,
     z3_timeout_ms: int,
     skip_z3: bool,
+    z3_mode: str = "consistency",
 ) -> AxiomRecord:
     """
     Run formalize → backtranslate → z3_verify for a single NL candidate.
     Never raises — errors are captured into the record status.
+
+    z3_mode: "consistency" (assert smt) or "refute" (assert (not smt),
+             looking for unsat = impossibility theorem).
     """
     # call_2: formalize
     try:
@@ -373,7 +393,7 @@ def run_single_candidate(
     if formal is None:
         bt = _empty_bt(nl.candidate_id, "none")
         z3r = _empty_z3(nl.candidate_id, "none")
-        return _build_record(nl, None, bt, z3r)
+        return _build_record(nl, None, bt, z3r, z3_mode=z3_mode)
 
     # call_3: back-translate
     bt_input = BackTranslateInput(
@@ -405,12 +425,12 @@ def run_single_candidate(
         try:
             # NOTE: z3_verify's llm_client arg is now ignored (Tier C uses
             # m3_client internally). Keep call site stable for future.
-            z3r = z3_verify(z3_input, timeout_ms=z3_timeout_ms, model=model)
+            z3r = z3_verify(z3_input, timeout_ms=z3_timeout_ms, model=model, mode=z3_mode)
         except Exception as e:
             logger.warning("z3_verify exception for %s: %s", nl.candidate_id, e)
             z3r = _empty_z3(nl.candidate_id, formal.formalization_id)
 
-    return _build_record(nl, formal, bt, z3r)
+    return _build_record(nl, formal, bt, z3r, z3_mode=z3_mode)
 
 
 # ---------------------------------------------------------------------------
@@ -424,6 +444,7 @@ def run_pipeline(
     backtranslation_threshold: float = 0.75,
     z3_timeout_ms: int = 5000,
     skip_z3: bool = False,
+    z3_mode: str = "consistency",
     parallel_workers: int = 1,
 ) -> PipelineReport:
     """
@@ -469,7 +490,7 @@ def run_pipeline(
         with ThreadPoolExecutor(max_workers=parallel_workers) as ex:
             futures = {
                 ex.submit(
-                    run_single_candidate, nl, model, z3_timeout_ms, skip_z3
+                    run_single_candidate, nl, model, z3_timeout_ms, skip_z3, z3_mode
                 ): nl
                 for nl in all_nl
             }
@@ -485,7 +506,7 @@ def run_pipeline(
         # Sequential — default, safer for rate limits
         for i, nl in enumerate(all_nl):
             logger.info("  Candidate %d/%d: %s", i + 1, len(all_nl), nl.candidate_id)
-            record = run_single_candidate(nl, model, z3_timeout_ms, skip_z3)
+            record = run_single_candidate(nl, model, z3_timeout_ms, skip_z3, z3_mode)
             records.append(record)
             logger.info("    → status=%-25s  bt_sim=%.3f  z3=%s",
                         record.status,
@@ -725,6 +746,12 @@ def main():
         help="Z3 solver timeout in ms (default: 5000)"
     )
     parser.add_argument(
+        "--z3-mode", type=str, default="consistency",
+        choices=["consistency", "refute"],
+        help='Z3 mode: "consistency" (assert smt, expect sat = counterexample) or '
+             '"refute" (assert (not smt), expect unsat = impossibility theorem)'
+    )
+    parser.add_argument(
         "--skip-z3", action="store_true",
         help="Skip Z3 verification (useful for fast prototyping)"
     )
@@ -757,6 +784,7 @@ def main():
         backtranslation_threshold=args.bt_threshold,
         z3_timeout_ms=args.z3_timeout,
         skip_z3=args.skip_z3,
+        z3_mode=args.z3_mode,
         parallel_workers=args.workers,
     )
 
