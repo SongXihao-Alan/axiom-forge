@@ -264,7 +264,9 @@ def _llm_judge(
         user=prompt,
         schema=_JudgeScore,
         max_retries=1,
-        max_tokens=200,
+        max_tokens=2048,  # bumped from 200: JudgeScore is just 2 fields (score
+                            # + reason) but M3 reasoning burns 1k+ tokens.
+                            # 2048 leaves room for ~50 tokens JSON + reasoning.
         model=model,
         temperature=0.0,
     )
@@ -339,11 +341,11 @@ def call_3_backtranslate(
     claim_reconstructed = call_m3_chat(
         system=_BT_SYSTEM,
         user=prompt,
-        max_tokens=1024,  # bumped from 200: M3 uses tokens on <think> reasoning;
-                          # with 200 tokens the entire budget is consumed
-                          # by reasoning and the reconstructed NL is empty,
-                          # collapsing BT sim to 0 (false-fail signal).
-                          # 1024 gives room for both thinking + NL reconstruction.
+        max_tokens=8192,  # bumped from 1024: M3 uses 1-2k tokens on <think>
+                          # reasoning; with 1024 the reasoning was using the
+                          # entire budget leaving empty NL output. 8192 gives
+                          # room for thinking + a 2-3 sentence NL reconstruction
+                          # (~150-300 tokens) plus alt interpretations.
         model=model,
         temperature=0.2,
     )

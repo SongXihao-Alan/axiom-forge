@@ -345,7 +345,9 @@ Output the SMT-LIB2 string only. No explanation. No markdown fences."""
     smt_string = call_m3_chat(
         system="You are an SMT-LIB2 expert. Output only the SMT-LIB2 string or CANNOT_FORMALIZE.",
         user=prompt,
-        max_tokens=512,
+        max_tokens=4096,  # bumped from 512: M3 reasoning burns 1-2k tokens
+                          # before emitting SMT-LIB2 (~100-300 tokens). 512
+                          # left 0 room after reasoning.
         model=model,
         temperature=0.0,
     )

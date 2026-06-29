@@ -242,7 +242,10 @@ def call_1_discover(
         user=user_prompt,
         schema=RawCandidateList,
         max_retries=2,
-        max_tokens=1024,
+        max_tokens=8192,  # bumped from 1024: RawCandidateList can be 5+ items ×
+                            # ~150 tokens each = ~750-1000 tokens JSON, but
+                            # M3 burns 1-2k tokens on <think> reasoning.
+                            # 8192 leaves headroom for both.
         model=model,
         temperature=0.2,
     )

@@ -323,9 +323,10 @@ def call_2_formalize(
         user=user_prompt,
         schema=FormalRepresentation,
         max_retries=2,
-        max_tokens=4096,  # bumped from 1024: M3 uses tokens on <think> reasoning,
-                           # leaving ~0 for actual JSON output at 1024.
-                           # 4096 gives room for both reasoning + full FormalRepresentation JSON (~600 tokens).
+        max_tokens=16384,  # bumped from 4096: FormalRepresentation has 11 fields
+                            # incl. smt_fragment, alternative_interpretations
+                            # (up to 5), interpretation_chosen. M3 reasoning
+                            # burns 2-4k tokens. 16k is the practical cap.
         model=model,
         temperature=0.2,
     )
