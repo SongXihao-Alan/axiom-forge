@@ -155,14 +155,28 @@ def _derive_status(
     z3_verified = z3_status in ("sat", "tautology", "vacuous", "unsat")
 
     if z3_verified:
-        # Refute mode + UNSAT = impossibility theorem discovered
-        is_impossibility = (z3_mode == "refute" and z3_status == "unsat")
-
-        if sim >= 0.85:
-            return "impossibility_high" if is_impossibility else "verified_high"
-        if sim >= 0.5:
-            return "impossibility_medium" if is_impossibility else "verified_medium"
-        # Z3 verified but BT failed: still a discovery, mark for review
+        # 3-way interpretation of Z3 status:
+        #   consistency mode + sat           = "verified_*" (axiom is satisfiable, model found)
+        #   consistency mode + unsat/tautology/vacuous = malformed formalization
+        #   refute mode + sat               = "falsifiable_*" (negation satisfiable, axiom CAN be falsified)
+        #   refute mode + unsat             = "impossibility_*" (negation unsat, axiom is necessary)
+        if z3_mode == "refute":
+            if z3_status == "unsat":
+                # Headline: impossibility theorem discovered
+                if sim >= 0.85: return "impossibility_high"
+                if sim >= 0.5: return "impossibility_medium"
+                return "needs_human_review"
+            elif z3_status == "sat":
+                # Refutation failed: negation has a model, axiom is falsifiable
+                if sim >= 0.85: return "falsifiable_high"
+                if sim >= 0.5: return "falsifiable_medium"
+                return "needs_human_review"
+            else:
+                # tautology/vacuous/parse_error in refute mode = malformed
+                return "needs_human_review"
+        # consistency mode (default)
+        if sim >= 0.85: return "verified_high"
+        if sim >= 0.5: return "verified_medium"
         return "needs_human_review"
 
     # Z3 not run / skipped / unknown
