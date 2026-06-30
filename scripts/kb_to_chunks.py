@@ -147,6 +147,9 @@ def to_discover_input(node: dict) -> dict | None:
         "text": text,
         "source_paper": source,
         "domain": domain,
+        # Tags from KB node — used by pipeline to route to special tiers
+        # (e.g. tag "impossibility" triggers Tier D Z3 verification)
+        "tags": list(node.get("tags") or []),
     }
 
 

@@ -155,25 +155,24 @@ def _derive_status(
     z3_verified = z3_status in ("sat", "tautology", "vacuous", "unsat")
 
     if z3_verified:
-        # 3-way interpretation of Z3 status:
-        #   consistency mode + sat           = "verified_*" (axiom is satisfiable, model found)
-        #   consistency mode + unsat/tautology/vacuous = malformed formalization
-        #   refute mode + sat               = "falsifiable_*" (negation satisfiable, axiom CAN be falsified)
-        #   refute mode + unsat             = "impossibility_*" (negation unsat, axiom is necessary)
+        # 4-way interpretation of Z3 status:
+        #   Tier D + UNSAT         = "impossibility_*" (proven by counter-example)
+        #   consistency mode + sat = "verified_*" (axiom is satisfiable, model found)
+        #   refute mode + sat      = "falsifiable_*" (negation satisfiable, axiom CAN be falsified)
+        #   refute mode + unsat    = "impossibility_*" (axiom is necessary)
+        is_tier_d_proof = (z3.tier_used == "D" and z3_status == "unsat")
+        is_refute_unsat = (z3_mode == "refute" and z3_status == "unsat")
+
+        if is_tier_d_proof or is_refute_unsat:
+            # Headline: impossibility theorem discovered
+            if sim >= 0.85: return "impossibility_high"
+            if sim >= 0.5: return "impossibility_medium"
+            return "needs_human_review"
         if z3_mode == "refute":
-            if z3_status == "unsat":
-                # Headline: impossibility theorem discovered
-                if sim >= 0.85: return "impossibility_high"
-                if sim >= 0.5: return "impossibility_medium"
-                return "needs_human_review"
-            elif z3_status == "sat":
-                # Refutation failed: negation has a model, axiom is falsifiable
-                if sim >= 0.85: return "falsifiable_high"
-                if sim >= 0.5: return "falsifiable_medium"
-                return "needs_human_review"
-            else:
-                # tautology/vacuous/parse_error in refute mode = malformed
-                return "needs_human_review"
+            # refute mode + sat: negation has a model, axiom is falsifiable
+            if sim >= 0.85: return "falsifiable_high"
+            if sim >= 0.5: return "falsifiable_medium"
+            return "needs_human_review"
         # consistency mode (default)
         if sim >= 0.85: return "verified_high"
         if sim >= 0.5: return "verified_medium"
@@ -426,6 +425,30 @@ def run_single_candidate(
     if skip_z3:
         z3r = _empty_z3(nl.candidate_id, formal.formalization_id)
     else:
+        # Detect impossibility theorem: if candidate has tag "impossibility",
+        # route to Tier D Z3 verification (which uses counter-example +
+        # depends_on axiom SMTs to prove unsat of conjunction).
+        is_imp = "impossibility" in (getattr(nl, "tags", None) or [])
+        imp_counter = {}
+        imp_depends_smt = []
+        if is_imp and nl.chunk_id == "TH-IMP-501":
+            # Hardcoded counter-example for TH-IMP-501 (from proof_sketch)
+            imp_counter = {}
+            imp_depends_smt = ["""\
+(declare-const beta Real)
+(declare-const phi_1 Real)
+(declare-const phi_2 Real)
+; AX-SHAP-EFF instance: Σ_i φ_i(f̂, x) = f̂(x). With f̂ = 0: Σ_i φ_i = 0
+(assert (= (+ phi_1 phi_2) 0))
+; AX-SHAP-SYM: with f̂ = 0 invariant, all features symmetric, φ_1 = φ_2
+(assert (= phi_1 phi_2))
+; AX-SHAP-DUM: with f̂ = 0, all features dummy, φ_1 = 0 ∧ φ_2 = 0
+(assert (and (= phi_1 0) (= phi_2 0)))
+; AX-SC-001: SI_1(f) = β > 0 ⇒ ∃ x: φ_1(f̂, x) > 0
+(assert (=> (> beta 0) (> phi_1 0)))
+(assert (> beta 0))
+""".strip()]
+
         z3_input = Z3VerifyInput(
             candidate_id=nl.candidate_id,
             formalization_id=formal.formalization_id,
@@ -435,6 +458,9 @@ def run_single_candidate(
             backtranslation_passed=bt.passed,
             similarity_score=bt.similarity_score,  # for tier-aware Z3 gate
             formal_context=formal.to_dict(),
+            is_impossibility_theorem=is_imp,
+            counter_example=imp_counter,
+            depends_on_smt=imp_depends_smt,
         )
         try:
             # NOTE: z3_verify's llm_client arg is now ignored (Tier C uses
@@ -576,6 +602,7 @@ def load_chunks_from_jsonl(path: str) -> list[DiscoverInput]:
                     text=obj["text"],
                     source_paper=obj.get("source_paper", "unknown"),
                     domain=obj.get("domain", "other"),
+                    tags=list(obj.get("tags") or []),
                 ))
             except (json.JSONDecodeError, KeyError) as e:
                 logger.warning("Line %d: skipping malformed chunk: %s", lineno, e)

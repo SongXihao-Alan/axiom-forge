@@ -123,6 +123,8 @@ class DiscoverInput:
     text: str
     source_paper: str
     domain: str
+    # Provenance: tags from the KB node (for special pipeline routing)
+    tags: list[str] = field(default_factory=list)
 
     def __post_init__(self):
         if self.domain not in VALID_DOMAINS:
@@ -143,6 +145,9 @@ class AxiomCandidateNL:
     raw_quote: str
     low_confidence: bool        # True if confidence < LOW_CONF_THRESHOLD
     timestamp: str
+    # Provenance: tags from the KB node, used to route to special pipelines
+    # (e.g. tag "impossibility" triggers Tier D Z3 verification).
+    tags: list[str] = field(default_factory=list)
 
     def to_dict(self) -> dict:
         return asdict(self)
@@ -270,6 +275,7 @@ def call_1_discover(
             raw_quote=item.raw_quote,
             low_confidence=(item.confidence < LOW_CONF_THRESHOLD),
             timestamp=now,
+            tags=list(discover_input.tags),  # propagate from KB node
         ))
 
     logger.info("Chunk %s → %d candidate(s)", discover_input.chunk_id, len(results))

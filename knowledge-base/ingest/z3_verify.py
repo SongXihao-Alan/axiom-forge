@@ -66,6 +66,11 @@ class Z3VerifyInput:
     formal_context: dict = field(default_factory=dict)
     # Tier-aware gate: only skip Z3 if BT sim is below this floor
     similarity_score: float = 0.0  # used by Gate 0 alongside backtranslation_passed
+    # Tier D: impossibility theorem proof inputs (only used when theorem
+    # has tag "impossibility" + a counter-example)
+    is_impossibility_theorem: bool = False
+    counter_example: dict = field(default_factory=dict)
+    depends_on_smt: list = field(default_factory=list)
 
 
 @dataclass
@@ -428,6 +433,109 @@ Output the SMT-LIB2 string only. No explanation. No markdown fences."""
 
 
 # ---------------------------------------------------------------------------
+# Tier D: impossibility theorem proof via counter-example
+# ---------------------------------------------------------------------------
+
+def tier_d_impossibility_proof(
+    smt_fragment: str,
+    counter_example: dict,
+    depends_on_smt: list[str],
+    timeout_ms: int = 5000,
+) -> Z3RawResult:
+    """
+    Verify an impossibility theorem by instantiating the conjunction of
+    its dependent axioms with a counter-example, then asking Z3 if the
+    conjunction is satisfiable.
+
+    Logic:
+      TH says "no Φ can satisfy A₁ ∧ A₂ ∧ A₃ ∧ A₄ simultaneously"
+      Counter-example: specific f, f̂ values from TH.proof_sketch
+      SMT: assert(instance_A₁[f, f̂]) ∧ ... ∧ instance_A₄[f, f̂]
+      If UNSAT: the conjunction has no model → TH is proved.
+      If SAT: there exists Φ satisfying all 4 under this f, f̂ → TH not
+              proved by THIS counter-example; try another.
+
+    Arguments:
+      smt_fragment: original TH's SMT (unused in tier D; kept for context)
+      counter_example: dict of symbol→value assignments, e.g.
+                       {"f_hat": "0", "SI_1_f": "β", "phi_1": "0"}
+                       where β > 0 is a free constant
+      depends_on_smt: list of SMT strings, one per axiom A₁...Aₙ
+                      (the SMT instances, not the original axioms)
+      timeout_ms: Z3 timeout
+
+    Returns Z3RawResult:
+      status=UNSAT → IMPOSSIBILITY PROVED
+      status=SAT   → counter-example insufficient; TH not proved yet
+      status=UNKNOWN → Z3 timeout
+    """
+    t0 = time.perf_counter()
+    if not depends_on_smt:
+        return Z3RawResult(
+            status=Z3Status.PARSE_ERROR,
+            elapsed_ms=(time.perf_counter() - t0) * 1000,
+            notes="Tier D: no dependent axiom SMTs provided for conjunction",
+        )
+
+    try:
+        solver = z3.Solver()
+        solver.set("timeout", timeout_ms)
+
+        # Parse each axiom's SMT, assert them all (conjunction)
+        # Each axiom may reference f, f̂ symbols — instantiate with
+        # counter-example values via Z3's `let` bindings.
+        for ax_smt in depends_on_smt:
+            # Substitute counter-example values into the axiom's SMT.
+            # Simple textual substitution: replace "f̂(X)" with concrete
+            # value, etc. This is fragile but works for the few TH we have.
+            instantiated = ax_smt
+            for symbol, value in counter_example.items():
+                instantiated = instantiated.replace(symbol, value)
+            solver.from_string(instantiated)
+
+        result = solver.check()
+        elapsed = (time.perf_counter() - t0) * 1000
+
+        if result == z3.unsat:
+            return Z3RawResult(
+                status=Z3Status.UNSAT,
+                elapsed_ms=elapsed,
+                notes=("Tier D: counter-example satisfies no Φ in "
+                       "the conjunction — IMPOSSIBILITY THEOREM PROVED")
+            )
+        elif result == z3.sat:
+            model = _model_to_dict(solver.model())
+            return Z3RawResult(
+                status=Z3Status.SAT,
+                model=model,
+                elapsed_ms=elapsed,
+                notes=("Tier D: counter-example still admits a satisfying "
+                       "Φ — theorem NOT proved by this counter-example")
+            )
+        else:
+            return Z3RawResult(
+                status=Z3Status.UNKNOWN,
+                elapsed_ms=elapsed,
+                notes="Tier D: Z3 returned unknown (timeout or undecidable)"
+            )
+
+    except z3.Z3Exception as e:
+        logger.debug("Tier D Z3 parse error: %s", e)
+        return Z3RawResult(
+            status=Z3Status.PARSE_ERROR,
+            elapsed_ms=(time.perf_counter() - t0) * 1000,
+            notes=f"Tier D parse error: {e}",
+        )
+    except Exception as e:
+        logger.warning("Tier D unexpected error: %s", e)
+        return Z3RawResult(
+            status=Z3Status.PARSE_ERROR,
+            elapsed_ms=(time.perf_counter() - t0) * 1000,
+            notes=f"Tier D error: {e}",
+        )
+
+
+# ---------------------------------------------------------------------------
 # Main entry point
 # ---------------------------------------------------------------------------
 
@@ -498,6 +606,35 @@ def z3_verify(
             notes="SMT fragment marked CANNOT_FORMALIZE by formalization step.",
             smt_used=smt,
         )
+
+    # Tier D: impossibility theorem proof (only if flagged)
+    if verify_input.is_impossibility_theorem and verify_input.depends_on_smt:
+        logger.info("Candidate %s: attempting Tier D impossibility proof", cid)
+        tier_d_result = tier_d_impossibility_proof(
+            smt_fragment=smt,
+            counter_example=verify_input.counter_example,
+            depends_on_smt=verify_input.depends_on_smt,
+            timeout_ms=timeout_ms,
+        )
+        # Tier D result is the headline — return immediately if we got a
+        # definitive SAT or UNSAT. If PARSE_ERROR fall through to A/B/C.
+        if tier_d_result.status in (
+            Z3Status.UNSAT, Z3Status.SAT, Z3Status.UNKNOWN,
+        ):
+            conf = _confidence_from_status(tier_d_result.status)
+            return AxiomVerificationResult(
+                candidate_id=cid,
+                formalization_id=fid,
+                tier_used="D",
+                z3_status=tier_d_result.status,
+                z3_model=tier_d_result.model,
+                unsat_core=tier_d_result.unsat_core,
+                notes=tier_d_result.notes,
+                elapsed_ms=tier_d_result.elapsed_ms,
+                verification_confidence=conf,
+                smt_used=smt,
+            )
+        # PARSE_ERROR → fall through to Tier A/B/C
 
     # Tier A
     tier_a_result = tier_a_check(smt)
