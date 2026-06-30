@@ -300,12 +300,18 @@ Run results (most recent):
   /tmp/ax-test/kb_records_v2.jsonl      (18 records, max_tokens=8192,  BT 0.64)
   /tmp/ax-test/kb_records_v3.jsonl      (20 records, run Z3 by default, 6 SAT)
   /tmp/ax-test/kb_records_refute.jsonl  (21 records, refute mode, 12 SAT, 0 UNSAT)
-                                         ↑ Headline: no impossibility found yet
-                                         (R22: needs TH-IMP-501 proper formalization)
-  /tmp/ax-test/kb_records_tierD.jsonl   (Tier D TH-IMP-501 counter-example,
-                                         in progress 2026-06-26)
-  /tmp/ax-test/imp_records3.jsonl      (single chunk run: TH-IMP-501,
+                                         ↑ refute mode: no impossibility found
+                                         (R22b workaround: Tier D uses counter-example)
+  /tmp/ax-test/imp_records3.jsonl      (single-chunk TH-IMP-501,
                                          status=impossibility_medium, z3=D, UNSAT,
                                          verification_confidence=0.95)
-                                         ↑ Headline: TH-IMP-501 PROVED via Tier D
+                                         ↑ Tier D proves TH-IMP-501 standalone
+  /tmp/ax-test/kb_records_tierD.jsonl  (22 records, full Tier D run on 51 chunks,
+                                         62:05 total, 1 impossibility + 14 verified_B + 1 Tier_C)
+                                         status: 3 verified_high, 12 verified_medium,
+                                                 1 impossibility_medium,
+                                                 3 needs_human_review, 3 cannot_formalize
+                                         Z3 tier: B=14, D=1 (TH-IMP-501), C=1, SKIPPED=6
+                                         Mean BT sim: 0.610
+                                         ↑ Tier D end-to-end pipeline: TH-IMP-501 PROVED
   scripts/th_imp_501_proof.py           (standalone verification, 26 ms)

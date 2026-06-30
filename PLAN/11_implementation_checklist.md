@@ -31,6 +31,8 @@ Prompt versioning (v1/v2/v3)    knowledge-base/ingest/lane_b_prompts/    DONE
 [v0.4] TH-IMP-501 impossibility proof   /tmp/ax-test/imp_records3.jsonl      1 record, status=impossibility_medium
                                                                                    z3_tier=D, z3_status=UNSAT, conf=0.95
                                                                                    (R22b: Tier D proves TH-IMP-501, CLOSED)
+[v0.4] Tier D full pipeline run         /tmp/ax-test/kb_records_tierD.jsonl  22 records, 1 impossibility_medium
+                                                                                   (TH-IMP-501 found in full run, 62:05)
 
 
 # 2. Immediate (No Blocker)
