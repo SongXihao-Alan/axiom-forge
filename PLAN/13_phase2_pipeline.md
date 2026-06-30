@@ -152,6 +152,37 @@ Project headline: "no Shapley attribution based on v(S) = E[f̂|X_S]
 can satisfy Efficiency + Symmetry + Dummy + SC" → run refute mode
 on TH-IMP-501 to get the SAT/UNSAT verdict on the impossibility.
 
+## 5b. Tier D: impossibility theorem proof via counter-example
+
+For KB theorems with tag `impossibility` + a counter-example in
+`proof_sketch`, the pipeline invokes Tier D before Tier A/B/C.
+
+Logic:
+  TH says "no Φ can satisfy A₁ ∧ A₂ ∧ A₃ ∧ A₄ simultaneously"
+  Counter-example from TH.proof_sketch: specific f, f̂ values
+  SMT: assert(instance_A₁[f, f̂]) ∧ ... ∧ instance_A₄[f, f̂]
+  UNSAT → counter-example breaks all 4 → TH proved.
+  SAT   → counter-example insufficient; TH not proved by this example.
+
+Currently hardcoded for **TH-IMP-501** (the only KB theorem with
+tag `impossibility` + a clean counter-example):
+
+  Counter-example: f(X) = βX_1, f̂(X) = 0, β > 0
+  SMT instances of the 4 dependent axioms:
+    AX-SHAP-EFF: Σ_i φ_i(f̂, x) = f̂(x). With f̂ = 0: Σ_i φ_i = 0
+    AX-SHAP-SYM: with f̂ = 0 invariant, all features symmetric, φ_1 = φ_2
+    AX-SHAP-DUM: with f̂ = 0, all features dummy, φ_1 = 0 ∧ φ_2 = 0
+    AX-SC-001: SI_1(f) = β > 0 ⇒ ∃ x: φ_1(f̂, x) > 0
+  Plus β > 0 from the counter-example.
+
+Verified results (2026-06-26):
+  - scripts/th_imp_501_proof.py (standalone): 26 ms, UNSAT, TH proved
+  - pipeline.py on TH-IMP-501 chunk: 117 s, status=impossibility_medium,
+    z3_tier=D, z3_status=UNSAT, verification_confidence=0.95
+
+Future work: parse counter-example from TH.proof_sketch field
+automatically so new impossibility theorems don't need hardcoded SMTs.
+
 
 # 6. KB-to-chunks adapter
 
@@ -271,3 +302,10 @@ Run results (most recent):
   /tmp/ax-test/kb_records_refute.jsonl  (21 records, refute mode, 12 SAT, 0 UNSAT)
                                          ↑ Headline: no impossibility found yet
                                          (R22: needs TH-IMP-501 proper formalization)
+  /tmp/ax-test/kb_records_tierD.jsonl   (Tier D TH-IMP-501 counter-example,
+                                         in progress 2026-06-26)
+  /tmp/ax-test/imp_records3.jsonl      (single chunk run: TH-IMP-501,
+                                         status=impossibility_medium, z3=D, UNSAT,
+                                         verification_confidence=0.95)
+                                         ↑ Headline: TH-IMP-501 PROVED via Tier D
+  scripts/th_imp_501_proof.py           (standalone verification, 26 ms)

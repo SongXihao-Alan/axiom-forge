@@ -79,3 +79,16 @@ R22    Refute mode finds 0 UNSAT (no impossibility theorems)
                  "negation has a model" (axiom is falsifiable), which
                  is the OPPOSITE of impossibility. Both are useful
                  signals. As of 2026-06-26, no UNSAT found yet.    OPEN (under validation)
+R22b   TH-IMP-501 impossibility theorem verification (NEW — v0.4)
+                 Tier D in z3_verify.py proves impossibility theorems
+                 via counter-example. Logic: instantiate the 4
+                 dependent axioms with specific f, f̂ values, ask
+                 Z3 if the conjunction is unsat.
+                 Result (2026-06-26): TH-IMP-501 counter-example
+                 f(X)=βX_1, f̂(X)=0 forces Eff∧Sym∧Dum∧SC jointly
+                 unsatisfiable. Tier D returns UNSAT.
+                 Single-chunk pipeline run:
+                   status=impossibility_medium, z3_tier=D,
+                   z3_status=UNSAT, verification_confidence=0.95.
+                 Standalone script (scripts/th_imp_501_proof.py):
+                   26 ms, UNSAT.    CLOSED (Tier D proves the TH)

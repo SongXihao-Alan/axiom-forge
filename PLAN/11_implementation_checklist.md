@@ -28,6 +28,9 @@ Prompt versioning (v1/v2/v3)    knowledge-base/ingest/lane_b_prompts/    DONE
 [v0.4] Phase 2 records (consistency)    /tmp/ax-test/kb_records_v3.jsonl    20 records, 6 Z3-SAT
 [v0.4] Phase 2 records (refute)         /tmp/ax-test/kb_records_refute.jsonl 21 records, 12 SAT, 0 UNSAT
                                                                                    (R22: no impossibility found yet, falsifiable_* status added)
+[v0.4] TH-IMP-501 impossibility proof   /tmp/ax-test/imp_records3.jsonl      1 record, status=impossibility_medium
+                                                                                   z3_tier=D, z3_status=UNSAT, conf=0.95
+                                                                                   (R22b: Tier D proves TH-IMP-501, CLOSED)
 
 
 # 2. Immediate (No Blocker)
@@ -37,6 +40,7 @@ Recruit second annotator (30-item subset)    gold.json    2-4 hrs    TODO
 Convert Phase 2 records to Lane C input format (5-dim rubric scores)    converter script    4-8 hrs    TODO
 Tune M3 prompts for higher BT sim mean (current 0.635)    knowledge-base/ingest/{discover,formalize,backtranslate}.py    2-4 hrs    TODO
 [v0.4] DNS hiccup retry wrapper for long runs    knowledge-base/ingest/pipeline.py    1 hr    TODO
+[v0.4] Auto-parse counter-examples from TH.proof_sketch (remove hardcoded TH-IMP-501)    scripts/kb_to_chunks.py + pipeline.py    2-3 hrs    TODO
 Compute inter-rater QWK    gold_dual_annotator.json    1 hr    TODO
 Document limitation if second annotator unavailable    paper/main.tex    30 min    TODO
 
